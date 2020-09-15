@@ -1,0 +1,14 @@
+Check README.md on how to contact us.
+
+A list of GemRB authors is available through:
+  git shortlog -se
+
+From pre-svn era:
+  Brian Tanedo, Lotana, Thuy Nguyen
+
+On top of that, many 3rd party contributions are mentioned only in old
+commit messages and news.
+
+Thanks to everyone who has given advice, patches, bug reports and
+documentation. Thanks to testers, reverse engineers, artists, modders
+and tech writers. GemRB is a product of all your work!

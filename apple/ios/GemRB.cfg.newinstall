@@ -1,0 +1,98 @@
+#automatically generated configuration file
+
+#####################################################
+#  GUI Parameters                                   #
+#####################################################
+#                                                   #
+# GemRB may enhance the GUI of the Infinity Engine  #
+# games (so far only in bg2) creating functionally  #
+# new buttons or scrollbars where they weren't      #
+# present in original games. It may improve its     #
+# usability, but is not quite compatible with       #
+# mods changing graphics and alignment in the *.chu #
+# files (e.g. the buttons will appear in old        #
+# coordinates and may stop being clickable).        #
+#####################################################
+
+# Enable all gui enhancements ? [Boolean]
+GUIEnhancements = 1
+
+#####################################################
+#  Debug                                            #
+#####################################################
+
+# Do not play intro videos [Boolean], useful for development
+#SkipIntroVideos=1
+
+# Draw Frames per Second info [Boolean]
+#DrawFPS=1
+
+# Hide unexplored parts of a map
+#FogOfWar=1
+
+# Enable debug and cheat keystrokes, see docs/en/CheatKeys.txt
+#   full listing
+#EnableCheatKeys=1
+
+#####################################################
+#  Input Parameters                                 #
+#####################################################
+
+#whether or not to use software keyboard on devices that support one
+UseSoftKeyboard=1
+
+#####################################################
+#  MouseFeedback		                    #
+#  Bitfield with reserved bits for disabling        #
+#  the mouse. Those bits cannot be set via config   #
+#                                                   #
+#  Show mouse+tooltips = 0			    #
+#  Hide mouse 	       = 1			    #
+#  Hide tooltips       = 2			    #
+#  Hide mouse+tooltips = 3			    #
+#####################################################
+
+# For a strictly touchscreen device we recommend
+# Changing this to 3.
+
+# default is 0
+MouseFeedback=3
+
+#####################################################
+#  Touch Gesture Input Parameters                   #
+#  All "NumFing" settings must be > 1 and < 5       #
+#  NumFingScroll and NumFingKboard cannot be equal  #
+#####################################################
+
+NumFingScroll=2
+
+NumFingKboard=3
+
+NumFingInfo=2
+
+#####################################################
+#  Video Parameters                                 #
+#####################################################
+#NOTE: SCREEN width and height can NOT be ARBITRARY without installing the
+# widescreen mod: http://www.gibberlings3.net/widescreen/
+#Resolutions supported by the original games (gemrb) are:
+# * 640x480 (except in iwd2)
+# * 800x600 (bg2, iwd:how, iwd2)
+# * 1024x768 (bg2, iwd:how, iwd2)
+# * 1280x1024 (bg2, iwd:how, iwd2)
+
+#Bits per pixel [Integer:16,32]
+Bpp=32
+
+#Fullscreen [Boolean]
+Fullscreen=1
+
+# Delay before tooltips appear [milliseconds]
+TooltipDelay=500
+
+#####################################################
+#  Paths                                            #
+#####################################################
+
+# these were automatically created when you installed
+# this game
