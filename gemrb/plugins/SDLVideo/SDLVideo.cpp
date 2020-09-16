@@ -62,6 +62,33 @@ using namespace GemRB;
 typedef Sint32 SDL_Keycode;
 #endif
 
+#define	BUTTON_UP		SDLK_UP			// Up
+#define	BUTTON_DOWN		SDLK_DOWN		// Down
+#define	BUTTON_LEFT		SDLK_LEFT		// Left
+#define	BUTTON_RIGHT	SDLK_RIGHT		// Right
+#define	BUTTON_START	SDLK_RETURN		// Start
+#define	BUTTON_SELECT	SDLK_ESCAPE		// Select
+#define	BUTTON_A		SDLK_LCTRL		// Right button (A)
+#define	BUTTON_B		SDLK_LALT		// Bottom button (B)
+#define	BUTTON_X		SDLK_SPACE		// Top button (GCW Y, A320 X)
+#define	BUTTON_Y		SDLK_LSHIFT		// Left button (GCW X, A320 Y)
+#define	BUTTON_L		SDLK_TAB		// L
+#define	BUTTON_R		SDLK_BACKSPACE	// R
+#define	BUTTON_L2		SDLK_PAGEUP		// L2
+#define	BUTTON_R2		SDLK_PAGEDOWN	// R2
+#define	BUTTON_L3		SDLK_KP_DIVIDE	// L3
+#define	BUTTON_R3		SDLK_KP_PERIOD	// R3
+#define	BUTTON_MENU		SDLK_END		// POWER
+
+
+int av_mouse_cur_x;
+int av_mouse_cur_y;
+int av_mouse_pressed_x;
+int av_mouse_pressed_y;
+int av_mouse_pressed_cur;
+int av_mouse_pressed_latched;
+uint8_t *keystate = SDL_GetKeyState(NULL);
+
 SDLVideoDriver::SDLVideoDriver(void)
 {
 	xCorr = 0;
@@ -116,7 +143,7 @@ int SDLVideoDriver::SwapBuffers(void)
 	lastTime = time;
 
 	if (Cursor[CursorIndex] && !(MouseFlags & (MOUSE_DISABLED | MOUSE_HIDDEN))) {
-		
+
 		if (MouseFlags&MOUSE_GRAYED) {
 			//used for greyscale blitting, fadeColor is unused
 			BlitGameSprite(Cursor[CursorIndex], CursorPos.x, CursorPos.y, BLIT_GREY, fadeColor, NULL, NULL, NULL, true);
@@ -145,6 +172,7 @@ int SDLVideoDriver::SwapBuffers(void)
 
 int SDLVideoDriver::PollEvents()
 {
+
 	int ret = GEM_OK;
 	SDL_Event currentEvent;
 
@@ -168,12 +196,13 @@ int SDLVideoDriver::PollEvents()
 				// these are repeat events so the control should stay pressed
 				((Button*)ctl)->SetState(IE_GUI_BUTTON_PRESSED);
 		}
-	} 
+	}
 	return ret;
 }
 
 int SDLVideoDriver::ProcessEvent(const SDL_Event & event)
 {
+
 	if (!EvntManager)
 		return GEM_ERROR;
 
@@ -190,6 +219,12 @@ int SDLVideoDriver::ProcessEvent(const SDL_Event & event)
 			return GEM_OK;
 		case SDL_KEYUP:
 			switch(sym) {
+
+				case SDLK_a:
+					case BUTTON_A:
+						av_mouse_pressed_cur = 0;
+						av_mouse_pressed_latched = 0;
+						break;
 				case SDLK_LALT:
 				case SDLK_RALT:
 					key = GEM_ALT;
@@ -216,10 +251,13 @@ int SDLVideoDriver::ProcessEvent(const SDL_Event & event)
 				EvntManager->KeyRelease( key, modstate );
 			break;
 		case SDL_KEYDOWN:
-			if ((sym == SDLK_SPACE) && modstate & GEM_MOD_CTRL) {
-				core->PopupConsole();
-				break;
-			}
+		av_mouse_cur_x += 15 * (keystate[BUTTON_RIGHT] - keystate[BUTTON_LEFT]);
+		av_mouse_cur_y += 15 * (keystate[BUTTON_DOWN]  - keystate[BUTTON_UP]);
+
+		if (av_mouse_cur_x < 0) av_mouse_cur_x = 0;
+		if (av_mouse_cur_x > 640) av_mouse_cur_x = 640;
+		if (av_mouse_cur_y < 0) av_mouse_cur_y = 0;
+		if (av_mouse_cur_y > 480) av_mouse_cur_y = 480;
 #if SDL_VERSION_ATLEAST(1,3,0)
 			key = SDL_GetKeyFromScancode(event.key.keysym.scancode);
 #else
@@ -261,6 +299,9 @@ int SDLVideoDriver::ProcessEvent(const SDL_Event & event)
 					key = GEM_DOWN;
 					break;
 				case SDLK_LEFT:
+					SDL_WarpMouse(av_mouse_cur_x, av_mouse_cur_y);
+		// av_need_update_xy(av_mouse_cur_x - 10, av_mouse_cur_y - 10, av_mouse_cur_x + 10, av_mouse_cur_x + 10);
+					break;
 				case SDLK_KP4:
 					key = GEM_LEFT;
 					break;
@@ -577,7 +618,7 @@ void SDLVideoDriver::BlitSprite(const Sprite2D* spr, const Region& src, const Re
 								   (spr->renderFlags&BLIT_MIRRORY), dst,
 								   (Uint8)spr->GetColorKey(), 0, spr, 0, shadow, tinter, blender);
 		}
-		
+
 		SDL_UnlockSurface(backBuf);
 	}
 }
