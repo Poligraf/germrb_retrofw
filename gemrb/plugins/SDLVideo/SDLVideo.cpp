@@ -291,10 +291,16 @@ int SDLVideoDriver::ProcessEvent(const SDL_Event & event)
 					key = GEM_HOME;
 					break;
 				case SDLK_UP:
+				SDL_WarpMouse(av_mouse_cur_x, av_mouse_cur_y);
+	// av_need_update_xy(av_mouse_cur_x - 10, av_mouse_cur_y - 10, av_mouse_cur_x + 10, av_mouse_cur_x + 10);
+				break;
 				case SDLK_KP8:
 					key = GEM_UP;
 					break;
 				case SDLK_DOWN:
+				SDL_WarpMouse(av_mouse_cur_x, av_mouse_cur_y);
+	// av_need_update_xy(av_mouse_cur_x - 10, av_mouse_cur_y - 10, av_mouse_cur_x + 10, av_mouse_cur_x + 10);
+				break;
 				case SDLK_KP2:
 					key = GEM_DOWN;
 					break;
@@ -306,6 +312,9 @@ int SDLVideoDriver::ProcessEvent(const SDL_Event & event)
 					key = GEM_LEFT;
 					break;
 				case SDLK_RIGHT:
+				SDL_WarpMouse(av_mouse_cur_x, av_mouse_cur_y);
+	// av_need_update_xy(av_mouse_cur_x - 10, av_mouse_cur_y - 10, av_mouse_cur_x + 10, av_mouse_cur_x + 10);
+				break;
 				case SDLK_KP6:
 					key = GEM_RIGHT;
 					break;
