@@ -38,9 +38,6 @@ BMPImporter_LIB_DEPENDS:STATIC=general;gemrb_core;
 //Dependencies for the target
 BMPWriter_LIB_DEPENDS:STATIC=general;gemrb_core;
 
-//No help, variable specified on the command line.
-BUILD_TARGET:UNINITIALIZED=DINGOO
-
 //Dependencies for the target
 CHUImporter_LIB_DEPENDS:STATIC=general;gemrb_core;
 
@@ -122,7 +119,7 @@ CMAKE_EXE_LINKER_FLAGS_RELEASE:STRING=
 CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO:STRING=
 
 //Enable/Disable output of compile commands during generation.
-CMAKE_EXPORT_COMPILE_COMMANDS:BOOL=
+CMAKE_EXPORT_COMPILE_COMMANDS:BOOL=OFF
 
 //Install path prefix, prepended onto install directories.
 CMAKE_INSTALL_PREFIX:PATH=/usr/local
@@ -199,10 +196,10 @@ CMAKE_SHARED_LINKER_FLAGS_RELWITHDEBINFO:STRING=
 
 //If set, runtime paths are not added when installing shared libraries,
 // but are added when building.
-CMAKE_SKIP_INSTALL_RPATH:BOOL=NO
+CMAKE_SKIP_INSTALL_RPATH:BOOL=OFF
 
 //If set, runtime paths are not added when using shared libraries.
-CMAKE_SKIP_RPATH:BOOL=NO
+CMAKE_SKIP_RPATH:BOOL=OFF
 
 //Flags used by the linker during the creation of static libraries
 // during all build types.
@@ -234,7 +231,7 @@ CMAKE_TOOLCHAIN_FILE:FILEPATH=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a
 // .SILENT directive, and all commands will be echoed to the console
 // during the make.  This is useful for debugging only. With Visual
 // Studio IDE projects all commands are done without /nologo.
-CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
+CMAKE_VERBOSE_MAKEFILE:BOOL=OFF
 
 //Dependencies for the target
 CREImporter_LIB_DEPENDS:STATIC=general;gemrb_core;
@@ -411,9 +408,6 @@ TISImporter_LIB_DEPENDS:STATIC=general;gemrb_core;
 //Dependencies for the target
 TLKImporter_LIB_DEPENDS:STATIC=general;gemrb_core;
 
-//No help, variable specified on the command line.
-TREMOR_INCLUDE_DIR:UNINITIALIZED=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/buildroot/output/host/mipsel-RetroFW-linux-uclibc/sysroot/usr/include
-
 //Dependencies for the target
 TTFImporter_LIB_DEPENDS:STATIC=general;gemrb_core;general;/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/buildroot/output/host/usr/mipsel-RetroFW-linux-uclibc/sysroot/usr/lib/libfreetype.so;general;/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/buildroot/output/host/usr/mipsel-RetroFW-linux-uclibc/sysroot/usr/lib/libiconv.so;
 
@@ -421,22 +415,19 @@ TTFImporter_LIB_DEPENDS:STATIC=general;gemrb_core;general;/run/media/raboten/c03
 USE_FREETYPE:BOOL=ON
 
 //Enable LibVLC support
-USE_LIBVLC:BOOL=ON
+USE_LIBVLC:BOOL=OFF
 
 //Enable OpenAL support
-USE_OPENAL:BOOL=ON
+USE_OPENAL:BOOL=OFF
 
 //Enable LibPNG support
 USE_PNG:BOOL=ON
-
-//No help, variable specified on the command line.
-USE_SDL2:UNINITIALIZED=NO
 
 //Enable SDL_mixer support
 USE_SDLMIXER:BOOL=ON
 
 //Enabe Vorbis support
-USE_VORBIS:BOOL=ON
+USE_VORBIS:BOOL=OFF
 
 //Path to a file.
 VORBIS_FILE:PATH=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/buildroot/output/host/usr/mipsel-RetroFW-linux-uclibc/sysroot/usr/include/vorbis
@@ -530,7 +521,7 @@ CMAKE_C_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_DLLTOOL
 CMAKE_DLLTOOL-ADVANCED:INTERNAL=1
 //Path to cache edit program executable.
-CMAKE_EDIT_COMMAND:INTERNAL=/usr/bin/ccmake
+CMAKE_EDIT_COMMAND:INTERNAL=/usr/bin/cmake-gui
 //Executable file format
 CMAKE_EXECUTABLE_FORMAT:INTERNAL=ELF
 //ADVANCED property for variable: CMAKE_EXE_LINKER_FLAGS

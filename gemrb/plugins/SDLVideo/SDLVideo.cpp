@@ -87,7 +87,7 @@ int av_mouse_pressed_x;
 int av_mouse_pressed_y;
 int av_mouse_pressed_cur;
 int av_mouse_pressed_latched;
-uint8_t *keystate = SDL_GetKeyState(NULL);
+
 
 SDLVideoDriver::SDLVideoDriver(void)
 {
@@ -205,7 +205,7 @@ int SDLVideoDriver::ProcessEvent(const SDL_Event & event)
 
 	if (!EvntManager)
 		return GEM_ERROR;
-
+	uint8_t *keystate = SDL_GetKeyState(NULL);
 	SDL_Keycode key = SDLK_UNKNOWN;
 	int modstate = GetModState(event.key.keysym.mod);
 	SDLKey sym = event.key.keysym.sym;
@@ -220,11 +220,13 @@ int SDLVideoDriver::ProcessEvent(const SDL_Event & event)
 		case SDL_KEYUP:
 			switch(sym) {
 
-				case SDLK_a:
-					case BUTTON_A:
-						av_mouse_pressed_cur = 0;
-						av_mouse_pressed_latched = 0;
+
+				case BUTTON_Y:
+
+						EvntManager->MouseUp( av_mouse_cur_x, av_mouse_cur_y, 1 << ( 1-1 ), GetModState() );
 						break;
+
+				case SDLK_a:
 				case SDLK_LALT:
 				case SDLK_RALT:
 					key = GEM_ALT;
@@ -251,13 +253,15 @@ int SDLVideoDriver::ProcessEvent(const SDL_Event & event)
 				EvntManager->KeyRelease( key, modstate );
 			break;
 		case SDL_KEYDOWN:
-		av_mouse_cur_x += 15 * (keystate[BUTTON_RIGHT] - keystate[BUTTON_LEFT]);
-		av_mouse_cur_y += 15 * (keystate[BUTTON_DOWN]  - keystate[BUTTON_UP]);
 
-		if (av_mouse_cur_x < 0) av_mouse_cur_x = 0;
-		if (av_mouse_cur_x > 640) av_mouse_cur_x = 640;
-		if (av_mouse_cur_y < 0) av_mouse_cur_y = 0;
-		if (av_mouse_cur_y > 480) av_mouse_cur_y = 480;
+
+			av_mouse_cur_x += 15 * (keystate[BUTTON_RIGHT] - keystate[BUTTON_LEFT]);
+			av_mouse_cur_y += 15 * (keystate[BUTTON_DOWN]  - keystate[BUTTON_UP]);
+
+			if (av_mouse_cur_x < 0) av_mouse_cur_x = 0;
+			if (av_mouse_cur_x > 640) av_mouse_cur_x = 640;
+			if (av_mouse_cur_y < 0) av_mouse_cur_y = 0;
+			if (av_mouse_cur_y > 480) av_mouse_cur_y = 480;
 #if SDL_VERSION_ATLEAST(1,3,0)
 			key = SDL_GetKeyFromScancode(event.key.keysym.scancode);
 #else
@@ -279,6 +283,10 @@ int SDLVideoDriver::ProcessEvent(const SDL_Event & event)
 				}
 			}
 			switch (sym) {
+				case BUTTON_Y:
+				EvntManager->MouseUp( av_mouse_cur_x, av_mouse_cur_y, 1 << ( 1-1 ), GetModState() );
+				break;
+
 				case SDLK_ESCAPE:
 					key = GEM_ESCAPE;
 					break;
