@@ -221,10 +221,16 @@ int SDLVideoDriver::ProcessEvent(const SDL_Event & event)
 			switch(sym) {
 
 
-				case BUTTON_Y:
+				case BUTTON_R:
 
-						EvntManager->MouseUp( av_mouse_cur_x, av_mouse_cur_y, 1 << ( 1-1 ), GetModState() );
+						EvntManager->MouseUp( av_mouse_cur_x, av_mouse_cur_y, 1 << ( 0 ), GetModState() );
 						break;
+
+				case BUTTON_L:
+
+						EvntManager->MouseUp( av_mouse_cur_x, av_mouse_cur_y, 1 << ( 2 ), GetModState() );
+						break;
+
 
 				case SDLK_a:
 				case SDLK_LALT:
@@ -283,8 +289,12 @@ int SDLVideoDriver::ProcessEvent(const SDL_Event & event)
 				}
 			}
 			switch (sym) {
-				case BUTTON_Y:
-				EvntManager->MouseUp( av_mouse_cur_x, av_mouse_cur_y, 1 << ( 1-1 ), GetModState() );
+				case BUTTON_R:
+				EvntManager->MouseDown( av_mouse_cur_x, av_mouse_cur_y, 1 << ( 0 ), GetModState() );
+				break;
+
+				case BUTTON_L:
+				EvntManager->MouseDown( av_mouse_cur_x, av_mouse_cur_y, 1 << ( 2 ), GetModState() );
 				break;
 
 				case SDLK_ESCAPE:
@@ -333,9 +343,9 @@ int SDLVideoDriver::ProcessEvent(const SDL_Event & event)
 					key = GEM_DELETE;
 					break;
 #endif
-				case SDLK_BACKSPACE:
-					key = GEM_BACKSP;
-					break;
+				// case SDLK_BACKSPACE:
+				// 	key = GEM_BACKSP;
+				// 	break;
 				case SDLK_RETURN:
 				case SDLK_KP_ENTER:
 					key = GEM_RETURN;
@@ -344,9 +354,9 @@ int SDLVideoDriver::ProcessEvent(const SDL_Event & event)
 				case SDLK_RALT:
 					key = GEM_ALT;
 					break;
-				case SDLK_TAB:
-					key = GEM_TAB;
-					break;
+				// case SDLK_TAB:
+				// 	key = GEM_TAB;
+				// 	break;
 				case SDLK_PAGEUP:
 				case SDLK_KP9:
 					key = GEM_PGUP;
@@ -919,7 +929,7 @@ void SDLVideoDriver::DrawRect(const Region& rgn, const Color& color, bool fill, 
 			SDL_Rect drect = RectFromRegion(ClippedDrawingRect(rgn));
 			SDL_FillRect( backBuf, &drect, val );
 		} else {
-			SDL_Surface * rectsurf = SDL_CreateRGBSurface( SDL_SWSURFACE | SDL_SRCALPHA, rgn.w, rgn.h, 8, 0, 0, 0, 0 );
+			SDL_Surface * rectsurf = SDL_CreateRGBSurface( SDL_HWSURFACE | SDL_SRCALPHA, rgn.w, rgn.h, 8, 0, 0, 0, 0 );
 			SDL_Color c;
 			c.r = color.r;
 			c.b = color.b;
@@ -953,7 +963,7 @@ void SDLVideoDriver::DrawRectSprite(const Region& rgn, const Color& color, const
 		long val = SDL_MapRGBA( surf->format, color.r, color.g, color.b, color.a );
 		SDL_FillRect( surf, &drect, val );
 	} else {
-		SDL_Surface * rectsurf = SDL_CreateRGBSurface( SDL_SWSURFACE | SDL_SRCALPHA, rgn.w, rgn.h, 8, 0, 0, 0, 0 );
+		SDL_Surface * rectsurf = SDL_CreateRGBSurface( SDL_HWSURFACE | SDL_SRCALPHA, rgn.w, rgn.h, 8, 0, 0, 0, 0 );
 		SDL_Color c;
 		c.r = color.r;
 		c.b = color.b;

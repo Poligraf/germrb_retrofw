@@ -79,7 +79,7 @@ int SDL12VideoDriver::CreateDisplay(int w, int h, int b, bool fs, const char* ti
 	Viewport.h = height;
 	SetScreenClip(NULL);
 	Log(MESSAGE, "SDL 1.2 Driver", "Creating Main Surface...");
-	SDL_Surface* tmp = SDL_CreateRGBSurface( SDL_SWSURFACE, width, height,
+	SDL_Surface* tmp = SDL_CreateRGBSurface( SDL_HWSURFACE, width, height,
 						bpp, 0, 0, 0, 0 );
 	Log(MESSAGE, "SDL 1.2 Driver", "Creating Back Buffer...");
 	backBuf = SDL_DisplayFormat( tmp );
