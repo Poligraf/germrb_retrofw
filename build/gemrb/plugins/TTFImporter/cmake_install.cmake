@@ -42,31 +42,3 @@ if(NOT DEFINED CMAKE_OBJDUMP)
   set(CMAKE_OBJDUMP "/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/buildroot/output/host/usr/bin/mipsel-RetroFW-linux-uclibc-objdump")
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  if(EXISTS "$ENV{DESTDIR}/usr/local/lib/gemrb/plugins/TTFImporter.so" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}/usr/local/lib/gemrb/plugins/TTFImporter.so")
-    file(RPATH_CHECK
-         FILE "$ENV{DESTDIR}/usr/local/lib/gemrb/plugins/TTFImporter.so"
-         RPATH "/usr/local/lib/gemrb")
-  endif()
-  list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/usr/local/lib/gemrb/plugins/TTFImporter.so")
-  if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
-    message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
-  endif()
-  if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
-    message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
-  endif()
-file(INSTALL DESTINATION "/usr/local/lib/gemrb/plugins" TYPE MODULE FILES "/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/gemrb/plugins/TTFImporter.so")
-  if(EXISTS "$ENV{DESTDIR}/usr/local/lib/gemrb/plugins/TTFImporter.so" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}/usr/local/lib/gemrb/plugins/TTFImporter.so")
-    file(RPATH_CHANGE
-         FILE "$ENV{DESTDIR}/usr/local/lib/gemrb/plugins/TTFImporter.so"
-         OLD_RPATH "/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/gemrb/core:"
-         NEW_RPATH "/usr/local/lib/gemrb")
-    if(CMAKE_INSTALL_DO_STRIP)
-      execute_process(COMMAND "/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/buildroot/output/host/usr/bin/mipsel-RetroFW-linux-uclibc-strip" "$ENV{DESTDIR}/usr/local/lib/gemrb/plugins/TTFImporter.so")
-    endif()
-  endif()
-endif()
-

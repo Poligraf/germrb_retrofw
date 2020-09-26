@@ -75,6 +75,18 @@ CMAKE_BINARY_DIR = /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip/fast
+
 # Special rule for the target install/local
 install/local: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
@@ -131,18 +143,6 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
-
-# Special rule for the target install/strip
-install/strip/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip/fast
-
 # The main all target
 all: cmake_check_build_system
 	cd /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build && $(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/gemrb/plugins/TTFImporter//CMakeFiles/progress.marks
@@ -175,102 +175,6 @@ depend:
 	cd /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
-# Convenience name for target.
-gemrb/plugins/TTFImporter/CMakeFiles/TTFImporter.dir/rule:
-	cd /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gemrb/plugins/TTFImporter/CMakeFiles/TTFImporter.dir/rule
-.PHONY : gemrb/plugins/TTFImporter/CMakeFiles/TTFImporter.dir/rule
-
-# Convenience name for target.
-TTFImporter: gemrb/plugins/TTFImporter/CMakeFiles/TTFImporter.dir/rule
-
-.PHONY : TTFImporter
-
-# fast build rule for target.
-TTFImporter/fast:
-	cd /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build && $(MAKE) $(MAKESILENT) -f gemrb/plugins/TTFImporter/CMakeFiles/TTFImporter.dir/build.make gemrb/plugins/TTFImporter/CMakeFiles/TTFImporter.dir/build
-.PHONY : TTFImporter/fast
-
-Freetype.o: Freetype.cpp.o
-
-.PHONY : Freetype.o
-
-# target to build an object file
-Freetype.cpp.o:
-	cd /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build && $(MAKE) $(MAKESILENT) -f gemrb/plugins/TTFImporter/CMakeFiles/TTFImporter.dir/build.make gemrb/plugins/TTFImporter/CMakeFiles/TTFImporter.dir/Freetype.cpp.o
-.PHONY : Freetype.cpp.o
-
-Freetype.i: Freetype.cpp.i
-
-.PHONY : Freetype.i
-
-# target to preprocess a source file
-Freetype.cpp.i:
-	cd /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build && $(MAKE) $(MAKESILENT) -f gemrb/plugins/TTFImporter/CMakeFiles/TTFImporter.dir/build.make gemrb/plugins/TTFImporter/CMakeFiles/TTFImporter.dir/Freetype.cpp.i
-.PHONY : Freetype.cpp.i
-
-Freetype.s: Freetype.cpp.s
-
-.PHONY : Freetype.s
-
-# target to generate assembly for a file
-Freetype.cpp.s:
-	cd /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build && $(MAKE) $(MAKESILENT) -f gemrb/plugins/TTFImporter/CMakeFiles/TTFImporter.dir/build.make gemrb/plugins/TTFImporter/CMakeFiles/TTFImporter.dir/Freetype.cpp.s
-.PHONY : Freetype.cpp.s
-
-TTFFont.o: TTFFont.cpp.o
-
-.PHONY : TTFFont.o
-
-# target to build an object file
-TTFFont.cpp.o:
-	cd /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build && $(MAKE) $(MAKESILENT) -f gemrb/plugins/TTFImporter/CMakeFiles/TTFImporter.dir/build.make gemrb/plugins/TTFImporter/CMakeFiles/TTFImporter.dir/TTFFont.cpp.o
-.PHONY : TTFFont.cpp.o
-
-TTFFont.i: TTFFont.cpp.i
-
-.PHONY : TTFFont.i
-
-# target to preprocess a source file
-TTFFont.cpp.i:
-	cd /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build && $(MAKE) $(MAKESILENT) -f gemrb/plugins/TTFImporter/CMakeFiles/TTFImporter.dir/build.make gemrb/plugins/TTFImporter/CMakeFiles/TTFImporter.dir/TTFFont.cpp.i
-.PHONY : TTFFont.cpp.i
-
-TTFFont.s: TTFFont.cpp.s
-
-.PHONY : TTFFont.s
-
-# target to generate assembly for a file
-TTFFont.cpp.s:
-	cd /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build && $(MAKE) $(MAKESILENT) -f gemrb/plugins/TTFImporter/CMakeFiles/TTFImporter.dir/build.make gemrb/plugins/TTFImporter/CMakeFiles/TTFImporter.dir/TTFFont.cpp.s
-.PHONY : TTFFont.cpp.s
-
-TTFFontManager.o: TTFFontManager.cpp.o
-
-.PHONY : TTFFontManager.o
-
-# target to build an object file
-TTFFontManager.cpp.o:
-	cd /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build && $(MAKE) $(MAKESILENT) -f gemrb/plugins/TTFImporter/CMakeFiles/TTFImporter.dir/build.make gemrb/plugins/TTFImporter/CMakeFiles/TTFImporter.dir/TTFFontManager.cpp.o
-.PHONY : TTFFontManager.cpp.o
-
-TTFFontManager.i: TTFFontManager.cpp.i
-
-.PHONY : TTFFontManager.i
-
-# target to preprocess a source file
-TTFFontManager.cpp.i:
-	cd /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build && $(MAKE) $(MAKESILENT) -f gemrb/plugins/TTFImporter/CMakeFiles/TTFImporter.dir/build.make gemrb/plugins/TTFImporter/CMakeFiles/TTFImporter.dir/TTFFontManager.cpp.i
-.PHONY : TTFFontManager.cpp.i
-
-TTFFontManager.s: TTFFontManager.cpp.s
-
-.PHONY : TTFFontManager.s
-
-# target to generate assembly for a file
-TTFFontManager.cpp.s:
-	cd /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build && $(MAKE) $(MAKESILENT) -f gemrb/plugins/TTFImporter/CMakeFiles/TTFImporter.dir/build.make gemrb/plugins/TTFImporter/CMakeFiles/TTFImporter.dir/TTFFontManager.cpp.s
-.PHONY : TTFFontManager.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -283,16 +187,6 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
-	@echo "... TTFImporter"
-	@echo "... Freetype.o"
-	@echo "... Freetype.i"
-	@echo "... Freetype.s"
-	@echo "... TTFFont.o"
-	@echo "... TTFFont.i"
-	@echo "... TTFFont.s"
-	@echo "... TTFFontManager.o"
-	@echo "... TTFFontManager.i"
-	@echo "... TTFFontManager.s"
 .PHONY : help
 
 

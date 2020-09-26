@@ -722,19 +722,6 @@ TLKImporter/fast:
 .PHONY : TLKImporter/fast
 
 #=============================================================================
-# Target rules for targets named TTFImporter
-
-# Build rule for target.
-TTFImporter: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 TTFImporter
-.PHONY : TTFImporter
-
-# fast build rule for target.
-TTFImporter/fast:
-	$(MAKE) $(MAKESILENT) -f gemrb/plugins/TTFImporter/CMakeFiles/TTFImporter.dir/build.make gemrb/plugins/TTFImporter/CMakeFiles/TTFImporter.dir/build
-.PHONY : TTFImporter/fast
-
-#=============================================================================
 # Target rules for targets named WAVReader
 
 # Build rule for target.
@@ -838,7 +825,6 @@ help:
 	@echo "... STOImporter"
 	@echo "... TISImporter"
 	@echo "... TLKImporter"
-	@echo "... TTFImporter"
 	@echo "... WAVReader"
 	@echo "... WEDImporter"
 	@echo "... WMPImporter"

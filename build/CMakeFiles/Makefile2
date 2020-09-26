@@ -1027,7 +1027,7 @@ gemrb/plugins/TLKImporter/clean: gemrb/plugins/TLKImporter/CMakeFiles/TLKImporte
 # Directory level rules for directory gemrb/plugins/TTFImporter
 
 # Recursive "all" directory target.
-gemrb/plugins/TTFImporter/all: gemrb/plugins/TTFImporter/CMakeFiles/TTFImporter.dir/all
+gemrb/plugins/TTFImporter/all:
 
 .PHONY : gemrb/plugins/TTFImporter/all
 
@@ -1037,7 +1037,7 @@ gemrb/plugins/TTFImporter/preinstall:
 .PHONY : gemrb/plugins/TTFImporter/preinstall
 
 # Recursive "clean" directory target.
-gemrb/plugins/TTFImporter/clean: gemrb/plugins/TTFImporter/CMakeFiles/TTFImporter.dir/clean
+gemrb/plugins/TTFImporter/clean:
 
 .PHONY : gemrb/plugins/TTFImporter/clean
 
@@ -1210,12 +1210,12 @@ CMakeFiles/uninstall.dir/clean:
 gemrb/CMakeFiles/gemrb.dir/all: gemrb/core/CMakeFiles/gemrb_core.dir/all
 	$(MAKE) $(MAKESILENT) -f gemrb/CMakeFiles/gemrb.dir/build.make gemrb/CMakeFiles/gemrb.dir/depend
 	$(MAKE) $(MAKESILENT) -f gemrb/CMakeFiles/gemrb.dir/build.make gemrb/CMakeFiles/gemrb.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles --progress-num=44 "Built target gemrb"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles --progress-num=43 "Built target gemrb"
 .PHONY : gemrb/CMakeFiles/gemrb.dir/all
 
 # Build rule for subdir invocation for target.
 gemrb/CMakeFiles/gemrb.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 57
+	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 58
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gemrb/CMakeFiles/gemrb.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 0
 .PHONY : gemrb/CMakeFiles/gemrb.dir/rule
@@ -1237,12 +1237,12 @@ gemrb/CMakeFiles/gemrb.dir/clean:
 gemrb/core/CMakeFiles/gemrb_core.dir/all:
 	$(MAKE) $(MAKESILENT) -f gemrb/core/CMakeFiles/gemrb_core.dir/build.make gemrb/core/CMakeFiles/gemrb_core.dir/depend
 	$(MAKE) $(MAKESILENT) -f gemrb/core/CMakeFiles/gemrb_core.dir/build.make gemrb/core/CMakeFiles/gemrb_core.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles --progress-num=45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100 "Built target gemrb_core"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles --progress-num=44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100 "Built target gemrb_core"
 .PHONY : gemrb/core/CMakeFiles/gemrb_core.dir/all
 
 # Build rule for subdir invocation for target.
 gemrb/core/CMakeFiles/gemrb_core.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 56
+	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 57
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gemrb/core/CMakeFiles/gemrb_core.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 0
 .PHONY : gemrb/core/CMakeFiles/gemrb_core.dir/rule
@@ -1269,7 +1269,7 @@ gemrb/plugins/2DAImporter/CMakeFiles/2DAImporter.dir/all: gemrb/core/CMakeFiles/
 
 # Build rule for subdir invocation for target.
 gemrb/plugins/2DAImporter/CMakeFiles/2DAImporter.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 56
+	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 57
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gemrb/plugins/2DAImporter/CMakeFiles/2DAImporter.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 0
 .PHONY : gemrb/plugins/2DAImporter/CMakeFiles/2DAImporter.dir/rule
@@ -1296,7 +1296,7 @@ gemrb/plugins/ACMReader/CMakeFiles/ACMReader.dir/all: gemrb/core/CMakeFiles/gemr
 
 # Build rule for subdir invocation for target.
 gemrb/plugins/ACMReader/CMakeFiles/ACMReader.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 58
+	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 59
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gemrb/plugins/ACMReader/CMakeFiles/ACMReader.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 0
 .PHONY : gemrb/plugins/ACMReader/CMakeFiles/ACMReader.dir/rule
@@ -1323,7 +1323,7 @@ gemrb/plugins/AREImporter/CMakeFiles/AREImporter.dir/all: gemrb/core/CMakeFiles/
 
 # Build rule for subdir invocation for target.
 gemrb/plugins/AREImporter/CMakeFiles/AREImporter.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 57
+	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 58
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gemrb/plugins/AREImporter/CMakeFiles/AREImporter.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 0
 .PHONY : gemrb/plugins/AREImporter/CMakeFiles/AREImporter.dir/rule
@@ -1345,12 +1345,12 @@ gemrb/plugins/AREImporter/CMakeFiles/AREImporter.dir/clean:
 gemrb/plugins/BAMImporter/CMakeFiles/BAMImporter.dir/all: gemrb/core/CMakeFiles/gemrb_core.dir/all
 	$(MAKE) $(MAKESILENT) -f gemrb/plugins/BAMImporter/CMakeFiles/BAMImporter.dir/build.make gemrb/plugins/BAMImporter/CMakeFiles/BAMImporter.dir/depend
 	$(MAKE) $(MAKESILENT) -f gemrb/plugins/BAMImporter/CMakeFiles/BAMImporter.dir/build.make gemrb/plugins/BAMImporter/CMakeFiles/BAMImporter.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles --progress-num=4 "Built target BAMImporter"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles --progress-num=4,5 "Built target BAMImporter"
 .PHONY : gemrb/plugins/BAMImporter/CMakeFiles/BAMImporter.dir/all
 
 # Build rule for subdir invocation for target.
 gemrb/plugins/BAMImporter/CMakeFiles/BAMImporter.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 57
+	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 59
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gemrb/plugins/BAMImporter/CMakeFiles/BAMImporter.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 0
 .PHONY : gemrb/plugins/BAMImporter/CMakeFiles/BAMImporter.dir/rule
@@ -1372,7 +1372,7 @@ gemrb/plugins/BAMImporter/CMakeFiles/BAMImporter.dir/clean:
 gemrb/plugins/BIFImporter/CMakeFiles/BIFImporter.dir/all: gemrb/core/CMakeFiles/gemrb_core.dir/all
 	$(MAKE) $(MAKESILENT) -f gemrb/plugins/BIFImporter/CMakeFiles/BIFImporter.dir/build.make gemrb/plugins/BIFImporter/CMakeFiles/BIFImporter.dir/depend
 	$(MAKE) $(MAKESILENT) -f gemrb/plugins/BIFImporter/CMakeFiles/BIFImporter.dir/build.make gemrb/plugins/BIFImporter/CMakeFiles/BIFImporter.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles --progress-num=5 "Built target BIFImporter"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles --progress-num= "Built target BIFImporter"
 .PHONY : gemrb/plugins/BIFImporter/CMakeFiles/BIFImporter.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1404,7 +1404,7 @@ gemrb/plugins/BIKPlayer/CMakeFiles/BIKPlayer.dir/all: gemrb/core/CMakeFiles/gemr
 
 # Build rule for subdir invocation for target.
 gemrb/plugins/BIKPlayer/CMakeFiles/BIKPlayer.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 60
+	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 61
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gemrb/plugins/BIKPlayer/CMakeFiles/BIKPlayer.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 0
 .PHONY : gemrb/plugins/BIKPlayer/CMakeFiles/BIKPlayer.dir/rule
@@ -1426,12 +1426,12 @@ gemrb/plugins/BIKPlayer/CMakeFiles/BIKPlayer.dir/clean:
 gemrb/plugins/BMPImporter/CMakeFiles/BMPImporter.dir/all: gemrb/core/CMakeFiles/gemrb_core.dir/all
 	$(MAKE) $(MAKESILENT) -f gemrb/plugins/BMPImporter/CMakeFiles/BMPImporter.dir/build.make gemrb/plugins/BMPImporter/CMakeFiles/BMPImporter.dir/depend
 	$(MAKE) $(MAKESILENT) -f gemrb/plugins/BMPImporter/CMakeFiles/BMPImporter.dir/build.make gemrb/plugins/BMPImporter/CMakeFiles/BMPImporter.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles --progress-num= "Built target BMPImporter"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles --progress-num=10 "Built target BMPImporter"
 .PHONY : gemrb/plugins/BMPImporter/CMakeFiles/BMPImporter.dir/all
 
 # Build rule for subdir invocation for target.
 gemrb/plugins/BMPImporter/CMakeFiles/BMPImporter.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 56
+	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 58
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gemrb/plugins/BMPImporter/CMakeFiles/BMPImporter.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 0
 .PHONY : gemrb/plugins/BMPImporter/CMakeFiles/BMPImporter.dir/rule
@@ -1453,7 +1453,7 @@ gemrb/plugins/BMPImporter/CMakeFiles/BMPImporter.dir/clean:
 gemrb/plugins/BMPWriter/CMakeFiles/BMPWriter.dir/all: gemrb/core/CMakeFiles/gemrb_core.dir/all
 	$(MAKE) $(MAKESILENT) -f gemrb/plugins/BMPWriter/CMakeFiles/BMPWriter.dir/build.make gemrb/plugins/BMPWriter/CMakeFiles/BMPWriter.dir/depend
 	$(MAKE) $(MAKESILENT) -f gemrb/plugins/BMPWriter/CMakeFiles/BMPWriter.dir/build.make gemrb/plugins/BMPWriter/CMakeFiles/BMPWriter.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles --progress-num=10 "Built target BMPWriter"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles --progress-num= "Built target BMPWriter"
 .PHONY : gemrb/plugins/BMPWriter/CMakeFiles/BMPWriter.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1485,7 +1485,7 @@ gemrb/plugins/CHUImporter/CMakeFiles/CHUImporter.dir/all: gemrb/core/CMakeFiles/
 
 # Build rule for subdir invocation for target.
 gemrb/plugins/CHUImporter/CMakeFiles/CHUImporter.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 57
+	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 58
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gemrb/plugins/CHUImporter/CMakeFiles/CHUImporter.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 0
 .PHONY : gemrb/plugins/CHUImporter/CMakeFiles/CHUImporter.dir/rule
@@ -1512,7 +1512,7 @@ gemrb/plugins/CREImporter/CMakeFiles/CREImporter.dir/all: gemrb/core/CMakeFiles/
 
 # Build rule for subdir invocation for target.
 gemrb/plugins/CREImporter/CMakeFiles/CREImporter.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 57
+	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 58
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gemrb/plugins/CREImporter/CMakeFiles/CREImporter.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 0
 .PHONY : gemrb/plugins/CREImporter/CMakeFiles/CREImporter.dir/rule
@@ -1539,7 +1539,7 @@ gemrb/plugins/DLGImporter/CMakeFiles/DLGImporter.dir/all: gemrb/core/CMakeFiles/
 
 # Build rule for subdir invocation for target.
 gemrb/plugins/DLGImporter/CMakeFiles/DLGImporter.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 57
+	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 58
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gemrb/plugins/DLGImporter/CMakeFiles/DLGImporter.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 0
 .PHONY : gemrb/plugins/DLGImporter/CMakeFiles/DLGImporter.dir/rule
@@ -1566,7 +1566,7 @@ gemrb/plugins/DirectoryImporter/CMakeFiles/DirectoryImporter.dir/all: gemrb/core
 
 # Build rule for subdir invocation for target.
 gemrb/plugins/DirectoryImporter/CMakeFiles/DirectoryImporter.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 57
+	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 58
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gemrb/plugins/DirectoryImporter/CMakeFiles/DirectoryImporter.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 0
 .PHONY : gemrb/plugins/DirectoryImporter/CMakeFiles/DirectoryImporter.dir/rule
@@ -1588,12 +1588,12 @@ gemrb/plugins/DirectoryImporter/CMakeFiles/DirectoryImporter.dir/clean:
 gemrb/plugins/EFFImporter/CMakeFiles/EFFImporter.dir/all: gemrb/core/CMakeFiles/gemrb_core.dir/all
 	$(MAKE) $(MAKESILENT) -f gemrb/plugins/EFFImporter/CMakeFiles/EFFImporter.dir/build.make gemrb/plugins/EFFImporter/CMakeFiles/EFFImporter.dir/depend
 	$(MAKE) $(MAKESILENT) -f gemrb/plugins/EFFImporter/CMakeFiles/EFFImporter.dir/build.make gemrb/plugins/EFFImporter/CMakeFiles/EFFImporter.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles --progress-num= "Built target EFFImporter"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles --progress-num=15 "Built target EFFImporter"
 .PHONY : gemrb/plugins/EFFImporter/CMakeFiles/EFFImporter.dir/all
 
 # Build rule for subdir invocation for target.
 gemrb/plugins/EFFImporter/CMakeFiles/EFFImporter.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 56
+	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 58
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gemrb/plugins/EFFImporter/CMakeFiles/EFFImporter.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 0
 .PHONY : gemrb/plugins/EFFImporter/CMakeFiles/EFFImporter.dir/rule
@@ -1615,7 +1615,7 @@ gemrb/plugins/EFFImporter/CMakeFiles/EFFImporter.dir/clean:
 gemrb/plugins/FXOpcodes/CMakeFiles/FXOpcodes.dir/all: gemrb/core/CMakeFiles/gemrb_core.dir/all
 	$(MAKE) $(MAKESILENT) -f gemrb/plugins/FXOpcodes/CMakeFiles/FXOpcodes.dir/build.make gemrb/plugins/FXOpcodes/CMakeFiles/FXOpcodes.dir/depend
 	$(MAKE) $(MAKESILENT) -f gemrb/plugins/FXOpcodes/CMakeFiles/FXOpcodes.dir/build.make gemrb/plugins/FXOpcodes/CMakeFiles/FXOpcodes.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles --progress-num=15 "Built target FXOpcodes"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles --progress-num= "Built target FXOpcodes"
 .PHONY : gemrb/plugins/FXOpcodes/CMakeFiles/FXOpcodes.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1647,7 +1647,7 @@ gemrb/plugins/GAMImporter/CMakeFiles/GAMImporter.dir/all: gemrb/core/CMakeFiles/
 
 # Build rule for subdir invocation for target.
 gemrb/plugins/GAMImporter/CMakeFiles/GAMImporter.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 57
+	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 58
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gemrb/plugins/GAMImporter/CMakeFiles/GAMImporter.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 0
 .PHONY : gemrb/plugins/GAMImporter/CMakeFiles/GAMImporter.dir/rule
@@ -1669,12 +1669,12 @@ gemrb/plugins/GAMImporter/CMakeFiles/GAMImporter.dir/clean:
 gemrb/plugins/GUIScript/CMakeFiles/GUIScript.dir/all: gemrb/core/CMakeFiles/gemrb_core.dir/all
 	$(MAKE) $(MAKESILENT) -f gemrb/plugins/GUIScript/CMakeFiles/GUIScript.dir/build.make gemrb/plugins/GUIScript/CMakeFiles/GUIScript.dir/depend
 	$(MAKE) $(MAKESILENT) -f gemrb/plugins/GUIScript/CMakeFiles/GUIScript.dir/build.make gemrb/plugins/GUIScript/CMakeFiles/GUIScript.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles --progress-num=17 "Built target GUIScript"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles --progress-num=17,18 "Built target GUIScript"
 .PHONY : gemrb/plugins/GUIScript/CMakeFiles/GUIScript.dir/all
 
 # Build rule for subdir invocation for target.
 gemrb/plugins/GUIScript/CMakeFiles/GUIScript.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 57
+	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 59
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gemrb/plugins/GUIScript/CMakeFiles/GUIScript.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 0
 .PHONY : gemrb/plugins/GUIScript/CMakeFiles/GUIScript.dir/rule
@@ -1696,7 +1696,7 @@ gemrb/plugins/GUIScript/CMakeFiles/GUIScript.dir/clean:
 gemrb/plugins/IDSImporter/CMakeFiles/IDSImporter.dir/all: gemrb/core/CMakeFiles/gemrb_core.dir/all
 	$(MAKE) $(MAKESILENT) -f gemrb/plugins/IDSImporter/CMakeFiles/IDSImporter.dir/build.make gemrb/plugins/IDSImporter/CMakeFiles/IDSImporter.dir/depend
 	$(MAKE) $(MAKESILENT) -f gemrb/plugins/IDSImporter/CMakeFiles/IDSImporter.dir/build.make gemrb/plugins/IDSImporter/CMakeFiles/IDSImporter.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles --progress-num=18 "Built target IDSImporter"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles --progress-num= "Built target IDSImporter"
 .PHONY : gemrb/plugins/IDSImporter/CMakeFiles/IDSImporter.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1728,7 +1728,7 @@ gemrb/plugins/INIImporter/CMakeFiles/INIImporter.dir/all: gemrb/core/CMakeFiles/
 
 # Build rule for subdir invocation for target.
 gemrb/plugins/INIImporter/CMakeFiles/INIImporter.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 57
+	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 58
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gemrb/plugins/INIImporter/CMakeFiles/INIImporter.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 0
 .PHONY : gemrb/plugins/INIImporter/CMakeFiles/INIImporter.dir/rule
@@ -1755,7 +1755,7 @@ gemrb/plugins/ITMImporter/CMakeFiles/ITMImporter.dir/all: gemrb/core/CMakeFiles/
 
 # Build rule for subdir invocation for target.
 gemrb/plugins/ITMImporter/CMakeFiles/ITMImporter.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 57
+	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 58
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gemrb/plugins/ITMImporter/CMakeFiles/ITMImporter.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 0
 .PHONY : gemrb/plugins/ITMImporter/CMakeFiles/ITMImporter.dir/rule
@@ -1782,7 +1782,7 @@ gemrb/plugins/IWDOpcodes/CMakeFiles/IWDOpcodes.dir/all: gemrb/core/CMakeFiles/ge
 
 # Build rule for subdir invocation for target.
 gemrb/plugins/IWDOpcodes/CMakeFiles/IWDOpcodes.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 57
+	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 58
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gemrb/plugins/IWDOpcodes/CMakeFiles/IWDOpcodes.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 0
 .PHONY : gemrb/plugins/IWDOpcodes/CMakeFiles/IWDOpcodes.dir/rule
@@ -1804,12 +1804,12 @@ gemrb/plugins/IWDOpcodes/CMakeFiles/IWDOpcodes.dir/clean:
 gemrb/plugins/KEYImporter/CMakeFiles/KEYImporter.dir/all: gemrb/core/CMakeFiles/gemrb_core.dir/all
 	$(MAKE) $(MAKESILENT) -f gemrb/plugins/KEYImporter/CMakeFiles/KEYImporter.dir/build.make gemrb/plugins/KEYImporter/CMakeFiles/KEYImporter.dir/depend
 	$(MAKE) $(MAKESILENT) -f gemrb/plugins/KEYImporter/CMakeFiles/KEYImporter.dir/build.make gemrb/plugins/KEYImporter/CMakeFiles/KEYImporter.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles --progress-num= "Built target KEYImporter"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles --progress-num=22 "Built target KEYImporter"
 .PHONY : gemrb/plugins/KEYImporter/CMakeFiles/KEYImporter.dir/all
 
 # Build rule for subdir invocation for target.
 gemrb/plugins/KEYImporter/CMakeFiles/KEYImporter.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 56
+	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 58
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gemrb/plugins/KEYImporter/CMakeFiles/KEYImporter.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 0
 .PHONY : gemrb/plugins/KEYImporter/CMakeFiles/KEYImporter.dir/rule
@@ -1831,12 +1831,12 @@ gemrb/plugins/KEYImporter/CMakeFiles/KEYImporter.dir/clean:
 gemrb/plugins/MOSImporter/CMakeFiles/MOSImporter.dir/all: gemrb/core/CMakeFiles/gemrb_core.dir/all
 	$(MAKE) $(MAKESILENT) -f gemrb/plugins/MOSImporter/CMakeFiles/MOSImporter.dir/build.make gemrb/plugins/MOSImporter/CMakeFiles/MOSImporter.dir/depend
 	$(MAKE) $(MAKESILENT) -f gemrb/plugins/MOSImporter/CMakeFiles/MOSImporter.dir/build.make gemrb/plugins/MOSImporter/CMakeFiles/MOSImporter.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles --progress-num=22 "Built target MOSImporter"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles --progress-num=23 "Built target MOSImporter"
 .PHONY : gemrb/plugins/MOSImporter/CMakeFiles/MOSImporter.dir/all
 
 # Build rule for subdir invocation for target.
 gemrb/plugins/MOSImporter/CMakeFiles/MOSImporter.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 57
+	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 58
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gemrb/plugins/MOSImporter/CMakeFiles/MOSImporter.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 0
 .PHONY : gemrb/plugins/MOSImporter/CMakeFiles/MOSImporter.dir/rule
@@ -1858,7 +1858,7 @@ gemrb/plugins/MOSImporter/CMakeFiles/MOSImporter.dir/clean:
 gemrb/plugins/MUSImporter/CMakeFiles/MUSImporter.dir/all: gemrb/core/CMakeFiles/gemrb_core.dir/all
 	$(MAKE) $(MAKESILENT) -f gemrb/plugins/MUSImporter/CMakeFiles/MUSImporter.dir/build.make gemrb/plugins/MUSImporter/CMakeFiles/MUSImporter.dir/depend
 	$(MAKE) $(MAKESILENT) -f gemrb/plugins/MUSImporter/CMakeFiles/MUSImporter.dir/build.make gemrb/plugins/MUSImporter/CMakeFiles/MUSImporter.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles --progress-num=23 "Built target MUSImporter"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles --progress-num= "Built target MUSImporter"
 .PHONY : gemrb/plugins/MUSImporter/CMakeFiles/MUSImporter.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1890,7 +1890,7 @@ gemrb/plugins/MVEPlayer/CMakeFiles/MVEPlayer.dir/all: gemrb/core/CMakeFiles/gemr
 
 # Build rule for subdir invocation for target.
 gemrb/plugins/MVEPlayer/CMakeFiles/MVEPlayer.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 59
+	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 60
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gemrb/plugins/MVEPlayer/CMakeFiles/MVEPlayer.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 0
 .PHONY : gemrb/plugins/MVEPlayer/CMakeFiles/MVEPlayer.dir/rule
@@ -1912,12 +1912,12 @@ gemrb/plugins/MVEPlayer/CMakeFiles/MVEPlayer.dir/clean:
 gemrb/plugins/NullSound/CMakeFiles/NullSound.dir/all: gemrb/core/CMakeFiles/gemrb_core.dir/all
 	$(MAKE) $(MAKESILENT) -f gemrb/plugins/NullSound/CMakeFiles/NullSound.dir/build.make gemrb/plugins/NullSound/CMakeFiles/NullSound.dir/depend
 	$(MAKE) $(MAKESILENT) -f gemrb/plugins/NullSound/CMakeFiles/NullSound.dir/build.make gemrb/plugins/NullSound/CMakeFiles/NullSound.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles --progress-num= "Built target NullSound"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles --progress-num=27 "Built target NullSound"
 .PHONY : gemrb/plugins/NullSound/CMakeFiles/NullSound.dir/all
 
 # Build rule for subdir invocation for target.
 gemrb/plugins/NullSound/CMakeFiles/NullSound.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 56
+	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 58
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gemrb/plugins/NullSound/CMakeFiles/NullSound.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 0
 .PHONY : gemrb/plugins/NullSound/CMakeFiles/NullSound.dir/rule
@@ -1939,12 +1939,12 @@ gemrb/plugins/NullSound/CMakeFiles/NullSound.dir/clean:
 gemrb/plugins/NullSource/CMakeFiles/NullSource.dir/all: gemrb/core/CMakeFiles/gemrb_core.dir/all
 	$(MAKE) $(MAKESILENT) -f gemrb/plugins/NullSource/CMakeFiles/NullSource.dir/build.make gemrb/plugins/NullSource/CMakeFiles/NullSource.dir/depend
 	$(MAKE) $(MAKESILENT) -f gemrb/plugins/NullSource/CMakeFiles/NullSource.dir/build.make gemrb/plugins/NullSource/CMakeFiles/NullSource.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles --progress-num=27 "Built target NullSource"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles --progress-num=28 "Built target NullSource"
 .PHONY : gemrb/plugins/NullSource/CMakeFiles/NullSource.dir/all
 
 # Build rule for subdir invocation for target.
 gemrb/plugins/NullSource/CMakeFiles/NullSource.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 57
+	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 58
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gemrb/plugins/NullSource/CMakeFiles/NullSource.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 0
 .PHONY : gemrb/plugins/NullSource/CMakeFiles/NullSource.dir/rule
@@ -1966,7 +1966,7 @@ gemrb/plugins/NullSource/CMakeFiles/NullSource.dir/clean:
 gemrb/plugins/OGGReader/CMakeFiles/OGGReader.dir/all: gemrb/core/CMakeFiles/gemrb_core.dir/all
 	$(MAKE) $(MAKESILENT) -f gemrb/plugins/OGGReader/CMakeFiles/OGGReader.dir/build.make gemrb/plugins/OGGReader/CMakeFiles/OGGReader.dir/depend
 	$(MAKE) $(MAKESILENT) -f gemrb/plugins/OGGReader/CMakeFiles/OGGReader.dir/build.make gemrb/plugins/OGGReader/CMakeFiles/OGGReader.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles --progress-num=28 "Built target OGGReader"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles --progress-num= "Built target OGGReader"
 .PHONY : gemrb/plugins/OGGReader/CMakeFiles/OGGReader.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1998,7 +1998,7 @@ gemrb/plugins/PLTImporter/CMakeFiles/PLTImporter.dir/all: gemrb/core/CMakeFiles/
 
 # Build rule for subdir invocation for target.
 gemrb/plugins/PLTImporter/CMakeFiles/PLTImporter.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 57
+	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 58
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gemrb/plugins/PLTImporter/CMakeFiles/PLTImporter.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 0
 .PHONY : gemrb/plugins/PLTImporter/CMakeFiles/PLTImporter.dir/rule
@@ -2025,7 +2025,7 @@ gemrb/plugins/PNGImporter/CMakeFiles/PNGImporter.dir/all: gemrb/core/CMakeFiles/
 
 # Build rule for subdir invocation for target.
 gemrb/plugins/PNGImporter/CMakeFiles/PNGImporter.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 57
+	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 58
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gemrb/plugins/PNGImporter/CMakeFiles/PNGImporter.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 0
 .PHONY : gemrb/plugins/PNGImporter/CMakeFiles/PNGImporter.dir/rule
@@ -2047,12 +2047,12 @@ gemrb/plugins/PNGImporter/CMakeFiles/PNGImporter.dir/clean:
 gemrb/plugins/PROImporter/CMakeFiles/PROImporter.dir/all: gemrb/core/CMakeFiles/gemrb_core.dir/all
 	$(MAKE) $(MAKESILENT) -f gemrb/plugins/PROImporter/CMakeFiles/PROImporter.dir/build.make gemrb/plugins/PROImporter/CMakeFiles/PROImporter.dir/depend
 	$(MAKE) $(MAKESILENT) -f gemrb/plugins/PROImporter/CMakeFiles/PROImporter.dir/build.make gemrb/plugins/PROImporter/CMakeFiles/PROImporter.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles --progress-num= "Built target PROImporter"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles --progress-num=31 "Built target PROImporter"
 .PHONY : gemrb/plugins/PROImporter/CMakeFiles/PROImporter.dir/all
 
 # Build rule for subdir invocation for target.
 gemrb/plugins/PROImporter/CMakeFiles/PROImporter.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 56
+	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 58
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gemrb/plugins/PROImporter/CMakeFiles/PROImporter.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 0
 .PHONY : gemrb/plugins/PROImporter/CMakeFiles/PROImporter.dir/rule
@@ -2074,12 +2074,12 @@ gemrb/plugins/PROImporter/CMakeFiles/PROImporter.dir/clean:
 gemrb/plugins/PSTOpcodes/CMakeFiles/PSTOpcodes.dir/all: gemrb/core/CMakeFiles/gemrb_core.dir/all
 	$(MAKE) $(MAKESILENT) -f gemrb/plugins/PSTOpcodes/CMakeFiles/PSTOpcodes.dir/build.make gemrb/plugins/PSTOpcodes/CMakeFiles/PSTOpcodes.dir/depend
 	$(MAKE) $(MAKESILENT) -f gemrb/plugins/PSTOpcodes/CMakeFiles/PSTOpcodes.dir/build.make gemrb/plugins/PSTOpcodes/CMakeFiles/PSTOpcodes.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles --progress-num=31 "Built target PSTOpcodes"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles --progress-num=32 "Built target PSTOpcodes"
 .PHONY : gemrb/plugins/PSTOpcodes/CMakeFiles/PSTOpcodes.dir/all
 
 # Build rule for subdir invocation for target.
 gemrb/plugins/PSTOpcodes/CMakeFiles/PSTOpcodes.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 57
+	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 58
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gemrb/plugins/PSTOpcodes/CMakeFiles/PSTOpcodes.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 0
 .PHONY : gemrb/plugins/PSTOpcodes/CMakeFiles/PSTOpcodes.dir/rule
@@ -2101,12 +2101,12 @@ gemrb/plugins/PSTOpcodes/CMakeFiles/PSTOpcodes.dir/clean:
 gemrb/plugins/SAVImporter/CMakeFiles/SAVImporter.dir/all: gemrb/core/CMakeFiles/gemrb_core.dir/all
 	$(MAKE) $(MAKESILENT) -f gemrb/plugins/SAVImporter/CMakeFiles/SAVImporter.dir/build.make gemrb/plugins/SAVImporter/CMakeFiles/SAVImporter.dir/depend
 	$(MAKE) $(MAKESILENT) -f gemrb/plugins/SAVImporter/CMakeFiles/SAVImporter.dir/build.make gemrb/plugins/SAVImporter/CMakeFiles/SAVImporter.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles --progress-num=32 "Built target SAVImporter"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles --progress-num=33 "Built target SAVImporter"
 .PHONY : gemrb/plugins/SAVImporter/CMakeFiles/SAVImporter.dir/all
 
 # Build rule for subdir invocation for target.
 gemrb/plugins/SAVImporter/CMakeFiles/SAVImporter.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 57
+	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 58
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gemrb/plugins/SAVImporter/CMakeFiles/SAVImporter.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 0
 .PHONY : gemrb/plugins/SAVImporter/CMakeFiles/SAVImporter.dir/rule
@@ -2128,12 +2128,12 @@ gemrb/plugins/SAVImporter/CMakeFiles/SAVImporter.dir/clean:
 gemrb/plugins/SDLAudio/CMakeFiles/SDLAudio.dir/all: gemrb/core/CMakeFiles/gemrb_core.dir/all
 	$(MAKE) $(MAKESILENT) -f gemrb/plugins/SDLAudio/CMakeFiles/SDLAudio.dir/build.make gemrb/plugins/SDLAudio/CMakeFiles/SDLAudio.dir/depend
 	$(MAKE) $(MAKESILENT) -f gemrb/plugins/SDLAudio/CMakeFiles/SDLAudio.dir/build.make gemrb/plugins/SDLAudio/CMakeFiles/SDLAudio.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles --progress-num=33 "Built target SDLAudio"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles --progress-num=34 "Built target SDLAudio"
 .PHONY : gemrb/plugins/SDLAudio/CMakeFiles/SDLAudio.dir/all
 
 # Build rule for subdir invocation for target.
 gemrb/plugins/SDLAudio/CMakeFiles/SDLAudio.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 57
+	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 58
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gemrb/plugins/SDLAudio/CMakeFiles/SDLAudio.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 0
 .PHONY : gemrb/plugins/SDLAudio/CMakeFiles/SDLAudio.dir/rule
@@ -2155,7 +2155,7 @@ gemrb/plugins/SDLAudio/CMakeFiles/SDLAudio.dir/clean:
 gemrb/plugins/SDLVideo/CMakeFiles/SDLVideo.dir/all: gemrb/core/CMakeFiles/gemrb_core.dir/all
 	$(MAKE) $(MAKESILENT) -f gemrb/plugins/SDLVideo/CMakeFiles/SDLVideo.dir/build.make gemrb/plugins/SDLVideo/CMakeFiles/SDLVideo.dir/depend
 	$(MAKE) $(MAKESILENT) -f gemrb/plugins/SDLVideo/CMakeFiles/SDLVideo.dir/build.make gemrb/plugins/SDLVideo/CMakeFiles/SDLVideo.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles --progress-num=34,35 "Built target SDLVideo"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles --progress-num=35 "Built target SDLVideo"
 .PHONY : gemrb/plugins/SDLVideo/CMakeFiles/SDLVideo.dir/all
 
 # Build rule for subdir invocation for target.
@@ -2182,12 +2182,12 @@ gemrb/plugins/SDLVideo/CMakeFiles/SDLVideo.dir/clean:
 gemrb/plugins/SPLImporter/CMakeFiles/SPLImporter.dir/all: gemrb/core/CMakeFiles/gemrb_core.dir/all
 	$(MAKE) $(MAKESILENT) -f gemrb/plugins/SPLImporter/CMakeFiles/SPLImporter.dir/build.make gemrb/plugins/SPLImporter/CMakeFiles/SPLImporter.dir/depend
 	$(MAKE) $(MAKESILENT) -f gemrb/plugins/SPLImporter/CMakeFiles/SPLImporter.dir/build.make gemrb/plugins/SPLImporter/CMakeFiles/SPLImporter.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles --progress-num= "Built target SPLImporter"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles --progress-num=36 "Built target SPLImporter"
 .PHONY : gemrb/plugins/SPLImporter/CMakeFiles/SPLImporter.dir/all
 
 # Build rule for subdir invocation for target.
 gemrb/plugins/SPLImporter/CMakeFiles/SPLImporter.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 56
+	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 58
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gemrb/plugins/SPLImporter/CMakeFiles/SPLImporter.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 0
 .PHONY : gemrb/plugins/SPLImporter/CMakeFiles/SPLImporter.dir/rule
@@ -2209,12 +2209,12 @@ gemrb/plugins/SPLImporter/CMakeFiles/SPLImporter.dir/clean:
 gemrb/plugins/STOImporter/CMakeFiles/STOImporter.dir/all: gemrb/core/CMakeFiles/gemrb_core.dir/all
 	$(MAKE) $(MAKESILENT) -f gemrb/plugins/STOImporter/CMakeFiles/STOImporter.dir/build.make gemrb/plugins/STOImporter/CMakeFiles/STOImporter.dir/depend
 	$(MAKE) $(MAKESILENT) -f gemrb/plugins/STOImporter/CMakeFiles/STOImporter.dir/build.make gemrb/plugins/STOImporter/CMakeFiles/STOImporter.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles --progress-num=36 "Built target STOImporter"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles --progress-num=37 "Built target STOImporter"
 .PHONY : gemrb/plugins/STOImporter/CMakeFiles/STOImporter.dir/all
 
 # Build rule for subdir invocation for target.
 gemrb/plugins/STOImporter/CMakeFiles/STOImporter.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 57
+	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 58
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gemrb/plugins/STOImporter/CMakeFiles/STOImporter.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 0
 .PHONY : gemrb/plugins/STOImporter/CMakeFiles/STOImporter.dir/rule
@@ -2236,12 +2236,12 @@ gemrb/plugins/STOImporter/CMakeFiles/STOImporter.dir/clean:
 gemrb/plugins/TISImporter/CMakeFiles/TISImporter.dir/all: gemrb/core/CMakeFiles/gemrb_core.dir/all
 	$(MAKE) $(MAKESILENT) -f gemrb/plugins/TISImporter/CMakeFiles/TISImporter.dir/build.make gemrb/plugins/TISImporter/CMakeFiles/TISImporter.dir/depend
 	$(MAKE) $(MAKESILENT) -f gemrb/plugins/TISImporter/CMakeFiles/TISImporter.dir/build.make gemrb/plugins/TISImporter/CMakeFiles/TISImporter.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles --progress-num=37 "Built target TISImporter"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles --progress-num=38 "Built target TISImporter"
 .PHONY : gemrb/plugins/TISImporter/CMakeFiles/TISImporter.dir/all
 
 # Build rule for subdir invocation for target.
 gemrb/plugins/TISImporter/CMakeFiles/TISImporter.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 57
+	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 58
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gemrb/plugins/TISImporter/CMakeFiles/TISImporter.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 0
 .PHONY : gemrb/plugins/TISImporter/CMakeFiles/TISImporter.dir/rule
@@ -2263,12 +2263,12 @@ gemrb/plugins/TISImporter/CMakeFiles/TISImporter.dir/clean:
 gemrb/plugins/TLKImporter/CMakeFiles/TLKImporter.dir/all: gemrb/core/CMakeFiles/gemrb_core.dir/all
 	$(MAKE) $(MAKESILENT) -f gemrb/plugins/TLKImporter/CMakeFiles/TLKImporter.dir/build.make gemrb/plugins/TLKImporter/CMakeFiles/TLKImporter.dir/depend
 	$(MAKE) $(MAKESILENT) -f gemrb/plugins/TLKImporter/CMakeFiles/TLKImporter.dir/build.make gemrb/plugins/TLKImporter/CMakeFiles/TLKImporter.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles --progress-num=38 "Built target TLKImporter"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles --progress-num=39 "Built target TLKImporter"
 .PHONY : gemrb/plugins/TLKImporter/CMakeFiles/TLKImporter.dir/all
 
 # Build rule for subdir invocation for target.
 gemrb/plugins/TLKImporter/CMakeFiles/TLKImporter.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 57
+	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 58
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gemrb/plugins/TLKImporter/CMakeFiles/TLKImporter.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 0
 .PHONY : gemrb/plugins/TLKImporter/CMakeFiles/TLKImporter.dir/rule
@@ -2284,45 +2284,18 @@ gemrb/plugins/TLKImporter/CMakeFiles/TLKImporter.dir/clean:
 .PHONY : gemrb/plugins/TLKImporter/CMakeFiles/TLKImporter.dir/clean
 
 #=============================================================================
-# Target rules for target gemrb/plugins/TTFImporter/CMakeFiles/TTFImporter.dir
-
-# All Build rule for target.
-gemrb/plugins/TTFImporter/CMakeFiles/TTFImporter.dir/all: gemrb/core/CMakeFiles/gemrb_core.dir/all
-	$(MAKE) $(MAKESILENT) -f gemrb/plugins/TTFImporter/CMakeFiles/TTFImporter.dir/build.make gemrb/plugins/TTFImporter/CMakeFiles/TTFImporter.dir/depend
-	$(MAKE) $(MAKESILENT) -f gemrb/plugins/TTFImporter/CMakeFiles/TTFImporter.dir/build.make gemrb/plugins/TTFImporter/CMakeFiles/TTFImporter.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles --progress-num=39,40 "Built target TTFImporter"
-.PHONY : gemrb/plugins/TTFImporter/CMakeFiles/TTFImporter.dir/all
-
-# Build rule for subdir invocation for target.
-gemrb/plugins/TTFImporter/CMakeFiles/TTFImporter.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 58
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gemrb/plugins/TTFImporter/CMakeFiles/TTFImporter.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 0
-.PHONY : gemrb/plugins/TTFImporter/CMakeFiles/TTFImporter.dir/rule
-
-# Convenience name for target.
-TTFImporter: gemrb/plugins/TTFImporter/CMakeFiles/TTFImporter.dir/rule
-
-.PHONY : TTFImporter
-
-# clean rule for target.
-gemrb/plugins/TTFImporter/CMakeFiles/TTFImporter.dir/clean:
-	$(MAKE) $(MAKESILENT) -f gemrb/plugins/TTFImporter/CMakeFiles/TTFImporter.dir/build.make gemrb/plugins/TTFImporter/CMakeFiles/TTFImporter.dir/clean
-.PHONY : gemrb/plugins/TTFImporter/CMakeFiles/TTFImporter.dir/clean
-
-#=============================================================================
 # Target rules for target gemrb/plugins/WAVReader/CMakeFiles/WAVReader.dir
 
 # All Build rule for target.
 gemrb/plugins/WAVReader/CMakeFiles/WAVReader.dir/all: gemrb/core/CMakeFiles/gemrb_core.dir/all
 	$(MAKE) $(MAKESILENT) -f gemrb/plugins/WAVReader/CMakeFiles/WAVReader.dir/build.make gemrb/plugins/WAVReader/CMakeFiles/WAVReader.dir/depend
 	$(MAKE) $(MAKESILENT) -f gemrb/plugins/WAVReader/CMakeFiles/WAVReader.dir/build.make gemrb/plugins/WAVReader/CMakeFiles/WAVReader.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles --progress-num=41 "Built target WAVReader"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles --progress-num=40 "Built target WAVReader"
 .PHONY : gemrb/plugins/WAVReader/CMakeFiles/WAVReader.dir/all
 
 # Build rule for subdir invocation for target.
 gemrb/plugins/WAVReader/CMakeFiles/WAVReader.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 57
+	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 58
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gemrb/plugins/WAVReader/CMakeFiles/WAVReader.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 0
 .PHONY : gemrb/plugins/WAVReader/CMakeFiles/WAVReader.dir/rule
@@ -2344,12 +2317,12 @@ gemrb/plugins/WAVReader/CMakeFiles/WAVReader.dir/clean:
 gemrb/plugins/WEDImporter/CMakeFiles/WEDImporter.dir/all: gemrb/core/CMakeFiles/gemrb_core.dir/all
 	$(MAKE) $(MAKESILENT) -f gemrb/plugins/WEDImporter/CMakeFiles/WEDImporter.dir/build.make gemrb/plugins/WEDImporter/CMakeFiles/WEDImporter.dir/depend
 	$(MAKE) $(MAKESILENT) -f gemrb/plugins/WEDImporter/CMakeFiles/WEDImporter.dir/build.make gemrb/plugins/WEDImporter/CMakeFiles/WEDImporter.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles --progress-num=42 "Built target WEDImporter"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles --progress-num=41 "Built target WEDImporter"
 .PHONY : gemrb/plugins/WEDImporter/CMakeFiles/WEDImporter.dir/all
 
 # Build rule for subdir invocation for target.
 gemrb/plugins/WEDImporter/CMakeFiles/WEDImporter.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 57
+	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 58
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gemrb/plugins/WEDImporter/CMakeFiles/WEDImporter.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 0
 .PHONY : gemrb/plugins/WEDImporter/CMakeFiles/WEDImporter.dir/rule
@@ -2371,12 +2344,12 @@ gemrb/plugins/WEDImporter/CMakeFiles/WEDImporter.dir/clean:
 gemrb/plugins/WMPImporter/CMakeFiles/WMPImporter.dir/all: gemrb/core/CMakeFiles/gemrb_core.dir/all
 	$(MAKE) $(MAKESILENT) -f gemrb/plugins/WMPImporter/CMakeFiles/WMPImporter.dir/build.make gemrb/plugins/WMPImporter/CMakeFiles/WMPImporter.dir/depend
 	$(MAKE) $(MAKESILENT) -f gemrb/plugins/WMPImporter/CMakeFiles/WMPImporter.dir/build.make gemrb/plugins/WMPImporter/CMakeFiles/WMPImporter.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles --progress-num= "Built target WMPImporter"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles --progress-num=42 "Built target WMPImporter"
 .PHONY : gemrb/plugins/WMPImporter/CMakeFiles/WMPImporter.dir/all
 
 # Build rule for subdir invocation for target.
 gemrb/plugins/WMPImporter/CMakeFiles/WMPImporter.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 56
+	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 58
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gemrb/plugins/WMPImporter/CMakeFiles/WMPImporter.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles 0
 .PHONY : gemrb/plugins/WMPImporter/CMakeFiles/WMPImporter.dir/rule
@@ -2398,7 +2371,7 @@ gemrb/plugins/WMPImporter/CMakeFiles/WMPImporter.dir/clean:
 gemrb/plugins/ZLibManager/CMakeFiles/ZLibManager.dir/all: gemrb/core/CMakeFiles/gemrb_core.dir/all
 	$(MAKE) $(MAKESILENT) -f gemrb/plugins/ZLibManager/CMakeFiles/ZLibManager.dir/build.make gemrb/plugins/ZLibManager/CMakeFiles/ZLibManager.dir/depend
 	$(MAKE) $(MAKESILENT) -f gemrb/plugins/ZLibManager/CMakeFiles/ZLibManager.dir/build.make gemrb/plugins/ZLibManager/CMakeFiles/ZLibManager.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles --progress-num=43 "Built target ZLibManager"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/build/CMakeFiles --progress-num= "Built target ZLibManager"
 .PHONY : gemrb/plugins/ZLibManager/CMakeFiles/ZLibManager.dir/all
 
 # Build rule for subdir invocation for target.
