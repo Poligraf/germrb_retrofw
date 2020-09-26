@@ -88,6 +88,7 @@ int av_mouse_pressed_y;
 int av_mouse_pressed_cur;
 int av_mouse_pressed_latched;
 
+int key_number = 1;
 
 SDLVideoDriver::SDLVideoDriver(void)
 {
@@ -231,12 +232,23 @@ int SDLVideoDriver::ProcessEvent(const SDL_Event & event)
 						EvntManager->MouseUp( av_mouse_cur_x, av_mouse_cur_y, 1 << ( 2 ), GetModState() );
 						break;
 
-
-				case SDLK_a:
-				case SDLK_LALT:
-				case SDLK_RALT:
+				case BUTTON_A:
 					key = GEM_ALT;
 					break;
+						// case BUTTON_Y:
+						// 	key = GEM_TAB;
+						// 	break;
+
+				// case BUTTON_B:
+				// 	key = SDLK_m;
+				// 	break;
+
+
+				case SDLK_a:
+				// case SDLK_LALT:
+				// case SDLK_RALT:
+				// 	key = GEM_ALT;
+				// 	break;
 				case SDLK_SCROLLOCK:
 					key = GEM_GRAB;
 					break;
@@ -297,10 +309,72 @@ int SDLVideoDriver::ProcessEvent(const SDL_Event & event)
 				EvntManager->MouseDown( av_mouse_cur_x, av_mouse_cur_y, 1 << ( 2 ), GetModState() );
 				break;
 
-				case SDLK_ESCAPE:
-					key = GEM_ESCAPE;
+				case BUTTON_A:
+					key = GEM_ALT;
 					break;
-				case SDLK_END:
+				case BUTTON_Y:
+					key = GEM_TAB;
+					break;
+				//X button is space
+				// case BUTTON_X:
+				// SDLK_SPACE;
+				// 	break;
+				case BUTTON_B:
+					EvntManager->KeyPress( SDLK_m, KMOD_NONE);
+					break;
+
+				case BUTTON_MENU:
+					EvntManager->KeyPress( SDLK_o, KMOD_NONE);
+					break;
+
+				case BUTTON_START:
+				 	key_number = 1;
+					EvntManager->KeyPress( SDLK_EQUALS, KMOD_NONE);
+					break;
+
+
+//writing this obtusely to help with debug
+				case BUTTON_SELECT:
+				if (key_number ==1){
+					key_number=2;
+					EvntManager->KeyPress( SDLK_1, KMOD_NONE);
+					break;
+				}
+
+				if (key_number ==2){
+					key_number=3;
+					EvntManager->KeyPress( SDLK_2, KMOD_NONE);
+					break;
+				}
+
+
+				if (key_number ==3){
+					key_number=4;
+					EvntManager->KeyPress( SDLK_3, KMOD_NONE);
+					break;
+				}
+
+				if (key_number ==4){
+					key_number=5;
+					EvntManager->KeyPress( SDLK_4, KMOD_NONE);
+					break;
+				}
+
+				if (key_number ==5){
+					key_number=6;
+					EvntManager->KeyPress( SDLK_5, KMOD_NONE);
+					break;
+				}
+
+				if (key_number ==6){
+					key_number=1;
+					EvntManager->KeyPress( SDLK_6, KMOD_NONE);
+					break;
+				}
+				// case SDLK_ESCAPE:
+				// 	key = GEM_ESCAPE;
+				// 	break;
+				// case SDLK_END:
 				case SDLK_KP1:
 					key = GEM_END;
 					break;
@@ -346,17 +420,12 @@ int SDLVideoDriver::ProcessEvent(const SDL_Event & event)
 				// case SDLK_BACKSPACE:
 				// 	key = GEM_BACKSP;
 				// 	break;
-				case SDLK_RETURN:
+				// case SDLK_RETURN:
 				case SDLK_KP_ENTER:
 					key = GEM_RETURN;
 					break;
-				case SDLK_LALT:
-				case SDLK_RALT:
-					key = GEM_ALT;
-					break;
-				// case SDLK_TAB:
-				// 	key = GEM_TAB;
-				// 	break;
+				// case SDLK_LALT:
+
 				case SDLK_PAGEUP:
 				case SDLK_KP9:
 					key = GEM_PGUP;
