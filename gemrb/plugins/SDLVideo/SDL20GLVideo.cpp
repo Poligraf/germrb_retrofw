@@ -39,7 +39,7 @@ int GLVideoDriver::CreateDisplay(int w, int h, int bpp, bool fs, const char* tit
 	fullscreen=fs;
 	width = w, height = h;
 
-	Log(MESSAGE, "SDL 2 GL Driver", "Creating display");
+	// Log(MESSAGE, "SDL 2 GL Driver", "Creating display");
 	Uint32 winFlags = SDL_WINDOW_SHOWN | SDL_WINDOW_OPENGL;
 #if TARGET_OS_IPHONE || ANDROID
 	// this allows the user to flip the device upsidedown if they wish and have the game rotate.
@@ -109,7 +109,7 @@ int GLVideoDriver::CreateDisplay(int w, int h, int bpp, bool fs, const char* tit
 	SDL_PixelFormatEnumToMasks(format, &bpp, &r, &g, &b, &a);
 	a = 0; //force a to 0 or screenshots will be all black!
 
-	Log(MESSAGE, "SDL 2 GL Driver", "Creating Main Surface: w=%d h=%d fmt=%s",
+	// Log(MESSAGE, "SDL 2 GL Driver", "Creating Main Surface: w=%d h=%d fmt=%s",
 		width, height, SDL_GetPixelFormatName(format));
 	backBuf = SDL_CreateRGBSurface( 0, width, height, bpp, r, g, b, a );
 	this->bpp = bpp;

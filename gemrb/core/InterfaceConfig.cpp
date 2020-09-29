@@ -192,7 +192,7 @@ bool CFGConfig::InitWithINIData(DataStream* const cfgStream)
 	if (isValid) {
 		Log(WARNING, "Config", "attempting to replace config values with contents of %s", cfgStream->filename);
 	} else {
-		Log(MESSAGE, "Config", "attempting to initialize config with %s", cfgStream->filename);
+		// Log(MESSAGE, "Config", "attempting to initialize config with %s", cfgStream->filename);
 	}
 
 	isValid = false;

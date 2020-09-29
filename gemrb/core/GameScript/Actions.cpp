@@ -1898,21 +1898,21 @@ void GameScript::SetMusic(Scriptable* Sender, Action* parameters)
 //optional integer parameter (isSpeech)
 void GameScript::PlaySound(Scriptable* Sender, Action* parameters)
 {
-	Log(MESSAGE, "Actions", "PlaySound(%s)", parameters->string0Parameter);
+	// Log(MESSAGE, "Actions", "PlaySound(%s)", parameters->string0Parameter);
 	core->GetAudioDrv()->Play(parameters->string0Parameter, SFX_CHAN_CHAR0, Sender->Pos.x,
 				Sender->Pos.y, parameters->int0Parameter ? GEM_SND_SPEECH : 0);
 }
 
 void GameScript::PlaySoundPoint(Scriptable* /*Sender*/, Action* parameters)
 {
-	Log(MESSAGE, "Actions", "PlaySound(%s)", parameters->string0Parameter);
+	// Log(MESSAGE, "Actions", "PlaySound(%s)", parameters->string0Parameter);
 	core->GetAudioDrv()->Play(parameters->string0Parameter, SFX_CHAN_ACTIONS,
 		parameters->pointParameter.x, parameters->pointParameter.y);
 }
 
 void GameScript::PlaySoundNotRanged(Scriptable* /*Sender*/, Action* parameters)
 {
-	Log(MESSAGE, "Actions", "PlaySound(%s)", parameters->string0Parameter);
+	// Log(MESSAGE, "Actions", "PlaySound(%s)", parameters->string0Parameter);
 	core->GetAudioDrv()->Play(parameters->string0Parameter, SFX_CHAN_ACTIONS, 0, 0);
 }
 
@@ -2235,7 +2235,7 @@ void GameScript::NIDSpecial2(Scriptable* Sender, Action* /*parameters*/)
 
 	//travel direction passed to guiscript
 	int direction = Sender->GetCurrentArea()->WhichEdge(actor->Pos);
-	Log(MESSAGE, "Actions", "Travel direction returned: %d", direction);
+	// Log(MESSAGE, "Actions", "Travel direction returned: %d", direction);
 	//this is notoriously flaky
 	//if it doesn't work for the sender try other party members, too
 	if (direction == -1) {
@@ -5892,7 +5892,7 @@ void GameScript::SaveGame(Scriptable* /*Sender*/, Action* parameters)
 void GameScript::EscapeArea(Scriptable* Sender, Action* parameters)
 {
 	if (InDebug&ID_ACTIONS) {
-		Log(MESSAGE, "Actions", "EscapeArea/EscapeAreaMove");
+		// Log(MESSAGE, "Actions", "EscapeArea/EscapeAreaMove");
 	}
 	if (Sender->Type!=ST_ACTOR) {
 		Sender->ReleaseCurrentAction();
@@ -5920,7 +5920,7 @@ void GameScript::EscapeArea(Scriptable* Sender, Action* parameters)
 void GameScript::EscapeAreaNoSee(Scriptable* Sender, Action* parameters)
 {
 	if (InDebug&ID_ACTIONS) {
-		Log(MESSAGE, "Actions", "EscapeAreaNoSee");
+		// Log(MESSAGE, "Actions", "EscapeAreaNoSee");
 	}
 	if (Sender->Type!=ST_ACTOR) {
 		Sender->ReleaseCurrentAction();

@@ -75,7 +75,7 @@ static bool PathExists(BIFEntry *entry, const char *path)
 static bool PathExists(BIFEntry *entry, const std::vector<std::string> &pathlist)
 {
 	size_t i;
-	
+
 	for(i=0;i<pathlist.size();i++) {
 		if (PathExists(entry, pathlist[i].c_str() )) {
 			return true;
@@ -121,20 +121,20 @@ bool KEYImporter::Open(const char *resfile, const char *desc)
 	}
 	unsigned int i;
 	// NOTE: Interface::Init has already resolved resfile.
-	Log(MESSAGE, "KEYImporter", "Opening %s...", resfile);
+	// Log(MESSAGE, "KEYImporter", "Opening %s...", resfile);
 	FileStream* f = FileStream::OpenFile(resfile);
 	if (!f) {
 		// Check for backslashes (false escape characters)
 		// this check probably belongs elsewhere (e.g. ResolveFilePath)
 		if (strstr( resfile, "\\ " )) {
-			Log(MESSAGE, "KEYImporter", "Escaped space(s) detected in path!. Do not escape spaces in your GamePath!");
+			// Log(MESSAGE, "KEYImporter", "Escaped space(s) detected in path!. Do not escape spaces in your GamePath!");
 		}
 		Log(ERROR, "KEYImporter", "Cannot open Chitin.key");
 		Log(ERROR, "KeyImporter", "This means you set the GamePath config variable incorrectly.");
 		Log(ERROR, "KeyImporter", "It must point to the directory that holds a readable Chitin.key");
 		return false;
 	}
-	Log(MESSAGE, "KEYImporter", "Checking file type...");
+	// Log(MESSAGE, "KEYImporter", "Checking file type...");
 	char Signature[8];
 	f->Read( Signature, 8 );
 	if (strncmp( Signature, "KEY V1  ", 8 ) != 0) {
@@ -142,16 +142,16 @@ bool KEYImporter::Open(const char *resfile, const char *desc)
 		delete( f );
 		return false;
 	}
-	Log(MESSAGE, "KEYImporter", "Reading Resources...");
+	// Log(MESSAGE, "KEYImporter", "Reading Resources...");
 	ieDword BifCount, ResCount, BifOffset, ResOffset;
 	f->ReadDword( &BifCount );
 	f->ReadDword( &ResCount );
 	f->ReadDword( &BifOffset );
 	f->ReadDword( &ResOffset );
-	Log(MESSAGE, "KEYImporter", "BIF Files Count: %d (Starting at %d Bytes)",
-			BifCount, BifOffset );
-	Log(MESSAGE, "KEYImporter", "RES Count: %d (Starting at %d Bytes)",
-		ResCount, ResOffset);
+	// Log(MESSAGE, "KEYImporter", "BIF Files Count: %d (Starting at %d Bytes)",
+			// BifCount, BifOffset );
+	// Log(MESSAGE, "KEYImporter", "RES Count: %d (Starting at %d Bytes)",
+		// ResCount, ResOffset);
 	f->Seek( BifOffset, GEM_STREAM_START );
 
 	ieDword BifLen, ASCIIZOffset;
@@ -193,7 +193,7 @@ bool KEYImporter::Open(const char *resfile, const char *desc)
 			resources.set(key, ResLocator);
 	}
 
-	Log(MESSAGE, "KEYImporter", "Resources Loaded...");
+	// Log(MESSAGE, "KEYImporter", "Resources Loaded...");
 	delete( f );
 	return true;
 }

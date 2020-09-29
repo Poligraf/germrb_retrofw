@@ -270,7 +270,7 @@ size_t Font::RenderText(const String& string, Region& rgn,
 			rgn.h += vGrow;
 
 #if DEBUG_FONT
-			Log(MESSAGE, "Font", "Resizing canvas from %dx%d to %dx%d",
+			// Log(MESSAGE, "Font", "Resizing canvas from %dx%d to %dx%d",
 				rgn.w, rgn.h - vGrow, rgn.w, rgn.h);
 #endif
 
@@ -310,7 +310,7 @@ size_t Font::RenderText(const String& string, Region& rgn,
 							linePos = line.find_last_of(L' ', prevPos);
 							if (linePos == String::npos) {
 #if DEBUG_FONT
-								Log(MESSAGE, "Font", "Horizontal alignment invalidated for '%ls' due to insufficient width %d", line.c_str(), lineSize.w);
+								// Log(MESSAGE, "Font", "Horizontal alignment invalidated for '%ls' due to insufficient width %d", line.c_str(), lineSize.w);
 #endif
 								linePoint.x = 0;
 								break;

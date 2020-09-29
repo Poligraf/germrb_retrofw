@@ -61,7 +61,7 @@ int SDL20VideoDriver::CreateDisplay(int w, int h, int bpp, bool fs, const char* 
 	fullscreen=fs;
 	width = w, height = h;
 
-	Log(MESSAGE, "SDL 2 Driver", "Creating display");
+	// Log(MESSAGE, "SDL 2 Driver", "Creating display");
 	// TODO: scale methods can be nearest or linear, and should be settable in config
 	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "nearest");
 	Uint32 winFlags = SDL_WINDOW_SHOWN | SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE;
@@ -146,7 +146,7 @@ doneFormat:
 	SDL_PixelFormatEnumToMasks(format, &bpp, &r, &g, &b, &a);
 	a = 0; //force a to 0 or screenshots will be all black!
 
-	Log(MESSAGE, "SDL 2 Driver", "Creating Main Surface: w=%d h=%d fmt=%s",
+	// Log(MESSAGE, "SDL 2 Driver", "Creating Main Surface: w=%d h=%d fmt=%s",
 		width, height, SDL_GetPixelFormatName(format));
 	backBuf = SDL_CreateRGBSurface( 0, width, height,
 									bpp, r, g, b, a );

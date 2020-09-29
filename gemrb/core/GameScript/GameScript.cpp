@@ -1208,7 +1208,7 @@ static const IDSLink* FindIdentifier(const char* idsname)
 			return idsnames + i;
 		}
 	}
-	
+
 	Log(WARNING, "GameScript", "Couldn't assign ids target: %.*s",
 		len, idsname );
 	return NULL;
@@ -1522,14 +1522,14 @@ void InitializeIEScript()
 		if (ii >= MAX_TRIGGERS) {
 			continue;
 		}
-		
+
 		TriggerFunction f = triggers[ii];
 		if (f) {
 			for (i = 0; triggernames[i].Name; i++) {
 				if (f == triggernames[i].Function) {
 					if (InDebug&ID_TRIGGERS) {
-						Log(MESSAGE, "GameScript", "%s is a synonym of %s",
-							triggersTable->GetStringIndex( j ), triggernames[i].Name );
+						// Log(MESSAGE, "GameScript", "%s is a synonym of %s",
+							// triggersTable->GetStringIndex( j ), triggernames[i].Name );
 						break;
 					}
 				}
@@ -1614,7 +1614,7 @@ void InitializeIEScript()
 				} else {
 					printFunction(buffer, overrideActionsTable, overrideActionsTable->FindValue(overrideActionsTable->GetValueIndex(j)));
 				}
-				Log(MESSAGE, "GameScript", buffer);
+				// Log(MESSAGE, "GameScript", buffer);
 			}
 			actions[i] = poi->Function;
 			actionflags[i] = poi->Flags;
@@ -1659,7 +1659,7 @@ void InitializeIEScript()
 					if (x<0 || x>=j) x = overrideTriggersTable->FindValue(i|0x4000);
 					printFunction(buffer, overrideTriggersTable, x);
 				}
-				Log(MESSAGE, "GameScript", buffer);
+				// Log(MESSAGE, "GameScript", buffer);
 			}
 			triggers[i] = poi->Function;
 			triggerflags[i] = tf;
@@ -1679,8 +1679,8 @@ void InitializeIEScript()
 			for (i = 0; actionnames[i].Name; i++) {
 				if (f == actionnames[i].Function) {
 					if (InDebug&ID_ACTIONS) {
-						Log(MESSAGE, "GameScript", "%s is a synonym of %s",
-							actionsTable->GetStringIndex( j ), actionnames[i].Name );
+						// Log(MESSAGE, "GameScript", "%s is a synonym of %s",
+							// actionsTable->GetStringIndex( j ), actionnames[i].Name );
 						break;
 					}
 				}
@@ -1738,8 +1738,8 @@ void InitializeIEScript()
 		if (f) {
 			for (i = 0; objectnames[i].Name; i++) {
 				if (f == objectnames[i].Function) {
-					Log(MESSAGE, "GameScript", "%s is a synonym of %s",
-						objectsTable->GetStringIndex( j ), objectnames[i].Name );
+					// Log(MESSAGE, "GameScript", "%s is a synonym of %s",
+						// objectsTable->GetStringIndex( j ), objectnames[i].Name );
 					break;
 				}
 			}

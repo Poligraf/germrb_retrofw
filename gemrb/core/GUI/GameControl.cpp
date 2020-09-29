@@ -971,7 +971,7 @@ bool GameControl::OnKeyRelease(unsigned char Key, unsigned short Mod)
 				area->MoveVisibleGroundPiles(p);
 				break;
 			case 'x': // shows coordinates on the map
-				Log(MESSAGE, "GameControl", "Position: %s [%d.%d]", area->GetScriptName(), p.x, p.y );
+				// Log(MESSAGE, "GameControl", "Position: %s [%d.%d]", area->GetScriptName(), p.x, p.y );
 				break;
 			case 'Y': // damages all enemies by 300 (resistances apply)
 				// mwahaha!
@@ -1023,22 +1023,22 @@ bool GameControl::OnKeyRelease(unsigned char Key, unsigned short Mod)
 				break;
 			case '4': //show all traps and infopoints
 				DebugFlags ^= DEBUG_SHOW_INFOPOINTS;
-				Log(MESSAGE, "GameControl", "Show traps and infopoints %s", DebugFlags & DEBUG_SHOW_INFOPOINTS ? "ON" : "OFF");
+				// Log(MESSAGE, "GameControl", "Show traps and infopoints %s", DebugFlags & DEBUG_SHOW_INFOPOINTS ? "ON" : "OFF");
 				break;
 			case '6': //show the lightmap
 				DebugFlags ^= DEBUG_SHOW_LIGHTMAP;
-				Log(MESSAGE, "GameControl", "Show lightmap %s", DebugFlags & DEBUG_SHOW_LIGHTMAP ? "ON" : "OFF");
+				// Log(MESSAGE, "GameControl", "Show lightmap %s", DebugFlags & DEBUG_SHOW_LIGHTMAP ? "ON" : "OFF");
 				break;
 			case '7': //toggles fog of war
 				core->FogOfWar ^= FOG_DRAWFOG;
-				Log(MESSAGE, "GameControl", "Show Fog-Of-War: %s", core->FogOfWar & FOG_DRAWFOG ? "ON" : "OFF");
+				// Log(MESSAGE, "GameControl", "Show Fog-Of-War: %s", core->FogOfWar & FOG_DRAWFOG ? "ON" : "OFF");
 				break;
 			case '8': //show searchmap over area
 				core->FogOfWar ^= FOG_DRAWSEARCHMAP;
-				Log(MESSAGE, "GameControl", "Show searchmap %s", core->FogOfWar & FOG_DRAWSEARCHMAP ? "ON" : "OFF");
+				// Log(MESSAGE, "GameControl", "Show searchmap %s", core->FogOfWar & FOG_DRAWSEARCHMAP ? "ON" : "OFF");
 				break;
 			default:
-				Log(MESSAGE, "GameControl", "KeyRelease:%d - %d", Key, Mod );
+				// Log(MESSAGE, "GameControl", "KeyRelease:%d - %d", Key, Mod );
 				break;
 		}
 		return true; //return from cheatkeys
@@ -2413,14 +2413,14 @@ bool GameControl::SetGUIHidden(bool hide)
 	WINDOW_RESIZE_OPERATION op = hide ? WINDOW_EXPAND : WINDOW_CONTRACT;
 	for (;i >= 0 && i <= 5; i+=inc) {
 		const char** val = keys[i];
-		//Log(MESSAGE, "GameControl", "window: %s", *val);
+		//// Log(MESSAGE, "GameControl", "window: %s", *val);
 		if (dict->Lookup( *val, index )) {
 			if (index != (ieDword) -1) {
 				Window* w = core->GetWindow(index);
 				if (w) {
 					core->SetVisible(index, !hide);
 					if (dict->Lookup( *++val, index )) {
-						//Log(MESSAGE, "GameControl", "position: %s", *val);
+						//// Log(MESSAGE, "GameControl", "position: %s", *val);
 						ResizeParentWindowFor( w, index, op );
 						continue;
 					}

@@ -751,7 +751,7 @@ all_party:
 
 	case FX_TARGET_UNKNOWN:
 	default:
-		Log(MESSAGE, "EffectQueue", "Unknown FX target type: %d", fx->Target);
+		// Log(MESSAGE, "EffectQueue", "Unknown FX target type: %d", fx->Target);
 		flg = FX_ABORT;
 		break;
 	}
@@ -1098,7 +1098,7 @@ static inline int check_magic_res(const Actor *actor, const Effect *fx, const Ac
 	if (resisted) {
 		// we take care of irresistible spells a few checks above, so selective mr has no impact here anymore
 		displaymsg->DisplayConstantStringName(STR_MAGIC_RESISTED, DMC_WHITE, actor);
-		Log(MESSAGE, "EffectQueue", "effect resisted: %s", (char*) Opcodes[fx->Opcode].Name);
+		// Log(MESSAGE, "EffectQueue", "effect resisted: %s", (char*) Opcodes[fx->Opcode].Name);
 		return 1;
 	}
 	return 2;
@@ -1124,11 +1124,11 @@ static bool check_resistance(Actor* actor, Effect* fx)
 	//opcode immunity
 	// TODO: research, maybe the whole check_resistance should be skipped on caster != actor (selfapplication)
 	if (caster != actor && actor->fxqueue.HasEffectWithParam(fx_opcode_immunity_ref, fx->Opcode)) {
-		Log(MESSAGE, "EffectQueue", "%s is immune to effect: %s", actor->GetName(1), (char*) Opcodes[fx->Opcode].Name);
+		// Log(MESSAGE, "EffectQueue", "%s is immune to effect: %s", actor->GetName(1), (char*) Opcodes[fx->Opcode].Name);
 		return true;
 	}
 	if (caster != actor && actor->fxqueue.HasEffectWithParam(fx_opcode_immunity2_ref, fx->Opcode)) {
-		Log(MESSAGE, "EffectQueue", "%s is immune2 to effect: %s", actor->GetName(1), (char*) Opcodes[fx->Opcode].Name);
+		// Log(MESSAGE, "EffectQueue", "%s is immune2 to effect: %s", actor->GetName(1), (char*) Opcodes[fx->Opcode].Name);
 		return true;
 	}
 
@@ -1197,7 +1197,7 @@ static bool check_resistance(Actor* actor, Effect* fx)
 				fx->Parameter1 /= 2;
 			}
 		} else {
-			Log(MESSAGE, "EffectQueue", "%s saved against effect: %s", actor->GetName(1), (char*) Opcodes[fx->Opcode].Name);
+			// Log(MESSAGE, "EffectQueue", "%s saved against effect: %s", actor->GetName(1), (char*) Opcodes[fx->Opcode].Name);
 			return true;
 		}
 	} else {
@@ -1312,7 +1312,7 @@ int EffectQueue::ApplyEffect(Actor* target, Effect* fx, ieDword first_apply, ieD
 	if( fx->Opcode<MAX_EFFECTS) {
 		fn = Opcodes[fx->Opcode].Function;
 		if (!(target || (Opcodes[fx->Opcode].Flags & EFFECT_NO_ACTOR))) {
-			Log(MESSAGE, "EffectQueue", "targetless opcode without EFFECT_NO_ACTOR: %d, skipping", fx->Opcode);
+			// Log(MESSAGE, "EffectQueue", "targetless opcode without EFFECT_NO_ACTOR: %d, skipping", fx->Opcode);
 			return FX_NOT_APPLIED;
 		}
 	}

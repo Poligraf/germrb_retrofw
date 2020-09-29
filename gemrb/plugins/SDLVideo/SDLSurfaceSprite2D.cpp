@@ -142,13 +142,13 @@ bool SDLSurfaceSprite2D::ConvertFormatTo(int bpp, ieDword rmask, ieDword gmask,
 				Bpp = bpp;
 				return true;
 			} else {
-				Log(MESSAGE, "SDLSurfaceSprite2D",
-#if SDL_VERSION_ATLEAST(1,3,0)
-					"Cannot convert sprite to format: %s\nError: %s", SDL_GetPixelFormatName(fmt),
-#else
-					"Cannot convert sprite to format: %s",
-#endif
-					SDL_GetError());
+				// Log(MESSAGE, "SDLSurfaceSprite2D",
+// #if SDL_VERSION_ATLEAST(1,3,0)
+// 					"Cannot convert sprite to format: %s\nError: %s", SDL_GetPixelFormatName(fmt),
+// #else
+// 					"Cannot convert sprite to format: %s",
+// #endif
+// 					SDL_GetError());
 			}
 		}
 	}

@@ -1295,7 +1295,7 @@ int Game::GetXPFromCR(int cr)
 	} else if (cr-1 < 0) {
 		cr = 1;
 	}
-	Log(MESSAGE, "Game", "Challenge Rating: %d, party level: %d", cr, level);
+	// Log(MESSAGE, "Game", "Challenge Rating: %d, party level: %d", cr, level);
 	// it also has a column for cr 0.25 and 0.5, so let's treat cr as a 1-based index
 	// but testing shows something else affects it further, so we divide by 2 to match
 	// the net is full of claims of halved values, so perhaps just a quick final rebalancing tweak
@@ -1374,7 +1374,7 @@ bool Game::EveryoneNearPoint(Map *area, const Point &p, int flags) const
 			return false;
 		}
 		if (Distance(p,PCs[i])>MAX_TRAVELING_DISTANCE) {
-			Log(MESSAGE, "Game", "Actor %s is not near!", PCs[i]->LongName);
+			// Log(MESSAGE, "Game", "Actor %s is not near!", PCs[i]->LongName);
 			return false;
 		}
 	}

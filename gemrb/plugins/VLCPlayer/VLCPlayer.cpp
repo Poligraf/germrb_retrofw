@@ -61,7 +61,7 @@ bool VLCPlayer::Open(DataStream* stream)
 void VLCPlayer::CallBackAtFrames(ieDword /*cnt*/, ieDword* /*arg*/, ieDword* /*arg2*/ )
 {
 	// TODO: probably should do something here.
-	Log(MESSAGE, "VLCPlayer", "Unimplemented method: CallBackAtFrames");
+	// Log(MESSAGE, "VLCPlayer", "Unimplemented method: CallBackAtFrames");
 }
 
 void VLCPlayer::Stop()

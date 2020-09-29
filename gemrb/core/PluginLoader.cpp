@@ -138,7 +138,7 @@ void LoadPlugins(char* pluginpath)
 {
 	std::set<PluginID> libs;
 
-	Log(MESSAGE, "PluginMgr", "Loading Plugins from %s", pluginpath);
+	// Log(MESSAGE, "PluginMgr", "Loading Plugins from %s", pluginpath);
 
 	char path[_MAX_PATH];
 	strlcpy(path, pluginpath, _MAX_PATH);
@@ -164,14 +164,14 @@ void LoadPlugins(char* pluginpath)
 
 		// module is sent to the back
 		if ((flags == PLF_DELAY) && (file_count >= 0)) {
-			Log(MESSAGE, "PluginLoader", "Loading \"%s\" delayed.", path);
+			// Log(MESSAGE, "PluginLoader", "Loading \"%s\" delayed.", path);
 			files.push_back( file );
 			continue;
 		}
 
 		// module is skipped
 		if (flags == PLF_SKIP) {
-			Log(MESSAGE, "PluginLoader", "Loading \"%s\" skipped.", path);
+			// Log(MESSAGE, "PluginLoader", "Loading \"%s\" skipped.", path);
 			continue;
 		}
 
@@ -228,7 +228,7 @@ void LoadPlugins(char* pluginpath)
 		}
 		libs.insert(desc.ID);
 
-		Log(MESSAGE, "PluginLoader", "Loaded plugin \"%s\" (%s).", desc.Description, file);
+		// Log(MESSAGE, "PluginLoader", "Loaded plugin \"%s\" (%s).", desc.Description, file);
 
 		// We do not need the basename anymore now
 		free( file );

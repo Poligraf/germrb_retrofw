@@ -505,8 +505,8 @@ void* GameData::GetFactoryResource(const char* resname, SClass_ID type,
 		return NULL;
 	}
 	default:
-		Log(MESSAGE, "KEYImporter", "%s files are not supported.",
-			core->TypeExt(type));
+		// Log(MESSAGE, "KEYImporter", "%s files are not supported.",
+			// core->TypeExt(type));
 		return NULL;
 	}
 }

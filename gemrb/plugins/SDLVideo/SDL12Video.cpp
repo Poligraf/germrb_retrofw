@@ -55,19 +55,19 @@ int SDL12VideoDriver::CreateDisplay(int w, int h, int b, bool fs, const char* ti
 {
 	bpp=b;
 	fullscreen=fs;
-	Log(MESSAGE, "SDL 1.2 Driver", "Creating display");
+	// Log(MESSAGE, "SDL 1.2 Driver", "Creating display");
 	ieDword flags = SDL_SWSURFACE;
 	if (fullscreen) {
 		flags |= SDL_FULLSCREEN;
 	}
-	Log(MESSAGE, "SDL 1.2 Driver", "SDL_SetVideoMode...");
+	// Log(MESSAGE, "SDL 1.2 Driver", "SDL_SetVideoMode...");
 	disp = SDL_SetVideoMode( w, h, bpp, flags );
 	SDL_WM_SetCaption( title, 0 );
 	if (disp == NULL) {
 		Log(ERROR, "SDL 1.2 Driver", "%s", SDL_GetError());
 		return GEM_ERROR;
 	}
-	Log(MESSAGE, "SDL 1.2 Driver", "Checking for HardWare Acceleration...");
+	// Log(MESSAGE, "SDL 1.2 Driver", "Checking for HardWare Acceleration...");
 	const SDL_VideoInfo* vi = SDL_GetVideoInfo();
 	if (!vi) {
 		Log(WARNING, "SDL 1.2 Driver", "No Hardware Acceleration available.");
@@ -78,12 +78,12 @@ int SDL12VideoDriver::CreateDisplay(int w, int h, int b, bool fs, const char* ti
 	Viewport.w = width;
 	Viewport.h = height;
 	SetScreenClip(NULL);
-	Log(MESSAGE, "SDL 1.2 Driver", "Creating Main Surface...");
-	SDL_Surface* tmp = SDL_CreateRGBSurface( SDL_HWSURFACE, width, height,
+	// Log(MESSAGE, "SDL 1.2 Driver", "Creating Main Surface...");
+	SDL_Surface* tmp = SDL_CreateRGBSurface( SDL_SWSURFACE, width, height,
 						bpp, 0, 0, 0, 0 );
-	Log(MESSAGE, "SDL 1.2 Driver", "Creating Back Buffer...");
+	// Log(MESSAGE, "SDL 1.2 Driver", "Creating Back Buffer...");
 	backBuf = SDL_DisplayFormat( tmp );
-	Log(MESSAGE, "SDL 1.2 Driver", "Creating Extra Buffer...");
+	// Log(MESSAGE, "SDL 1.2 Driver", "Creating Extra Buffer...");
 	extra = SDL_DisplayFormat( tmp );
 	SDL_LockSurface( extra );
 	long val = SDL_MapRGBA( extra->format, fadeColor.r, fadeColor.g, fadeColor.b, 0 );

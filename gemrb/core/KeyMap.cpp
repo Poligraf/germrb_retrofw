@@ -142,7 +142,7 @@ bool KeyMap::ResolveKey(int key, int group)
 	keystr[0]=(char) key;
 	keystr[1]=0;
 
-	Log(MESSAGE, "KeyMap", "Looking up key: %c(%s) ", key, keystr);
+	// Log(MESSAGE, "KeyMap", "Looking up key: %c(%s) ", key, keystr);
 
 	if (!keymap.Lookup(keystr, tmp) ) {
 		return false;
@@ -158,7 +158,7 @@ bool KeyMap::ResolveKey(int key, int group)
 		return false;
 	}
 
-	Log(MESSAGE, "KeyMap", "RunFunction(%s::%s)", fun->module, fun->function);
+	// Log(MESSAGE, "KeyMap", "RunFunction(%s::%s)", fun->module, fun->function);
 	core->GetGUIScriptEngine()->RunFunction(fun->module, fun->function);
 	return true;
 }

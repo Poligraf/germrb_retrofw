@@ -121,7 +121,7 @@ static int MagicBit = 0;
 
 Interface::Interface()
 {
-	Log(MESSAGE, "Core", "GemRB Core Version v%s Loading...", VERSION_GEMRB );
+	// Log(MESSAGE, "Core", "GemRB Core Version v%s Loading...", VERSION_GEMRB );
 
 	// default to the correct endianswitch
 	ieWord endiantest = 1;
@@ -1051,7 +1051,7 @@ int Interface::LoadSprites()
 		return GEM_ERROR;
 	}
 
-	Log(MESSAGE, "Core", "Loading Cursors...");
+	// Log(MESSAGE, "Core", "Loading Cursors...");
 	AnimationFactory* anim;
 	anim = (AnimationFactory*) gamedata->GetFactoryResource("cursors", IE_BAM_CLASS_ID);
 	if (anim)
@@ -1074,7 +1074,7 @@ int Interface::LoadSprites()
 
 	// Load fog-of-war bitmaps
 	anim = (AnimationFactory*) gamedata->GetFactoryResource("fogowar", IE_BAM_CLASS_ID);
-	Log(MESSAGE, "Core", "Loading Fog-Of-War bitmaps...");
+	// Log(MESSAGE, "Core", "Loading Fog-Of-War bitmaps...");
 	if (!anim || anim->GetCycleSize( 0 ) != 8) {
 		// unknown type of fog anim
 		Log(ERROR, "Core", "Failed to load Fog-of-War bitmaps.");
@@ -1146,7 +1146,7 @@ int Interface::LoadSprites()
 	}
 
 	// Load ground circle bitmaps (PST only)
-	Log(MESSAGE, "Core", "Loading Ground circle bitmaps...");
+	// Log(MESSAGE, "Core", "Loading Ground circle bitmaps...");
 	for (int size = 0; size < MAX_CIRCLE_SIZE; size++) {
 		if (GroundCircleBam[size][0]) {
 			anim = (AnimationFactory*) gamedata->GetFactoryResource(GroundCircleBam[size], IE_BAM_CLASS_ID);
@@ -1170,7 +1170,7 @@ int Interface::LoadSprites()
 
 	if (!TooltipBackResRef.IsEmpty()) {
 		anim = (AnimationFactory*) gamedata->GetFactoryResource(TooltipBackResRef, IE_BAM_CLASS_ID);
-		Log(MESSAGE, "Core", "Initializing Tooltips...");
+		// Log(MESSAGE, "Core", "Initializing Tooltips...");
 		if (!anim) {
 			Log(ERROR, "Core", "Failed to initialize tooltips.");
 			return GEM_ERROR;
@@ -1188,7 +1188,7 @@ int Interface::LoadSprites()
 
 int Interface::LoadFonts()
 {
-	Log(MESSAGE, "Core", "Loading Fonts...");
+	// Log(MESSAGE, "Core", "Loading Fonts...");
 	AutoTable tab("fonts");
 	if (!tab) {
 		Log(ERROR, "Core", "Cannot find fonts.2da.");
@@ -1243,11 +1243,11 @@ int Interface::LoadFonts()
 			error("Core", "Unable to load font resource: %s for ResRef %s (check fonts.2da)", font_name, resref.CString());
 		} else {
 			fonts[resref] = fnt;
-			Log(MESSAGE, "Core", "Loaded Font: %s for ResRef %s", font_name, resref.CString());
+			// Log(MESSAGE, "Core", "Loaded Font: %s for ResRef %s", font_name, resref.CString());
 		}
 	}
 
-	Log(MESSAGE, "Core", "Fonts Loaded...");
+	// Log(MESSAGE, "Core", "Fonts Loaded...");
 	return GEM_OK;
 }
 
@@ -1261,7 +1261,7 @@ int Interface::Init(InterfaceConfig* config)
 	plugin_flags = new Variables();
 	plugin_flags->SetType( GEM_VARIABLES_INT );
 
-	Log(MESSAGE, "Core", "Initializing the Event Manager...");
+	// Log(MESSAGE, "Core", "Initializing the Event Manager...");
 	evntmgr = new EventMgr();
 
 	lists = new Variables();
@@ -1444,7 +1444,7 @@ int Interface::Init(InterfaceConfig* config)
 	}
 	if (!KeepCache) DelTree((const char *) CachePath, false);
 
-	Log(MESSAGE, "Core", "Starting Plugin Manager...");
+	// Log(MESSAGE, "Core", "Starting Plugin Manager...");
 	PluginMgr *plugin = PluginMgr::Get();
 #if TARGET_OS_MAC
 	// search the bundle plugins first
@@ -1457,15 +1457,15 @@ int Interface::Init(InterfaceConfig* config)
 #endif
 	LoadPlugins(PluginsPath);
 	if (plugin && plugin->GetPluginCount()) {
-		Log(MESSAGE, "Core", "Plugin Loading Complete...");
+		// Log(MESSAGE, "Core", "Plugin Loading Complete...");
 	} else {
 		Log(FATAL, "Core", "Plugin Loading Failed, check path...");
 		return GEM_ERROR;
 	}
 	plugin->RunInitializers();
 
-	Log(MESSAGE, "Core", "GemRB Core Initialization...");
-	Log(MESSAGE, "Core", "Initializing Video Driver...");
+	// Log(MESSAGE, "Core", "GemRB Core Initialization...");
+	// Log(MESSAGE, "Core", "Initializing Video Driver...");
 	video = ( Video * ) PluginMgr::Get()->GetDriver(&Video::ID, VideoDriverName.c_str());
 	if (!video) {
 		Log(FATAL, "Core", "No Video Driver Available.");
@@ -1493,7 +1493,7 @@ int Interface::Init(InterfaceConfig* config)
 	SetInfoTextColor(defcolor);
 
 	{
-		Log(MESSAGE, "Core", "Initializing Search Path...");
+		// Log(MESSAGE, "Core", "Initializing Search Path...");
 		if (!IsAvailable( PLUGIN_RESOURCE_DIRECTORY )) {
 			Log(FATAL, "Core", "no DirectoryImporter!");
 			return GEM_ERROR;
@@ -1565,7 +1565,7 @@ int Interface::Init(InterfaceConfig* config)
 	}
 
 	{
-		Log(MESSAGE, "Core", "Initializing KEY Importer...");
+		// Log(MESSAGE, "Core", "Initializing KEY Importer...");
 		char ChitinPath[_MAX_PATH];
 		PathJoin( ChitinPath, GamePath, "chitin.key", NULL );
 		if (!gamedata->AddSource(ChitinPath, "chitin.key", PLUGIN_RESOURCE_KEY)) {
@@ -1574,7 +1574,7 @@ int Interface::Init(InterfaceConfig* config)
 		}
 	}
 
-	Log(MESSAGE, "Core", "Initializing GUI Script Engine...");
+	// Log(MESSAGE, "Core", "Initializing GUI Script Engine...");
 	guiscript = PluginHolder<ScriptEngine>(IE_GUI_SCRIPT_CLASS_ID);
 	if (guiscript == NULL) {
 		Log(FATAL, "Core", "Missing GUI Script Engine.");
@@ -1618,7 +1618,7 @@ int Interface::Init(InterfaceConfig* config)
 	// Purposely add the font directory last since we will only ever need it at engine load time.
 	if (CustomFontPath[0]) gamedata->AddSource(CustomFontPath, "CustomFonts", PLUGIN_RESOURCE_DIRECTORY);
 
-	Log(MESSAGE, "Core", "Reading Game Options...");
+	// Log(MESSAGE, "Core", "Reading Game Options...");
 	if (!LoadGemRBINI()) {
 		Log(FATAL, "Core", "Cannot Load INI.");
 		return GEM_ERROR;
@@ -1639,7 +1639,7 @@ int Interface::Init(InterfaceConfig* config)
 		strlcpy(INIConfig, gemrbINI, sizeof(INIConfig));
 	} else if (!IgnoreOriginalINI) {
 		PathJoin( ini_path, GamePath, INIConfig, NULL );
-		Log(MESSAGE,"Core", "Loading original game options from %s", ini_path);
+		// Log(MESSAGE,"Core", "Loading original game options from %s", ini_path);
 	}
 	if (!InitializeVarsWithINI(ini_path)) {
 		Log(WARNING, "Core", "Unable to set dictionary default values!");
@@ -1657,24 +1657,24 @@ int Interface::Init(InterfaceConfig* config)
 	}
 	GameNameResRef[i] = 0;
 
-	Log(MESSAGE, "Core", "Reading Encoding Table...");
+	// Log(MESSAGE, "Core", "Reading Encoding Table...");
 	if (!LoadEncoding()) {
 		Log(ERROR, "Core", "Cannot Load Encoding.");
 	}
 
-	Log(MESSAGE, "Core", "Creating Projectile Server...");
+	// Log(MESSAGE, "Core", "Creating Projectile Server...");
 	projserv = new ProjectileServer();
 	if (!projserv->GetHighestProjectileNumber()) {
 		Log(ERROR, "Core", "No projectiles are available...");
 	}
 
-	Log(MESSAGE, "Core", "Checking for Dialogue Manager...");
+	// Log(MESSAGE, "Core", "Checking for Dialogue Manager...");
 	if (!IsAvailable( IE_TLK_CLASS_ID )) {
 		Log(FATAL, "Core", "No TLK Importer Available.");
 		return GEM_ERROR;
 	}
 	strings = PluginHolder<StringMgr>(IE_TLK_CLASS_ID);
-	Log(MESSAGE, "Core", "Loading Dialog.tlk file...");
+	// Log(MESSAGE, "Core", "Loading Dialog.tlk file...");
 	char strpath[_MAX_PATH];
 	PathJoin(strpath, GamePath, "dialog.tlk", NULL);
 	FileStream* fs = FileStream::OpenFile(strpath);
@@ -1687,7 +1687,7 @@ int Interface::Init(InterfaceConfig* config)
 	// does the language use an extra tlk?
 	if (strings->HasAltTLK()) {
 		strings2 = PluginHolder<StringMgr>(IE_TLK_CLASS_ID);
-		Log(MESSAGE, "Core", "Loading DialogF.tlk file...");
+		// Log(MESSAGE, "Core", "Loading DialogF.tlk file...");
 		char strpath[_MAX_PATH];
 		PathJoin(strpath, GamePath, "dialogf.tlk", NULL);
 		FileStream* fs = FileStream::OpenFile(strpath);
@@ -1701,7 +1701,7 @@ int Interface::Init(InterfaceConfig* config)
 	}
 
 	{
-		Log(MESSAGE, "Core", "Loading Palettes...");
+		// Log(MESSAGE, "Core", "Loading Palettes...");
 		ResourceHolder<ImageMgr> pal16im(Palette16);
 		if (pal16im)
 			pal16 = pal16im->GetImage();
@@ -1715,7 +1715,7 @@ int Interface::Init(InterfaceConfig* config)
 			Log(FATAL, "Core", "No palettes found.");
 			return GEM_ERROR;
 		}
-		Log(MESSAGE, "Core", "Palettes Loaded");
+		// Log(MESSAGE, "Core", "Palettes Loaded");
 	}
 
 	if (!IsAvailable( IE_BAM_CLASS_ID )) {
@@ -1723,16 +1723,16 @@ int Interface::Init(InterfaceConfig* config)
 		return GEM_ERROR;
 	}
 
-	Log(MESSAGE, "Core", "Initializing stock sounds...");
+	// Log(MESSAGE, "Core", "Initializing stock sounds...");
 	DSCount = ReadResRefTable ("defsound", DefSound);
 	if (DSCount == 0) {
 		Log(FATAL, "Core", "Cannot find defsound.2da.");
 		return GEM_ERROR;
 	}
 
-	Log(MESSAGE, "Core", "Broadcasting Event Manager...");
+	// Log(MESSAGE, "Core", "Broadcasting Event Manager...");
 	video->SetEventMgr( evntmgr );
-	Log(MESSAGE, "Core", "Initializing Window Manager...");
+	// Log(MESSAGE, "Core", "Initializing Window Manager...");
 	windowmgr = PluginHolder<WindowMgr>(IE_CHU_CLASS_ID);
 	if (windowmgr == NULL) {
 		Log(FATAL, "Core", "Failed to load Window Manager.");
@@ -1747,7 +1747,7 @@ int Interface::Init(InterfaceConfig* config)
 
 	QuitFlag = QF_CHANGESCRIPT;
 
-	Log(MESSAGE, "Core", "Starting up the Sound Driver...");
+	// Log(MESSAGE, "Core", "Starting up the Sound Driver...");
 	AudioDriver = ( Audio * ) PluginMgr::Get()->GetDriver(&Audio::ID, AudioDriverName.c_str());
 	if (AudioDriver == NULL) {
 		Log(FATAL, "Core", "Failed to load sound driver.");
@@ -1758,7 +1758,7 @@ int Interface::Init(InterfaceConfig* config)
 		return GEM_ERROR;
 	}
 
-	Log(MESSAGE, "Core", "Allocating SaveGameIterator...");
+	// Log(MESSAGE, "Core", "Allocating SaveGameIterator...");
 	sgiterator = new SaveGameIterator();
 	if (sgiterator == NULL) {
 		Log(FATAL, "Core", "Failed to allocate SaveGameIterator.");
@@ -1770,7 +1770,7 @@ int Interface::Init(InterfaceConfig* config)
 	vars->SetAt( "GUIEnhancements", (unsigned long)GUIEnhancements );
 	vars->SetAt( "TouchScrollAreas", (unsigned long)TouchScrollAreas );
 
-	Log(MESSAGE, "Core", "Initializing Token Dictionary...");
+	// Log(MESSAGE, "Core", "Initializing Token Dictionary...");
 	tokens = new Variables();
 	if (!tokens) {
 		Log(FATAL, "Core", "Failed to allocate Token dictionary.");
@@ -1778,14 +1778,14 @@ int Interface::Init(InterfaceConfig* config)
 	}
 	tokens->SetType( GEM_VARIABLES_STRING );
 
-	Log(MESSAGE, "Core", "Initializing Music Manager...");
+	// Log(MESSAGE, "Core", "Initializing Music Manager...");
 	music = PluginHolder<MusicMgr>(IE_MUS_CLASS_ID);
 	if (!music) {
 		Log(FATAL, "Core", "Failed to load Music Manager.");
 		return GEM_ERROR;
 	}
 
-	Log(MESSAGE, "Core", "Loading music list...");
+	// Log(MESSAGE, "Core", "Loading music list...");
 	if (HasFeature( GF_HAS_SONGLIST )) {
 		ret = ReadMusicTable("songlist", 1);
 	} else {
@@ -1800,7 +1800,7 @@ int Interface::Init(InterfaceConfig* config)
 
 	int resdata = HasFeature( GF_RESDATA_INI );
 	if (resdata || HasFeature(GF_SOUNDS_INI) ) {
-		Log(MESSAGE, "Core", "Loading resource data File...");
+		// Log(MESSAGE, "Core", "Loading resource data File...");
 		INIresdata = PluginHolder<DataFileMgr>(IE_INI_CLASS_ID);
 		DataStream* ds = gamedata->GetResource(resdata? "resdata":"sounds", IE_INI_CLASS_ID);
 		if (!INIresdata->Open(ds)) {
@@ -1808,14 +1808,14 @@ int Interface::Init(InterfaceConfig* config)
 		}
 	}
 
-	Log(MESSAGE, "Core", "Setting up SFX channels...");
+	// Log(MESSAGE, "Core", "Setting up SFX channels...");
 	ret = ReadSoundChannelsTable();
 	if (!ret) {
 		Log(WARNING, "Core", "Failed to read channel table.");
 	}
 
 	if (HasFeature( GF_HAS_PARTY_INI )) {
-		Log(MESSAGE, "Core", "Loading precreated teams setup...");
+		// Log(MESSAGE, "Core", "Loading precreated teams setup...");
 		INIparty = PluginHolder<DataFileMgr>(IE_INI_CLASS_ID);
 		char tINIparty[_MAX_PATH];
 		PathJoin( tINIparty, GamePath, "Party.ini", NULL );
@@ -1830,7 +1830,7 @@ int Interface::Init(InterfaceConfig* config)
 	}
 
 	if (HasFeature( GF_HAS_BEASTS_INI )) {
-		Log(MESSAGE, "Core", "Loading beasts definition File...");
+		// Log(MESSAGE, "Core", "Loading beasts definition File...");
 		INIbeasts = PluginHolder<DataFileMgr>(IE_INI_CLASS_ID);
 		char tINIbeasts[_MAX_PATH];
 		PathJoin( tINIbeasts, GamePath, "beast.ini", NULL );
@@ -1840,7 +1840,7 @@ int Interface::Init(InterfaceConfig* config)
 			Log(WARNING, "Core", "Failed to load beast definitions.");
 		}
 
-		Log(MESSAGE, "Core", "Loading quests definition File...");
+		// Log(MESSAGE, "Core", "Loading quests definition File...");
 		INIquests = PluginHolder<DataFileMgr>(IE_INI_CLASS_ID);
 		char tINIquests[_MAX_PATH];
 		PathJoin( tINIquests, GamePath, "quests.ini", NULL );
@@ -1854,91 +1854,91 @@ int Interface::Init(InterfaceConfig* config)
 	calendar = NULL;
 	keymap = NULL;
 
-	Log(MESSAGE, "Core", "Bringing up the Global Timer...");
+	// Log(MESSAGE, "Core", "Bringing up the Global Timer...");
 	timer = new GlobalTimer();
 	if (!timer) {
 		Log(FATAL, "Core", "Failed to create global timer.");
 		return GEM_ERROR;
 	}
 
-	Log(MESSAGE, "Core", "Initializing effects...");
+	// Log(MESSAGE, "Core", "Initializing effects...");
 	ret = Init_EffectQueue();
 	if (!ret) {
 		Log(FATAL, "Core", "Failed to initialize effects.");
 		return GEM_ERROR;
 	}
 
-	Log(MESSAGE, "Core", "Initializing Inventory Management...");
+	// Log(MESSAGE, "Core", "Initializing Inventory Management...");
 	ret = InitItemTypes();
 	if (!ret) {
 		Log(FATAL, "Core", "Failed to initialize inventory.");
 		return GEM_ERROR;
 	}
 
-	Log(MESSAGE, "Core", "Initializing string constants...");
+	// Log(MESSAGE, "Core", "Initializing string constants...");
 	displaymsg = new DisplayMessage();
 	if (!displaymsg) {
 		Log(FATAL, "Core", "Failed to initialize string constants.");
 		return GEM_ERROR;
 	}
 
-	Log(MESSAGE, "Core", "Initializing random treasure...");
+	// Log(MESSAGE, "Core", "Initializing random treasure...");
 	ret = ReadRandomItems();
 	if (!ret) {
 		Log(WARNING, "Core", "Failed to initialize random treasure.");
 	}
 
-	Log(MESSAGE, "Core", "Initializing ability tables...");
+	// Log(MESSAGE, "Core", "Initializing ability tables...");
 	ret = ReadAbilityTables();
 	if (!ret) {
 		Log(FATAL, "Core", "Failed to initialize ability tables...");
 		return GEM_ERROR;
 	}
 
-	Log(MESSAGE, "Core", "Reading reputation mod table...");
+	// Log(MESSAGE, "Core", "Reading reputation mod table...");
 	ret = ReadReputationModTable();
 	if (!ret) {
 		Log(WARNING, "Core", "Failed to read reputation mod table.");
 	}
 
 	if ( gamedata->Exists("WMAPLAY", IE_2DA_CLASS_ID) ) {
-		Log(MESSAGE, "Core", "Initializing area aliases...");
+		// Log(MESSAGE, "Core", "Initializing area aliases...");
 		ret = ReadAreaAliasTable( "WMAPLAY" );
 		if (!ret) {
 			Log(WARNING, "Core", "Failed to load area aliases...");
 		}
 	}
 
-	Log(MESSAGE, "Core", "Reading game time table...");
+	// Log(MESSAGE, "Core", "Reading game time table...");
 	ret = ReadGameTimeTable();
 	if (!ret) {
 		Log(FATAL, "Core", "Failed to read game time table...");
 		return GEM_ERROR;
 	}
 
-	Log(MESSAGE, "Core", "Reading special spells table...");
+	// Log(MESSAGE, "Core", "Reading special spells table...");
 	ret = ReadSpecialSpells();
 	if (!ret) {
 		Log(WARNING, "Core", "Failed to load special spells.");
 	}
 
 	ret = ReadDamageTypeTable();
-	Log(MESSAGE, "Core", "Reading damage type table...");
+	// Log(MESSAGE, "Core", "Reading damage type table...");
 	if (!ret) {
 		Log(WARNING, "Core", "Reading damage type table...");
 	}
 
-	Log(MESSAGE, "Core", "Reading game script tables...");
+	// Log(MESSAGE, "Core", "Reading game script tables...");
 	InitializeIEScript();
 
-	Log(MESSAGE, "Core", "Initializing keymap tables...");
+	// Log(MESSAGE, "Core", "Initializing keymap tables...");
 	keymap = new KeyMap();
 	ret = keymap->InitializeKeyMap("keymap.ini", "keymap");
 	if (!ret) {
 		Log(WARNING, "Core", "Failed to initialize keymaps.");
 	}
 
-	Log(MESSAGE, "Core", "Setting up the Console...");
+	// Log(MESSAGE, "Core", "Setting up the Console...");
 	console = new Console(Region(0, 0, Width, 25));
 	Sprite2D* cursor = GetCursorSprite();
 	if (!cursor) {
@@ -1946,7 +1946,7 @@ int Interface::Init(InterfaceConfig* config)
 	} else
 		console->SetCursor (cursor);
 
-	Log(MESSAGE, "Core", "Core Initialization Complete!");
+	// Log(MESSAGE, "Core", "Core Initialization Complete!");
 
 	// dump the potentially changed unhardcoded path to a file that weidu looks at automatically to get our search paths
 	char pathString[_MAX_PATH * 3];
@@ -2283,8 +2283,8 @@ bool Interface::LoadGemRBINI()
 		return false;
 	}
 
-	Log(MESSAGE, "Core", "Loading game type-specific GemRB setup '%s'",
-		inifile->originalfile);
+	// Log(MESSAGE, "Core", "Loading game type-specific GemRB setup '%s'",
+		// inifile->originalfile);
 
 	if (!IsAvailable( IE_INI_CLASS_ID )) {
 		Log(ERROR, "Core", "No INI Importer Available.");
@@ -2363,8 +2363,8 @@ bool Interface::LoadEncoding()
 		return false;
 	}
 
-	Log(MESSAGE, "Core", "Loading encoding definition for %s: '%s'", Encoding.c_str(),
-		inifile->originalfile);
+	// Log(MESSAGE, "Core", "Loading encoding definition for %s: '%s'", Encoding.c_str(),
+		// inifile->originalfile);
 
 	PluginHolder<DataFileMgr> ini(IE_INI_CLASS_ID);
 	ini->Open(inifile);
@@ -3347,7 +3347,7 @@ void Interface::AskAndExit()
 
 		LoadWindowPack("GUIOPT");
 		guiscript->RunFunction("GUIOPT", "OpenQuitMsgWindow");
-		Log(MESSAGE, "Info", "Press ctrl-c (or close the window) again to quit GemRB.\n");
+		// Log(MESSAGE, "Info", "Press ctrl-c (or close the window) again to quit GemRB.\n");
 	} else {
 		ExitGemRB();
 	}
@@ -3491,7 +3491,7 @@ int Interface::PlayMovie(const char* ResRef)
 			}
 		}
 	}
-	
+
 	//check whether there is an override for this movie
 	const char *sound_resref = NULL;
 	AutoTable mvesnd;
@@ -3977,7 +3977,7 @@ void Interface::UpdateWorldMap(ieResRef wmResRef)
 			nae->SetAreaStatus(ae->GetAreaStatus(), OP_SET);
 		}
 	}
-	
+
 	delete worldmap;
 	worldmap = new_worldmap;
 	CopyResRef(WorldMapName[0], wmResRef);

@@ -67,7 +67,7 @@ static void PrintPossibleFiles(StringBuffer& buffer, const char* ResRef, const T
 	}
 }
 
-bool ResourceManager::Exists(const char *ResRef, SClass_ID type, bool silent) const 
+bool ResourceManager::Exists(const char *ResRef, SClass_ID type, bool silent) const
 {
 	if (ResRef[0] == '\0')
 		return false;
@@ -115,8 +115,8 @@ DataStream* ResourceManager::GetResource(const char* ResRef, SClass_ID type, boo
 		DataStream *ds = searchPath[i]->GetResource(ResRef, type);
 		if (ds) {
 			if (!silent) {
-				Log(MESSAGE, "ResourceManager", "Found '%s.%s' in '%s'.",
-					ResRef, core->TypeExt(type), searchPath[i]->GetDescription());
+				// Log(MESSAGE, "ResourceManager", "Found '%s.%s' in '%s'.",
+					// ResRef, core->TypeExt(type), searchPath[i]->GetDescription());
 			}
 			return ds;
 		}
@@ -133,7 +133,7 @@ Resource* ResourceManager::GetResource(const char* ResRef, const TypeID *type, b
 	if (ResRef[0] == '\0')
 		return NULL;
 	if (!silent) {
-		Log(MESSAGE, "ResourceManager", "Searching for '%s'...", ResRef);
+		// Log(MESSAGE, "ResourceManager", "Searching for '%s'...", ResRef);
 	}
 	const std::vector<ResourceDesc> &types = PluginMgr::Get()->GetResourceDesc(type);
 	for (size_t j = 0; j < types.size(); j++) {
@@ -149,8 +149,8 @@ Resource* ResourceManager::GetResource(const char* ResRef, const TypeID *type, b
 				Resource *res = types[j].Create(str);
 				if (res) {
 					if (!silent) {
-						Log(MESSAGE, "ResourceManager", "Found '%s.%s' in '%s'.",
-							ResRef, types[j].GetExt(), searchPath[i]->GetDescription());
+						// // Log(MESSAGE, "ResourceManager", "Found '%s.%s' in '%s'.",
+						// 	ResRef, types[j].GetExt(), searchPath[i]->GetDescription());
 					}
 					return res;
 				}

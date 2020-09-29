@@ -192,21 +192,21 @@ void OpenALAudioDriver::PrintDeviceList ()
 	char *deviceList;
 
 	if (alcIsExtensionPresent(NULL, (ALchar*)"ALC_ENUMERATION_EXT") == AL_TRUE) { // try out enumeration extension
-		Log(MESSAGE, "OpenAL", "Usable audio output devices:");
+		// Log(MESSAGE, "OpenAL", "Usable audio output devices:");
 		deviceList = (char *)alcGetString(NULL, ALC_DEVICE_SPECIFIER);
 
 		while(deviceList && *deviceList) {
-			Log(MESSAGE,"OpenAL", "Devices: %s", deviceList);
+			// Log(MESSAGE,"OpenAL", "Devices: %s", deviceList);
 			deviceList+=strlen(deviceList)+1;
 		}
 		return;
 	}
-	Log(MESSAGE, "OpenAL", "No device enumeration present.");
+	// Log(MESSAGE, "OpenAL", "No device enumeration present.");
 }
 
 bool OpenALAudioDriver::Init(void)
 {
-	Log(MESSAGE, "OpenAL", "Initializing OpenAL driver:\nAL Version:%s\nAL Renderer:%s\nAL Vendor:%s",
+	// Log(MESSAGE, "OpenAL", "Initializing OpenAL driver:\nAL Version:%s\nAL Renderer:%s\nAL Vendor:%s",
 		alGetString(AL_VERSION), alGetString(AL_RENDERER), alGetString(AL_VENDOR));
 
 	ALCdevice *device;
@@ -238,7 +238,7 @@ bool OpenALAudioDriver::Init(void)
 	int sources = CountAvailableSources(MAX_STREAMS+1);
 	num_streams = sources - 1;
 
-	Log(MESSAGE, "OpenAL", "Allocated %d streams.%s",
+	// Log(MESSAGE, "OpenAL", "Allocated %d streams.%s",
 		num_streams, (num_streams < MAX_STREAMS ? " (Fewer than desired.)" : "" ));
 
 	stayAlive = true;
@@ -250,7 +250,7 @@ bool OpenALAudioDriver::Init(void)
 #endif
 
 	if (!InitEFX()) {
-		Log(MESSAGE, "OpenAL", "EFX not available.");
+		// Log(MESSAGE, "OpenAL", "EFX not available.");
 	}
 
 	ambim = new AmbientMgrAL;
@@ -933,7 +933,7 @@ int OpenALAudioDriver::MusicManager(void* arg)
 					driver->MusicPlaying = false;
 					return -1;
 				case AL_INITIAL:
-					Log(MESSAGE, "OpenAL", "Music in INITIAL State. AutoStarting");
+					// Log(MESSAGE, "OpenAL", "Music in INITIAL State. AutoStarting");
 					// ensure that MusicSource has no buffers attached by passing "NULL" buffer
 					alSourcei(driver->MusicSource, AL_BUFFER, 0);
 					checkALError("Unable to detach buffers from music source.", WARNING);
@@ -960,7 +960,7 @@ int OpenALAudioDriver::MusicManager(void* arg)
 					driver->MusicPlaying = false;
 					return -1;
 				case AL_STOPPED:
-					Log(MESSAGE, "OpenAL", "WARNING: Buffer Underrun. AutoRestarting Stream Playback");
+					// Log(MESSAGE, "OpenAL", "WARNING: Buffer Underrun. AutoRestarting Stream Playback");
 					if (driver->MusicSource && alIsSource( driver->MusicSource )) {
 						alSourcePlay( driver->MusicSource );
 						checkALError("Error playing music source", ERROR);
@@ -991,14 +991,14 @@ int OpenALAudioDriver::MusicManager(void* arg)
 						if (size != 0)
 							bFinished = AL_TRUE;
 						if (bFinished) {
-							Log(MESSAGE, "OpenAL", "Playing Next Music");
+							// Log(MESSAGE, "OpenAL", "Playing Next Music");
 							core->GetMusicMgr()->PlayNext();
 							if (driver->MusicPlaying) {
-								Log(MESSAGE, "OpenAL", "Queuing New Music");
+								// Log(MESSAGE, "OpenAL", "Queuing New Music");
 								driver->MusicReader->read_samples( ( driver->music_memory + cnt ), size >> 1 );
 								bFinished = AL_FALSE;
 							} else {
-								Log(MESSAGE, "OpenAL", "No Other Music to play");
+								// Log(MESSAGE, "OpenAL", "No Other Music to play");
 								memset( driver->music_memory + cnt, 0, size );
 								driver->MusicPlaying = false;
 								break;

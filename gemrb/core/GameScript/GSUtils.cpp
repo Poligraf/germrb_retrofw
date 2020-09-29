@@ -453,7 +453,7 @@ void DisplayStringCore(Scriptable* const Sender, int Strref, int flags)
 	ieResRef soundRef = {};
 	unsigned int channel = SFX_CHAN_DIALOG;
 
-	Log(MESSAGE, "GameScript", "Displaying string on: %s", Sender->GetScriptName() );
+	// Log(MESSAGE, "GameScript", "Displaying string on: %s", Sender->GetScriptName() );
 	if (flags & DS_CONST) {
 		if (Sender->Type!=ST_ACTOR) {
 			Log(ERROR, "GameScript", "Verbal constant not supported for non actors!");
@@ -601,7 +601,7 @@ int SeeCore(Scriptable* Sender, Trigger* parameters, int justlos)
 	if (! parameters->int0Parameter) {
 		flags |= GA_NO_HIDDEN;
 	}
-	
+
 	//both are actors
 	if (CanSee(Sender, tar, true, flags) ) {
 		if (justlos) {
@@ -899,7 +899,7 @@ void EscapeAreaCore(Scriptable* Sender, const Point &p, const char* area, const 
 		// last parameter is 'face', which should be passed from relevant action parameter..
 		sprintf( Tmp, "MoveBetweenAreas(\"%s\",[%hd.%hd],%d)", area, enter.x, enter.y, 0 );
 	}
-	Log(MESSAGE, "GSUtils", "Executing %s in EscapeAreaCore", Tmp);
+	// Log(MESSAGE, "GSUtils", "Executing %s in EscapeAreaCore", Tmp);
 	//drop this action, but add another (destroyself or movebetweenareas)
 	//between the arrival and the final escape, there should be a wait time
 	//that wait time could be handled here
@@ -967,7 +967,7 @@ void BeginDialog(Scriptable* Sender, Action* parameters, int Flags)
 	Scriptable* tar = NULL, *scr = NULL;
 
 	if (InDebug&ID_VARIABLES) {
-		Log(MESSAGE, "GSUtils", "BeginDialog core");
+		// Log(MESSAGE, "GSUtils", "BeginDialog core");
 	}
 	tar = GetStoredActorFromObject(Sender, parameters->objects[1], GA_NO_DEAD);
 	if (Flags & BD_OWN) {
@@ -1111,7 +1111,7 @@ void BeginDialog(Scriptable* Sender, Action* parameters, int Flags)
 		case BD_INTERACT: //using the source for the dialog
 			Game *game = core->GetGame();
 			if (game->BanterBlockFlag || game->BanterBlockTime) {
-				Log(MESSAGE, "GameScript", "Banterblock disabled interaction.");
+				// Log(MESSAGE, "GameScript", "Banterblock disabled interaction.");
 				Sender->ReleaseCurrentAction();
 				return;
 			}
@@ -1226,8 +1226,8 @@ bool CreateMovementEffect(Actor* actor, const char *area, const Point &position,
 
 void MoveBetweenAreasCore(Actor* actor, const char *area, const Point &position, int face, bool adjust)
 {
-	Log(MESSAGE, "GameScript", "MoveBetweenAreas: %s to %s [%d.%d] face: %d",
-		actor->GetName(0), area,position.x,position.y, face);
+	// Log(MESSAGE, "GameScript", "MoveBetweenAreas: %s to %s [%d.%d] face: %d",
+		// actor->GetName(0), area,position.x,position.y, face);
 	Map* map1 = actor->GetCurrentArea();
 	Map* map2;
 	Game* game = core->GetGame();

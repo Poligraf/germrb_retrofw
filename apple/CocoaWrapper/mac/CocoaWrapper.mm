@@ -196,7 +196,7 @@ using namespace GemRB;
 		delete config;
 		delete( core );
 		core = NULL;
-		Log(MESSAGE, "Cocoa Wrapper", "Unable to initialize core. Terminating.");
+		// Log(MESSAGE, "Cocoa Wrapper", "Unable to initialize core. Terminating.");
 	} else {
 		[_configWindow close];
 		// pass control to GemRB

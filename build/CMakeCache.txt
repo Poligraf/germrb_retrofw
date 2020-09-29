@@ -72,7 +72,7 @@ CMAKE_CXX_FLAGS_DEBUG:STRING=
 CMAKE_CXX_FLAGS_MINSIZEREL:STRING=-Os -DNDEBUG
 
 //Release CXXFLAGS
-CMAKE_CXX_FLAGS_RELEASE:STRING=-O2 -DNDEBUG -DDINGOO -I/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/buildroot/output/host/mipsel-RetroFW-linux-uclibc/sysroot/usr/include/
+CMAKE_CXX_FLAGS_RELEASE:STRING=-O3 -DNDEBUG -DDINGOO -I/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/buildroot/output/host/mipsel-RetroFW-linux-uclibc/sysroot/usr/include/
 
 //Flags used by the CXX compiler during RELWITHDEBINFO builds.
 CMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG
@@ -95,7 +95,7 @@ CMAKE_C_FLAGS_DEBUG:STRING=
 CMAKE_C_FLAGS_MINSIZEREL:STRING=-Os -DNDEBUG
 
 //Release CFLAGS
-CMAKE_C_FLAGS_RELEASE:STRING=-O2 -DDINGOO -DNDEBUG -I/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/buildroot/output/host/mipsel-RetroFW-linux-uclibc/sysroot/usr/include/
+CMAKE_C_FLAGS_RELEASE:STRING=-O3 -DDINGOO -DNDEBUG -I/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/buildroot/output/host/mipsel-RetroFW-linux-uclibc/sysroot/usr/include/
 
 //Flags used by the C compiler during RELWITHDEBINFO builds.
 CMAKE_C_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG

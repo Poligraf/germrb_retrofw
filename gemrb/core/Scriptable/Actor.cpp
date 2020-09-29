@@ -2221,7 +2221,7 @@ static void InitActorTables()
 	}
 	if (iwd2class) {
 		// we need to set up much less here due to a saner class/level system in 3ed
-		Log(MESSAGE, "Actor", "Examining IWD2-style classes.2da");
+		// Log(MESSAGE, "Actor", "Examining IWD2-style classes.2da");
 		AutoTable tht;
 		for (i=0; i<(int)tm->GetRowCount(); i++) {
 			const char *classname = tm->GetRowName(i);
@@ -2287,7 +2287,7 @@ static void InitActorTables()
 	} else {
 		AutoTable hptm;
 		//iwd2 just uses levelslotsiwd2 instead
-		Log(MESSAGE, "Actor", "Examining classes.2da");
+		// Log(MESSAGE, "Actor", "Examining classes.2da");
 
 		//when searching the levelslots, you must search for
 		//levelslots[BaseStats[IE_CLASS]-1] as there is no class id of 0
@@ -2436,7 +2436,7 @@ static void InitActorTables()
 			}
 		}*/
 	}
-	Log(MESSAGE, "Actor", "Finished examining classes.2da");
+	// Log(MESSAGE, "Actor", "Finished examining classes.2da");
 
 	// set the default weapon slot count for the inventory gui — if we're not in iwd2 already
 	if (!iwd2class) {
@@ -6795,8 +6795,8 @@ void Actor::InitRound(ieDword gameTime)
 	roundTime = gameTime;
 
 	//print a little message :)
-	Log(MESSAGE, "InitRound", "Name: %s | Attacks: %d | Start: %d",
-		ShortName, attacksperround, gameTime);
+	// Log(MESSAGE, "InitRound", "Name: %s | Attacks: %d | Start: %d",
+		// ShortName, attacksperround, gameTime);
 
 	// this might not be the right place, but let's give it a go
 	if (attacksperround && InParty) {
@@ -8824,8 +8824,8 @@ bool Actor::GetSoundFrom2DA(ieResRef Sound, unsigned int index) const
 			Log(WARNING, "Actor", "TODO:Cannot determine 2DA rowcount for index: %d", index);
 			return false;
 	}
-	Log(MESSAGE, "Actor", "Getting sound 2da %.8s entry: %s",
-		anims->ResRef, tab->GetRowName(index) );
+	// Log(MESSAGE, "Actor", "Getting sound 2da %.8s entry: %s",
+		// anims->ResRef, tab->GetRowName(index) );
 	int col = core->Roll(1,tab->GetColumnCount(index),-1);
 	strnlwrcpy(Sound, tab->QueryField (index, col), 8);
 	return true;
@@ -8851,7 +8851,7 @@ bool Actor::GetSoundFromINI(ieResRef Sound, unsigned int index) const
 	 *   33x cf1sound (stance (combat) fidget)
 	 *    2x ms1sound (misc; both hammers hitting metal; ambient sounds for idle animations? Likely doesn't fit here)
 	 *   19x sf1sound (stand (normal) fidget)
-	 * 
+	 *
 	 * TODO: iwd:
 	 *   att2-att4
 	 *   fall

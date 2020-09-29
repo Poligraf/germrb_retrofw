@@ -998,7 +998,7 @@ void SDLVideoDriver::DrawRect(const Region& rgn, const Color& color, bool fill, 
 			SDL_Rect drect = RectFromRegion(ClippedDrawingRect(rgn));
 			SDL_FillRect( backBuf, &drect, val );
 		} else {
-			SDL_Surface * rectsurf = SDL_CreateRGBSurface( SDL_HWSURFACE | SDL_SRCALPHA, rgn.w, rgn.h, 8, 0, 0, 0, 0 );
+			SDL_Surface * rectsurf = SDL_CreateRGBSurface( SDL_SWSURFACE | SDL_SRCALPHA, rgn.w, rgn.h, 8, 0, 0, 0, 0 );
 			SDL_Color c;
 			c.r = color.r;
 			c.b = color.b;
@@ -1032,7 +1032,7 @@ void SDLVideoDriver::DrawRectSprite(const Region& rgn, const Color& color, const
 		long val = SDL_MapRGBA( surf->format, color.r, color.g, color.b, color.a );
 		SDL_FillRect( surf, &drect, val );
 	} else {
-		SDL_Surface * rectsurf = SDL_CreateRGBSurface( SDL_HWSURFACE | SDL_SRCALPHA, rgn.w, rgn.h, 8, 0, 0, 0, 0 );
+		SDL_Surface * rectsurf = SDL_CreateRGBSurface( SDL_SWSURFACE | SDL_SRCALPHA, rgn.w, rgn.h, 8, 0, 0, 0, 0 );
 		SDL_Color c;
 		c.r = color.r;
 		c.b = color.b;

@@ -99,14 +99,14 @@ void SDLAudio::music_callback(void *udata, unsigned short *stream, int len) {
 			break;
 
 		// TODO: this shouldn't be in the callback (see also the openal thread)
-		Log(MESSAGE, "SDLAudio", "Playing Next Music");
+		// Log(MESSAGE, "SDLAudio", "Playing Next Music");
 		core->GetMusicMgr()->PlayNext();
 
 		stream = stream + cnt;
 		len = len - (cnt * 2);
 
 		if (!driver->MusicPlaying) {
-			Log(MESSAGE, "SDLAudio", "No Other Music to play");
+			// Log(MESSAGE, "SDLAudio", "No Other Music to play");
 			memset(stream, 0, len);
 			Mix_HookMusic(NULL, NULL);
 			break;

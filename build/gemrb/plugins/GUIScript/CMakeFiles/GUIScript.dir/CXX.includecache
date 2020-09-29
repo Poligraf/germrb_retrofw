@@ -1428,12 +1428,6 @@ Python.h
 ScriptEngine.h
 /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/gemrb/plugins/GUIScript/ScriptEngine.h
 
-/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/gemrb/plugins/GUIScript/PythonHelpers.cpp
-PythonHelpers.h
-/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/gemrb/plugins/GUIScript/PythonHelpers.h
-GUI/Window.h
-/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/gemrb/plugins/GUIScript/GUI/Window.h
-
 /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/gemrb/plugins/GUIScript/PythonHelpers.h
 GUIScript.h
 /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/gemrb/plugins/GUIScript/GUIScript.h

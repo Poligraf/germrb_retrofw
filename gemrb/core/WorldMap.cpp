@@ -331,7 +331,7 @@ int WorldMap::CalculateDistances(const ieResRef AreaName, int direction)
 		free(GotHereFrom);
 	}
 
-	Log(MESSAGE, "WorldMap", "CalculateDistances for Area: %s", AreaName);
+	// Log(MESSAGE, "WorldMap", "CalculateDistances for Area: %s", AreaName);
 
 	size_t memsize =sizeof(int) * area_entries.size();
 	Distances = (int *) malloc( memsize );

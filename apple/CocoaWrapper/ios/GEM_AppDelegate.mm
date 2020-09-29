@@ -108,7 +108,7 @@ using namespace GemRB;
 		if ((ret = core->Init(config)) == GEM_ERROR) {
 			delete config;
 			delete( core );
-			Log(MESSAGE, "Cocoa Wrapper", "Unable to initialize core. Relaunching wraper.");
+			// Log(MESSAGE, "Cocoa Wrapper", "Unable to initialize core. Relaunching wraper.");
 			// reload the wrapper interface so we can try again instead of dying
 			[self setupWrapper];
 		} else {
@@ -132,7 +132,7 @@ using namespace GemRB;
 	FileStream *fs = new FileStream();
 	if (fs->Create(cLogFile)) {
 		AddLogger(createFileLogger(fs));
-		Log(MESSAGE, "Cocoa Wrapper", "Started a log file at %s", cLogFile);
+		// Log(MESSAGE, "Cocoa Wrapper", "Started a log file at %s", cLogFile);
 	} else {
 		delete fs;
 		Log(ERROR, "Cocoa Wrapper", "Unable to start log file at %s", cLogFile);

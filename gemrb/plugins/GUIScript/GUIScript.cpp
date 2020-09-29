@@ -8947,7 +8947,7 @@ static PyObject* GemRB_GetContainerItem(PyObject * /*self*/, PyObject* args)
 
 	Item *item = gamedata->GetItem(ci->ItemResRef, true);
 	if (!item) {
-		Log(MESSAGE, "GUIScript", "Cannot find container (%s) item %s!", container->GetScriptName(), ci->ItemResRef);
+		// Log(MESSAGE, "GUIScript", "Cannot find container (%s) item %s!", container->GetScriptName(), ci->ItemResRef);
 		Py_RETURN_NONE;
 	}
 
@@ -9032,7 +9032,7 @@ static PyObject* GemRB_ChangeContainerItem(PyObject * /*self*/, PyObject* args)
 		si = container->inventory.GetSlotItem(Slot);
 		res = core->CanMoveItem(si);
 		if (!res) { //cannot move
-			Log(MESSAGE, "GUIScript", "Cannot move item, it is undroppable!");
+			// Log(MESSAGE, "GUIScript", "Cannot move item, it is undroppable!");
 			Py_RETURN_NONE;
 		}
 
@@ -9072,7 +9072,7 @@ static PyObject* GemRB_ChangeContainerItem(PyObject * /*self*/, PyObject* args)
 	} else { //put stuff in container, simple!
 		res = core->CanMoveItem(actor->inventory.GetSlotItem(core->QuerySlot(Slot) ) );
 		if (!res) { //cannot move
-			Log(MESSAGE, "GUIScript","Cannot move item, it is undroppable!");
+			// Log(MESSAGE, "GUIScript","Cannot move item, it is undroppable!");
 			Py_RETURN_NONE;
 		}
 
@@ -9459,7 +9459,7 @@ static int SellBetweenStores(STOItem* si, int action, Store *store)
 	while (si->PurchasedAmount) {
 		//store/bag is at full capacity
 		if (store->Capacity && (store->Capacity <= store->GetRealStockSize())) {
-			Log(MESSAGE, "GUIScript", "Store is full.");
+			// Log(MESSAGE, "GUIScript", "Store is full.");
 			return ASI_FAILED;
 		}
 		if (si->InfiniteSupply!=-1) {
@@ -9638,7 +9638,7 @@ static PyObject* GemRB_ChangeStoreItem(PyObject * /*self*/, PyObject* args)
 	{
 		//store/bag is at full capacity
 		if (store->Capacity && (store->Capacity <= store->GetRealStockSize()) ) {
-			Log(MESSAGE, "GUIScript", "Store is full.");
+			// Log(MESSAGE, "GUIScript", "Store is full.");
 			res = ASI_FAILED;
 			break;
 		}
@@ -11062,7 +11062,7 @@ static PyObject* GemRB_CanUseItemType(PyObject * /*self*/, PyObject* args)
 	}
 	Item *item = gamedata->GetItem(ItemName, true);
 	if (!item) {
-		Log(MESSAGE, "GUIScript", "Cannot find item %s to check!", ItemName);
+		// Log(MESSAGE, "GUIScript", "Cannot find item %s to check!", ItemName);
 		return PyInt_FromLong(0);
 	}
 	Actor* actor = NULL;
@@ -11255,7 +11255,7 @@ static PyObject* GemRB_GetItem(PyObject * /*self*/, PyObject* args)
 
 	Item* item = gamedata->GetItem(ResRef, true);
 	if (item == NULL) {
-		Log(MESSAGE, "GUIScript", "Cannot get item %s!", ResRef);
+		// Log(MESSAGE, "GUIScript", "Cannot get item %s!", ResRef);
 		Py_INCREF( Py_None );
 		return Py_None;
 	}
@@ -13452,12 +13452,12 @@ static PyObject* GemRB_ClearActions(PyObject * /*self*/, PyObject* args)
 	GET_ACTOR_GLOBAL();
 
 	if (actor->GetInternalFlag()&IF_NOINT) {
-		Log(MESSAGE, "GuiScript","Cannot break action!");
+		// Log(MESSAGE, "GuiScript","Cannot break action!");
 		Py_INCREF( Py_None );
 		return Py_None;
 	}
 	if (!(actor->GetStep()) && !actor->Modal.State && !actor->LastTarget && actor->LastTargetPos.isempty() && !actor->LastSpellTarget) {
-		Log(MESSAGE, "GuiScript","No breakable action!");
+		// Log(MESSAGE, "GuiScript","No breakable action!");
 		Py_INCREF( Py_None );
 		return Py_None;
 	}
@@ -14006,7 +14006,7 @@ static PyObject* GemRB_UseItem(PyObject * /*self*/, PyObject* args)
 			//quickslot
 			actor->GetItemSlotInfo(&itemdata, header, -1);
 			if (!itemdata.Charges) {
-				Log(MESSAGE, "GUIScript", "QuickItem has no charges.");
+				// Log(MESSAGE, "GUIScript", "QuickItem has no charges.");
 				Py_INCREF( Py_None );
 				return Py_None;
 			}
@@ -16026,7 +16026,7 @@ bool GUIScript::Init(void)
 
 bool GUIScript::Autodetect(void)
 {
-	Log(MESSAGE, "GUIScript", "Detecting GameType.");
+	// Log(MESSAGE, "GUIScript", "Detecting GameType.");
 
 	char path[_MAX_PATH];
 	PathJoin( path, core->GUIScriptsPath, "GUIScripts", NULL );
@@ -16055,7 +16055,7 @@ bool GUIScript::Autodetect(void)
 	} while (++iter);
 
 	if (gametype_hint[0]) {
-		Log(MESSAGE, "GUIScript", "Detected GameType: %s", gametype_hint);
+		// Log(MESSAGE, "GUIScript", "Detected GameType: %s", gametype_hint);
 		strcpy(core->GameType, gametype_hint);
 		return true;
 	}
@@ -16070,7 +16070,7 @@ bool GUIScript::LoadScript(const char* filename)
 	if (!Py_IsInitialized()) {
 		return false;
 	}
-	Log(MESSAGE, "GUIScript", "Loading Script %s.", filename);
+	// Log(MESSAGE, "GUIScript", "Loading Script %s.", filename);
 
 	PyObject *pName = PyString_FromString( filename );
 	/* Error checking of pName left out */
