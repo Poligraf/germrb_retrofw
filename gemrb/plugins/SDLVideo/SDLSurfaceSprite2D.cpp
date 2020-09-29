@@ -126,7 +126,7 @@ bool SDLSurfaceSprite2D::ConvertFormatTo(int bpp, ieDword rmask, ieDword gmask,
 		if (fmt != SDL_PIXELFORMAT_UNKNOWN) {
 			SDL_Surface* ns = SDL_ConvertSurfaceFormat( surface, fmt, 0);
 #else
-		SDL_Surface* tmp = SDL_CreateRGBSurface(SDL_SWSURFACE, Width, Height, bpp, rmask, gmask, bmask, amask);
+		SDL_Surface* tmp = SDL_CreateRGBSurface(SDL_HWSURFACE, Width, Height, bpp, rmask, gmask, bmask, amask);
 		if (tmp) {
 			SDL_Surface* ns = SDL_ConvertSurface( surface, tmp->format, 0);
 			SDL_FreeSurface(tmp);
