@@ -99,10 +99,10 @@ static void vLog(log_level level, const char* owner, const char* message, log_co
 
 void print(const char *message, ...)
 {
-	va_list ap;
-	va_start(ap, message);
-	vLog(MESSAGE, "Unknown", message, WHITE, ap);
-	va_end(ap);
+	// va_list ap;
+	// va_start(ap, message);
+	// vLog(MESSAGE, "Unknown", message, WHITE, ap);
+	// va_end(ap);
 }
 
 void error(const char* owner, const char* message, ...)

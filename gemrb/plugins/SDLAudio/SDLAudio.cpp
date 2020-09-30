@@ -64,7 +64,7 @@ bool SDLAudio::Init(void)
 		return false;
 	}
 	OurMutex = SDL_CreateMutex();
-#ifdef RPI
+#ifdef DINGOO
 	if (Mix_OpenAudio(22050, MIX_DEFAULT_FORMAT, 2, 512) < 0) {
 #else
 	if (Mix_OpenAudio(22050, MIX_DEFAULT_FORMAT, 2, 8192) < 0) {
