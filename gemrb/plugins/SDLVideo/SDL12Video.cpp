@@ -56,7 +56,7 @@ int SDL12VideoDriver::CreateDisplay(int w, int h, int b, bool fs, const char* ti
 	bpp=b;
 	fullscreen=fs;
 	// Log(MESSAGE, "SDL 1.2 Driver", "Creating display");
-	ieDword flags = SDL_SWSURFACE;
+	ieDword flags = SDL_HWSURFACE|SDL_TRIPLEBUF;
 	if (fullscreen) {
 		flags |= SDL_FULLSCREEN;
 	}
@@ -79,7 +79,7 @@ int SDL12VideoDriver::CreateDisplay(int w, int h, int b, bool fs, const char* ti
 	Viewport.h = height;
 	SetScreenClip(NULL);
 	// Log(MESSAGE, "SDL 1.2 Driver", "Creating Main Surface...");
-	SDL_Surface* tmp = SDL_CreateRGBSurface( SDL_SWSURFACE, width, height,
+	SDL_Surface* tmp = SDL_CreateRGBSurface( SDL_HWSURFACE, width, height,
 						bpp, 0, 0, 0, 0 );
 	// Log(MESSAGE, "SDL 1.2 Driver", "Creating Back Buffer...");
 	backBuf = SDL_DisplayFormat( tmp );
