@@ -81,14 +81,14 @@ int SDL20VideoDriver::CreateDisplay(int w, int h, int bpp, bool fs, const char* 
 	}
 	window = SDL_CreateWindow(title, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, winFlags);
 	if (window == NULL) {
-		Log(ERROR, "SDL 2 Driver", "couldnt create window:%s", SDL_GetError());
+		//Log(ERROR, "SDL 2 Driver", "couldnt create window:%s", SDL_GetError());
 		return GEM_ERROR;
 	}
 
 	renderer = SDL_CreateRenderer(window, -1, 0);
 
 	if (renderer == NULL) {
-		Log(ERROR, "SDL 2 Driver", "couldnt create renderer:%s", SDL_GetError());
+		//Log(ERROR, "SDL 2 Driver", "couldnt create renderer:%s", SDL_GetError());
 		return GEM_ERROR;
 	}
 
@@ -155,7 +155,7 @@ doneFormat:
 	this->bpp = bpp;
 
 	if (!backBuf) {
-		Log(ERROR, "SDL 2 Video", "Unable to create backbuffer of %s format: %s",
+		//Log(ERROR, "SDL 2 Video", "Unable to create backbuffer of %s format: %s",
 			SDL_GetPixelFormatName(format), SDL_GetError());
 		return GEM_ERROR;
 	}
@@ -176,7 +176,7 @@ void SDL20VideoDriver::InitMovieScreen(int &w, int &h, bool yuv)
 		screenTexture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STREAMING, width, height);
 	}
 	if (!screenTexture) {
-		Log(ERROR, "SDL 2 Driver", "Unable to create texture for video playback: %s", SDL_GetError());
+		//Log(ERROR, "SDL 2 Driver", "Unable to create texture for video playback: %s", SDL_GetError());
 	}
 	w = width;
 	h = height;
@@ -217,7 +217,7 @@ void SDL20VideoDriver::showFrame(unsigned char* buf, unsigned int bufw,
 	SDL_Color color = {0, 0, 0, 0};
 
 	if(SDL_LockTexture(screenTexture, NULL, &pixels, &pitch) != GEM_OK) {
-		Log(ERROR, "SDL 2 driver", "Unable to lock video player: %s", SDL_GetError());
+		//Log(ERROR, "SDL 2 driver", "Unable to lock video player: %s", SDL_GetError());
 		return;
 	}
 	if (g_truecolor) {
@@ -283,7 +283,7 @@ void SDL20VideoDriver::showYUVFrame(unsigned char** buf, unsigned int *strides,
 	Uint8 *pixels;
 	int pitch;
 	if(SDL_LockTexture(screenTexture, NULL, (void**)&pixels, &pitch) != GEM_OK) {
-		Log(ERROR, "SDL 2 driver", "Unable to lock video player: %s", SDL_GetError());
+		//Log(ERROR, "SDL 2 driver", "Unable to lock video player: %s", SDL_GetError());
 		return;
 	}
 	pitch = w;
@@ -348,7 +348,7 @@ int SDL20VideoDriver::SwapBuffers(void)
 	 void *pixels;
 	 int pitch;
 	 if(SDL_LockTexture(screenTexture, NULL, &pixels, &pitch) != GEM_OK) {
-	 Log(ERROR, "SDL 2 driver", "Unable to lock screen texture: %s", SDL_GetError());
+	 //Log(ERROR, "SDL 2 driver", "Unable to lock screen texture: %s", SDL_GetError());
 	 return GEM_ERROR;
 	 }
 

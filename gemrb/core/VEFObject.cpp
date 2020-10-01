@@ -259,7 +259,7 @@ void VEFObject::LoadVEF(DataStream *stream)
 
 	stream->ReadResRef( Signature);
 	if (strncmp( Signature, "VEF V1.0", 8 ) != 0) {
-		Log(ERROR, "VEFObject", "Not a valid VEF File: %s", ResName);
+		//Log(ERROR, "VEFObject", "Not a valid VEF File: %s", ResName);
 		delete stream;
 		return;
 	}

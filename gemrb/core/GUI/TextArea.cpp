@@ -52,7 +52,7 @@ TextArea::TextArea(const Region& frame, Font* text, Font* caps,
 
 	// in case a bad or missing font was specified, use an obvious fallback
 	if (!finit) {
-		Log(ERROR, "TextArea", "Tried to use missing font, resorting to a fallback!");
+		//Log(ERROR, "TextArea", "Tried to use missing font, resorting to a fallback!");
 		finit = core->GetTextFont();
 		ftext = finit;
 	}

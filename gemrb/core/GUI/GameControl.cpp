@@ -1338,8 +1338,8 @@ void GameControl::OnMouseOver(unsigned short x, unsigned short y)
 		}
 
 		// don't change the cursor for birds
-		if (lastActor && (lastActor->GetStat(IE_DONOTJUMP) == DNJ_BIRD)) return;	
-		
+		if (lastActor && (lastActor->GetStat(IE_DONOTJUMP) == DNJ_BIRD)) return;
+
 		if (lastActor) {
 			lastActorID = lastActor->GetGlobalID();
 			lastActor->SetOver( true );
@@ -1584,7 +1584,7 @@ void GameControl::TryToPick(Actor *source, Scriptable *tgt)
 			}
 			break;
 		default:
-			Log(ERROR, "GameControl", "Invalid pick target of type %d", tgt->Type);
+			//Log(ERROR, "GameControl", "Invalid pick target of type %d", tgt->Type);
 			return;
 	}
 	source->CommandActor(GenerateActionDirect(cmdString, tgt));
@@ -2255,7 +2255,7 @@ bool GameControl::OnSpecialKeyPress(unsigned char Key)
 	Game *game = core->GetGame();
 	if (!game) return false;
 	int partysize = game->GetPartySize(false);
-	
+
 	int pm;
 	ieDword keyScrollSpd = 64;
 	core->GetDictionary()->Lookup("Keyboard Scroll Speed", keyScrollSpd);
@@ -2425,8 +2425,8 @@ bool GameControl::SetGUIHidden(bool hide)
 						continue;
 					}
 				}
-				Log(ERROR, "GameControl", "Invalid window or position: %s:%u",
-					*val, index);
+				//Log(ERROR, "GameControl", "Invalid window or position: %s:%u",
+//					*val, index);
 			}
 		}
 	}
@@ -2483,7 +2483,7 @@ void GameControl::ResizeParentWindowFor(Window* win, int type, WINDOW_RESIZE_OPE
 			Height = Owner->Height;
 		}
 	} else {
-		Log(ERROR, "GameControl", "Unknown resize type: %d", type);
+		//Log(ERROR, "GameControl", "Unknown resize type: %d", type);
 	}
 }
 

@@ -369,8 +369,8 @@ void SDLAudio::QueueBuffer(int stream, unsigned short bits,
 		SDL_AudioCVT cvt;
 		if (SDL_BuildAudioCVT(&cvt, (bits == 8 ? AUDIO_S8 : AUDIO_S16SYS), channels, samplerate,
 				audio_format, audio_channels, audio_rate) == 0) {
-			Log(ERROR, "SDLAudio", "Couldn't convert video stream! trying to convert %d bits, %d channels, %d rate",
-				bits, channels, samplerate);
+			//Log(ERROR, "SDLAudio", "Couldn't convert video stream! trying to convert %d bits, %d channels, %d rate",
+//				bits, channels, samplerate);
 			return;
 		}
 		cvt.buf = (Uint8*)malloc(size*cvt.len_mult);

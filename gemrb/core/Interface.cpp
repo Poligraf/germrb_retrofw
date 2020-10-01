@@ -645,7 +645,7 @@ void Interface::HandleFlags()
 			//rearrange party slots
 			game->ConsolidateParty();
 		} else {
-			Log(ERROR, "Core", "No game to enter...");
+			//Log(ERROR, "Core", "No game to enter...");
 			QuitFlag = QF_QUITGAME;
 		}
 	}
@@ -1029,7 +1029,7 @@ int Interface::ReadResRefTable(const ieResRef tablename, ieResRef *&data)
 	}
 	AutoTable tm(tablename);
 	if (!tm) {
-		Log(ERROR, "Core", "Cannot find %s.2da.", tablename);
+		//Log(ERROR, "Core", "Cannot find %s.2da.", tablename);
 		return 0;
 	}
 	count = tm->GetRowCount();
@@ -1047,7 +1047,7 @@ int Interface::ReadResRefTable(const ieResRef tablename, ieResRef *&data)
 int Interface::LoadSprites()
 {
 	if (!IsAvailable( IE_2DA_CLASS_ID )) {
-		Log(ERROR, "Core", "No 2DA Importer Available.");
+		//Log(ERROR, "Core", "No 2DA Importer Available.");
 		return GEM_ERROR;
 	}
 
@@ -1065,8 +1065,8 @@ int Interface::LoadSprites()
 
 	// this is the last existing cursor type
 	if (CursorCount<IE_CURSOR_WAY) {
-		Log(ERROR, "Core", "Failed to load enough cursors (%d < %d).",
-				CursorCount, IE_CURSOR_WAY);
+		//Log(ERROR, "Core", "Failed to load enough cursors (%d < %d).",
+//				CursorCount, IE_CURSOR_WAY);
 		return GEM_ERROR;
 	}
 	video->SetCursor( Cursors[0], VID_CUR_UP );
@@ -1077,7 +1077,7 @@ int Interface::LoadSprites()
 	// Log(MESSAGE, "Core", "Loading Fog-Of-War bitmaps...");
 	if (!anim || anim->GetCycleSize( 0 ) != 8) {
 		// unknown type of fog anim
-		Log(ERROR, "Core", "Failed to load Fog-of-War bitmaps.");
+		//Log(ERROR, "Core", "Failed to load Fog-of-War bitmaps.");
 		return GEM_ERROR;
 	}
 
@@ -1152,7 +1152,7 @@ int Interface::LoadSprites()
 			anim = (AnimationFactory*) gamedata->GetFactoryResource(GroundCircleBam[size], IE_BAM_CLASS_ID);
 			if (!anim || anim->GetCycleCount() != 6) {
 				// unknown type of circle anim
-				Log(ERROR, "Core", "Failed Loading Ground circle bitmaps...");
+				//Log(ERROR, "Core", "Failed Loading Ground circle bitmaps...");
 				return GEM_ERROR;
 			}
 
@@ -1172,7 +1172,7 @@ int Interface::LoadSprites()
 		anim = (AnimationFactory*) gamedata->GetFactoryResource(TooltipBackResRef, IE_BAM_CLASS_ID);
 		// Log(MESSAGE, "Core", "Initializing Tooltips...");
 		if (!anim) {
-			Log(ERROR, "Core", "Failed to initialize tooltips.");
+			//Log(ERROR, "Core", "Failed to initialize tooltips.");
 			return GEM_ERROR;
 		}
 		TooltipBack = new Sprite2D * [3];
@@ -1191,7 +1191,7 @@ int Interface::LoadFonts()
 	// Log(MESSAGE, "Core", "Loading Fonts...");
 	AutoTable tab("fonts");
 	if (!tab) {
-		Log(ERROR, "Core", "Cannot find fonts.2da.");
+		//Log(ERROR, "Core", "Cannot find fonts.2da.");
 		return GEM_ERROR;
 	}
 
@@ -1439,7 +1439,7 @@ int Interface::Init(InterfaceConfig* config)
 	}
 
 	if ( StupidityDetector( CachePath )) {
-		Log(ERROR, "Core", "Cache path %s doesn't exist, not a folder or contains alien files!", CachePath );
+		//Log(ERROR, "Core", "Cache path %s doesn't exist, not a folder or contains alien files!", CachePath );
 		return false;
 	}
 	if (!KeepCache) DelTree((const char *) CachePath, false);
@@ -1659,13 +1659,13 @@ int Interface::Init(InterfaceConfig* config)
 
 	// Log(MESSAGE, "Core", "Reading Encoding Table...");
 	if (!LoadEncoding()) {
-		Log(ERROR, "Core", "Cannot Load Encoding.");
+		//Log(ERROR, "Core", "Cannot Load Encoding.");
 	}
 
 	// Log(MESSAGE, "Core", "Creating Projectile Server...");
 	projserv = new ProjectileServer();
 	if (!projserv->GetHighestProjectileNumber()) {
-		Log(ERROR, "Core", "No projectiles are available...");
+		//Log(ERROR, "Core", "No projectiles are available...");
 	}
 
 	// Log(MESSAGE, "Core", "Checking for Dialogue Manager...");
@@ -1692,8 +1692,8 @@ int Interface::Init(InterfaceConfig* config)
 		PathJoin(strpath, GamePath, "dialogf.tlk", NULL);
 		FileStream* fs = FileStream::OpenFile(strpath);
 		if (!fs) {
-			Log(ERROR, "Core", "Cannot find DialogF.tlk. Let us know which translation you are using.");
-			Log(ERROR, "Core", "Falling back to main TLK file, so female text may be wrong!");
+			//Log(ERROR, "Core", "Cannot find DialogF.tlk. Let us know which translation you are using.");
+			//Log(ERROR, "Core", "Falling back to main TLK file, so female text may be wrong!");
 			strings2 = strings;
 		} else {
 			strings2->Open(fs);
@@ -1942,7 +1942,7 @@ int Interface::Init(InterfaceConfig* config)
 	console = new Console(Region(0, 0, Width, 25));
 	Sprite2D* cursor = GetCursorSprite();
 	if (!cursor) {
-		Log(ERROR, "Core", "Failed to load cursor sprite.");
+		//Log(ERROR, "Core", "Failed to load cursor sprite.");
 	} else
 		console->SetCursor (cursor);
 
@@ -2287,7 +2287,7 @@ bool Interface::LoadGemRBINI()
 		// inifile->originalfile);
 
 	if (!IsAvailable( IE_INI_CLASS_ID )) {
-		Log(ERROR, "Core", "No INI Importer Available.");
+		//Log(ERROR, "Core", "No INI Importer Available.");
 		return false;
 	}
 	PluginHolder<DataFileMgr> ini(IE_INI_CLASS_ID);
@@ -2668,11 +2668,11 @@ bool Interface::LoadWindowPack(const char* name)
 {
 	DataStream* stream = gamedata->GetResource( name, IE_CHU_CLASS_ID );
 	if (stream == NULL) {
-		Log(ERROR, "Interface", "Error: Cannot find %s.chu", name );
+		//Log(ERROR, "Interface", "Error: Cannot find %s.chu", name );
 		return false;
 	}
 	if (!GetWindowMgr()->Open(stream)) {
-		Log(ERROR, "Interface", "Error: Cannot Load %s.chu", name );
+		//Log(ERROR, "Interface", "Error: Cannot Load %s.chu", name );
 		return false;
 	}
 
@@ -2975,12 +2975,12 @@ int Interface::SetControlStatus(unsigned short WindowIndex,
 int Interface::ShowModal(unsigned short WindowIndex, MODAL_SHADOW Shadow)
 {
 	if (WindowIndex >= windows.size()) {
-		Log(ERROR, "Core", "Window not found");
+		//Log(ERROR, "Core", "Window not found");
 		return -1;
 	}
 	Window* win = windows[WindowIndex];
 	if (win == NULL) {
-		Log(ERROR, "Core", "Window already freed");
+		//Log(ERROR, "Core", "Window already freed");
 		return -1;
 	}
 	win->Visible = WINDOW_FRONT;
@@ -3270,7 +3270,7 @@ int Interface::DelWindow(unsigned short WindowIndex)
 	}
 	Window* win = windows[WindowIndex];
 	if ((win == NULL) || (win->Visible==WINDOW_INVALID) ) {
-		Log(ERROR, "Core", "Window deleted again");
+		//Log(ERROR, "Core", "Window deleted again");
 		return -1;
 	}
 	if (win == ModalWindow) {
@@ -3733,7 +3733,7 @@ bool Interface::SaveConfig()
 
 		fs->Write(contents.get().c_str(), contents.get().size());
 	} else {
-		Log(ERROR, "Core", "Unable to open GemRB defaults. Cannot determine what values to write to %s.", ini_path);
+		//Log(ERROR, "Core", "Unable to open GemRB defaults. Cannot determine what values to write to %s.", ini_path);
 	}
 
 	delete fs;
@@ -3959,7 +3959,7 @@ void Interface::UpdateWorldMap(ieResRef wmResRef)
 	PluginHolder<WorldMapMgr> wmp_mgr(IE_WMP_CLASS_ID);
 
 	if (!wmp_str || !wmp_mgr || !wmp_mgr->Open(wmp_str, NULL)) {
-		Log(ERROR, "Core", "Could not update world map %s", wmResRef);
+		//Log(ERROR, "Core", "Could not update world map %s", wmResRef);
 		return;
 	}
 
@@ -4488,7 +4488,7 @@ bool Interface::StupidityDetector(const char* Pt)
 {
 	char Path[_MAX_PATH];
 	if (strlcpy(Path, Pt, _MAX_PATH) >= _MAX_PATH) {
-		Log(ERROR, "Interface", "Trying to check too long path: %s!", Pt);
+		//Log(ERROR, "Interface", "Trying to check too long path: %s!", Pt);
 		return true;
 	}
 	DirectoryIterator dir(Path);
@@ -4523,7 +4523,7 @@ void Interface::DelTree(const char* Pt, bool onlysave)
 
 	if (!Pt[0]) return; //Don't delete the root filesystem :)
 	if (strlcpy(Path, Pt, _MAX_PATH) >= _MAX_PATH) {
-		Log(ERROR, "Interface", "Trying to delete too long path: %s!", Pt);
+		//Log(ERROR, "Interface", "Trying to delete too long path: %s!", Pt);
 		return;
 	}
 	DirectoryIterator dir(Path);
@@ -4784,7 +4784,7 @@ bool Interface::ResolveRandomItem(CREItem *itm)
 		void* lookup;
 		if ( !RtRows->Lookup( itm->ItemResRef, lookup ) ) {
 			if (!gamedata->Exists(itm->ItemResRef, IE_ITM_CLASS_ID)) {
-				Log(ERROR, "Interface", "Nonexistent random item (bad table entry) detected: %s", itm->ItemResRef);
+				//Log(ERROR, "Interface", "Nonexistent random item (bad table entry) detected: %s", itm->ItemResRef);
 				return false;
 			}
 			return true;
@@ -4821,8 +4821,8 @@ bool Interface::ResolveRandomItem(CREItem *itm)
 		}
 		itm->Usages[0]=(ieWord) Roll(j,k,0);
 	}
-	Log(ERROR, "Interface", "Loop detected while generating random item:%s",
-		itm->ItemResRef);
+	//Log(ERROR, "Interface", "Loop detected while generating random item:%s",
+//		itm->ItemResRef);
 	return false;
 }
 
@@ -4938,7 +4938,7 @@ ieStrRef Interface::GetRumour(const ieResRef dlgref)
 	Dialog *dlg = dm->GetDialog();
 
 	if (!dlg) {
-		Log(ERROR, "Interface", "Cannot load dialog: %s", dlgref);
+		//Log(ERROR, "Interface", "Cannot load dialog: %s", dlgref);
 		return (ieStrRef) -1;
 	}
 	Scriptable *pc = game->GetSelectedPCSingle(false);
@@ -5123,8 +5123,8 @@ int Interface::SwapoutArea(Map *map)
 {
 	//refuse to save ambush areas, for example
 	if (map->AreaFlags & AF_NOSAVE) {
-		Log(DEBUG, "Core", "Not saving area %s",
-			map->GetScriptName());
+		//Log (DEBUG, "Core", "Not saving area %s",
+			// map->GetScriptName());
 		RemoveFromCache(map->GetScriptName(), IE_ARE_CLASS_ID);
 		return 0;
 	}
@@ -5285,7 +5285,7 @@ int Interface::CompressSave(const char *folder)
 				dir.GetFullPath(dtmp);
 				FileStream fs;
 				if (!fs.Open(dtmp)) {
-					Log(ERROR, "Interface", "Failed to open \"%s\".", dtmp);
+					//Log(ERROR, "Interface", "Failed to open \"%s\".", dtmp);
 				}
 				ai->AddToSaveGame(&str, &fs);
 			}
@@ -5574,7 +5574,7 @@ int Interface::ResolveStatBonus(Actor *actor, const char *tablename, ieDword fla
 	int mastertable = gamedata->LoadTable( tablename );
 	Holder<TableMgr> mtm = gamedata->GetTable( mastertable );
 	if (!mtm) {
-		Log(ERROR, "Core", "Cannot resolve stat bonus.");
+		//Log(ERROR, "Core", "Cannot resolve stat bonus.");
 		return -1;
 	}
 	int count = mtm->GetRowCount();

@@ -50,7 +50,7 @@ static void Initializer()
 	profcount = 0;
 	AutoTable tm("proftype");
 	if (!tm) {
-		Log(ERROR, "ITMImporter", "Cannot find proftype.2da.");
+		//Log(ERROR, "ITMImporter", "Cannot find proftype.2da.");
 		return;
 	}
 	profcount = tm->GetRowCount();
@@ -306,7 +306,7 @@ Item* ITMImporter::GetItem(Item *s)
 	}
 
 	if (!core->IsAvailable( IE_BAM_CLASS_ID )) {
-		Log(ERROR, "ITMImporter", "No BAM Importer available!");
+		//Log(ERROR, "ITMImporter", "No BAM Importer available!");
 		return NULL;
 	}
 	return s;

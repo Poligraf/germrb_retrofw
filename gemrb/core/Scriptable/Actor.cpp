@@ -672,7 +672,7 @@ void Actor::SetAnimationID(unsigned int AnimID)
 	if(anims->ResRef[0] == 0) {
 		delete anims;
 		anims = NULL;
-		Log(ERROR, "Actor", "Missing animation for %s", LongName);
+		//Log(ERROR, "Actor", "Missing animation for %s", LongName);
 		return;
 	}
 	anims->SetOffhandRef(ShieldRef);
@@ -872,7 +872,7 @@ static int GetIWD2KitIndex (ieDword kit, ieDword baseclass=0, bool strict=false)
 			if (kit & (*it)) return class2kits[baseclass].indices[idx];
 		}
 		if (strict) return -1;
-		Log(DEBUG, "Actor", "GetIWD2KitIndex: didn't find kit %d at expected class %d, recalculating!", kit, baseclass);
+		//Log (DEBUG, "Actor", "GetIWD2KitIndex: didn't find kit %d at expected class %d, recalculating!", kit, baseclass);
 	}
 
 	// no class info passed, so infer it
@@ -887,7 +887,7 @@ static int GetIWD2KitIndex (ieDword kit, ieDword baseclass=0, bool strict=false)
 		}
 	}
 
-	Log(ERROR, "Actor", "GetIWD2KitIndex: didn't find kit %d for any class, ignoring!", kit);
+	//Log(ERROR, "Actor", "GetIWD2KitIndex: didn't find kit %d for any class, ignoring!", kit);
 	return -1;
 }
 
@@ -976,7 +976,7 @@ bool Actor::ApplyKit(bool remove, ieDword baseclass, int diff)
 			}
 		}
 		if (!found) {
-			Log(ERROR, "Actor", "ApplyKit: could not look up the requested kit (%d), skipping!", kit);
+			//Log(ERROR, "Actor", "ApplyKit: could not look up the requested kit (%d), skipping!", kit);
 			return false;
 		}
 	}
@@ -2282,7 +2282,7 @@ static void InitActorTables()
 			buffer.appendFormatted("ToHit: %s ", tohit);
 			buffer.appendFormatted("XPCap: %d", xpcap[classis]);
 
-			Log(DEBUG, "Actor", buffer);
+			//Log (DEBUG, "Actor", buffer);
 		}
 	} else {
 		AutoTable hptm;
@@ -2312,7 +2312,7 @@ static void InitActorTables()
 			//i.e. barbarians would overwrite fighters in bg2
 			if (levelslots[tmpindex]) {
 				buffer.appendFormatted("Already Found!");
-				Log(DEBUG, "Actor", buffer);
+				//Log (DEBUG, "Actor", buffer);
 				continue;
 			}
 
@@ -2348,7 +2348,7 @@ static void InitActorTables()
 						if (tmphp) maxLevelForHpRoll[tmpindex] = tmphp;
 					}
 				}
-				Log(DEBUG, "Actor", buffer);
+				//Log (DEBUG, "Actor", buffer);
 				continue;
 			}
 
@@ -2426,7 +2426,7 @@ static void InitActorTables()
 			buffer.appendFormatted("HPROLLMAXLVL: %d ", maxLevelForHpRoll[tmpindex]);
 			buffer.appendFormatted("DS: %d ", dualswap[tmpindex]);
 			buffer.appendFormatted("MULTI: %d", multi[tmpindex]);
-			Log(DEBUG, "Actor", buffer);
+			//Log (DEBUG, "Actor", buffer);
 		}
 		/*this could be enabled to ensure all levelslots are filled with at least 0's;
 		*however, the access code should ensure this never happens
@@ -3786,14 +3786,14 @@ int Actor::NewStat(unsigned int StatIndex, ieDword ModifierValue, ieDword Modifi
 			break;
 		case MOD_DIVISIVE:
 			if (ModifierValue == 0) {
-				Log(ERROR, "Actor", "Invalid modifier value (0) passed to NewStat: %d (%s)!", ModifierType, LongName);
+				//Log(ERROR, "Actor", "Invalid modifier value (0) passed to NewStat: %d (%s)!", ModifierType, LongName);
 				break;
 			}
 			SetStat(StatIndex, BaseStats[StatIndex] / ModifierValue, 1);
 			break;
 		case MOD_MODULUS:
 			if (ModifierValue == 0) {
-				Log(ERROR, "Actor", "Invalid modifier value (0) passed to NewStat: %d (%s)!", ModifierType, LongName);
+				//Log(ERROR, "Actor", "Invalid modifier value (0) passed to NewStat: %d (%s)!", ModifierType, LongName);
 				break;
 			}
 			SetStat(StatIndex, BaseStats[StatIndex] % ModifierValue, 1);
@@ -3841,14 +3841,14 @@ int Actor::NewBase(unsigned int StatIndex, ieDword ModifierValue, ieDword Modifi
 			break;
 		case MOD_DIVISIVE:
 			if (ModifierValue == 0) {
-				Log(ERROR, "Actor", "Invalid modifier value (0) passed to NewBase: %d (%s)!", ModifierType, LongName);
+				//Log(ERROR, "Actor", "Invalid modifier value (0) passed to NewBase: %d (%s)!", ModifierType, LongName);
 				break;
 			}
 			SetBase(StatIndex, BaseStats[StatIndex] / ModifierValue);
 			break;
 		case MOD_MODULUS:
 			if (ModifierValue == 0) {
-				Log(ERROR, "Actor", "Invalid modifier value (0) passed to NewBase: %d (%s)!", ModifierType, LongName);
+				//Log(ERROR, "Actor", "Invalid modifier value (0) passed to NewBase: %d (%s)!", ModifierType, LongName);
 				break;
 			}
 			SetBase(StatIndex, BaseStats[StatIndex] % ModifierValue);
@@ -4157,7 +4157,7 @@ bool Actor::GetPartyComment()
 			if (action) {
 				AddActionInFront(action);
 			} else {
-				Log(ERROR, "Actor", "Cannot generate banter action");
+				//Log(ERROR, "Actor", "Cannot generate banter action");
 			}
 			return true;
 		}
@@ -4383,7 +4383,7 @@ bool Actor::OverrideActions()
 					AddActionInFront(action);
 					return true;
 				} else {
-					Log(ERROR, "Actor", "Cannot generate override action");
+					//Log(ERROR, "Actor", "Cannot generate override action");
 				}
 				break;
 			default:
@@ -4428,7 +4428,7 @@ void Actor::Panic(Scriptable *attacker, int panicmode)
 	if (action) {
 		AddActionInFront(action);
 	} else {
-		Log(ERROR, "Actor", "Cannot generate panic action");
+		//Log(ERROR, "Actor", "Cannot generate panic action");
 	}
 }
 
@@ -4602,7 +4602,7 @@ int Actor::Damage(int damage, int damagetype, Scriptable *hitter, int modtype, i
 		break;
 	default:
 		//this shouldn't happen
-		Log(ERROR, "Actor", "Invalid damage modifier type!");
+		//Log(ERROR, "Actor", "Invalid damage modifier type!");
 		return 0;
 	}
 
@@ -4988,7 +4988,7 @@ void Actor::dump() const
 {
 	StringBuffer buffer;
 	dump(buffer);
-	Log(DEBUG, "Actor", buffer);
+	//Log (DEBUG, "Actor", buffer);
 }
 
 void Actor::dump(StringBuffer& buffer) const
@@ -5394,7 +5394,7 @@ void Actor::Resurrect()
 	if (core->HasFeature(GF_HAS_KAPUTZ) && (AppearanceFlags&APP_DEATHVAR)) {
 		const size_t len = snprintf(DeathVar, sizeof(ieVariable), "%s_DEAD", scriptName);
 		if (len > sizeof(ieVariable)) {
-			Log(ERROR, "Actor", "Scriptname %s (name: %s) is too long for generating death globals!", scriptName, LongName);
+			//Log(ERROR, "Actor", "Scriptname %s (name: %s) is too long for generating death globals!", scriptName, LongName);
 		}
 		ieDword value=0;
 
@@ -5406,7 +5406,7 @@ void Actor::Resurrect()
 	} else if (!core->HasFeature(GF_HAS_KAPUTZ)) {
 		size_t len = snprintf(DeathVar, 32, core->GetDeathVarFormat(), scriptName);
 		if (len > 32) {
-			Log(ERROR, "Actor", "Scriptname %s (name: %s) is too long for generating death globals (on resurrect)!", scriptName, LongName);
+			//Log(ERROR, "Actor", "Scriptname %s (name: %s) is too long for generating death globals (on resurrect)!", scriptName, LongName);
 		}
 		game->locals->SetAt(DeathVar, 0, true);
 	}
@@ -5598,7 +5598,7 @@ void Actor::Die(Scriptable *killer, bool grantXP)
 					len = snprintf(varname, 32, "%s", KillVar);
 				}
 				if (len > 32) {
-					Log(ERROR, "Actor", "Scriptname %s (name: %s) is too long for generating death globals!", KillVar, LongName);
+					//Log(ERROR, "Actor", "Scriptname %s (name: %s) is too long for generating death globals!", KillVar, LongName);
 				}
 				game->kaputz->Lookup(varname, value);
 				game->kaputz->SetAt(varname, value+1, nocreate);
@@ -5620,7 +5620,7 @@ void Actor::Die(Scriptable *killer, bool grantXP)
 				len = snprintf(varname, 32, "%s", tmp);
 			}
 			if (len > 32) {
-				Log(ERROR, "Actor", "Scriptname %s (name: %s) is too long for generating death globals!", tmp, LongName);
+				//Log(ERROR, "Actor", "Scriptname %s (name: %s) is too long for generating death globals!", tmp, LongName);
 			}
 			game->kaputz->Lookup(varname, value);
 			game->kaputz->SetAt(varname, value+1, nocreate);
@@ -5637,7 +5637,7 @@ void Actor::Die(Scriptable *killer, bool grantXP)
 				len = snprintf(varname, 32, "%s", tmp);
 			}
 			if (len > 32) {
-				Log(ERROR, "Actor", "Scriptname %s (name: %s) is too long for generating death globals!", tmp, LongName);
+				//Log(ERROR, "Actor", "Scriptname %s (name: %s) is too long for generating death globals!", tmp, LongName);
 			}
 			game->kaputz->Lookup(varname, value);
 			game->kaputz->SetAt(varname, value+1, nocreate);
@@ -5665,7 +5665,7 @@ void Actor::Die(Scriptable *killer, bool grantXP)
 			game->locals->SetAt(varname, value+1, nocreate);
 		}
 		if (len > 32) {
-			Log(ERROR, "Actor", "Scriptname %s (name: %s) is too long for generating death globals!", scriptName, LongName);
+			//Log(ERROR, "Actor", "Scriptname %s (name: %s) is too long for generating death globals!", scriptName, LongName);
 		}
 
 		if (SetDeathVar) {
@@ -5681,7 +5681,7 @@ void Actor::Die(Scriptable *killer, bool grantXP)
 				game->locals->SetAt(varname, value + 1, nocreate);
 			}
 			if (len > 32) {
-				Log(ERROR, "Actor", "Scriptname %s (name: %s) is too long for generating death globals!", scriptName, LongName);
+				//Log(ERROR, "Actor", "Scriptname %s (name: %s) is too long for generating death globals!", scriptName, LongName);
 			}
 		}
 	}
@@ -7292,7 +7292,7 @@ void Actor::PerformAttack(ieDword gameTime)
 	// this check shouldn't be necessary, but it causes a divide-by-zero below,
 	// so i would like it to be clear if it ever happens
 	if (attacksperround==0) {
-		Log(ERROR, "Actor", "APR was 0 in PerformAttack!");
+		//Log(ERROR, "Actor", "APR was 0 in PerformAttack!");
 		return;
 	}
 
@@ -7306,12 +7306,12 @@ void Actor::PerformAttack(ieDword gameTime)
 
 	if (IsDead()) {
 		// this should be avoided by the AF_ALIVE check by all the calling actions
-		Log(ERROR, "Actor", "Attack by dead actor!");
+		//Log(ERROR, "Actor", "Attack by dead actor!");
 		return;
 	}
 
 	if (!LastTarget) {
-		Log(ERROR, "Actor", "Attack without valid target ID!");
+		//Log(ERROR, "Actor", "Attack without valid target ID!");
 		return;
 	}
 	//get target
@@ -7333,7 +7333,7 @@ void Actor::PerformAttack(ieDword gameTime)
 		BaseStats[IE_CHECKFORBERSERK]=3;
 	}
 
-	Log(DEBUG, "Actor", "Performattack for %s, target is: %s", ShortName, target->ShortName);
+	//Log (DEBUG, "Actor", "Performattack for %s, target is: %s", ShortName, target->ShortName);
 
 	//which hand is used
 	//we do apr - attacksleft so we always use the main hand first
@@ -7392,7 +7392,7 @@ void Actor::PerformAttack(ieDword gameTime)
 	unsigned int weaponrange = GetWeaponRange(wi);
 	if ((PersonalDistance(this, target) > weaponrange) || (GetCurrentArea() != target->GetCurrentArea())) {
 		// this is a temporary double-check, remove when bugfixed
-		Log(ERROR, "Actor", "Attack action didn't bring us close enough!");
+		//Log(ERROR, "Actor", "Attack action didn't bring us close enough!");
 		return;
 	}
 
@@ -7552,7 +7552,7 @@ void Actor::PerformAttack(ieDword gameTime)
 	ModifyWeaponDamage(wi, target, damage, critical);
 
 	if (third && target->GetStat(IE_MC_FLAGS) & MC_INVULNERABLE) {
-		Log(DEBUG, "Actor", "Attacking invulnerable target, nulifying damage!");
+		//Log (DEBUG, "Actor", "Attacking invulnerable target, nulifying damage!");
 		damage = 0;
 	}
 
@@ -7707,7 +7707,7 @@ void Actor::ModifyDamage(Scriptable *hitter, int &damage, int &resisted, int dam
 		std::multimap<ieDword, DamageInfoStruct>::iterator it;
 		it = core->DamageInfoMap.find(damagetype);
 		if (it == core->DamageInfoMap.end()) {
-			Log(ERROR, "ModifyDamage", "Unhandled damagetype:%d", damagetype);
+			//Log(ERROR, "ModifyDamage", "Unhandled damagetype:%d", damagetype);
 		} else if (it->second.resist_stat) {
 			// check for bonuses for specific damage types
 			if (core->HasFeature(GF_SPECIFIC_DMG_BONUS) && attacker) {
@@ -7736,7 +7736,7 @@ void Actor::ModifyDamage(Scriptable *hitter, int &damage, int &resisted, int dam
 				// avoid buggy data
 				if ((unsigned)abs(resistance) > maximum_values[it->second.resist_stat]) {
 					resistance = 0;
-					Log(DEBUG, "ModifyDamage", "Ignoring bad damage resistance value (%d).", resistance);
+					//Log (DEBUG, "ModifyDamage", "Ignoring bad damage resistance value (%d).", resistance);
 				}
 				resisted += (int) (damage * resistance/100.0);
 				damage -= resisted;
@@ -8907,12 +8907,12 @@ void Actor::ResolveStringConstant(ieResRef Sound, unsigned int index) const
 		size_t len;
 		if (csound[index]) {
 			len = snprintf(Sound, sizeof(ieResRef), "%s%c", PCStats->SoundSet, csound[index]);
-			if (len > sizeof(ieResRef)) Log(ERROR, "Actor", "Actor %s has too long soundset name: %s", LongName, PCStats->SoundSet);
+			if (len > sizeof(ieResRef)) //Log(ERROR, "Actor", "Actor %s has too long soundset name: %s", LongName, PCStats->SoundSet);
 			return;
 		}
 		//icewind style
 		len = snprintf(Sound, sizeof(ieResRef), "%s%02d", PCStats->SoundSet, VCMap[index]);
-		if (len > sizeof(ieResRef)) Log(ERROR, "Actor", "Actor %s has too long soundset name: %s", LongName, PCStats->SoundSet);
+		if (len > sizeof(ieResRef)) //Log(ERROR, "Actor", "Actor %s has too long soundset name: %s", LongName, PCStats->SoundSet);
 		return;
 	}
 
@@ -8963,7 +8963,7 @@ int Actor::Gemrb2IWD2Qslot(ieByte actslot, int slotindex) const
 		} else if (tmp > ACT_BARD) { //spellbooks
 			tmp = 50 + tmp%10;
 		} else if (tmp >= 32) { // here be dragons
-			Log(ERROR, "Actor", "Bad slot index passed to SetActionButtonRow!");
+			//Log(ERROR, "Actor", "Bad slot index passed to SetActionButtonRow!");
 		} else {
 			tmp = gemrb2iwd[tmp];
 		}
@@ -8988,7 +8988,7 @@ int Actor::IWD2GemrbQslot (int slotindex) const
 		} else if (tmp>=50) { //spellbooks
 			tmp = ACT_BARD + tmp%10;
 		} else if (tmp>=32) { // here be dragons
-			Log(ERROR, "Actor", "Bad slot index passed to IWD2GemrbQslot!");
+			//Log(ERROR, "Actor", "Bad slot index passed to IWD2GemrbQslot!");
 		} else {
 			tmp = iwd2gemrb[tmp];
 		}
@@ -9013,9 +9013,9 @@ void Actor::dumpQSlots() const
 		buffer3.appendFormatted("%3d ", Gemrb2IWD2Qslot(tmp, i));
 	}
 	buffer.appendFormatted("(class: %d)", GetStat(IE_CLASS));
-	Log(DEBUG, "Actor", buffer);
-//	Log(DEBUG, "Actor", buffer2);
-//	Log(DEBUG, "Actor", buffer3);
+	//Log (DEBUG, "Actor", buffer);
+//	//Log (DEBUG, "Actor", buffer2);
+//	//Log (DEBUG, "Actor", buffer3);
 
 	buffer.clear();
 	buffer2.clear();
@@ -9029,9 +9029,9 @@ void Actor::dumpQSlots() const
 		buffer2.appendFormatted("%3d ", IWD2GemrbQslot(tmp));
 		buffer3.appendFormatted("%3d ", Gemrb2IWD2Qslot(tmp, i));
 	}
-	Log(DEBUG, "Actor", buffer);
-	Log(DEBUG, "Actor", buffer2);
-	Log(DEBUG, "Actor", buffer3);
+	//Log (DEBUG, "Actor", buffer);
+	//Log (DEBUG, "Actor", buffer2);
+	//Log (DEBUG, "Actor", buffer3);
 }
 
 void Actor::SetPortrait(const char* ResRef, int Which)
@@ -11209,7 +11209,7 @@ void Actor::ApplyEffectCopy(Effect *oldfx, EffectRef &newref, Scriptable *Owner,
 		core->ApplyEffect(newfx, this, Owner);
 		delete newfx;
 	} else {
-		Log(ERROR, "Actor", "Failed to create effect copy for %s! Target: %s, Owner: %s", newref.Name, GetName(1), Owner->GetName(1));
+		//Log(ERROR, "Actor", "Failed to create effect copy for %s! Target: %s, Owner: %s", newref.Name, GetName(1), Owner->GetName(1));
 	}
 }
 

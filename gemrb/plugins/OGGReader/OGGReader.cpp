@@ -86,7 +86,7 @@ bool OGGReader::Open(DataStream* stream)
 
 	res=ov_open_callbacks(str, &OggStream, NULL, 0, cbstruct);
 	if(res<0) {
-		Log(ERROR, "Sound", "Couldn't initialize vorbis!");
+		//Log(ERROR, "Sound", "Couldn't initialize vorbis!");
 		return false;
 	}
 	info = ov_info(&OggStream, -1);

@@ -524,18 +524,18 @@ void Variables::DebugDump()
 	default:
 		poi = "invalid";
 	}
-	Log (DEBUG, "Variables", "Item type: %s", poi);
-	Log (DEBUG, "Variables", "Item count: %d", m_nCount);
-	Log (DEBUG, "Variables", "HashTableSize: %d\n", m_nHashTableSize);
+	//Log (DEBUG, "Variables", "Item type: %s", poi);
+	//Log (DEBUG, "Variables", "Item count: %d", m_nCount);
+	//Log (DEBUG, "Variables", "HashTableSize: %d\n", m_nHashTableSize);
 	for (unsigned int nHash = 0; nHash < m_nHashTableSize; nHash++) {
 		Variables::MyAssoc* pAssoc;
 		for (pAssoc = m_pHashTable[nHash]; pAssoc != NULL; pAssoc = pAssoc->pNext) {
 			switch(m_type) {
 			case GEM_VARIABLES_STRING:
-				Log (DEBUG, "Variables", "%s = %s", pAssoc->key, pAssoc->Value.sValue);
+				//Log (DEBUG, "Variables", "%s = %s", pAssoc->key, pAssoc->Value.sValue);
 				break;
 			default:
-				Log (DEBUG, "Variables", "%s = %d", pAssoc->key, pAssoc->Value.nValue);
+				//Log (DEBUG, "Variables", "%s = %d", pAssoc->key, pAssoc->Value.nValue);
 				break;
 			}
 		}

@@ -303,7 +303,7 @@ void Container::dump() const
 	buffer.appendFormatted( "Script: %s, Key: %s\n", name, KeyResRef );
 	// FIXME: const_cast
 	inventory.dump(buffer);
-	Log(DEBUG, "Container", buffer);
+	//Log (DEBUG, "Container", buffer);
 }
 
 bool Container::TryUnlock(Actor *actor) {

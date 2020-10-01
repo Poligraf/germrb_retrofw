@@ -824,7 +824,7 @@ void GameScript::StartCutScene(Scriptable* Sender, Action* parameters)
 void GameScript::CutSceneID(Scriptable *Sender, Action* /*parameters*/)
 {
 	// shouldn't get called
-	Log(DEBUG, "GameScript", "CutSceneID was called by %s!", Sender->GetScriptName());
+	//Log (DEBUG, "GameScript", "CutSceneID was called by %s!", Sender->GetScriptName());
 }
 
 static EffectRef fx_charm_ref = { "State:Charmed", -1 };
@@ -1681,7 +1681,7 @@ void GameScript::FloatMessageFixed(Scriptable* Sender, Action* parameters)
 	Scriptable* target = GetActorFromObject( Sender, parameters->objects[1] );
 	if (!target) {
 		target=Sender;
-		Log(ERROR, "GameScript", "DisplayStringHead/FloatMessage got no target, assuming Sender!");
+		//Log(ERROR, "GameScript", "DisplayStringHead/FloatMessage got no target, assuming Sender!");
 	}
 
 	DisplayStringCore(target, parameters->int0Parameter, DS_CONSOLE|DS_HEAD);
@@ -1692,12 +1692,12 @@ void GameScript::FloatMessageFixedRnd(Scriptable* Sender, Action* parameters)
 	Scriptable* target = GetActorFromObject( Sender, parameters->objects[1] );
 	if (!target) {
 		target=Sender;
-		Log(ERROR, "GameScript", "DisplayStringHead/FloatMessage got no target, assuming Sender!");
+		//Log(ERROR, "GameScript", "DisplayStringHead/FloatMessage got no target, assuming Sender!");
 	}
 
 	SrcVector *rndstr=LoadSrc(parameters->string0Parameter);
 	if (!rndstr) {
-		Log(ERROR, "GameScript", "Cannot display resource!");
+		//Log(ERROR, "GameScript", "Cannot display resource!");
 		return;
 	}
 	DisplayStringCore(target, rndstr->at(RAND(0, rndstr->size()-1)), DS_CONSOLE|DS_HEAD);
@@ -1709,12 +1709,12 @@ void GameScript::FloatMessageRnd(Scriptable* Sender, Action* parameters)
 	Scriptable* target = GetActorFromObject( Sender, parameters->objects[1] );
 	if (!target) {
 		target=Sender;
-		Log(ERROR, "GameScript", "DisplayStringHead/FloatMessage got no target, assuming Sender!");
+		//Log(ERROR, "GameScript", "DisplayStringHead/FloatMessage got no target, assuming Sender!");
 	}
 
 	SrcVector *rndstr=LoadSrc(parameters->string0Parameter);
 	if (!rndstr) {
-		Log(ERROR, "GameScript", "Cannot display resource!");
+		//Log(ERROR, "GameScript", "Cannot display resource!");
 		return;
 	}
 	DisplayStringCore(target, rndstr->at(RAND(0, rndstr->size()-1)), DS_CONSOLE|DS_HEAD);
@@ -2258,7 +2258,7 @@ void GameScript::NIDSpecial2(Scriptable* Sender, Action* /*parameters*/)
 		if (directions[best] != -1) {
 			direction = best;
 		}
-		Log(DEBUG, "Actions", "Travel direction determined by party: %d", direction);
+		//Log (DEBUG, "Actions", "Travel direction determined by party: %d", direction);
 	}
 
 	// pst enables worldmap travel only after visiting the lower ward
@@ -4191,7 +4191,7 @@ void GameScript::SetItemFlags(Scriptable *Sender, Action* parameters)
 
 	int slot = myinv->FindItem(parameters->string0Parameter, 0);
 	if (slot == -1) {
-		Log(ERROR, "GameScript", "Item %s not found in inventory of %s", parameters->string0Parameter, tar->GetScriptName());
+		//Log(ERROR, "GameScript", "Item %s not found in inventory of %s", parameters->string0Parameter, tar->GetScriptName());
 		return;
 	}
 
@@ -7220,7 +7220,7 @@ void GameScript::SetToken2DA(Scriptable* /*Sender*/, Action* parameters)
 
 	AutoTable tm(parameters->string0Parameter);
 	if (!tm) {
-		Log(ERROR, "Actions", "Cannot find %s.2da.", parameters->string0Parameter);
+		//Log(ERROR, "Actions", "Cannot find %s.2da.", parameters->string0Parameter);
 		return;
 	}
 

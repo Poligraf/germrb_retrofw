@@ -42,7 +42,7 @@ void Bitmap::dump() const
 		}
 		lines.append("\n");
 	}
-	Log(DEBUG, "Bitmap", lines);
+	//Log (DEBUG, "Bitmap", lines);
 }
 
 }

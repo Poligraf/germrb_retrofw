@@ -542,7 +542,7 @@ void CharAnimations::InitAvatarsTable()
 		AvatarTable[i].WalkScale = 0;
 		AvatarTable[i].RunScale = 0;
 		AvatarTable[i].Bestiary = -1;
-		
+
 		for (int j = 0; j < MAX_ANIMS; j++)
 			AvatarTable[i].StanceOverride[j] = j;
 
@@ -576,8 +576,8 @@ void CharAnimations::InitAvatarsTable()
 			valid_number(blood->QueryField(i,2), (long &)rmax);
 			valid_number(blood->QueryField(i,3), (long &)flags);
 			if (value>255 || rmin>rmax || rmax>0xffff) {
-				Log(ERROR, "CharAnimations", "Invalid bloodclr entry: %02x %04x-%04x ",
-						(unsigned int) value, (unsigned int) rmin, (unsigned int) rmax);
+				//Log(ERROR, "CharAnimations", "Invalid bloodclr entry: %02x %04x-%04x ",
+//						(unsigned int) value, (unsigned int) rmin, (unsigned int) rmax);
 				continue;
 			}
 			for(int j=0;j<AvatarsCount;j++) {
@@ -607,8 +607,8 @@ void CharAnimations::InitAvatarsTable()
 				range = 0;
 			}
 			if (range>255 || rmin>rmax || rmax>0xffff) {
-				Log(ERROR, "CharAnimations", "Invalid walksnd entry: %02x %04x-%04x ",
-						(unsigned int) range, (unsigned int) rmin, (unsigned int) rmax);
+				//Log(ERROR, "CharAnimations", "Invalid walksnd entry: %02x %04x-%04x ",
+//						(unsigned int) range, (unsigned int) rmin, (unsigned int) rmax);
 				continue;
 			}
 			for(int j=0;j<AvatarsCount;j++) {
@@ -630,8 +630,8 @@ void CharAnimations::InitAvatarsTable()
 			valid_number(stances->QueryField(i, 1), (long &)s2);
 
 			if (s1 >= MAX_ANIMS || s2 >= MAX_ANIMS) {
-				Log(ERROR, "CharAnimations", "Invalid stances entry: %04x %d %d",
-						(unsigned int) id, (unsigned int) s1, (unsigned int) s2);
+				//Log(ERROR, "CharAnimations", "Invalid stances entry: %04x %d %d",
+//						(unsigned int) id, (unsigned int) s1, (unsigned int) s2);
 				continue;
 			}
 
@@ -728,7 +728,7 @@ CharAnimations::CharAnimations(unsigned int AnimID, ieDword ArmourLevel)
 		}
 	}
 	ResRef[0]=0;
-	Log(ERROR, "CharAnimations", "Invalid or nonexistent avatar entry:%04X", AnimID);
+	//Log(ERROR, "CharAnimations", "Invalid or nonexistent avatar entry:%04X", AnimID);
 }
 
 //we have to drop them when armourlevel changes
@@ -1092,8 +1092,8 @@ Animation** CharAnimations::GetAnimation(unsigned char Stance, unsigned char Ori
 
 		if (!af) {
 			if (part < actorPartCount) {
-				Log(ERROR, "CharAnimations", "Couldn't create animationfactory: %s (%04x)",
-						NewResRef, GetAnimationID());
+				//Log(ERROR, "CharAnimations", "Couldn't create animationfactory: %s (%04x)",
+//						NewResRef, GetAnimationID());
 				for (int i = 0; i < part; ++i)
 					delete anims[i];
 				delete[] anims;
@@ -1110,8 +1110,8 @@ Animation** CharAnimations::GetAnimation(unsigned char Stance, unsigned char Ori
 
 		if (!a) {
 			if (part < actorPartCount) {
-				Log(ERROR, "CharAnimations", "Couldn't load animation: %s, cycle %d",
-						 NewResRef, Cycle);
+				//Log(ERROR, "CharAnimations", "Couldn't load animation: %s, cycle %d",
+//						 NewResRef, Cycle);
 				for (int i = 0; i < part; ++i)
 					delete anims[i];
 				delete[] anims;
@@ -1258,7 +1258,7 @@ Animation** CharAnimations::GetAnimation(unsigned char Stance, unsigned char Ori
 					Anims[i][j] = anims;
 				}
 			}}
-			break; 
+			break;
 
 		case IE_ANI_PST_ANIMATION_3: //no stc just std
 		case IE_ANI_PST_ANIMATION_2: //no std just stc
@@ -2888,7 +2888,7 @@ void CharAnimations::PulseRGBModifiers()
 	if (time - lastModUpdate > 400) lastModUpdate = time - 40;
 
 	int inc = (time - lastModUpdate)/40;
-	
+
 	if (GlobalColorMod.type != RGBModifier::NONE &&
 		GlobalColorMod.speed > 0)
 	{
@@ -2933,9 +2933,9 @@ void CharAnimations::PulseRGBModifiers()
 
 void CharAnimations::DebugDump()
 {
-	Log (DEBUG, "CharAnimations", "Anim ID   : %04x", GetAnimationID() );
-	Log (DEBUG, "CharAnimations", "BloodColor: %d", GetBloodColor() );
-	Log (DEBUG, "CharAnimations", "Flags     : %04x", GetFlags() );
+	//Log (DEBUG, "CharAnimations", "Anim ID   : %04x", GetAnimationID() );
+	//Log (DEBUG, "CharAnimations", "BloodColor: %d", GetBloodColor() );
+	//Log (DEBUG, "CharAnimations", "Flags     : %04x", GetFlags() );
 }
 
 }

@@ -293,7 +293,7 @@ bool AREImporter::ChangeMap(Map *map, bool day_or_night)
 	}
 	tm = tmm->GetTileMap(tm);
 	if (!tm) {
-		Log(ERROR, "AREImporter", "No tile map available.");
+		//Log(ERROR, "AREImporter", "No tile map available.");
 		return false;
 	}
 
@@ -318,7 +318,7 @@ bool AREImporter::ChangeMap(Map *map, bool day_or_night)
 
 	ResourceHolder<ImageMgr> lm(TmpResRef);
 	if (!lm) {
-		Log(ERROR, "AREImporter", "No lightmap available.");
+		//Log(ERROR, "AREImporter", "No lightmap available.");
 		return false;
 	}
 
@@ -402,7 +402,7 @@ Map* AREImporter::GetMap(const char *ResRef, bool day_or_night)
 
 	Map* map = new Map();
 	if (!map) {
-		Log(ERROR, "AREImporter", "Can't allocate map (out of memory).");
+		//Log(ERROR, "AREImporter", "Can't allocate map (out of memory).");
 		return NULL;
 	}
 	if (core->SaveAsOriginal) {
@@ -432,7 +432,7 @@ Map* AREImporter::GetMap(const char *ResRef, bool day_or_night)
 	}
 
 	if (!core->IsAvailable( IE_WED_CLASS_ID )) {
-		Log(ERROR, "AREImporter", "No tile map manager available.");
+		//Log(ERROR, "AREImporter", "No tile map manager available.");
 		delete map;
 		return NULL;
 	}
@@ -451,7 +451,7 @@ Map* AREImporter::GetMap(const char *ResRef, bool day_or_night)
 	//there was no tilemap set yet, so lets just send a NULL
 	TileMap* tm = tmm->GetTileMap(NULL);
 	if (!tm) {
-		Log(ERROR, "AREImporter", "No tile map available.");
+		//Log(ERROR, "AREImporter", "No tile map available.");
 		delete map;
 		return NULL;
 	}
@@ -484,7 +484,7 @@ Map* AREImporter::GetMap(const char *ResRef, bool day_or_night)
 
 	ResourceHolder<ImageMgr> lm(TmpResRef);
 	if (!lm) {
-		Log(ERROR, "AREImporter", "No lightmap available.");
+		//Log(ERROR, "AREImporter", "No lightmap available.");
 		return NULL;
 	}
 
@@ -492,7 +492,7 @@ Map* AREImporter::GetMap(const char *ResRef, bool day_or_night)
 
 	ResourceHolder<ImageMgr> sr(TmpResRef);
 	if (!sr) {
-		Log(ERROR, "AREImporter", "No searchmap available.");
+		//Log(ERROR, "AREImporter", "No searchmap available.");
 		return NULL;
 	}
 
@@ -500,13 +500,13 @@ Map* AREImporter::GetMap(const char *ResRef, bool day_or_night)
 
 	ResourceHolder<ImageMgr> hm(TmpResRef);
 	if (!hm) {
-		Log(ERROR, "AREImporter", "No heightmap available.");
+		//Log(ERROR, "AREImporter", "No heightmap available.");
 		return NULL;
 	}
 
 	map->AddTileMap( tm, lm->GetImage(), sr->GetBitmap(), sm ? sm->GetSprite2D() : NULL, hm->GetBitmap() );
 
-	Log(DEBUG, "AREImporter", "Loading songs");
+	//Log (DEBUG, "AREImporter", "Loading songs");
 	str->Seek( SongHeader, GEM_STREAM_START );
 	//5 is the number of song indices
 	for (i = 0; i < MAX_RESCOUNT; i++) {
@@ -570,7 +570,7 @@ Map* AREImporter::GetMap(const char *ResRef, bool day_or_night)
 	str->ReadWord( &map->RestHeader.DayChance );
 	str->ReadWord( &map->RestHeader.NightChance );
 
-	Log(DEBUG, "AREImporter", "Loading regions");
+	//Log (DEBUG, "AREImporter", "Loading regions");
 	core->LoadProgress(70);
 	//Loading InfoPoints
 	for (i = 0; i < InfoPointsCount; i++) {
@@ -700,7 +700,7 @@ Map* AREImporter::GetMap(const char *ResRef, bool day_or_night)
 		}
 	}
 
-	Log(DEBUG, "AREImporter", "Loading containers");
+	//Log (DEBUG, "AREImporter", "Loading containers");
 	for (i = 0; i < ContainersCount; i++) {
 		str->Seek( ContainersOffset + ( i * 0xC0 ), GEM_STREAM_START );
 		ieVariable Name;
@@ -806,7 +806,7 @@ Map* AREImporter::GetMap(const char *ResRef, bool day_or_night)
 		c->OpenFail = OpenFail;
 	}
 
-	Log(DEBUG, "AREImporter", "Loading doors");
+	//Log (DEBUG, "AREImporter", "Loading doors");
 	for (i = 0; i < DoorsCount; i++) {
 		str->Seek( DoorsOffset + ( i * 0xc8 ), GEM_STREAM_START );
 		int count;
@@ -1014,7 +1014,7 @@ Map* AREImporter::GetMap(const char *ResRef, bool day_or_night)
 		door->SetDialog(Dialog);
 	}
 
-	Log(DEBUG, "AREImporter", "Loading spawnpoints");
+	//Log (DEBUG, "AREImporter", "Loading spawnpoints");
 	for (i = 0; i < SpawnCount; i++) {
 		str->Seek( SpawnOffset + (i*0xc8), GEM_STREAM_START );
 		ieVariable Name;
@@ -1068,7 +1068,7 @@ Map* AREImporter::GetMap(const char *ResRef, bool day_or_night)
 	}
 
 	core->LoadProgress(75);
-	Log(DEBUG, "AREImporter", "Loading actors");
+	//Log (DEBUG, "AREImporter", "Loading actors");
 	str->Seek( ActorOffset, GEM_STREAM_START );
 	if (!core->IsAvailable( IE_CRE_CLASS_ID )) {
 		Log(WARNING, "AREImporter", "No Actor Manager Available, skipping actors");
@@ -1132,7 +1132,7 @@ Map* AREImporter::GetMap(const char *ResRef, bool day_or_night)
 				crefile = gamedata->GetResource( CreResRef, IE_CRE_CLASS_ID );
 			}
 			if(!actmgr->Open(crefile)) {
-				Log(ERROR, "AREImporter", "Couldn't read actor: %s!", CreResRef);
+				//Log(ERROR, "AREImporter", "Couldn't read actor: %s!", CreResRef);
 				continue;
 			}
 			ab = actmgr->GetActor(0);
@@ -1196,7 +1196,7 @@ Map* AREImporter::GetMap(const char *ResRef, bool day_or_night)
 	int pst = core->HasFeature( GF_AUTOMAP_INI );
 
 	core->LoadProgress(90);
-	Log(DEBUG, "AREImporter", "Loading animations");
+	//Log (DEBUG, "AREImporter", "Loading animations");
 	str->Seek( AnimOffset, GEM_STREAM_START );
 	if (!core->IsAvailable( IE_BAM_CLASS_ID )) {
 		Log(WARNING, "AREImporter", "No Animation Manager Available, skipping animations");
@@ -1243,7 +1243,7 @@ Map* AREImporter::GetMap(const char *ResRef, bool day_or_night)
 		}
 	}
 
-	Log(DEBUG, "AREImporter", "Loading entrances");
+	//Log (DEBUG, "AREImporter", "Loading entrances");
 	str->Seek( EntrancesOffset, GEM_STREAM_START );
 	for (i = 0; i < EntrancesCount; i++) {
 		ieVariable Name;
@@ -1257,7 +1257,7 @@ Map* AREImporter::GetMap(const char *ResRef, bool day_or_night)
 		map->AddEntrance( Name, XPos, YPos, Face );
 	}
 
-	Log(DEBUG, "AREImporter", "Loading variables");
+	//Log (DEBUG, "AREImporter", "Loading variables");
 	map->locals->LoadInitialValues(ResRef);
 	str->Seek( VariablesOffset, GEM_STREAM_START );
 	for (i = 0; i < VariablesCount; i++) {
@@ -1271,7 +1271,7 @@ Map* AREImporter::GetMap(const char *ResRef, bool day_or_night)
 		map->locals->SetAt( Name, Value );
 	}
 
-	Log(DEBUG, "AREImporter", "Loading ambients");
+	//Log (DEBUG, "AREImporter", "Loading ambients");
 	str->Seek( AmbiOffset, GEM_STREAM_START );
 	for (i = 0; i < AmbiCount; i++) {
 		int j;
@@ -1312,7 +1312,7 @@ Map* AREImporter::GetMap(const char *ResRef, bool day_or_night)
 		map->AddAmbient(ambi);
 	}
 
-	Log(DEBUG, "AREImporter", "Loading automap notes");
+	//Log (DEBUG, "AREImporter", "Loading automap notes");
 	str->Seek( NoteOffset, GEM_STREAM_START );
 
 	Point point;
@@ -1377,7 +1377,7 @@ Map* AREImporter::GetMap(const char *ResRef, bool day_or_night)
 	}
 
 	//this is a ToB feature (saves the unexploded projectiles)
-	Log(DEBUG, "AREImporter", "Loading traps");
+	//Log (DEBUG, "AREImporter", "Loading traps");
 	for (i = 0; i < TrapCount; i++) {
 		ieResRef TrapResRef;
 		ieDword TrapEffOffset;
@@ -1401,8 +1401,8 @@ Map* AREImporter::GetMap(const char *ResRef, bool day_or_night)
 		str->Read( &Owner,1 );
 		int TrapEffectCount = TrapSize/0x108;
 		if(TrapEffectCount*0x108!=TrapSize) {
-			Log(ERROR, "AREImporter", "TrapEffectSize in game: %d != %d. Clearing it",
-				TrapSize, TrapEffectCount*0x108);
+			//Log(ERROR, "AREImporter", "TrapEffectSize in game: %d != %d. Clearing it",
+//				TrapSize, TrapEffectCount*0x108);
 				continue;
 		}
 		//The projectile is always created, the worst that can happen
@@ -1426,7 +1426,7 @@ Map* AREImporter::GetMap(const char *ResRef, bool day_or_night)
 		map->AddProjectile( pro, pos, pos);
 	}
 
-	Log(DEBUG, "AREImporter", "Loading tiles");
+	//Log (DEBUG, "AREImporter", "Loading tiles");
 	//Loading Tiled objects (if any)
 	str->Seek( TileOffset, GEM_STREAM_START );
 	for (i = 0; i < TileCount; i++) {
@@ -1462,7 +1462,7 @@ Map* AREImporter::GetMap(const char *ResRef, bool day_or_night)
 		map->TMap->AddTile( ID, Name, Flags, NULL,0, NULL, 0 );
 	}
 
-	Log(DEBUG, "AREImporter", "Loading explored bitmap");
+	//Log (DEBUG, "AREImporter", "Loading explored bitmap");
 	i = map->GetExploredMapSize();
 	if (ExploredBitmapSize==i) {
 		map->ExploredBitmap = (ieByte *) malloc(i);
@@ -1471,15 +1471,15 @@ Map* AREImporter::GetMap(const char *ResRef, bool day_or_night)
 	}
 	else {
 		if( ExploredBitmapSize ) {
-			Log(ERROR, "AREImporter", "ExploredBitmapSize in game: %d != %d. Clearing it",
-				ExploredBitmapSize, i);
+			//Log(ERROR, "AREImporter", "ExploredBitmapSize in game: %d != %d. Clearing it",
+//				ExploredBitmapSize, i);
 		}
 		ExploredBitmapSize = i;
 		map->ExploredBitmap = (ieByte *) calloc(i, 1);
 	}
 	map->VisibleBitmap = (ieByte *) calloc(i, 1);
 
-	Log(DEBUG, "AREImporter", "Loading wallgroups");
+	//Log (DEBUG, "AREImporter", "Loading wallgroups");
 	map->SetWallGroups( tmm->GetPolygonsCount(),tmm->GetWallGroups() );
 	//setting up doors
 	for (i=0;i<DoorsCount;i++) {

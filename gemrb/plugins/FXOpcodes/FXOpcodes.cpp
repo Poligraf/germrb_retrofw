@@ -1383,13 +1383,13 @@ int fx_damage (Scriptable* /*Owner*/, Actor* target, Effect* fx)
 			target->LastHitter=caster->GetGlobalID();
 		} else {
 			//Maybe it should be something impossible like 0xffff, and use 'Someone'
-			Log(ERROR, "Actor", "LastHitter (type %d) falling back to target: %s.", caster ? caster->Type : -1, target->GetName(1));
+			//Log(ERROR, "Actor", "LastHitter (type %d) falling back to target: %s.", caster ? caster->Type : -1, target->GetName(1));
 			target->LastHitter=target->GetGlobalID();
 		}
 	}
 
 	if (core->HasFeature(GF_3ED_RULES) && target->GetStat(IE_MC_FLAGS) & MC_INVULNERABLE) {
-		Log(DEBUG, "fx_damage", "Attacking invulnerable target, skipping!");
+		//Log (DEBUG, "fx_damage", "Attacking invulnerable target, skipping!");
 		return FX_NOT_APPLIED;
 	}
 
@@ -7737,7 +7737,7 @@ int fx_uncanny_dodge (Scriptable* /*Owner*/, Actor* target, Effect* fx)
 	ieDword val = fx->Parameter1;
 
 	if ((signed)val < 0) {
-		Log(ERROR, "FXOPCodes", "fx_uncanny_dodge does not support negative modifiers!");
+		//Log(ERROR, "FXOPCodes", "fx_uncanny_dodge does not support negative modifiers!");
 	} else if (val == 0) {
 		STAT_SET(IE_UNCANNY_DODGE, 0);
 	} else if (val <= mask) {

@@ -188,7 +188,7 @@ void ArmorClass::dump() const
 	buffer.appendFormatted("Natural: %d\tGeneric: %d\tDeflection: %d\n", natural, genericBonus, deflectionBonus);
 	buffer.appendFormatted("Armor: %d\tShield: %d\n", armorBonus, shieldBonus);
 	buffer.appendFormatted("Dexterity: %d\tWisdom: %d\n\n", dexterityBonus, wisdomBonus);
-	Log(DEBUG, "ArmorClass", buffer);
+	//Log (DEBUG, "ArmorClass", buffer);
 }
 
 /*
@@ -330,7 +330,7 @@ void ToHitStats::dump() const
 	buffer.appendFormatted("Base: %2d\tGeneric: %d\tEffect: %d\n", base, genericBonus, fxBonus);
 	buffer.appendFormatted("Armor: %d\tShield: %d\n", armorBonus, shieldBonus);
 	buffer.appendFormatted("Weapon: %d\tProficiency: %d\tAbility: %d\n\n", weaponBonus, proficiencyBonus, abilityBonus);
-	Log(DEBUG, "ToHit", buffer);
+	//Log (DEBUG, "ToHit", buffer);
 }
 
 

@@ -89,7 +89,7 @@ static Holder<DataFileMgr> GetIniFile(const ieResRef DefaultArea)
 		return NULL;
 	}
 	if (!core->IsAvailable( IE_INI_CLASS_ID )) {
-		Log(ERROR, "IniSpawn", "No INI Importer Available.");
+		//Log(ERROR, "IniSpawn", "No INI Importer Available.");
 		return NULL;
 	}
 
@@ -257,7 +257,7 @@ void IniSpawn::ReadCreature(DataFileMgr *inifile, const char *crittername, Critt
 		critter.CreFile=new ieResRef[critter.creaturecount];
 		GetElements(s, critter.CreFile, critter.creaturecount);
 	} else {
-		Log(ERROR, "IniSpawn", "Invalid spawn entry: %s", crittername);
+		//Log(ERROR, "IniSpawn", "Invalid spawn entry: %s", crittername);
 	}
 
 	s = inifile->GetKeyAsString(crittername,"point_select",NULL);

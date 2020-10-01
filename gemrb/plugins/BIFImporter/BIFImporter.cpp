@@ -64,7 +64,7 @@ DataStream* BIFImporter::DecompressBIFC(DataStream* compressed, const char* path
 	fflush(stdout);
 	FileStream out;
 	if (!out.Create(path)) {
-		Log(ERROR, "BIFImporter", "Cannot write %s.", path);
+		//Log(ERROR, "BIFImporter", "Cannot write %s.", path);
 		return NULL;
 	}
 	ieDword finalsize = 0;

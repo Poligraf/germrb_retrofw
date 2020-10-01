@@ -112,7 +112,7 @@ void TextEdit::SetFont(Font* f)
 		MarkDirty();
 		return;
 	}
-	Log(ERROR, "TextEdit", "Invalid font set!");
+	//Log(ERROR, "TextEdit", "Invalid font set!");
 }
 
 Font *TextEdit::GetFont() { return font; }

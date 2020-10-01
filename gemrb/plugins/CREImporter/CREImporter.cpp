@@ -50,7 +50,7 @@ static void Initializer()
 
 //one column, these don't have a level
 static ieResRef* innlist;   //IE_IWD2_SPELL_INNATE
-static int inncount=-1;     
+static int inncount=-1;
 static ieResRef* snglist;   //IE_IWD2_SPELL_SONG
 static int sngcount=-1;
 static ieResRef* shplist;   //IE_IWD2_SPELL_SHAPE
@@ -263,7 +263,7 @@ int CREImporter::FindSpellType(char *name, unsigned short &level, unsigned int c
 				if (clsmsk & (1<<type)) {
 					int level2 = spllist[i].FindSpell(type);
 					if (level2 == -1) {
-						Log(ERROR, "CREImporter", "Spell (%s of type %d) found without a level set! Using 1!", name, type);
+						//Log(ERROR, "CREImporter", "Spell (%s of type %d) found without a level set! Using 1!", name, type);
 						level2 = 0; // internal 0-indexed level
 					}
 					level = level2;
@@ -274,7 +274,7 @@ int CREImporter::FindSpellType(char *name, unsigned short &level, unsigned int c
 		}
 	}
 
-	Log(ERROR, "CREImporter", "Could not find spell (%s) booktype! %d, %d!", name, clsmsk, kit);
+	//Log(ERROR, "CREImporter", "Could not find spell (%s) booktype! %d, %d!", name, clsmsk, kit);
 	// pseudorandom fallback
 	return IE_IWD2_SPELL_WIZARD;
 }
@@ -383,15 +383,15 @@ static const ieResRef *ResolveSpellIndex(int index, int level, ieIWD2SpellType t
 	if (!ret) {
 		// some npcs have spells at odd levels, so the lookup just failed
 		// eg. slayer knights of xvim with sppr325 at level 2 instead of 3
-		Log(ERROR, "CREImporter", "Spell (%d of type %d) found at unexpected level (%d)!", index, type, level);
+		//Log(ERROR, "CREImporter", "Spell (%d of type %d) found at unexpected level (%d)!", index, type, level);
 		int level2 = spllist[index].FindSpell(type);
 		// grrr, some rows have no levels set - they're all 0, but with a valid resref, so just return that
 		if (level2 == -1) {
-			Log(DEBUG, "CREImporter", "Spell entry (%d) without any levels set!", index);
+			//Log (DEBUG, "CREImporter", "Spell entry (%d) without any levels set!", index);
 			return spllist[index].GetSpell();
 		}
 		ret = spllist[index].FindSpell(level2, type);
-		if (ret) Log(DEBUG, "CREImporter", "The spell was found at level %d!", level2);
+		// if (ret) //Log (DEBUG, "CREImporter", "The spell was found at level %d!", level2);
 	}
 	if (ret || (kit==-1) ) {
 		return ret;
@@ -586,7 +586,7 @@ bool CREImporter::Open(DataStream* stream)
 		return true;
 	}
 
-	Log(ERROR, "CREImporter", "Not a CRE File or File Version not supported: %8.8s", Signature);
+	//Log(ERROR, "CREImporter", "Not a CRE File or File Version not supported: %8.8s", Signature);
 	return false;
 }
 
@@ -657,7 +657,7 @@ void CREImporter::WriteChrHeader(DataStream *stream, Actor *act)
 			TotSCEFF = 1;
 			break;
 		default:
-			Log(ERROR, "CREImporter", "Unknown CHR version!");
+			//Log(ERROR, "CREImporter", "Unknown CHR version!");
 			return;
 	}
 	stream->Write( Signature, 8);
@@ -1030,7 +1030,7 @@ Actor* CREImporter::GetActor(unsigned char is_in_party)
 			GetActorIWD1(act);
 			break;
 		default:
-			Log(ERROR, "CREImporter", "Unknown creature signature: %d\n", CREVersion);
+			//Log(ERROR, "CREImporter", "Unknown creature signature: %d\n", CREVersion);
 			delete act;
 			return NULL;
 	}
@@ -1039,7 +1039,7 @@ Actor* CREImporter::GetActor(unsigned char is_in_party)
 	if (core->IsAvailable(IE_EFF_CLASS_ID) ) {
 		ReadEffects( act );
 	} else {
-		Log(ERROR, "CREImporter", "Effect importer is unavailable!");
+		//Log(ERROR, "CREImporter", "Effect importer is unavailable!");
 	}
 	// Reading inventory, spellbook, etc
 	ReadInventory( act, Inventory_Size );
@@ -1294,7 +1294,7 @@ void CREImporter::ReadInventory(Actor *act, unsigned int Inventory_Size)
 		ieWord index = indices[i++];
 		if (index != 0xffff) {
 			if (index>=ItemsCount) {
-				Log(ERROR, "CREImporter", "Invalid item index (%d) in creature!", index);
+				//Log(ERROR, "CREImporter", "Invalid item index (%d) in creature!", index);
 				continue;
 			}
 			//20 is the size of CREItem on disc (8+2+3x2+4)
@@ -1305,7 +1305,7 @@ void CREImporter::ReadInventory(Actor *act, unsigned int Inventory_Size)
 			if (item) {
 				act->inventory.SetSlotItem(item, Slot);
 			} else {
-				Log(ERROR, "CREImporter", "Invalid item index (%d) in creature!", index);
+				//Log(ERROR, "CREImporter", "Invalid item index (%d) in creature!", index);
 			}
 		}
 	}
@@ -1694,7 +1694,7 @@ void CREImporter::GetIWD2Spellpage(Actor *act, ieIWD2SpellType type, int level, 
 				if(totalcount) {
 					totalcount--;
 				} else {
-					Log(ERROR, "CREImporter", "More spells still known than memorised.");
+					//Log(ERROR, "CREImporter", "More spells still known than memorised.");
 					break;
 				}
 				CREMemorizedSpell *memory = new CREMemorizedSpell;

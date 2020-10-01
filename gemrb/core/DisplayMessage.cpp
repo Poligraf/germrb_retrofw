@@ -62,7 +62,7 @@ bool DisplayMessage::StrRefs::LoadTable(const std::string& name)
 		loadedTable = name;
 		return true;
 	} else {
-		Log(ERROR, "DisplayMessage", "Unable to initialize DisplayMessage::StrRefs");
+		//Log(ERROR, "DisplayMessage", "Unable to initialize DisplayMessage::StrRefs");
 	}
 	return false;
 }

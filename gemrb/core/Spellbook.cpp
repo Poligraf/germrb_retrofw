@@ -1186,7 +1186,7 @@ void Spellbook::dump() const
 {
 	StringBuffer buffer;
 	dump(buffer);
-	Log(DEBUG, "Spellbook", buffer);
+	//Log (DEBUG, "Spellbook", buffer);
 }
 
 void Spellbook::dump(StringBuffer& buffer) const

@@ -66,14 +66,14 @@ int GLVideoDriver::CreateDisplay(int w, int h, int bpp, bool fs, const char* tit
 	window = SDL_CreateWindow(title, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, winFlags);
 	if (window == NULL) 
 	{
-		Log(ERROR, "SDL 2 GL Driver", "couldnt create window:%s", SDL_GetError());
+		//Log(ERROR, "SDL 2 GL Driver", "couldnt create window:%s", SDL_GetError());
 		return GEM_ERROR;
 	}
 
 	context = SDL_GL_CreateContext(window);
 	if (context == NULL) 
 	{
-		Log(ERROR, "SDL 2 GL Driver", "couldnt create GL context:%s", SDL_GetError());
+		//Log(ERROR, "SDL 2 GL Driver", "couldnt create GL context:%s", SDL_GetError());
 		return GEM_ERROR;
 	}
 	SDL_GL_MakeCurrent(window, context);
@@ -82,7 +82,7 @@ int GLVideoDriver::CreateDisplay(int w, int h, int bpp, bool fs, const char* tit
 
 	if (renderer == NULL) 
 	{
-		Log(ERROR, "SDL 2 GL Driver", "couldnt create renderer:%s", SDL_GetError());
+		//Log(ERROR, "SDL 2 GL Driver", "couldnt create renderer:%s", SDL_GetError());
 		return GEM_ERROR;
 	}
 	SDL_RenderSetLogicalSize(renderer, width, height);
@@ -116,7 +116,7 @@ int GLVideoDriver::CreateDisplay(int w, int h, int bpp, bool fs, const char* tit
 
 	if (!backBuf) 
 	{
-		Log(ERROR, "SDL 2 GL Video", "Unable to create backbuffer of %s format: %s",
+		//Log(ERROR, "SDL 2 GL Video", "Unable to create backbuffer of %s format: %s",
 			SDL_GetPixelFormatName(format), SDL_GetError());
 		return GEM_ERROR;
 	}

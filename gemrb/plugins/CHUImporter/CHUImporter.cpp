@@ -60,7 +60,7 @@ bool CHUImporter::Open(DataStream* stream)
 	char Signature[8];
 	str->Read( Signature, 8 );
 	if (strncmp( Signature, "CHUIV1  ", 8 ) != 0) {
-		Log(ERROR, "CHUImporter", "Not a Valid CHU File");
+		//Log(ERROR, "CHUImporter", "Not a Valid CHU File");
 		return false;
 	}
 	str->ReadDword( &WindowCount );
@@ -78,7 +78,7 @@ Window* CHUImporter::GetWindow(unsigned int wid)
 	unsigned int i;
 
 	if (!str) {
-		Log(ERROR, "CHUImporter", "No data stream to read from, skipping controls");
+		//Log(ERROR, "CHUImporter", "No data stream to read from, skipping controls");
 		return NULL;
 	}
 
@@ -112,7 +112,7 @@ Window* CHUImporter::GetWindow(unsigned int wid)
 		}
 	}
 	if (!core->IsAvailable( IE_BAM_CLASS_ID )) {
-		Log(ERROR, "CHUImporter", "No BAM Importer Available, skipping controls");
+		//Log(ERROR, "CHUImporter", "No BAM Importer Available, skipping controls");
 		return win;
 	}
 	for (i = 0; i < ControlsCount; i++) {
@@ -185,7 +185,7 @@ Window* CHUImporter::GetWindow(unsigned int wid)
 					gamedata->GetFactoryResource( BAMFile,
 							IE_BAM_CLASS_ID, IE_NORMAL );
 				if (!bam ) {
-					Log(ERROR, "CHUImporter", "Cannot Load Button Images, skipping control");
+					//Log(ERROR, "CHUImporter", "Cannot Load Button Images, skipping control");
 					/* IceWind Dale 2 has fake BAM ResRefs for some Buttons,
 					this will handle bad ResRefs */
 					break;
@@ -254,7 +254,7 @@ Window* CHUImporter::GetWindow(unsigned int wid)
 					if (af) {
 						pbar->SetAnimation(af->GetCycle( Cycle & 0xff ) );
 					} else {
-						Log(ERROR, "CHUImporter", "Couldn't create animationfactory for knob: %s", BAMFile);
+						//Log(ERROR, "CHUImporter", "Couldn't create animationfactory for knob: %s", BAMFile);
 					}
 				}
 				else {
@@ -454,7 +454,7 @@ endalign:
 				gamedata->GetFactoryResource( BAMResRef,
 											 IE_BAM_CLASS_ID, IE_NORMAL );
 				if (!bam) {
-					Log(ERROR, "CHUImporter", "Unable to create scrollbar, no BAM: %s", BAMResRef);
+					//Log(ERROR, "CHUImporter", "Unable to create scrollbar, no BAM: %s", BAMResRef);
 					break;
 				}
 				Sprite2D* images[IE_SCROLLBAR_IMAGE_COUNT];

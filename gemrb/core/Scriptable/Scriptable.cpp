@@ -200,7 +200,7 @@ void Scriptable::SetScript(const ieResRef aScript, int idx, bool ai)
 void Scriptable::SetScript(int index, GameScript* script)
 {
 	if (index >= MAX_SCRIPTS) {
-		Log(ERROR, "Scriptable", "Invalid script index!");
+		//Log(ERROR, "Scriptable", "Invalid script index!");
 		return;
 	}
 	delete Scripts[index];
@@ -569,7 +569,7 @@ void Scriptable::ProcessActions()
 		CurrentActionInterruptable = true;
 		if (!CurrentAction) {
 			if (! (CurrentActionTicks == 0 && CurrentActionState == 0)) {
-				Log(ERROR, "Scriptable", "Last action: %d", lastAction);
+				//Log(ERROR, "Scriptable", "Last action: %d", lastAction);
 			}
 			assert(CurrentActionTicks == 0 && CurrentActionState == 0);
 			CurrentAction = PopNextAction();
@@ -1009,7 +1009,7 @@ void Scriptable::CastSpellPointEnd(int level, int no_stance)
 		return;
 	}
 	if (!area) {
-		Log(ERROR, "Scriptable", "CastSpellPointEnd: lost area, skipping %s!", SpellResRef);
+		//Log(ERROR, "Scriptable", "CastSpellPointEnd: lost area, skipping %s!", SpellResRef);
 		ResetCastingState(caster);
 		return;
 	}
@@ -1080,7 +1080,7 @@ void Scriptable::CastSpellEnd(int level, int no_stance)
 		return;
 	}
 	if (!area) {
-		Log(ERROR, "Scriptable", "CastSpellEnd: lost area, skipping %s!", SpellResRef);
+		//Log(ERROR, "Scriptable", "CastSpellEnd: lost area, skipping %s!", SpellResRef);
 		ResetCastingState(caster);
 		return;
 	}
@@ -1126,7 +1126,7 @@ int Scriptable::CanCast(const ieResRef SpellRef, bool verbose) {
 	Spell* spl = gamedata->GetSpell(SpellRef);
 	if (!spl) {
 		SpellHeader = -1;
-		Log(ERROR, "Scriptable", "Spell not found, aborting cast!");
+		//Log(ERROR, "Scriptable", "Spell not found, aborting cast!");
 		return 0;
 	}
 
@@ -1300,7 +1300,7 @@ int Scriptable::CastSpellPoint( const Point &target, bool deplete, bool instant,
 	if (Type == ST_ACTOR) {
 		actor = (Actor *) this;
 		if (actor->HandleCastingStance(SpellResRef, deplete, instant) ) {
-			Log(ERROR, "Scriptable", "Spell not known or memorized, aborting cast!");
+			//Log(ERROR, "Scriptable", "Spell not known or memorized, aborting cast!");
 			return -1;
 		}
 	}
@@ -1335,7 +1335,7 @@ int Scriptable::CastSpell( Scriptable* target, bool deplete, bool instant, bool 
 	if (Type == ST_ACTOR) {
 		actor = (Actor *) this;
 		if (actor->HandleCastingStance(SpellResRef, deplete, instant) ) {
-			Log(ERROR, "Scriptable", "Spell not known or memorized, aborting cast!");
+			//Log(ERROR, "Scriptable", "Spell not known or memorized, aborting cast!");
 			return -1;
 		}
 	}
@@ -1624,7 +1624,7 @@ bool Scriptable::HandleHardcodedSurge(ieResRef surgeSpellRef, Spell *spl, Actor 
 		default:
 			SpellHeader = -1;
 			SpellResRef[0] = 0;
-			Log(ERROR, "Scriptable", "New spell not found, aborting cast mid-surge!");
+			//Log(ERROR, "Scriptable", "New spell not found, aborting cast mid-surge!");
 			caster->SetStance(IE_ANI_READY);
 			return false;
 	}
@@ -2080,7 +2080,7 @@ void Movable::SetStance(unsigned int arg)
 
 	if (arg >= MAX_ANIMS) {
 		StanceID = IE_ANI_AWAKE;
-		Log(ERROR, "Movable", "Tried to set invalid stance id(%u)", arg);
+		//Log(ERROR, "Movable", "Tried to set invalid stance id(%u)", arg);
 		return;
 	}
 

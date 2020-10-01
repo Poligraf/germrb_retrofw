@@ -460,14 +460,6 @@ dsputil.h
 rational.h
 /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/gemrb/plugins/BIKPlayer/rational.h
 
-/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/gemrb/plugins/BIKPlayer/GetBitContext.cpp
-math.h
--
-GetBitContext.h
-/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/gemrb/plugins/BIKPlayer/GetBitContext.h
-System/Logging.h
-/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/gemrb/plugins/BIKPlayer/System/Logging.h
-
 /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/gemrb/plugins/BIKPlayer/GetBitContext.h
 common.h
 /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/gemrb/plugins/BIKPlayer/common.h
@@ -494,51 +486,11 @@ stdlib.h
 string.h
 -
 
-/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/gemrb/plugins/BIKPlayer/dct.cpp
-math.h
--
-dsputil.h
-/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/gemrb/plugins/BIKPlayer/dsputil.h
-
 /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/gemrb/plugins/BIKPlayer/dsputil.h
 common.h
 /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/gemrb/plugins/BIKPlayer/common.h
-
-/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/gemrb/plugins/BIKPlayer/fft.cpp
-math.h
--
-dsputil.h
-/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/gemrb/plugins/BIKPlayer/dsputil.h
-
-/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/gemrb/plugins/BIKPlayer/mem.cpp
-limits.h
--
-stdlib.h
--
-string.h
--
-malloc.h
--
-common.h
-/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/gemrb/plugins/BIKPlayer/common.h
-
-/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/gemrb/plugins/BIKPlayer/rational.cpp
-assert.h
--
-limits.h
--
-common.h
-/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/gemrb/plugins/BIKPlayer/common.h
-rational.h
-/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/gemrb/plugins/BIKPlayer/rational.h
 
 /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/gemrb/plugins/BIKPlayer/rational.h
-
-/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/gemrb/plugins/BIKPlayer/rdft.cpp
-math.h
--
-dsputil.h
-/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/gemrb/plugins/BIKPlayer/dsputil.h
 
 config.h
 

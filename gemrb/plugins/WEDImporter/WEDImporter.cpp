@@ -71,7 +71,7 @@ bool WEDImporter::Open(DataStream* stream)
 	char Signature[8];
 	str->Read( Signature, 8 );
 	if (strncmp( Signature, "WED V1.3", 8 ) != 0) {
-		Log(ERROR, "WEDImporter", "This file is not a valid WED File! Actual signature: %s", Signature);
+		//Log(ERROR, "WEDImporter", "This file is not a valid WED File! Actual signature: %s", Signature);
 		return false;
 	}
 	str->ReadDword( &OverlaysCount );
@@ -260,7 +260,7 @@ ieWord* WEDImporter::GetDoorIndices(char* ResRef, int* count, bool& BaseClosed)
 	//The door has no representation in the WED file
 	if (i == DoorsCount) {
 		*count = 0;
-		Log(ERROR, "WEDImporter", "Found door without WED entry!");
+		//Log(ERROR, "WEDImporter", "Found door without WED entry!");
 		return NULL;
 	}
 

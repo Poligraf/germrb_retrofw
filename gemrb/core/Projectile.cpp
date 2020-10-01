@@ -478,14 +478,14 @@ Actor *Projectile::GetTarget()
 				Target = original->GetGlobalID();
 				target = original;
 			} else {
-				Log(DEBUG, "Projectile", "GetTarget: caster not found, bailing out!");
+				//Log (DEBUG, "Projectile", "GetTarget: caster not found, bailing out!");
 				return NULL;
 			}
 		}
 		effects->SetOwner(original);
 		return target;
 	} else {
-		Log(DEBUG, "Projectile", "GetTarget: Target not set or dummy, using caster!");
+		//Log (DEBUG, "Projectile", "GetTarget: Target not set or dummy, using caster!");
 	}
 	target = area->GetActorByGlobalID(Caster);
 	if (target) {

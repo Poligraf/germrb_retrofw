@@ -56,7 +56,7 @@ int SDL12VideoDriver::CreateDisplay(int w, int h, int b, bool fs, const char* ti
 	bpp=b;
 	fullscreen=fs;
 	// Log(MESSAGE, "SDL 1.2 Driver", "Creating display");
-	ieDword flags = SDL_HWSURFACE|SDL_TRIPLEBUF;
+	ieDword flags = (SDL_HWSURFACE|SDL_DOUBLEBUF);
 	if (fullscreen) {
 		flags |= SDL_FULLSCREEN;
 	}
@@ -64,7 +64,7 @@ int SDL12VideoDriver::CreateDisplay(int w, int h, int b, bool fs, const char* ti
 	disp = SDL_SetVideoMode( w, h, bpp, flags );
 	SDL_WM_SetCaption( title, 0 );
 	if (disp == NULL) {
-		Log(ERROR, "SDL 1.2 Driver", "%s", SDL_GetError());
+		//Log(ERROR, "SDL 1.2 Driver", "%s", SDL_GetError());
 		return GEM_ERROR;
 	}
 	// Log(MESSAGE, "SDL 1.2 Driver", "Checking for HardWare Acceleration...");

@@ -51,7 +51,7 @@ bool DLGImporter::Open(DataStream* stream)
 	char Signature[8];
 	str->Read( Signature, 8 );
 	if (strnicmp( Signature, "DLG V1.0", 8 ) != 0) {
-		Log(ERROR, "DLGImporter", "Not a valid DLG File...");
+		//Log(ERROR, "DLGImporter", "Not a valid DLG File...");
 		Version = 0;
 		return false;
 	}

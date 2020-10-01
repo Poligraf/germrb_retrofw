@@ -303,7 +303,7 @@ ScriptedAnimation::ScriptedAnimation(DataStream* stream)
 		AnimationFactory* af = ( AnimationFactory* )
 			gamedata->GetFactoryResource( Anim1ResRef, IE_BAM_CLASS_ID );
 		if (!af) {
-			Log(ERROR, "ScriptedAnimation", "Failed to load animation: %s!", Anim1ResRef);
+			//Log(ERROR, "ScriptedAnimation", "Failed to load animation: %s!", Anim1ResRef);
 			return;
 		}
 		//no idea about vvc phases, i think they got no endphase?
@@ -557,7 +557,7 @@ bool ScriptedAnimation::HandlePhase(Sprite2D *&frame)
 
 	if (justCreated) {
 		if (Phase == P_NOTINITED) {
-			Log(ERROR, "ScriptedAnimation", "Not fully initialised VVC!");
+			//Log(ERROR, "ScriptedAnimation", "Not fully initialised VVC!");
 			return true;
 		}
 		unsigned long time;

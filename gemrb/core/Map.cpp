@@ -518,7 +518,7 @@ void Map::MoveToNewArea(const char *area, const char *entrance, unsigned int dir
 	}
 	Map* map = game->GetMap(area, false);
 	if (!map) {
-		Log(ERROR, "Map", "Invalid map: %s", area);
+		//Log(ERROR, "Map", "Invalid map: %s", area);
 		command[0]=0;
 		return;
 	}
@@ -526,7 +526,7 @@ void Map::MoveToNewArea(const char *area, const char *entrance, unsigned int dir
 	if (entrance[0]) {
 		ent = map->GetEntrance( entrance );
 		if (!ent) {
-			Log(ERROR, "Map", "Invalid entrance '%s' for area %s", entrance, area);
+			//Log(ERROR, "Map", "Invalid entrance '%s' for area %s", entrance, area);
 		}
 	}
 	int X,Y, face;
@@ -1504,7 +1504,7 @@ void Map::InitActor(Actor *actor)
 		char key[32];
 		const size_t len = snprintf(key, sizeof(key),"%s_visited", scriptName);
 		if (len > sizeof(key)) {
-			Log(ERROR, "Map", "Area %s has a too long script name for generating _visited globals!", scriptName);
+			//Log(ERROR, "Map", "Area %s has a too long script name for generating _visited globals!", scriptName);
 		}
 		core->GetGame()->locals->SetAt(key, 1);
 	}
@@ -1568,7 +1568,7 @@ void Map::DeleteActor(int i)
 Scriptable *Map::GetScriptableByGlobalID(ieDword objectID)
 {
 	if (!objectID) return NULL;
-	
+
 	Scriptable *scr = GetActorByGlobalID(objectID);
 	if (scr)
 		return scr;
@@ -2408,7 +2408,7 @@ void Map::dump(bool show_actors) const
 			}
 		}
 	}
-	Log(DEBUG, "Map", buffer);
+	//Log (DEBUG, "Map", buffer);
 }
 
 /******************************************************************************/
@@ -2718,7 +2718,7 @@ PathNode* Map::GetLine(const Point &start, int Steps, int Orientation, int flags
 
 	dest.x += Steps * mult * xoff + 0.5;
 	dest.y += Steps * mult * yoff + 0.5;
-	
+
 	return GetLine(start, dest, 2, Orientation, flags);
 }
 
@@ -3104,8 +3104,8 @@ int Map::WhichEdge(const Point &s)
 	unsigned int sX=s.x/16;
 	unsigned int sY=s.y/12;
 	if (!(GetBlocked( sX, sY )&PATH_MAP_TRAVEL)) {
-		Log(DEBUG, "Map", "This isn't a travel region [%d.%d]?",
-			sX, sY);
+		//Log (DEBUG, "Map", "This isn't a travel region [%d.%d]?",
+			// sX, sY);
 		return -1;
 	}
 	sX*=Height;
@@ -3232,13 +3232,13 @@ bool Map::SpawnCreature(const Point &pos, const char *creResRef, int radiusx, in
 				if (creCount) (*creCount)++;
 				spawned = true;
 			}
-		} 
+		}
 	}
 
 	if (spawned && sg && difficulty) {
 		*difficulty -= sg->Level;
 	}
-		
+
 	return spawned;
 }
 
@@ -3278,7 +3278,7 @@ void Map::TriggerSpawn(Spawn *spawn)
 		if (++i >= spawn->Count) {
 			i = 0;
 		}
-		
+
 	}
 	//disable spawnpoint
 	if (spawn->Method & SPF_ONCE || !(spawn->Method & SPF_NOSPAWN)) {
@@ -3589,7 +3589,7 @@ static void MergePiles(Container *donorPile, Container *pile)
 			int slot = pile->inventory.FindItem(item->ItemResRef, 0, --count);
 			if (slot == -1) {
 				// probably an inventory bug, shouldn't happen
-				Log(DEBUG, "Map", "MoveVisibleGroundPiles found unaccessible pile item: %s", item->ItemResRef);
+				//Log (DEBUG, "Map", "MoveVisibleGroundPiles found unaccessible pile item: %s", item->ItemResRef);
 				skipped--;
 				continue;
 			}
@@ -4172,4 +4172,3 @@ void Map::SetupReverbInfo() {
 }
 
 }
-

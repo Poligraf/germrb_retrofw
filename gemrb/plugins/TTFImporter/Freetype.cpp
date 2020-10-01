@@ -49,7 +49,7 @@ void LogFTError(FT_Error errCode)
 	if ( !err_msg ) {
 		err_msg = "unknown FreeType error";
 	}
-	Log(ERROR, "FreeType", "%s", err_msg);
+	//Log(ERROR, "FreeType", "%s", err_msg);
 }
 
 }

@@ -267,7 +267,7 @@ bool StoreHasItemCore(const ieResRef storename, const ieResRef itemname)
 
 	Store* store = gamedata->GetStore(storename);
 	if (!store) {
-		Log(ERROR, "GameScript", "Store cannot be opened!");
+		//Log(ERROR, "GameScript", "Store cannot be opened!");
 		return false;
 	}
 
@@ -284,7 +284,7 @@ static bool StoreGetItemCore(CREItem &item, const ieResRef storename, const ieRe
 {
 	Store* store = gamedata->GetStore(storename);
 	if (!store) {
-		Log(ERROR, "GameScript", "Store cannot be opened!");
+		//Log(ERROR, "GameScript", "Store cannot be opened!");
 		return false;
 	}
 
@@ -456,12 +456,12 @@ void DisplayStringCore(Scriptable* const Sender, int Strref, int flags)
 	// Log(MESSAGE, "GameScript", "Displaying string on: %s", Sender->GetScriptName() );
 	if (flags & DS_CONST) {
 		if (Sender->Type!=ST_ACTOR) {
-			Log(ERROR, "GameScript", "Verbal constant not supported for non actors!");
+			//Log(ERROR, "GameScript", "Verbal constant not supported for non actors!");
 			return;
 		}
 		Actor* actor = ( Actor* ) Sender;
 		if ((ieDword) Strref>=VCONST_COUNT) {
-			Log(ERROR, "GameScript", "Invalid verbal constant!");
+			//Log(ERROR, "GameScript", "Invalid verbal constant!");
 			return;
 		}
 
@@ -734,8 +734,8 @@ void CreateCreatureCore(Scriptable* Sender, Action* parameters, int flags)
 	}
 
 	if (!ab) {
-		Log(ERROR, "GameScript", "Failed to create creature! (missing creature file %s?)",
-			parameters->string0Parameter);
+		//Log(ERROR, "GameScript", "Failed to create creature! (missing creature file %s?)",
+//			parameters->string0Parameter);
 		// maybe this should abort()?
 		return;
 	}
@@ -817,7 +817,7 @@ static ScriptedAnimation *GetVVCEffect(const char *effect, int iterations)
 	if (effect[0]) {
 		ScriptedAnimation* vvc = gamedata->GetScriptedAnimation(effect, false);
 		if (!vvc) {
-			Log(ERROR, "GameScript", "Failed to create effect.");
+			//Log(ERROR, "GameScript", "Failed to create effect.");
 			return NULL;
 		}
 		if (iterations > 1) {
@@ -977,8 +977,8 @@ void BeginDialog(Scriptable* Sender, Action* parameters, int Flags)
 	}
 	if (!scr) {
 		assert(Sender);
-		Log(ERROR, "GameScript", "Speaker for dialog couldn't be found (Sender: %s, Type: %d) Flags:%d.",
-			Sender->GetScriptName(), Sender->Type, Flags);
+		//Log(ERROR, "GameScript", "Speaker for dialog couldn't be found (Sender: %s, Type: %d) Flags:%d.",
+//			Sender->GetScriptName(), Sender->Type, Flags);
 		Sender->ReleaseCurrentAction();
 		return;
 	}
@@ -989,8 +989,8 @@ void BeginDialog(Scriptable* Sender, Action* parameters, int Flags)
 	}
 
 	if (!tar || tar->Type!=ST_ACTOR) {
-		Log(ERROR, "GameScript", "Target for dialog couldn't be found (Sender: %s, Type: %d).",
-			Sender->GetScriptName(), Sender->Type);
+		//Log(ERROR, "GameScript", "Target for dialog couldn't be found (Sender: %s, Type: %d).",
+//			Sender->GetScriptName(), Sender->Type);
 		if (Sender->Type == ST_ACTOR) {
 			((Actor *) Sender)->dump();
 		}
@@ -1001,7 +1001,7 @@ void BeginDialog(Scriptable* Sender, Action* parameters, int Flags)
 		} else {
 			buffer.append("<NULL>\n");
 		}
-		Log(ERROR, "GameScript", buffer);
+		//Log(ERROR, "GameScript", buffer);
 		Sender->ReleaseCurrentAction();
 		return;
 	}
@@ -1018,7 +1018,7 @@ void BeginDialog(Scriptable* Sender, Action* parameters, int Flags)
 			buffer.append("Speaker is dead, cannot start dialogue. Speaker and target are:\n");
 			speaker->dump(buffer);
 			target->dump(buffer);
-			Log(ERROR, "GameScript", buffer);
+			//Log(ERROR, "GameScript", buffer);
 			Sender->ReleaseCurrentAction();
 			return;
 		}
@@ -1369,7 +1369,7 @@ void AttackCore(Scriptable *Sender, Scriptable *target, int flags)
 	// mislead and projected images can't attack
 	int puppet = actor->GetStat(IE_PUPPETMASTERTYPE);
 	if (puppet && puppet < 3) {
-		Log(DEBUG, "AttackCore", "Tried attacking with an illusionary copy: %s!", actor->GetName(1));
+		//Log (DEBUG, "AttackCore", "Tried attacking with an illusionary copy: %s!", actor->GetName(1));
 		return;
 	}
 
@@ -1479,7 +1479,7 @@ static int GetIdsValue(const char *&symbol, const char *idsname)
 	int idsfile=core->LoadSymbol(idsname);
 	Holder<SymbolMgr> valHook = core->GetSymbol(idsfile);
 	if (!valHook) {
-		Log(ERROR, "GameScript", "Missing IDS file %s for symbol %s!", idsname, symbol);
+		//Log(ERROR, "GameScript", "Missing IDS file %s for symbol %s!", idsname, symbol);
 		return -1;
 	}
 	char *newsymbol;
@@ -1679,7 +1679,7 @@ Action* GenerateActionCore(const char *src, const char *str, unsigned short acti
 
 			case 'o': //Object
 				if (objectCount==3) {
-					Log(ERROR, "GSUtils", "Invalid object count!");
+					//Log(ERROR, "GSUtils", "Invalid object count!");
 					//abort();
 					delete newAction;
 					return NULL;
@@ -1736,7 +1736,7 @@ Action* GenerateActionCore(const char *src, const char *str, unsigned short acti
 				if (mergestrings) {
 					str++;
 					if (*str!='s') {
-						Log(ERROR, "GSUtils", "Invalid mergestrings:%s", str);
+						//Log(ERROR, "GSUtils", "Invalid mergestrings:%s", str);
 						//abort();
 						delete newAction;
 						return NULL;
@@ -1783,7 +1783,7 @@ void MoveNearerTo(Scriptable *Sender, Scriptable *target, int distance, int dont
 	Map *myarea, *hisarea;
 
 	if (Sender->Type != ST_ACTOR) {
-		Log(ERROR, "GameScript", "MoveNearerTo only works with actors");
+		//Log(ERROR, "GameScript", "MoveNearerTo only works with actors");
 		Sender->ReleaseCurrentAction();
 		return;
 	}
@@ -1824,7 +1824,7 @@ void MoveNearerTo(Scriptable *Sender, Scriptable *target, int distance, int dont
 int MoveNearerTo(Scriptable *Sender, const Point &p, int distance, int dont_release)
 {
 	if (Sender->Type != ST_ACTOR) {
-		Log(ERROR, "GameScript", "MoveNearerTo only works with actors");
+		//Log(ERROR, "GameScript", "MoveNearerTo only works with actors");
 		Sender->ReleaseCurrentAction();
 		return 0;
 	}
@@ -1946,7 +1946,7 @@ Trigger *GenerateTriggerCore(const char *src, const char *str, int trIndex, int 
 		}
 		switch (*str) {
 			default:
-				Log(ERROR, "GSUtils", "Invalid type: %s", str);
+				//Log(ERROR, "GSUtils", "Invalid type: %s", str);
 				//str++;
 				delete newTrigger;
 				return NULL;
@@ -2043,7 +2043,7 @@ Trigger *GenerateTriggerCore(const char *src, const char *str, int trIndex, int 
 				if (mergestrings) {
 					str++;
 					if (*str!='s') {
-						Log(ERROR, "GSUtils", "Invalid mergestrings:%s", str);
+						//Log(ERROR, "GSUtils", "Invalid mergestrings:%s", str);
 						//abort();
 						delete newTrigger;
 						return NULL;
@@ -2090,8 +2090,8 @@ void SetVariable(Scriptable* Sender, const char* VarName, const char* Context, i
 	char newVarName[8+33];
 
 	if (InDebug&ID_VARIABLES) {
-		Log(DEBUG, "GSUtils", "Setting variable(\"%s%s\", %d)", Context,
-			VarName, value );
+		//Log (DEBUG, "GSUtils", "Setting variable(\"%s%s\", %d)", Context,
+			// VarName, value );
 	}
 
 	strlcpy( newVarName, Context, 7 );
@@ -2136,7 +2136,7 @@ void SetVariable(Scriptable* Sender, const char* VarName, ieDword value)
 	}
 
 	if (InDebug&ID_VARIABLES) {
-		Log(DEBUG, "GSUtils", "Setting variable(\"%s\", %d)", VarName, value );
+		//Log (DEBUG, "GSUtils", "Setting variable(\"%s\", %d)", VarName, value );
 	}
 	strlcpy( newVarName, VarName, 7 );
 	if (stricmp( newVarName, "MYAREA" ) == 0) {
@@ -2484,7 +2484,7 @@ unsigned int GetSpellDistance(const ieResRef spellres, Scriptable *Sender)
 
 	Spell* spl = gamedata->GetSpell( spellres );
 	if (!spl) {
-		Log(ERROR, "GameScript", "Spell couldn't be found:%.8s.", spellres);
+		//Log(ERROR, "GameScript", "Spell couldn't be found:%.8s.", spellres);
 		return 0;
 	}
 	dist = spl->GetCastingDistance(Sender);
@@ -2506,7 +2506,7 @@ unsigned int GetItemDistance(const ieResRef itemres, int header)
 
 	Item* itm = gamedata->GetItem( itemres );
 	if (!itm) {
-		Log(ERROR, "GameScript", "Item couldn't be found:%.8s.", itemres);
+		//Log(ERROR, "GameScript", "Item couldn't be found:%.8s.", itemres);
 		return 0;
 	}
 	dist=itm->GetCastingDistance(header);
@@ -2534,7 +2534,7 @@ void SetupWishCore(Scriptable *Sender, int column, int picks)
 
 	AutoTable tm("wish");
 	if (!tm) {
-		Log(ERROR, "GameScript", "Cannot find wish.2da.");
+		//Log(ERROR, "GameScript", "Cannot find wish.2da.");
 		return;
 	}
 
@@ -2821,7 +2821,7 @@ void SpellCore(Scriptable *Sender, Action *parameters, int flags)
 		//the target was converted to a point
 		Sender->CastSpellPointEnd(level, flags&SC_INSTANT);
 	} else {
-		Log(ERROR, "GameScript", "SpellCore: Action (%d) lost target somewhere!", parameters->actionID);
+		//Log(ERROR, "GameScript", "SpellCore: Action (%d) lost target somewhere!", parameters->actionID);
 	}
 	Sender->ReleaseCurrentAction();
 }
@@ -2918,7 +2918,7 @@ void SpellPointCore(Scriptable *Sender, Action *parameters, int flags)
 		//if target was set, fire spell
 		Sender->CastSpellPointEnd(level, flags&SC_INSTANT);
 	} else {
-		Log(ERROR, "GameScript", "SpellPointCore: Action (%d) lost target somewhere!", parameters->actionID);
+		//Log(ERROR, "GameScript", "SpellPointCore: Action (%d) lost target somewhere!", parameters->actionID);
 	}
 	Sender->ReleaseCurrentAction();
 }
@@ -2937,7 +2937,7 @@ void AddXPCore(Action *parameters, bool divide)
 		displaymsg->DisplayString(parameters->int0Parameter, DMC_BG2XPGREEN, IE_STR_SOUND);
 	}
 	if (!xptable) {
-		Log(ERROR, "GameScript", "Can't perform AddXP2DA/AddXPVar!");
+		//Log(ERROR, "GameScript", "Can't perform AddXP2DA/AddXPVar!");
 		return;
 	}
 	const char *xpvalue = xptable->QueryField(parameters->string0Parameter, "0"); // level is unused

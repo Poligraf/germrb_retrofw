@@ -166,7 +166,7 @@ inline PyObject* PyString_FromAnimID(const char* AnimID)
  */
 static PyObject* RuntimeError(const char* msg)
 {
-	Log(ERROR, "GUIScript", "Runtime Error:");
+	//Log(ERROR, "GUIScript", "Runtime Error:");
 	PyErr_SetString( PyExc_RuntimeError, msg );
 	if (QuitOnError) {
 		core->ExitGemRB();
@@ -181,7 +181,7 @@ static PyObject* RuntimeError(const char* msg)
  */
 static PyObject* AttributeError(const char* doc_string)
 {
-	Log(ERROR, "GUIScript", "Syntax Error:");
+	//Log(ERROR, "GUIScript", "Syntax Error:");
 	PyErr_SetString(PyExc_AttributeError, doc_string);
 	if (QuitOnError) {
 		core->ExitGemRB();
@@ -805,20 +805,20 @@ static PyObject* GemRB_Window_ReassignControls(PyObject * /*self*/, PyObject* ar
 	int win = 0;
 
 	if (!PyArg_ParseTuple(args, "iOO", &win, &origIDtuple, &newIDtuple)) {
-		Log(ERROR, "GUIScript", "ReassignControls: param parsing");
+		//Log(ERROR, "GUIScript", "ReassignControls: param parsing");
 		return AttributeError(GemRB_Window_ReassignControls__doc);
 	}
 	if (!PyObject_TypeCheck(origIDtuple, &PyTuple_Type)) {
-		Log(ERROR, "GUIScript", "ReassignControls: first tuple type");
+		//Log(ERROR, "GUIScript", "ReassignControls: first tuple type");
 		return AttributeError(GemRB_Window_ReassignControls__doc);
 	}
 	if (!PyObject_TypeCheck(newIDtuple, &PyTuple_Type)) {
-		Log(ERROR, "GUIScript", "ReassignControls: second tuple type");
+		//Log(ERROR, "GUIScript", "ReassignControls: second tuple type");
 		return AttributeError(GemRB_Window_ReassignControls__doc);
 	}
 	int length = PyTuple_Size(origIDtuple);
 	if (length != PyTuple_Size(newIDtuple)) {
-		Log(ERROR, "GUIScript", "ReassignControls: tuple size mismatch");
+		//Log(ERROR, "GUIScript", "ReassignControls: tuple size mismatch");
 		return AttributeError(GemRB_Window_ReassignControls__doc);
 	}
 
@@ -827,11 +827,11 @@ static PyObject* GemRB_Window_ReassignControls(PyObject * /*self*/, PyObject* ar
 		PyObject *pnid = PyTuple_GetItem(newIDtuple, i);
 
 		if (!PyObject_TypeCheck(poid, &PyInt_Type)) {
-			Log(ERROR, "GUIScript", "ReassignControls: tuple1 member %d not int", i);
+			//Log(ERROR, "GUIScript", "ReassignControls: tuple1 member %d not int", i);
 			return AttributeError(GemRB_Window_ReassignControls__doc);
 		}
 		if (!PyObject_TypeCheck(pnid, &PyInt_Type)) {
-			Log(ERROR, "GUIScript", "ReassignControls: tuple2 member %d not int", i);
+			//Log(ERROR, "GUIScript", "ReassignControls: tuple2 member %d not int", i);
 			return AttributeError(GemRB_Window_ReassignControls__doc);
 		}
 		int oid = PyInt_AsLong(poid);
@@ -840,12 +840,12 @@ static PyObject* GemRB_Window_ReassignControls(PyObject * /*self*/, PyObject* ar
 		// child control
 		int ctrlindex = GetControlIndex(win, oid);
 		if (ctrlindex == -1) {
-			Log(ERROR, "GUIScript", "ReassignControls: Control (ID: %d) was not found!", oid);
+			//Log(ERROR, "GUIScript", "ReassignControls: Control (ID: %d) was not found!", oid);
 			return RuntimeError("Control was not found!");
 		}
 		Control *ctrl = GetControl(win, ctrlindex, -1);
 		if (!ctrl) {
-			Log(ERROR, "GUIScript", "ReassignControls: Control (ID: %d) was not found!", oid);
+			//Log(ERROR, "GUIScript", "ReassignControls: Control (ID: %d) was not found!", oid);
 			return RuntimeError("Control was not found!");
 		}
 
@@ -897,8 +897,8 @@ static PyObject* GemRB_LoadWindowPack(PyObject * /*self*/, PyObject* args)
 
 	if ( (width && (width>core->Width)) ||
 			(height && (height>core->Height)) ) {
-		Log(ERROR, "GUIScript", "Screen is too small! This window requires %d x %d resolution.",
-			width, height);
+		//Log(ERROR, "GUIScript", "Screen is too small! This window requires %d x %d resolution.",
+//			width, height);
 		return RuntimeError("Please change your settings.");
 	}
 	Py_RETURN_NONE;
@@ -1417,12 +1417,12 @@ static PyObject* GemRB_Table_GetValue(PyObject * /*self*/, PyObject* args)
 	}
 	if (PyObject_TypeCheck( row, &PyInt_Type ) &&
 		( !PyObject_TypeCheck( col, &PyInt_Type ) )) {
-		Log(ERROR, "GUIScript", "Type Error: RowIndex/RowString and ColIndex/ColString must be the same type");
+		//Log(ERROR, "GUIScript", "Type Error: RowIndex/RowString and ColIndex/ColString must be the same type");
 		return NULL;
 	}
 	if (PyObject_TypeCheck( row, &PyString_Type ) &&
 		( !PyObject_TypeCheck( col, &PyString_Type ) )) {
-		Log(ERROR, "GUIScript", "Type Error: RowIndex/RowString and ColIndex/ColString must be the same type");
+		//Log(ERROR, "GUIScript", "Type Error: RowIndex/RowString and ColIndex/ColString must be the same type");
 		return NULL;
 	}
 	Holder<TableMgr> tm = gamedata->GetTable( TableIndex );
@@ -2164,7 +2164,7 @@ static PyObject* GemRB_TextArea_Append(PyObject * /*self*/, PyObject* args)
 		ieDword flags = 0;
 		if (flag) {
 			if (!PyObject_TypeCheck( flag, &PyInt_Type )) {
-				Log(ERROR, "GUIScript", "Syntax Error: GetString flag must be integer");
+				//Log(ERROR, "GUIScript", "Syntax Error: GetString flag must be integer");
 				return NULL;
 			}
 			flags = (ieDword)PyInt_AsLong( flag );
@@ -4649,7 +4649,7 @@ static PyObject* GemRB_GameSetScreenFlags(PyObject * /*self*/, PyObject* args)
 		return AttributeError( GemRB_GameSetScreenFlags__doc );
 	}
 	if (Operation < OP_SET || Operation > OP_NAND) {
-		Log(ERROR, "GUIScript", "Syntax Error: operation must be 0-4");
+		//Log(ERROR, "GUIScript", "Syntax Error: operation must be 0-4");
 		return NULL;
 	}
 
@@ -4835,7 +4835,7 @@ static PyObject* GemRB_Button_SetFlags(PyObject * /*self*/, PyObject* args)
 		return AttributeError( GemRB_Button_SetFlags__doc );
 	}
 	if (Operation < OP_SET || Operation > OP_NAND) {
-		Log(ERROR, "GUIScript", "Syntax Error: operation must be 0-4");
+		//Log(ERROR, "GUIScript", "Syntax Error: operation must be 0-4");
 		return NULL;
 	}
 
@@ -4845,7 +4845,7 @@ static PyObject* GemRB_Button_SetFlags(PyObject * /*self*/, PyObject* args)
 	}
 
 	if (btn->SetFlags( Flags, Operation ) ) {
-		Log(ERROR, "GUIScript", "Flag cannot be set!");
+		//Log(ERROR, "GUIScript", "Flag cannot be set!");
 		return NULL;
 	}
 
@@ -4890,7 +4890,7 @@ static PyObject* GemRB_TextArea_SetFlags(PyObject * /*self*/, PyObject* args)
 		return AttributeError( GemRB_TextArea_SetFlags__doc );
 	}
 	if (Operation < OP_SET || Operation > OP_NAND) {
-		Log(ERROR, "GUIScript", "Syntax Error: operation must be 0-4");
+		//Log(ERROR, "GUIScript", "Syntax Error: operation must be 0-4");
 		return NULL;
 	}
 
@@ -4900,7 +4900,7 @@ static PyObject* GemRB_TextArea_SetFlags(PyObject * /*self*/, PyObject* args)
 	}
 
 	if (ta->SetFlags( Flags, Operation )) {
-		Log(ERROR, "GUIScript", "Flag cannot be set!");
+		//Log(ERROR, "GUIScript", "Flag cannot be set!");
 		return NULL;
 	}
 
@@ -5254,13 +5254,13 @@ static PyObject* GemRB_Button_SetPLT(PyObject * /*self*/, PyObject* args)
 
 		Picture = af->GetPaperdollImage(col[0]==0xFFFFFFFF?0:col, Picture2,(unsigned int)type);
 		if (Picture == NULL) {
-			Log(ERROR, "Button_SetPLT", "Paperdoll picture == NULL (%s)", ResRef);
+			//Log(ERROR, "Button_SetPLT", "Paperdoll picture == NULL (%s)", ResRef);
 			Py_RETURN_NONE;
 		}
 /*	} else {
 		Picture = im->GetSprite2D(type, col);
 		if (Picture == NULL) {
-			Log(ERROR, "Button_SetPLT", "Picture == NULL (%s)", ResRef);
+			//Log(ERROR, "Button_SetPLT", "Picture == NULL (%s)", ResRef);
 			return NULL;
 		}
 	}*/
@@ -5997,12 +5997,12 @@ static PyObject* GemRB_CheckVar(PyObject * /*self*/, PyObject* args)
 	}
 
 	if (!Sender) {
-		Log(ERROR, "GUIScript", "No Sender!");
+		//Log(ERROR, "GUIScript", "No Sender!");
 		return NULL;
 	}
 	long value =(long) CheckVariable(Sender, Variable, Context);
-	Log(DEBUG, "GUISCript", "%s %s=%ld",
-		Context, Variable, value);
+	//Log (DEBUG, "GUISCript", "%s %s=%ld",
+//		Context, Variable, value);
 	return PyInt_FromLong( value );
 }
 
@@ -6045,7 +6045,7 @@ static PyObject* GemRB_SetGlobal(PyObject * /*self*/, PyObject* args)
 			Sender = (Scriptable *) game->GetCurrentArea();
 		}
 		if (!Sender) {
-			Log(ERROR, "GUIScript", "No Sender!");
+			//Log(ERROR, "GUIScript", "No Sender!");
 			return NULL;
 		}
 	} // else GLOBAL, area name or KAPUTZ
@@ -8473,8 +8473,8 @@ static PyObject *SetSpellIcon(int wi, int ci, const ieResRef SpellResRef, int ty
 	Spell* spell = gamedata->GetSpell( SpellResRef, 1 );
 	if (spell == NULL) {
 		btn->SetPicture( NULL );
-		Log(ERROR, "GUIScript", "Spell not found :%.8s",
-			SpellResRef);
+		//Log(ERROR, "GUIScript", "Spell not found :%.8s",
+//			SpellResRef);
 		//no incref here!
 		return Py_None;
 	}
@@ -9301,8 +9301,8 @@ static PyObject* GemRB_IsValidStoreItem(PyObject * /*self*/, PyObject* args)
 	}
 	Item *item = gamedata->GetItem(ItemResRef, true);
 	if (!item) {
-		Log(ERROR, "GUIScript", "Invalid resource reference: %s",
-			ItemResRef);
+		//Log(ERROR, "GUIScript", "Invalid resource reference: %s",
+//			ItemResRef);
 		return PyInt_FromLong(0);
 	}
 
@@ -12949,7 +12949,7 @@ static PyObject* GemRB_Window_SetupEquipmentIcons(PyObject * /*self*/, PyObject*
 		int ci = GetControlIndex(wi, i+Offset+(Start?1:0) );
 		Button* btn = (Button *) GetControl( wi, ci, IE_GUI_BUTTON );
 		if (!btn) {
-			Log(ERROR, "GUIScript", "Button %d in window %d not found!", ci, wi);
+			//Log(ERROR, "GUIScript", "Button %d in window %d not found!", ci, wi);
 			continue;
 		}
 		PyObject *Function = PyDict_GetItemString(dict, "EquipmentPressed");
@@ -14056,7 +14056,7 @@ static PyObject* GemRB_UseItem(PyObject * /*self*/, PyObject* args)
 			gc->SetupItemUse(itemdata.slot, itemdata.headerindex, actor, 0, itemdata.TargetNumber);
 			break;
 		default:
-			Log(ERROR, "GUIScript", "Unhandled target type!");
+			//Log(ERROR, "GUIScript", "Unhandled target type!");
 			break;
 	}
 	Py_RETURN_NONE;
@@ -15933,7 +15933,7 @@ bool GUIScript::Init(void)
 
 	sprintf( string, "import sys" );
 	if (PyRun_SimpleString( string ) == -1) {
-		Log(ERROR, "GUIScript", "Error running: %s", string);
+		//Log(ERROR, "GUIScript", "Error running: %s", string);
 		return false;
 	}
 
@@ -15950,13 +15950,13 @@ bool GUIScript::Init(void)
 	// Add generic script path early, so GameType detection works
 	sprintf( string, "sys.path.append(\"%s\")", QuotePath( quoted, path ));
 	if (PyRun_SimpleString( string ) == -1) {
-		Log(ERROR, "GUIScript", "Error running: %s", string);
+		//Log(ERROR, "GUIScript", "Error running: %s", string);
 		return false;
 	}
 
 	sprintf( string, "import GemRB\n");
 	if (PyRun_SimpleString( "import GemRB" ) == -1) {
-		Log(ERROR, "GUIScript", "Error running: %s", string);
+		//Log(ERROR, "GUIScript", "Error running: %s", string);
 		return false;
 	}
 
@@ -15979,12 +15979,12 @@ bool GUIScript::Init(void)
 	// the generic one, so insert it before it
 	sprintf( string, "sys.path.insert(-1, \"%s\")", QuotePath( quoted, path2 ));
 	if (PyRun_SimpleString( string ) == -1) {
-		Log(ERROR, "GUIScript", "Error running: %s", string );
+		//Log(ERROR, "GUIScript", "Error running: %s", string );
 		return false;
 	}
 	sprintf( string, "GemRB.GameType = \"%s\"", core->GameType);
 	if (PyRun_SimpleString( string ) == -1) {
-		Log(ERROR, "GUIScript", "Error running: %s", string );
+		//Log(ERROR, "GUIScript", "Error running: %s", string );
 		return false;
 	}
 
@@ -15996,17 +15996,17 @@ bool GUIScript::Init(void)
 #endif
 
 	if (PyRun_SimpleString( "from GUIDefines import *" ) == -1) {
-		Log(ERROR, "GUIScript", "Check if %s/GUIDefines.py exists!", path);
+		//Log(ERROR, "GUIScript", "Check if %s/GUIDefines.py exists!", path);
 		return false;
 	}
 
 	if (PyRun_SimpleString( "from GUIClasses import *" ) == -1) {
-		Log(ERROR, "GUIScript", "Check if %s/GUIClasses.py exists!", path);
+		//Log(ERROR, "GUIScript", "Check if %s/GUIClasses.py exists!", path);
 		return false;
 	}
 
 	if (PyRun_SimpleString( "from GemRB import *" ) == -1) {
-		Log(ERROR, "GUIScript", "builtin GemRB module failed to load!!!");
+		//Log(ERROR, "GUIScript", "builtin GemRB module failed to load!!!");
 		return false;
 	}
 
@@ -16060,7 +16060,7 @@ bool GUIScript::Autodetect(void)
 		return true;
 	}
 	else {
-		Log(ERROR, "GUIScript", "Failed to detect game type.");
+		//Log(ERROR, "GUIScript", "Failed to detect game type.");
 		return false;
 	}
 }
@@ -16075,7 +16075,7 @@ bool GUIScript::LoadScript(const char* filename)
 	PyObject *pName = PyString_FromString( filename );
 	/* Error checking of pName left out */
 	if (pName == NULL) {
-		Log(ERROR, "GUIScript", "Failed to create filename for script \"%s\".", filename);
+		//Log(ERROR, "GUIScript", "Failed to create filename for script \"%s\".", filename);
 		return false;
 	}
 
@@ -16093,7 +16093,7 @@ bool GUIScript::LoadScript(const char* filename)
 		/* pDict is a borrowed reference */
 	} else {
 		PyErr_Print();
-		Log(ERROR, "GUIScript", "Failed to load script \"%s\".", filename);
+		//Log(ERROR, "GUIScript", "Failed to load script \"%s\".", filename);
 		return false;
 	}
 	return true;
@@ -16123,7 +16123,7 @@ PyObject *GUIScript::RunFunction(const char* moduleName, const char* functionNam
 	/* pFunc: Borrowed reference */
 	if (!pFunc || !PyCallable_Check(pFunc)) {
 		if (report_error) {
-			Log(ERROR, "GUIScript", "Missing function: %s from %s", functionName, moduleName);
+			//Log(ERROR, "GUIScript", "Missing function: %s from %s", functionName, moduleName);
 		}
 		Py_DECREF(module);
 		return NULL;
@@ -16275,4 +16275,3 @@ PyObject* GUIScript::ConstructObject(const char* type, PyObject* pArgs)
 GEMRB_PLUGIN(0x1B01BE6B, "GUI Script Engine (Python)")
 PLUGIN_CLASS(IE_GUI_SCRIPT_CLASS_ID, GUIScript)
 END_PLUGIN()
-

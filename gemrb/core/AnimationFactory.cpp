@@ -45,7 +45,7 @@ AnimationFactory::~AnimationFactory(void)
 
 	// FIXME: track down where sprites are being leaked
 	if (datarefcount) {
-		Log(ERROR, "AnimationFactory", "AnimationFactory %s has refcount %d", ResRef, datarefcount);
+		//Log(ERROR, "AnimationFactory", "AnimationFactory %s has refcount %d", ResRef, datarefcount);
 		//assert(datarefcount == 0);
 	}
 	if (FrameData)

@@ -50,7 +50,7 @@ int SAVImporter::DecompressSaveGame(DataStream *compressed)
 		ieDword fnlen, complen, declen;
 		compressed->ReadDword( &fnlen );
 		if (!fnlen) {
-			Log(ERROR, "SAVImporter", "Corrupt Save Detected");
+			//Log(ERROR, "SAVImporter", "Corrupt Save Detected");
 			return GEM_ERROR;
 		}
 		char* fname = ( char* ) malloc( fnlen );

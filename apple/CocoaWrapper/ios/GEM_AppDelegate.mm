@@ -135,7 +135,7 @@ using namespace GemRB;
 		// Log(MESSAGE, "Cocoa Wrapper", "Started a log file at %s", cLogFile);
 	} else {
 		delete fs;
-		Log(ERROR, "Cocoa Wrapper", "Unable to start log file at %s", cLogFile);
+		//Log(ERROR, "Cocoa Wrapper", "Unable to start log file at %s", cLogFile);
 	}
 }
 

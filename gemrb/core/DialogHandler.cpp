@@ -110,7 +110,7 @@ bool DialogHandler::InitDialog(Scriptable* spk, Scriptable* tgt, const char* dlg
 	dlg = dm->GetDialog();
 
 	if (!dlg) {
-		Log(ERROR, "DialogHandler", "Cannot start dialog (%s): %s with %s", dlgref, spk->GetName(1), tgt->GetName(1));
+		//Log(ERROR, "DialogHandler", "Cannot start dialog (%s): %s with %s", dlgref, spk->GetName(1), tgt->GetName(1));
 		return false;
 	}
 
@@ -155,7 +155,7 @@ bool DialogHandler::InitDialog(Scriptable* spk, Scriptable* tgt, const char* dlg
 		}
 	}
 	if (initialState < 0) {
-		Log(DEBUG, "DialogHandler", "Could not find a proper state");
+		//Log (DEBUG, "DialogHandler", "Could not find a proper state");
 		return false;
 	}
 
@@ -253,21 +253,21 @@ bool DialogHandler::DialogChoose(unsigned int choose)
 {
 	TextArea* ta = core->GetMessageTextArea();
 	if (!ta) {
-		Log(ERROR, "DialogHandler", "Dialog aborted???");
+		//Log(ERROR, "DialogHandler", "Dialog aborted???");
 		EndDialog();
 		return false;
 	}
 
 	Actor *speaker = GetSpeaker();
 	if (!speaker) {
-		Log(ERROR, "DialogHandler", "Speaker gone???");
+		//Log(ERROR, "DialogHandler", "Speaker gone???");
 		EndDialog();
 		return false;
 	}
 
 	Scriptable *target = GetTarget();
 	if (!target) {
-		Log(ERROR, "DialogHandler", "Target gone???");
+		//Log(ERROR, "DialogHandler", "Target gone???");
 		EndDialog();
 		return false;
 	}

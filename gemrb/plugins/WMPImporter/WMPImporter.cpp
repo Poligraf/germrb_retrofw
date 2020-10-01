@@ -57,8 +57,8 @@ bool WMPImporter::Open(DataStream* stream1, DataStream* stream2)
 	if (str1) {
 		str1->Read( Signature, 8 );
 		if (strncmp( Signature, "WMAPV1.0", 8 ) != 0) {
-			Log(ERROR, "WMPImporter", "'%s' is not a valid WMP File",
-				stream1->filename);
+			//Log(ERROR, "WMPImporter", "'%s' is not a valid WMP File",
+			//	stream1->filename);
 			return false;
 		}
 		str1->ReadDword( &WorldMapsCount1 );
@@ -71,8 +71,8 @@ bool WMPImporter::Open(DataStream* stream1, DataStream* stream2)
 	if (str2) {
 		str2->Read( Signature, 8 );
 		if (strncmp( Signature, "WMAPV1.0", 8 ) != 0) {
-			Log(ERROR, "WMPImporter", "'%s' is not a valid WMP File",
-				stream2->filename);
+			//Log(ERROR, "WMPImporter", "'%s' is not a valid WMP File",
+//				stream2->filename);
 			return false;
 		}
 		str2->ReadDword( &WorldMapsCount2 );
@@ -136,17 +136,17 @@ void WMPImporter::GetWorldMap(DataStream *str, WorldMap *m, unsigned int index)
 	// Load map bitmap
 	ResourceHolder<ImageMgr> mos(m->MapResRef);
 	if (!mos) {
-		Log(ERROR, "WMPImporter", "Worldmap image not found.");
+		//Log(ERROR, "WMPImporter", "Worldmap image not found.");
 	} else {
 		m->SetMapMOS(mos->GetSprite2D());
 		if (!m->GetMapMOS()) {
-			Log(ERROR, "WMPImporter", "Worldmap image malformed!");
+			//Log(ERROR, "WMPImporter", "Worldmap image malformed!");
 		}
 	}
 
 	// Load location icon bam
 	if (!core->IsAvailable( IE_BAM_CLASS_ID )) {
-		Log(ERROR, "WMPImporter", "No BAM Importer Available.");
+		//Log(ERROR, "WMPImporter", "No BAM Importer Available.");
 	} else {
 		AnimationFactory* af = ( AnimationFactory* )
 			gamedata->GetFactoryResource( m->MapIconResRef, IE_BAM_CLASS_ID, IE_NORMAL );

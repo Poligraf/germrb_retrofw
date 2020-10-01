@@ -52,7 +52,7 @@ bool TISImporter::Open(DataStream* stream)
 	headerShift = 0;
 	if (Signature[0] == 'T' && Signature[1] == 'I' && Signature[2] == 'S') {
 		if (strncmp( Signature, "TIS V1  ", 8 ) != 0) {
-			Log(ERROR, "TISImporter", "Not a Valid TIS file!");
+			//Log(ERROR, "TISImporter", "Not a Valid TIS file!");
 			return false;
 		}
 		str->ReadDword( &TilesCount );
@@ -100,7 +100,7 @@ Sprite2D* TISImporter::GetTile(int index)
 			print("FileSize: %ld", str->Size());
 			print("Position: %ld", pos);
 			print("Shift: %d", headerShift);*/
-			Log(ERROR, "TISImporter", "Corrupt WED file encountered; couldn't find any more tiles at tile %d", index);
+			//Log(ERROR, "TISImporter", "Corrupt WED file encountered; couldn't find any more tiles at tile %d", index);
 			last_corrupt = this;
 		}
 	
@@ -123,7 +123,7 @@ Sprite2D* TISImporter::GetTile(int index)
 		Palette[i].a = RevCol[i].a;
 		if (Palette[i].g==255 && !Palette[i].r && !Palette[i].b) {
 			if (transparent) {
-				Log(ERROR, "TISImporter", "Tile has two green (transparent) palette entries");
+				//Log(ERROR, "TISImporter", "Tile has two green (transparent) palette entries");
 			} else {
 				transparent = true;
 				transindex = i;

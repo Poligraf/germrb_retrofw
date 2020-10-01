@@ -1281,7 +1281,7 @@ int Game::GetXPFromCR(int cr)
 {
 	if (!crtable) LoadCRTable();
 	if (!crtable) {
-		Log(ERROR, "Game", "Cannot find moncrate.2da!");
+		//Log(ERROR, "Game", "Cannot find moncrate.2da!");
 		return 0;
 	}
 
@@ -2304,7 +2304,7 @@ void Game::dump() const
 
 		buffer.appendFormatted("Name: %s Order %d %s\n",actor->ShortName, actor->InParty, actor->Selected?"x":"-");
 	}
-	Log(DEBUG, "Game", buffer);
+	//Log (DEBUG, "Game", buffer);
 }
 
 Actor *Game::GetActorByGlobalID(ieDword globalID)

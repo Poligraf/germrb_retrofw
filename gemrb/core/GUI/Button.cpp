@@ -85,7 +85,7 @@ Button::~Button()
 void Button::SetImage(BUTTON_IMAGE_TYPE type, Sprite2D* img)
 {
 	if (type >= BUTTON_IMAGE_TYPE_COUNT) {
-		Log(ERROR, "Button", "Trying to set a button image index out of range: %d", type);
+		//Log(ERROR, "Button", "Trying to set a button image index out of range: %d", type);
 		return;
 	}
 

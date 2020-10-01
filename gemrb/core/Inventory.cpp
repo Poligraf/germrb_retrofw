@@ -185,7 +185,7 @@ void Inventory::CalculateWeight() const
 					slot->Flags |= IE_INV_ITEM_UNDROPPABLE;
 				}
 			} else {
-				Log(ERROR, "Inventory", "Invalid item: %s!", slot->ItemResRef);
+				//Log(ERROR, "Inventory", "Invalid item: %s!", slot->ItemResRef);
 				slot->Weight = 0;
 			}
 		} else {
@@ -204,7 +204,7 @@ void Inventory::AddSlotEffects(ieDword index)
 
 	const Item *itm = GetItemPointer(index, slot);
 	if (!itm) {
-		Log(ERROR, "Inventory", "Invalid item equipped...");
+		//Log(ERROR, "Inventory", "Invalid item equipped...");
 		return;
 	}
 	ItemExcl|=itm->ItemExcl;
@@ -1402,7 +1402,7 @@ void Inventory::AddSlotItemRes(const ieResRef ItemResRef, int SlotID, int Charge
 				// create or reuse the existing pile
 				area->AddItemToLocation(Owner->Pos, TmpItem);
 			} else {
-				Log(ERROR, "Inventory", "AddSlotItemRes: argh, no area and the inventory is full, bailing out!");
+				//Log(ERROR, "Inventory", "AddSlotItemRes: argh, no area and the inventory is full, bailing out!");
 				delete TmpItem;
 			}
 		}
@@ -1482,7 +1482,7 @@ void Inventory::dump() const
 {
 	StringBuffer buffer;
 	dump(buffer);
-	Log(DEBUG, "Inventory", buffer);
+	//Log (DEBUG, "Inventory", buffer);
 }
 
 void Inventory::dump(StringBuffer& buffer) const
@@ -1856,7 +1856,7 @@ int Inventory::FindStealableItem()
 	unsigned int start = core->Roll(1, slotcnt, -1);
 	int inc = start & 1 ? 1 : -1;
 
-	Log(DEBUG, "Inventory", "Start Slot: %d, increment: %d", start, inc);
+	//Log (DEBUG, "Inventory", "Start Slot: %d, increment: %d", start, inc);
 	for (unsigned int i = 0; i < slotcnt; ++i) {
 		int slot = (slotcnt - 1 + start + i * inc) % slotcnt;
 		CREItem *item = Slots[slot];

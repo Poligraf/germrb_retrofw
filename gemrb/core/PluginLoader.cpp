@@ -103,7 +103,7 @@ static bool FindFiles( char* path, std::list<char*> &files )
 	strcat( path, "*.dll" );
 	if (( hFile = _findfirst( path, &c_file ) ) == -1L) {
 		//If there is no file matching our search
-		Log(ERROR, "PluginLoader", "Error looking up dlls.");
+		//Log(ERROR, "PluginLoader", "Error looking up dlls.");
 		return false;
 	}
 
@@ -145,7 +145,7 @@ void LoadPlugins(char* pluginpath)
 
 	std::list< char * > files;
 	if (! FindFiles( path, files )) {
-		Log(ERROR, "PluginLoader", "Cannot find any plugins!");
+		//Log(ERROR, "PluginLoader", "Cannot find any plugins!");
 		return;
 	}
 
@@ -187,7 +187,7 @@ void LoadPlugins(char* pluginpath)
 		void* hMod = dlopen( path, RTLD_NOW | RTLD_GLOBAL );
 #endif
 		if (hMod == NULL) {
-			Log(ERROR, "PluginLoader", "Cannot Load \"%s\", skipping...", path);
+			//Log(ERROR, "PluginLoader", "Cannot Load \"%s\", skipping...", path);
 			continue;
 		}
 
@@ -201,12 +201,12 @@ void LoadPlugins(char* pluginpath)
 
 		//printMessage( "PluginMgr", "Checking Plugin Version...", WHITE );
 		if (LibVersion==NULL) {
-			Log(ERROR, "PluginLoader", "Skipping invalid plugin \"%s\".", path);
+			//Log(ERROR, "PluginLoader", "Skipping invalid plugin \"%s\".", path);
 			FREE_PLUGIN( hMod );
 			continue;
 		}
 		if (strcmp(LibVersion(), VERSION_GEMRB) ) {
-			Log(ERROR, "PluginLoader", "Skipping plugin \"%s\" with version mistmatch.", path);
+			//Log(ERROR, "PluginLoader", "Skipping plugin \"%s\" with version mistmatch.", path);
 			FREE_PLUGIN( hMod );
 			continue;
 		}

@@ -27,7 +27,7 @@ VideoContext::VideoContext(unsigned w, unsigned h, bool yuv)
 : YUV(yuv), width(w), height(h)
 {
 	if(pthread_mutex_init(&mutex, NULL) != GEM_OK) {
-		Log(ERROR, "VLC Player", "Unable to create mutex!");
+		//Log(ERROR, "VLC Player", "Unable to create mutex!");
 	}
 
 	int size = width * height;
@@ -69,7 +69,7 @@ void* VideoContext::GetPlane(unsigned idx)
 	} else {
 		return planes[0];
 	}
-	Log(ERROR, "VLCPlayer", "Plane index out of range.");
+	//Log(ERROR, "VLCPlayer", "Plane index out of range.");
 	return NULL;
 }
 

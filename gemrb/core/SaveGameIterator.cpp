@@ -122,7 +122,7 @@ SaveGame::SaveGame(const char* path, const char* name, const char* prefix, const
 	PathJoinExt(nPath, Path, Prefix, "bmp");
 	memset(&my_stat,0,sizeof(my_stat));
 	if (stat(nPath, &my_stat)) {
-		Log(ERROR, "SaveGameIterator", "Stat call failed, using dummy time!");
+		//Log(ERROR, "SaveGameIterator", "Stat call failed, using dummy time!");
 		strlcpy(Date, "Sun 31 Feb 00:00:01 2099", _MAX_PATH);
 	} else {
 		strftime(Date, _MAX_PATH, "%c", localtime((time_t*)&my_stat.st_mtime));
@@ -248,8 +248,8 @@ static bool IsSaveGameSlot(const char* Path, const char* slotname)
 	if (cnt != 2) {
 		//The matcher didn't match: either this is not a valid dir
 		//or the SAVEGAME_DIRECTORY_MATCHER needs updating.
-		Log(ERROR, "SaveGameIterator", "Invalid savegame directory '%s' in %s.",
-			slotname, Path);
+		//Log(ERROR, "SaveGameIterator", "Invalid savegame directory '%s' in %s.",
+//			slotname, Path);
 		return false;
 	}
 
@@ -294,7 +294,7 @@ bool SaveGameIterator::RescanSaveGames()
 	// create the save game directory at first access
 	if (!dir) {
 		if (!MakeDirectories(Path)) {
-			Log(ERROR, "SaveGameIterator", "Unable to create save game directory '%s'", Path);
+			//Log(ERROR, "SaveGameIterator", "Unable to create save game directory '%s'", Path);
 			return false;
 		}
 		dir.Rewind();
@@ -448,7 +448,7 @@ static bool DoSaveGame(const char *Path)
 
 	PluginHolder<ImageWriter> im(PLUGIN_IMAGE_WRITER_BMP);
 	if (!im) {
-		Log(ERROR, "SaveGameIterator", "Couldn't create the BMPWriter!");
+		//Log(ERROR, "SaveGameIterator", "Couldn't create the BMPWriter!");
 		return false;
 	}
 
@@ -502,7 +502,7 @@ static int CanSave()
 	}
 
 	Map *map = game->GetCurrentArea();
-	if (!map) {		
+	if (!map) {
 		displaymsg->DisplayConstantString(STR_CANTSAVE, DMC_BG2XPGREEN);
 		return -1;
 	}
@@ -560,7 +560,7 @@ static bool CreateSavePath(char *Path, int index, const char *slotname)
 
 	//if the path exists in different case, don't make it again
 	if (!MakeDirectory(Path)) {
-		Log(ERROR, "SaveGameIterator", "Unable to create save game directory '%s'", Path);
+		//Log(ERROR, "SaveGameIterator", "Unable to create save game directory '%s'", Path);
 		return false;
 	}
 	//keep the first part we already determined existing
@@ -571,7 +571,7 @@ static bool CreateSavePath(char *Path, int index, const char *slotname)
 	//this is required in case the old slot wasn't recognised but still there
 	core->DelTree(Path, false);
 	if (!MakeDirectory(Path)) {
-		Log(ERROR, "SaveGameIterator", "Unable to create save game directory '%s'", Path);
+		//Log(ERROR, "SaveGameIterator", "Unable to create save game directory '%s'", Path);
 		return false;
 	}
 	return true;

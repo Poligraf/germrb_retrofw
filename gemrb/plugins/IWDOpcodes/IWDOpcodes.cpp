@@ -2207,7 +2207,7 @@ int fx_resist_spell (Scriptable* Owner, Actor* target, Effect *fx)
 	}
 	//this has effect only on first apply, it will stop applying the spell
 	// FIXME: should probably return FX_NOT_APPLIED instead
-	Log(DEBUG, "IWDOpcodes", "fx_resist_spell: blatantly resisted spell %s!", fx->Source);
+	//Log (DEBUG, "IWDOpcodes", "fx_resist_spell: blatantly resisted spell %s!", fx->Source);
 	return FX_ABORT;
 }
 
@@ -2858,7 +2858,7 @@ int fx_overlay_iwd (Scriptable* /*Owner*/, Actor* target, Effect* fx)
 			target->SetOverlay(OV_SEVENEYES2);
 			break;
 		default:
-			Log(ERROR, "IWDOpcodes", "fx_overlay_iwd called with unknown mode: %d", type);
+			//Log(ERROR, "IWDOpcodes", "fx_overlay_iwd called with unknown mode: %d", type);
 			break;
 	}
 	return FX_APPLIED;

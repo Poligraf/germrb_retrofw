@@ -42,7 +42,7 @@ static void Initializer()
 	cgcount = 0;
 	AutoTable tm("cgtable");
 	if (!tm) {
-		Log(ERROR, "SPLImporter", "Cannot find cgtable.2da.");
+		//Log(ERROR, "SPLImporter", "Cannot find cgtable.2da.");
 		return;
 	}
 	cgcount = tm->GetRowCount();

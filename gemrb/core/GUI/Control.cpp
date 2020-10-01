@@ -65,7 +65,7 @@ Control::Control(const Region& frame)
 Control::~Control()
 {
 	if (InHandler) {
-		Log(ERROR, "Control", "Destroying control inside event handler, crash may occur!");
+		//Log(ERROR, "Control", "Destroying control inside event handler, crash may occur!");
 	}
 	core->DisplayTooltip( 0, 0, NULL );
 	delete Tooltip;
@@ -166,11 +166,11 @@ int Control::RunEventHandler(ControlEventHandler handler)
 		handler(this);
 		InHandler = false;
 		if (!core->IsValidWindow(WID,wnd) ) {
-			Log(ERROR, "Control", "Owner window destructed!");
+			//Log(ERROR, "Control", "Owner window destructed!");
 			return -1;
 		}
 		if (!wnd->IsValidControl(ID,this) ) {
-			Log(ERROR, "Control", "Control destructed!");
+			//Log(ERROR, "Control", "Control destructed!");
 			return -1;
 		}
 		return 0;

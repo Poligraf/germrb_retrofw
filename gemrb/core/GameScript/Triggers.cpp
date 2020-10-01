@@ -269,13 +269,13 @@ int GameScript::InParty(Scriptable* Sender, Trigger* parameters, bool allowdead)
 	if (!scr || scr->Type != ST_ACTOR) {
 		return 0;
 	}
-	
+
 	Actor *act = (Actor *) scr;
 	//don't allow dead, don't allow maze and similar effects
 	if (!allowdead && (!act->ValidTarget(GA_NO_DEAD) || act->GetStat(IE_AVATARREMOVAL) != 0)) {
 		return 0;
 	}
-	
+
 	return core->GetGame()->InParty(act) >= 0 ? 1 : 0;
 }
 
@@ -1736,7 +1736,7 @@ int GameScript::Dead(Scriptable* Sender, Trigger* parameters)
 			value = CheckVariable( Sender, Variable, "GLOBAL" );
 		}
 		if (len > sizeof(ieVariable)) {
-			Log(ERROR, "GameScript", "Scriptname %s (sender: %s) is too long for generating death globals!", parameters->string0Parameter, Sender->GetScriptName());
+			//Log(ERROR, "GameScript", "Scriptname %s (sender: %s) is too long for generating death globals!", parameters->string0Parameter, Sender->GetScriptName());
 		}
 		if (value>0) {
 			return 1;
@@ -2175,7 +2175,7 @@ int GameScript::SetSpellTarget(Scriptable* Sender, Trigger* parameters)
 		return 0;
 	}
 	Actor *scr = (Actor *) Sender;
-	
+
 	Scriptable* tar = GetActorFromObject( Sender, parameters->objectParameter );
 	if (!tar) {
 		// we got called with Nothing to invalidate the target
@@ -2517,8 +2517,8 @@ int GameScript::OpenState(Scriptable* Sender, Trigger* parameters)
 	Scriptable* tar = GetActorFromObject( Sender, parameters->objectParameter );
 	if (!tar) {
 		if (InDebug&ID_TRIGGERS) {
-			Log(ERROR, "GameScript", "Couldn't find door/container:%s",
-				parameters->objectParameter? parameters->objectParameter->objectName:"<NULL>");
+			//Log(ERROR, "GameScript", "Couldn't find door/container:%s",
+//				parameters->objectParameter? parameters->objectParameter->objectName:"<NULL>");
 			print("Sender: %s", Sender->GetScriptName());
 		}
 		return 0;
@@ -2536,8 +2536,8 @@ int GameScript::OpenState(Scriptable* Sender, Trigger* parameters)
 		}
 		default:; //to remove a warning
 	}
-	Log(ERROR, "GameScript", "Not a door/container:%s",
-		tar->GetScriptName());
+	//Log(ERROR, "GameScript", "Not a door/container:%s",
+//		tar->GetScriptName());
 	return 0;
 }
 
@@ -2545,8 +2545,8 @@ int GameScript::IsLocked(Scriptable * Sender, Trigger *parameters)
 {
 	Scriptable* tar = GetActorFromObject( Sender, parameters->objectParameter );
 	if (!tar) {
-		Log(ERROR, "GameScript", "Couldn't find door/container:%s",
-			parameters->objectParameter? parameters->objectParameter->objectName:"<NULL>");
+		//Log(ERROR, "GameScript", "Couldn't find door/container:%s",
+//			parameters->objectParameter? parameters->objectParameter->objectName:"<NULL>");
 		print("Sender: %s", Sender->GetScriptName());
 		return 0;
 	}
@@ -2563,8 +2563,8 @@ int GameScript::IsLocked(Scriptable * Sender, Trigger *parameters)
 		}
 		default:; //to remove a warning
 	}
-	Log(ERROR, "GameScript", "Not a door/container:%s",
-		tar->GetScriptName());
+	//Log(ERROR, "GameScript", "Not a door/container:%s",
+//		tar->GetScriptName());
 	return 0;
 }
 

@@ -108,7 +108,7 @@ static void FindBIF(BIFEntry *entry)
 		}
 	}
 
-	Log(ERROR, "KEYImporter", "Cannot find %s...", entry->name);
+	//Log(ERROR, "KEYImporter", "Cannot find %s...", entry->name);
 }
 
 bool KEYImporter::Open(const char *resfile, const char *desc)
@@ -116,7 +116,7 @@ bool KEYImporter::Open(const char *resfile, const char *desc)
 	free(description);
 	description = strdup(desc);
 	if (!core->IsAvailable( IE_BIF_CLASS_ID )) {
-		Log(ERROR, "KEYImporter", "An Archive Plug-in is not Available");
+		//Log(ERROR, "KEYImporter", "An Archive Plug-in is not Available");
 		return false;
 	}
 	unsigned int i;
@@ -129,16 +129,16 @@ bool KEYImporter::Open(const char *resfile, const char *desc)
 		if (strstr( resfile, "\\ " )) {
 			// Log(MESSAGE, "KEYImporter", "Escaped space(s) detected in path!. Do not escape spaces in your GamePath!");
 		}
-		Log(ERROR, "KEYImporter", "Cannot open Chitin.key");
-		Log(ERROR, "KeyImporter", "This means you set the GamePath config variable incorrectly.");
-		Log(ERROR, "KeyImporter", "It must point to the directory that holds a readable Chitin.key");
+		//Log(ERROR, "KEYImporter", "Cannot open Chitin.key");
+		//Log(ERROR, "KeyImporter", "This means you set the GamePath config variable incorrectly.");
+		//Log(ERROR, "KeyImporter", "It must point to the directory that holds a readable Chitin.key");
 		return false;
 	}
 	// Log(MESSAGE, "KEYImporter", "Checking file type...");
 	char Signature[8];
 	f->Read( Signature, 8 );
 	if (strncmp( Signature, "KEY V1  ", 8 ) != 0) {
-		Log(ERROR, "KEYImporter", "File has an Invalid Signature.");
+		//Log(ERROR, "KEYImporter", "File has an Invalid Signature.");
 		delete( f );
 		return false;
 	}

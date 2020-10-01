@@ -1385,8 +1385,8 @@ static void LoadActionFlags(const char *tableName, int flag, bool critical)
 	while (j--) {
 		i = table->GetValueIndex( j );
 		if (i >= MAX_ACTIONS) {
-			Log(ERROR, "GameScript", "%s action %d (%s) is too high, ignoring",
-				tableName, i, table->GetStringIndex( j ) );
+			//Log(ERROR, "GameScript", "%s action %d (%s) is too high, ignoring",
+//				tableName, i, table->GetStringIndex( j ) );
 			continue;
 		}
 		if (!actions[i]) {
@@ -1478,8 +1478,8 @@ void InitializeIEScript()
 		bool was_condition = (i & 0x4000);
 		i &= 0x3fff;
 		if (i >= MAX_TRIGGERS) {
-			Log(ERROR, "GameScript", "trigger %d (%s) is too high, ignoring",
-				i, triggersTable->GetStringIndex( j ) );
+			//Log(ERROR, "GameScript", "trigger %d (%s) is too high, ignoring",
+//				i, triggersTable->GetStringIndex( j ) );
 			continue;
 		}
 
@@ -1496,7 +1496,7 @@ void InitializeIEScript()
 					buffer.appendFormatted("%s is a synonym of ",
 						triggersTable->GetStringIndex( j ) );
 					printFunction(buffer, triggersTable, triggersTable->FindValue(triggersTable->GetValueIndex(j)));
-					Log(DEBUG, "GameScript", buffer);
+					//Log (DEBUG, "GameScript", buffer);
 				}
 			}
 			continue; //we already found an alternative
@@ -1547,8 +1547,8 @@ void InitializeIEScript()
 	for (j=0;j<max;j++) {
 		i = actionsTable->GetValueIndex( j );
 		if (i >= MAX_ACTIONS) {
-			Log(ERROR, "GameScript", "action %d (%s) is too high, ignoring",
-				i, actionsTable->GetStringIndex( j ) );
+			//Log(ERROR, "GameScript", "action %d (%s) is too high, ignoring",
+//				i, actionsTable->GetStringIndex( j ) );
 			continue;
 		}
 		const ActionLink* poi = FindAction( actionsTable->GetStringIndex( j ));
@@ -1567,7 +1567,7 @@ void InitializeIEScript()
 					buffer.appendFormatted("%s is a synonym of ",
 						actionsTable->GetStringIndex( j ) );
 					printFunction(buffer, actionsTable, actionsTable->FindValue(actionsTable->GetValueIndex(j)));
-					Log(DEBUG, "GameScript", buffer);
+					//Log (DEBUG, "GameScript", buffer);
 				}
 			}
 			continue; //we already found an alternative
@@ -1591,8 +1591,8 @@ void InitializeIEScript()
 		for (j=0;j<max;j++) {
 			i = overrideActionsTable->GetValueIndex( j );
 			if (i >= MAX_ACTIONS) {
-				Log(ERROR, "GameScript", "action %d (%s) is too high, ignoring",
-					i, overrideActionsTable->GetStringIndex( j ) );
+				//Log(ERROR, "GameScript", "action %d (%s) is too high, ignoring",
+//					i, overrideActionsTable->GetStringIndex( j ) );
 				continue;
 			}
 			const ActionLink *poi = FindAction( overrideActionsTable->GetStringIndex( j ));
@@ -1632,8 +1632,8 @@ void InitializeIEScript()
 			bool was_condition = (i & 0x4000);
 			i &= 0x3fff;
 			if (i >= MAX_TRIGGERS) {
-				Log(ERROR, "GameScript", "trigger %d (%s) is too high, ignoring",
-					i, overrideTriggersTable->GetStringIndex( j ) );
+				//Log(ERROR, "GameScript", "trigger %d (%s) is too high, ignoring",
+//					i, overrideTriggersTable->GetStringIndex( j ) );
 				continue;
 			}
 			const TriggerLink *poi = FindTrigger( overrideTriggersTable->GetStringIndex( j ));
@@ -1697,8 +1697,8 @@ void InitializeIEScript()
 	while (j--) {
 		i = objectsTable->GetValueIndex( j );
 		if (i >= MAX_OBJECTS) {
-			Log(ERROR, "GameScript", "object %d (%s) is too high, ignoring",
-				i, objectsTable->GetStringIndex( j ) );
+			//Log(ERROR, "GameScript", "object %d (%s) is too high, ignoring",
+//				i, objectsTable->GetStringIndex( j ) );
 			continue;
 		}
 		const ObjectLink* poi = FindObject( objectsTable->GetStringIndex( j ));
@@ -1714,7 +1714,7 @@ void InitializeIEScript()
 				buffer.appendFormatted("%s is a synonym of ",
 					objectsTable->GetStringIndex( j ) );
 				printFunction(buffer, objectsTable, objectsTable->FindValue(objectsTable->GetValueIndex(j)));
-				Log(DEBUG, "GameScript", buffer);
+				//Log (DEBUG, "GameScript", buffer);
 			}
 			continue;
 		}
@@ -1774,8 +1774,8 @@ void InitializeIEScript()
 			i = savedTriggersTable->GetValueIndex( j );
 			i &= 0x3fff;
 			if (i >= MAX_TRIGGERS) {
-				Log(ERROR, "GameScript", "saved trigger %d (%s) is too high, ignoring",
-					i, savedTriggersTable->GetStringIndex( j ) );
+				//Log(ERROR, "GameScript", "saved trigger %d (%s) is too high, ignoring",
+//					i, savedTriggersTable->GetStringIndex( j ) );
 				continue;
 			}
 			if (!triggers[i]) {
@@ -1807,7 +1807,7 @@ GameScript::~GameScript(void)
 		//set 3. parameter to true if you want instant free
 		//and possible death
 		if (InDebug&ID_REFERENCE) {
-			Log(DEBUG, "GameScript", "One instance of %s is dropped from %d.", Name, BcsCache.RefCount(Name) );
+			//Log (DEBUG, "GameScript", "One instance of %s is dropped from %d.", Name, BcsCache.RefCount(Name) );
 		}
 		int res = BcsCache.DecRef(script, Name, true);
 
@@ -1831,7 +1831,7 @@ Script* GameScript::CacheScript(ieResRef ResRef, bool AIScript)
 	Script *newScript = (Script *) BcsCache.GetResource(ResRef);
 	if ( newScript ) {
 		if (InDebug&ID_REFERENCE) {
-			Log(DEBUG, "GameScript", "Caching %s for the %d. time\n", ResRef, BcsCache.RefCount(ResRef) );
+			//Log (DEBUG, "GameScript", "Caching %s for the %d. time\n", ResRef, BcsCache.RefCount(ResRef) );
 		}
 		return newScript;
 	}
@@ -1849,7 +1849,7 @@ Script* GameScript::CacheScript(ieResRef ResRef, bool AIScript)
 	newScript = new Script( );
 	BcsCache.SetAt( ResRef, (void *) newScript );
 	if (InDebug&ID_REFERENCE) {
-		Log(DEBUG, "GameScript", "Caching %s for the %d. time", ResRef, BcsCache.RefCount(ResRef) );
+		//Log (DEBUG, "GameScript", "Caching %s for the %d. time", ResRef, BcsCache.RefCount(ResRef) );
 	}
 
 	while (true) {
@@ -1918,7 +1918,7 @@ static Object* DecodeObject(const char* line)
 	// HACK for iwd2 AddExperiencePartyCR
 	if (!stricmp(oB->objectName, "0.0.0.0 ")) {
 		strlcpy(oB->objectName, "", sizeof(oB->objectName));
-		Log(DEBUG, "asda", "overriding: +%s+", oB->objectName);
+		//Log (DEBUG, "asda", "overriding: +%s+", oB->objectName);
 	}
 	if (*line == '"')
 		line++; //Skip " (the same as above)
@@ -2130,7 +2130,7 @@ void GameScript::EvaluateAllBlocks()
 					// TODO: this will break blocking instants, if there are any
 					target->ReleaseCurrentAction();
 				} else {
-					Log(ERROR, "GameScript", "Failed to find CutSceneID target!");
+					//Log(ERROR, "GameScript", "Failed to find CutSceneID target!");
 					if (InDebug&ID_CUTSCENE) {
 						if (action->objects[1]) {
 							action->objects[1]->dump();
@@ -2212,7 +2212,7 @@ Response* GameScript::ReadResponse(DataStream* stream)
 		strlwr(aC->string1Parameter);
 		if (aC->actionID>=MAX_ACTIONS) {
 			aC->actionID=0;
-			Log(ERROR, "GameScript", "Invalid script action ID!");
+			//Log(ERROR, "GameScript", "Invalid script action ID!");
 		} else {
 			if (actionflags[aC->actionID] & AF_SCRIPTLEVEL) {
 				//can't set this here, because the same script may be loaded
@@ -2304,7 +2304,7 @@ bool Condition::Evaluate(Scriptable* Sender)
 int Trigger::Evaluate(Scriptable* Sender)
 {
 	if (triggerID >= MAX_TRIGGERS) {
-		Log(ERROR, "GameScript", "Corrupted (too high) trigger code: %d", triggerID);
+		//Log(ERROR, "GameScript", "Corrupted (too high) trigger code: %d", triggerID);
 		return 0;
 	}
 	TriggerFunction func = triggers[triggerID];
@@ -2371,7 +2371,7 @@ int Response::Execute(Scriptable* Sender)
 		if (!CheckCanary()) {
 			// FIXME: hack to prevent crashing when a script deletes itself.
 			// this object has been deleted and this should not be considered a fix (it may cause unforseen problems too).
-			Log(ERROR, "GameScript", "Aborting response execution due to object deletion.\n \
+			//Log(ERROR, "GameScript", "Aborting response execution due to object deletion.\n \
 									  This should not happen and we need to fix it.");
 			ret = 0;
 			break;
@@ -2434,7 +2434,7 @@ void GameScript::ExecuteAction(Scriptable* Sender, Action* aC)
 				scr->CurrentActionInterruptable = false;
 			}
 		} else {
-			Log(ERROR, "GameScript", "ActionOverride failed for object: ");
+			//Log(ERROR, "GameScript", "ActionOverride failed for object: ");
 			aC->objects[0]->dump();
 		}
 
@@ -2479,7 +2479,7 @@ void GameScript::ExecuteAction(Scriptable* Sender, Action* aC)
 			StringBuffer buffer;
 			buffer.append("Immediate action got queued!\n");
 			PrintAction(buffer, actionID);
-			Log(ERROR, "GameScript", buffer);
+			//Log(ERROR, "GameScript", buffer);
 			error("GameScript", "aborting...\n");
 		}
 		return;
@@ -2507,14 +2507,14 @@ Trigger* GenerateTrigger(char* String)
 	int len = strlench(String,'(')+1; //including (
 	int i = triggersTable->FindString(String, len);
 	if (i<0) {
-		Log(ERROR, "GameScript", "Invalid scripting trigger: %s", String);
+		//Log(ERROR, "GameScript", "Invalid scripting trigger: %s", String);
 		return NULL;
 	}
 	char *src = String+len;
 	char *str = triggersTable->GetStringIndex( i )+len;
 	Trigger *trigger = GenerateTriggerCore(src, str, i, negate);
 	if (!trigger) {
-		Log(ERROR, "GameScript", "Malformed scripting trigger: %s", String);
+		//Log(ERROR, "GameScript", "Malformed scripting trigger: %s", String);
 		return NULL;
 	}
 	return trigger;
@@ -2544,7 +2544,7 @@ Action* GenerateAction(const char* String)
 	if (i<0) {
 		i = actionsTable->FindString(actionString, len);
 		if (i < 0) {
-			Log(ERROR, "GameScript", "Invalid scripting action: %s", String);
+			//Log(ERROR, "GameScript", "Invalid scripting action: %s", String);
 			goto done;
 		}
 		str = actionsTable->GetStringIndex( i )+len;
@@ -2552,7 +2552,7 @@ Action* GenerateAction(const char* String)
 	}
 	action = GenerateActionCore( src, str, actionID);
 	if (!action) {
-		Log(ERROR, "GameScript", "Malformed scripting action: %s", String);
+		//Log(ERROR, "GameScript", "Malformed scripting action: %s", String);
 		goto done;
 	}
 	done:
@@ -2576,7 +2576,7 @@ void Object::dump() const
 {
 	StringBuffer buffer;
 	dump(buffer);
-	Log(DEBUG, "GameScript", buffer);
+	//Log (DEBUG, "GameScript", buffer);
 }
 
 void Object::dump(StringBuffer& buffer) const
@@ -2621,7 +2621,7 @@ void Trigger::dump() const
 {
 	StringBuffer buffer;
 	dump(buffer);
-	Log(DEBUG, "GameScript", buffer);
+	//Log (DEBUG, "GameScript", buffer);
 }
 
 void Trigger::dump(StringBuffer& buffer) const
@@ -2644,7 +2644,7 @@ void Action::dump() const
 {
 	StringBuffer buffer;
 	dump(buffer);
-	Log(DEBUG, "GameScript", buffer);
+	//Log (DEBUG, "GameScript", buffer);
 }
 
 void Action::dump(StringBuffer& buffer) const

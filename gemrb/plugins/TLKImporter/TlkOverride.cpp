@@ -58,7 +58,7 @@ bool CTlkOverride::Init()
 	memset(Signature,0,8);
 	toh_str->Read( Signature, 4 );
 	if (strncmp( Signature, "TLK ", 4 ) != 0) {
-		Log(ERROR, "TLKImporter", "Not a valid TOH file.");
+		//Log(ERROR, "TLKImporter", "Not a valid TOH file.");
 		return false;
 	}
 	toh_str->Seek( 8, GEM_CURRENT_POS );
@@ -369,7 +369,7 @@ DataStream* CTlkOverride::GetAuxTlk(bool create)
 retry:
 	if (fs->Modify(nPath)) {
 		if (fs->Size() % (SEGMENT_SIZE + 12)) {
-			Log(ERROR, "TLKImporter", "Defective default.tot detected. Discarding.");
+			//Log(ERROR, "TLKImporter", "Defective default.tot detected. Discarding.");
 			// if this happens we also need to account for the TOH file
 			AuxCount = 0;
 			if (toh_str->Seek(12, GEM_STREAM_START) == GEM_OK) {

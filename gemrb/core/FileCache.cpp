@@ -29,7 +29,7 @@ namespace GemRB {
 DataStream* CacheCompressedStream(DataStream *stream, const char* filename, int length, bool overwrite)
 {
 	if (!core->IsAvailable(PLUGIN_COMPRESSION_ZLIB)) {
-		Log(ERROR, "FileCache", "No Compression Manager Available. Cannot Load Compressed File.");
+		//Log(ERROR, "FileCache", "No Compression Manager Available. Cannot Load Compressed File.");
 		return NULL;
 	}
 
@@ -41,7 +41,7 @@ DataStream* CacheCompressedStream(DataStream *stream, const char* filename, int 
 	if (overwrite || !file_exists(path)) {
 		FileStream out;
 		if (!out.Create(path)) {
-			Log(ERROR, "FileCache", "Cannot write %s.", path);
+			//Log(ERROR, "FileCache", "Cannot write %s.", path);
 			return NULL;
 		}
 

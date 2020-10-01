@@ -75,7 +75,7 @@ bool MUSImporter::OpenPlaylist(const char* name)
 	PathJoin(path, core->GamePath, musicsubfolder, name, NULL);
 	// Log(MESSAGE, "MUSImporter", "Loading %s...", path);
 	if (!str->Open(path)) {
-		Log(ERROR, "MUSImporter", "Didn't find playlist '%s'.", path);
+		//Log(ERROR, "MUSImporter", "Didn't find playlist '%s'.", path);
 		return false;
 	}
 	int c = str->ReadLine( PLName, 32 );

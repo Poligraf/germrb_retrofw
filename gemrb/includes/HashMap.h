@@ -431,7 +431,7 @@ void HashMap<Key, Value, Hash>::dumpStats(const char* description)
 		_tableSize * sizeof(Entry *) +
 		_blocks.size() * sizeof(Entry) * _blockSize;
 
-	Log(DEBUG, "HashMap", "stats for %s:\n"
+	//Log (DEBUG, "HashMap", "stats for %s:\n"
 			"size\t\t%u\n"
 			"allocs\t\t%u\n"
 			"accesses\t%u\n"

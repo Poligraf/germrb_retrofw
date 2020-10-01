@@ -537,7 +537,7 @@ Sprite2D* SDLVideoDriver::CreatePalettedSprite(int w, int h, int bpp, void* pixe
 void SDLVideoDriver::BlitTile(const Sprite2D* spr, const Sprite2D* mask, int x, int y, const Region* clip, unsigned int flags)
 {
 	if (spr->BAM) {
-		Log(ERROR, "SDLVideo", "Tile blit not supported for this sprite");
+		//Log(ERROR, "SDLVideo", "Tile blit not supported for this sprite");
 		return;
 	}
 
@@ -731,7 +731,7 @@ void SDLVideoDriver::BlitGameSprite(const Sprite2D* spr, int x, int y,
 		SDL_Surface* surf = ((SDLSurfaceSprite2D*)spr)->GetSurface();
 		if (surf->format->BytesPerPixel != 4 && surf->format->BytesPerPixel != 1) {
 			// TODO...
-			Log(ERROR, "SDLVideo", "BlitGameSprite not supported for this sprite");
+			//Log(ERROR, "SDLVideo", "BlitGameSprite not supported for this sprite");
 			BlitSprite(spr, x, y, false, clip);
 			return;
 		}
@@ -1020,7 +1020,7 @@ void SDLVideoDriver::DrawRect(const Region& rgn, const Color& color, bool fill, 
 void SDLVideoDriver::DrawRectSprite(const Region& rgn, const Color& color, const Sprite2D* sprite)
 {
 	if (sprite->BAM) {
-		Log(ERROR, "SDLVideo", "DrawRectSprite not supported for this sprite");
+		//Log(ERROR, "SDLVideo", "DrawRectSprite not supported for this sprite");
 		return;
 	}
 
@@ -1660,7 +1660,7 @@ void SDLVideoDriver::SetSurfacePixel(SDL_Surface* surface, short x, short y, con
 			*(Uint32 *)pixels = val;
 			break;
 		default:
-			Log(ERROR, "SDLSurfaceSprite2D", "Working with unknown pixel format: %s", SDL_GetError());
+			//Log(ERROR, "SDLSurfaceSprite2D", "Working with unknown pixel format: %s", SDL_GetError());
 			break;
 	}
 

@@ -479,7 +479,7 @@ void Door::dump() const
 	}
 	buffer.appendFormatted( "Script: %s, Key (%s) removed: %s, Dialog: %s\n", name, Key?Key:"NONE", YESNO(Flags&DOOR_KEY), Dialog );
 
-	Log(DEBUG, "Door", buffer);
+	//Log (DEBUG, "Door", buffer);
 }
 
 

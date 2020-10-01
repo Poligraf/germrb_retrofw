@@ -45,7 +45,7 @@ bool DirectoryImporter::Open(const char *dir, const char *desc)
 	free(description);
 	description = strdup(desc);
 	if (strlcpy(path, dir, _MAX_PATH) >= _MAX_PATH) {
-		Log(ERROR, "DirectoryImporter", "Directory with too long path: %s!", dir);
+		//Log(ERROR, "DirectoryImporter", "Directory with too long path: %s!", dir);
 		return false;
 	}
 	return true;
@@ -55,7 +55,7 @@ static bool FindIn(const char *Path, const char *ResRef, const char *Type)
 {
 	char p[_MAX_PATH], f[_MAX_PATH] = {0};
 	if (strlcpy(f, ResRef, _MAX_PATH) >= _MAX_PATH) {
-		Log(ERROR, "DirectoryImporter", "Too long filename: %s!", ResRef);
+		//Log(ERROR, "DirectoryImporter", "Too long filename: %s!", ResRef);
 		return false;
 	}
 	strlwr(f);
@@ -67,7 +67,7 @@ static FileStream *SearchIn(const char * Path,const char * ResRef, const char *T
 {
 	char p[_MAX_PATH], f[_MAX_PATH] = {0};
 	if (strlcpy(f, ResRef, _MAX_PATH) >= _MAX_PATH) {
-		Log(ERROR, "DirectoryImporter", "Too long filename2: %s!", ResRef);
+		//Log(ERROR, "DirectoryImporter", "Too long filename2: %s!", ResRef);
 		return NULL;
 	}
 	strlwr(f);
@@ -144,7 +144,7 @@ void CachedDirectoryImporter::Refresh()
 		const char *name = it.GetName();
 		strnlwrcpy(buf, name, _MAX_PATH, false);
 		if (cache.set(buf, name)) {
-			Log(ERROR, "CachedDirectoryImporter", "Duplicate '%s' files in '%s' directory", buf, path);
+			//Log(ERROR, "CachedDirectoryImporter", "Duplicate '%s' files in '%s' directory", buf, path);
 		}
 	} while (++it);
 }

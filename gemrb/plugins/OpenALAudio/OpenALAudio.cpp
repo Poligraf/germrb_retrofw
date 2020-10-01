@@ -766,7 +766,7 @@ int OpenALAudioDriver::SetupNewStream( ieWord x, ieWord y, ieWord z,
 		}
 	}
 	if (stream == -1) {
-		Log(ERROR, "OpenAL", "No available audio streams out of %d", num_streams);
+		//Log(ERROR, "OpenAL", "No available audio streams out of %d", num_streams);
 		return -1;
 	}
 
@@ -927,7 +927,7 @@ int OpenALAudioDriver::MusicManager(void* arg)
 			}
 			switch (state) {
 				default:
-					Log(ERROR, "OpenAL", "Unhandled Music state '%d'.", state);
+					//Log(ERROR, "OpenAL", "Unhandled Music state '%d'.", state);
 				// intentional fallthrough
 				case AL_PAUSED:
 					driver->MusicPlaying = false;
@@ -1058,13 +1058,13 @@ int OpenALAudioDriver::QueueALBuffer(ALuint source, ALuint buffer)
 	alGetBufferi(buffer, AL_BITS, &bits);
 	alGetBufferi(buffer, AL_CHANNELS, &channels);
 	checkALError("Error querying buffer properties.", WARNING);
-	Log(DEBUG, "OpenAL", "Attempting to buffer audio source:%d\nFrequency:%d\nBits:%d\nChannels:%d",
+	//Log (DEBUG, "OpenAL", "Attempting to buffer audio source:%d\nFrequency:%d\nBits:%d\nChannels:%d",
 		source, frequency, bits, channels);
 #endif
 	ALint type;
 	alGetSourcei(source, AL_SOURCE_TYPE, &type);
 	if (type == AL_STATIC || checkALError("Cannot get AL source type.", ERROR)) {
-		Log(ERROR, "OpenAL", "Cannot queue a buffer to a static source.");
+		//Log(ERROR, "OpenAL", "Cannot queue a buffer to a static source.");
 		return GEM_ERROR;
 	}
 	alSourceQueueBuffers(source, 1, &buffer);

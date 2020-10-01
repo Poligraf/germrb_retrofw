@@ -122,8 +122,8 @@ DataStream* ResourceManager::GetResource(const char* ResRef, SClass_ID type, boo
 		}
 	}
 	if (!silent) {
-		Log(ERROR, "ResourceManager", "Couldn't find '%s.%s'.",
-			ResRef, core->TypeExt(type));
+		//Log(ERROR, "ResourceManager", "Couldn't find '%s.%s'.",
+//			ResRef, core->TypeExt(type));
 	}
 	return NULL;
 }

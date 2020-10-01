@@ -277,12 +277,12 @@ bool Init_EffectQueue()
 
 	int eT = core->LoadSymbol( "effects" );
 	if( eT < 0) {
-		Log(ERROR, "EffectQueue", "A critical scripting file is missing!");
+		//Log(ERROR, "EffectQueue", "A critical scripting file is missing!");
 		return false;
 	}
 	Holder<SymbolMgr> effectsTable = core->GetSymbol( eT );
 	if( !effectsTable) {
-		Log(ERROR, "EffectQueue", "A critical scripting file is damaged!");
+		//Log(ERROR, "EffectQueue", "A critical scripting file is damaged!");
 		return false;
 	}
 
@@ -884,7 +884,7 @@ static int check_type(Actor* actor, const Effect* fx)
 	if(fx->Power && actor->fxqueue.HasEffectWithParamPair(fx_level_immunity_ref, fx->Power, 0) ) {
 		Actor *caster = core->GetGame()->GetActorByGlobalID(fx->CasterID);
 		if (caster != actor || (fx->SourceFlags & SF_HOSTILE)) {
-			Log(DEBUG, "EffectQueue", "Resisted by level immunity");
+			//Log (DEBUG, "EffectQueue", "Resisted by level immunity");
 			return 0;
 		}
 	}
@@ -893,12 +893,12 @@ static int check_type(Actor* actor, const Effect* fx)
 	//if source is unspecified, don't resist it
 	if( fx->Source[0]) {
 		if( actor->fxqueue.HasEffectWithResource(fx_spell_immunity_ref, fx->Source) ) {
-			Log(DEBUG, "EffectQueue", "Resisted by spell immunity (%s)", fx->Source);
+			//Log (DEBUG, "EffectQueue", "Resisted by spell immunity (%s)", fx->Source);
 			return 0;
 		}
 		if( actor->fxqueue.HasEffectWithResource(fx_spell_immunity2_ref, fx->Source) ) {
 			if (strnicmp(fx->Source, "detect", 6)) { // our secret door pervasive effect
-				Log(DEBUG, "EffectQueue", "Resisted by spell immunity2 (%s)", fx->Source);
+				//Log (DEBUG, "EffectQueue", "Resisted by spell immunity2 (%s)", fx->Source);
 			}
 			return 0;
 		}
@@ -907,7 +907,7 @@ static int check_type(Actor* actor, const Effect* fx)
 	//primary type immunity (school)
 	if( fx->PrimaryType) {
 		if( actor->fxqueue.HasEffectWithParam(fx_school_immunity_ref, fx->PrimaryType)) {
-			Log(DEBUG, "EffectQueue", "Resisted by school/primary type");
+			//Log (DEBUG, "EffectQueue", "Resisted by school/primary type");
 			return 0;
 		}
 	}
@@ -915,7 +915,7 @@ static int check_type(Actor* actor, const Effect* fx)
 	//secondary type immunity (usage)
 	if( fx->SecondaryType) {
 		if( actor->fxqueue.HasEffectWithParam(fx_secondary_type_immunity_ref, fx->SecondaryType) ) {
-			Log(DEBUG, "EffectQueue", "Resisted by usage/secondary type");
+			//Log (DEBUG, "EffectQueue", "Resisted by usage/secondary type");
 			return 0;
 		}
 	}
@@ -926,7 +926,7 @@ static int check_type(Actor* actor, const Effect* fx)
 		efx = actor->fxqueue.HasEffectWithParam(fx_level_immunity_dec_ref, fx->Power);
 		if( efx ) {
 			if (DecreaseEffect(efx)) {
-				Log(DEBUG, "EffectQueue", "Resisted by level immunity (decrementing)");
+				//Log (DEBUG, "EffectQueue", "Resisted by level immunity (decrementing)");
 				return 0;
 			}
 		}
@@ -937,7 +937,7 @@ static int check_type(Actor* actor, const Effect* fx)
 		efx = actor->fxqueue.HasEffectWithResource(fx_spell_immunity_dec_ref, fx->Source);
 		if( efx) {
 			if (DecreaseEffect(efx)) {
-				Log(DEBUG, "EffectQueue", "Resisted by spell immunity (decrementing)");
+				//Log (DEBUG, "EffectQueue", "Resisted by spell immunity (decrementing)");
 				return 0;
 			}
 		}
@@ -947,7 +947,7 @@ static int check_type(Actor* actor, const Effect* fx)
 		efx = actor->fxqueue.HasEffectWithParam(fx_school_immunity_dec_ref, fx->PrimaryType);
 		if( efx) {
 			if (DecreaseEffect(efx)) {
-				Log(DEBUG, "EffectQueue", "Resisted by school immunity (decrementing)");
+				//Log (DEBUG, "EffectQueue", "Resisted by school immunity (decrementing)");
 				return 0;
 			}
 		}
@@ -958,7 +958,7 @@ static int check_type(Actor* actor, const Effect* fx)
 		efx = actor->fxqueue.HasEffectWithParam(fx_secondary_type_immunity_dec_ref, fx->SecondaryType);
 		if( efx) {
 			if (DecreaseEffect(efx)) {
-				Log(DEBUG, "EffectQueue", "Resisted by usage/sectype immunity (decrementing)");
+				//Log (DEBUG, "EffectQueue", "Resisted by usage/sectype immunity (decrementing)");
 				return 0;
 			}
 		}
@@ -979,7 +979,7 @@ static int check_type(Actor* actor, const Effect* fx)
 			//if decrease needs the spell level, use fx->Power here
 			actor->fxqueue.DecreaseParam1OfEffect(fx_spelltrap, 1);
 			//efx->Parameter1--;
-			Log(DEBUG, "EffectQueue", "Absorbed by spelltrap");
+			//Log (DEBUG, "EffectQueue", "Absorbed by spelltrap");
 			return 0;
 		}
 	}
@@ -987,31 +987,31 @@ static int check_type(Actor* actor, const Effect* fx)
 	//bounce checks
 	if (fx->Power) {
 		if( (bounce&BNC_LEVEL) && actor->fxqueue.HasEffectWithParamPair(fx_level_bounce_ref, 0, fx->Power) ) {
-			Log(DEBUG, "EffectQueue", "Bounced by level");
+			//Log (DEBUG, "EffectQueue", "Bounced by level");
 			return -1;
 		}
 	}
 
 	if((bounce&BNC_PROJECTILE) && actor->fxqueue.HasEffectWithParam(fx_projectile_bounce_ref, fx->Projectile)) {
-		Log(DEBUG, "EffectQueue", "Bounced by projectile");
+		//Log (DEBUG, "EffectQueue", "Bounced by projectile");
 		return -1;
 	}
 
 	if( fx->Source[0] && (bounce&BNC_RESOURCE) && actor->fxqueue.HasEffectWithResource(fx_spell_bounce_ref, fx->Source) ) {
-		Log(DEBUG, "EffectQueue", "Bounced by resource");
+		//Log (DEBUG, "EffectQueue", "Bounced by resource");
 		return -1;
 	}
 
 	if( fx->PrimaryType && (bounce&BNC_SCHOOL) ) {
 		if( actor->fxqueue.HasEffectWithParam(fx_school_bounce_ref, fx->PrimaryType)) {
-			Log(DEBUG, "EffectQueue", "Bounced by school");
+			//Log (DEBUG, "EffectQueue", "Bounced by school");
 			return -1;
 		}
 	}
 
 	if( fx->SecondaryType && (bounce&BNC_SECTYPE) ) {
 		if( actor->fxqueue.HasEffectWithParam(fx_secondary_type_bounce_ref, fx->SecondaryType)) {
-			Log(DEBUG, "EffectQueue", "Bounced by usage/sectype");
+			//Log (DEBUG, "EffectQueue", "Bounced by usage/sectype");
 			return -1;
 		}
 	}
@@ -1023,7 +1023,7 @@ static int check_type(Actor* actor, const Effect* fx)
 			efx=actor->fxqueue.HasEffectWithParamPair(fx_level_bounce_dec_ref, 0, fx->Power);
 			if( efx) {
 				if (DecreaseEffect(efx)) {
-					Log(DEBUG, "EffectQueue", "Bounced by level (decrementing)");
+					//Log (DEBUG, "EffectQueue", "Bounced by level (decrementing)");
 					return -1;
 				}
 			}
@@ -1034,7 +1034,7 @@ static int check_type(Actor* actor, const Effect* fx)
 		efx=actor->fxqueue.HasEffectWithResource(fx_spell_bounce_dec_ref, fx->Resource);
 		if( efx) {
 			if (DecreaseEffect(efx)) {
-				Log(DEBUG, "EffectQueue", "Bounced by resource (decrementing)");
+				//Log (DEBUG, "EffectQueue", "Bounced by resource (decrementing)");
 				return -1;
 			}
 		}
@@ -1044,7 +1044,7 @@ static int check_type(Actor* actor, const Effect* fx)
 		efx=actor->fxqueue.HasEffectWithParam(fx_school_bounce_dec_ref, fx->PrimaryType);
 		if( efx) {
 			if (DecreaseEffect(efx)) {
-				Log(DEBUG, "EffectQueue", "Bounced by school (decrementing)");
+				//Log (DEBUG, "EffectQueue", "Bounced by school (decrementing)");
 				return -1;
 			}
 		}
@@ -1054,7 +1054,7 @@ static int check_type(Actor* actor, const Effect* fx)
 		efx=actor->fxqueue.HasEffectWithParam(fx_secondary_type_bounce_dec_ref, fx->SecondaryType);
 		if( efx) {
 			if (DecreaseEffect(efx)) {
-				Log(DEBUG, "EffectQueue", "Bounced by usage (decrementing)");
+				//Log (DEBUG, "EffectQueue", "Bounced by usage (decrementing)");
 				return -1;
 			}
 		}
@@ -1470,7 +1470,7 @@ void EffectQueue::RemoveAllEffects(const ieResRef Removed) const
 
 		fx->Parameter1 = -fx->Parameter1;
 
-		Log(DEBUG, "EffectQueue", "Manually removing effect %d (from %s)", fx->Opcode, Removed);
+		//Log (DEBUG, "EffectQueue", "Manually removing effect %d (from %s)", fx->Opcode, Removed);
 		ApplyEffect((Actor *)Owner, fx, 1, 0);
 		delete fx;
 	}
@@ -2122,7 +2122,7 @@ void EffectQueue::dump() const
 {
 	StringBuffer buffer;
 	dump(buffer);
-	Log(DEBUG, "EffectQueue", buffer);
+	//Log (DEBUG, "EffectQueue", buffer);
 }
 
 void EffectQueue::dump(StringBuffer& buffer) const
