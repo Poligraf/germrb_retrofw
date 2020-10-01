@@ -467,7 +467,7 @@ void GameScript::TriggerActivation(Scriptable* Sender, Action* parameters)
 		ip = GetActorFromObject(Sender, parameters->objects[1]);
 	}
 	if (!ip || (ip->Type!=ST_TRIGGER && ip->Type!=ST_TRAVEL && ip->Type!=ST_PROXIMITY)) {
-		Log(WARNING, "Actions", "Script error: No Trigger Named \"%s\"", parameters->objects[1]->objectName);
+		//Log(WARNING, "Actions", "Script error: No Trigger Named \"%s\"", parameters->objects[1]->objectName);
 		return;
 	}
 	InfoPoint *trigger = (InfoPoint *) ip;
@@ -609,7 +609,7 @@ void GameScript::ExitPocketPlane(Scriptable* /*Sender*/, Action* /*parameters*/)
 			} else {
 				gle = game->GetPlaneLocationEntry(i);
 			}
-			
+
 			// save player1 location for familiar movement
 			if (!i) {
 				pos = gle->Pos;
@@ -618,7 +618,7 @@ void GameScript::ExitPocketPlane(Scriptable* /*Sender*/, Action* /*parameters*/)
 			MoveBetweenAreasCore(act, gle->AreaResRef, gle->Pos, -1, true);
 		}
 	}
-	
+
 	// move familiars
 	cnt = game->GetNPCCount();
 	for (i = 0; i < cnt; i++) {
@@ -882,7 +882,7 @@ void GameScript::SetPlayerSound(Scriptable* Sender, Action* parameters)
 		return;
 	}
 	if (((ieDword) parameters->int0Parameter)>=100) {
-		Log(WARNING, "GameScript", "Invalid index %d in SetPlayerSound.", parameters->int0Parameter);
+		//Log(WARNING, "GameScript", "Invalid index %d in SetPlayerSound.", parameters->int0Parameter);
 		return;
 	}
 	Actor* actor = ( Actor* ) tar;
@@ -1648,7 +1648,7 @@ void GameScript::DisplayStringHead(Scriptable* Sender, Action* parameters)
 	Scriptable* target = GetActorFromObject( Sender, parameters->objects[1] );
 	if (!target) {
 		target=Sender;
-		Log(WARNING, "Actions", "DisplayStringHead/FloatMessage got no target, assuming Sender!");
+		//Log(WARNING, "Actions", "DisplayStringHead/FloatMessage got no target, assuming Sender!");
 	}
 
 	DisplayStringCore(target, parameters->int0Parameter, DS_CONSOLE|DS_HEAD|DS_SPEECH );
@@ -2051,8 +2051,8 @@ void GameScript::StaticStart(Scriptable* Sender, Action* parameters)
 {
 	AreaAnimation *anim = Sender->GetCurrentArea()->GetAnimation(parameters->objects[1]->objectName);
 	if (!anim) {
-		Log(WARNING, "Actions", "Script error: No Animation Named \"%s\"",
-			parameters->objects[1]->objectName );
+		//Log(WARNING, "Actions", "Script error: No Animation Named \"%s\"",
+//			parameters->objects[1]->objectName );
 		return;
 	}
 	anim->Flags &=~A_ANI_PLAYONCE;
@@ -2062,8 +2062,8 @@ void GameScript::StaticStop(Scriptable* Sender, Action* parameters)
 {
 	AreaAnimation *anim = Sender->GetCurrentArea()->GetAnimation(parameters->objects[1]->objectName);
 	if (!anim) {
-		Log(WARNING, "Actions", "Script error: No Animation Named \"%s\"",
-			parameters->objects[1]->objectName );
+		//Log(WARNING, "Actions", "Script error: No Animation Named \"%s\"",
+//			parameters->objects[1]->objectName );
 		return;
 	}
 	anim->Flags |= A_ANI_PLAYONCE;
@@ -2073,8 +2073,8 @@ void GameScript::StaticPalette(Scriptable* Sender, Action* parameters)
 {
 	AreaAnimation *anim = Sender->GetCurrentArea()->GetAnimation(parameters->objects[1]->objectName);
 	if (!anim) {
-		Log(WARNING, "Actions", "Script error: No Animation Named \"%s\"",
-			parameters->objects[1]->objectName );
+		//Log(WARNING, "Actions", "Script error: No Animation Named \"%s\"",
+//			parameters->objects[1]->objectName );
 		return;
 	}
 	anim->SetPalette( parameters->string0Parameter );
@@ -3526,7 +3526,7 @@ void GameScript::ClearActions(Scriptable* Sender, Action* parameters)
 	if (parameters->objects[1]) {
 		tar = GetActorFromObject( Sender, parameters->objects[1] );
 		if (!tar) {
-			Log(WARNING, "GameScript", "Couldn't find target for ClearActions!");
+			//Log(WARNING, "GameScript", "Couldn't find target for ClearActions!");
 			parameters->objects[1]->dump();
 			return;
 		}
@@ -3681,7 +3681,7 @@ void GameScript::MakeUnselectable(Scriptable* Sender, Action* parameters)
 void GameScript::Debug(Scriptable* /*Sender*/, Action* parameters)
 {
 	InDebug=parameters->int0Parameter;
-	Log(WARNING, "GameScript", "DEBUG: %s", parameters->string0Parameter);
+	//Log(WARNING, "GameScript", "DEBUG: %s", parameters->string0Parameter);
 }
 
 void GameScript::IncrementProficiency(Scriptable* Sender, Action* parameters)
@@ -3925,7 +3925,7 @@ void GameScript::SetGabber(Scriptable* Sender, Action* parameters)
 	if (gc->GetDialogueFlags()&DF_IN_DIALOG) {
 		gc->dialoghandler->SetSpeaker(tar);
 	} else {
-		Log(WARNING, "GameScript", "Can't set gabber!");
+		//Log(WARNING, "GameScript", "Can't set gabber!");
 	}
 }
 
@@ -5563,12 +5563,12 @@ void GameScript::UseContainer(Scriptable* Sender, Action* parameters)
 	Actor *actor = (Actor *)Sender;
 	Container *container = core->GetCurrentContainer();
 	if (!container) {
-		Log(WARNING, "GameScript", "No container selected!");
+		//Log(WARNING, "GameScript", "No container selected!");
 		Sender->ReleaseCurrentAction();
 		return;
 	}
 	if (parameters->int2Parameter > 20) {
-		Log(WARNING, "GameScript", "Could not get close enough to container!");
+		//Log(WARNING, "GameScript", "Could not get close enough to container!");
 		Sender->ReleaseCurrentAction();
 		return;
 	}
@@ -6234,7 +6234,7 @@ void GameScript::SetNoOneOnTrigger(Scriptable* Sender, Action* parameters)
 		ip = Sender->GetCurrentArea()->TMap->GetInfoPoint(parameters->objects[1]->objectName);
 	}
 	if (!ip || (ip->Type!=ST_TRIGGER && ip->Type!=ST_TRAVEL && ip->Type!=ST_PROXIMITY)) {
-		Log(WARNING, "Actions", "Script error: No Trigger Named \"%s\"", parameters->objects[1]->objectName);
+		//Log(WARNING, "Actions", "Script error: No Trigger Named \"%s\"", parameters->objects[1]->objectName);
 		return;
 	}
 

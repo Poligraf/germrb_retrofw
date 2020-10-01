@@ -221,7 +221,7 @@ unsigned int ProjectileServer::PrepareSymbols(Holder<SymbolMgr> projlist) {
 		unsigned int value = projlist->GetValueIndex(rows);
 		if (value>MAX_PROJ_IDX) {
 			//value = MAX_PROJ_IDX;
-			Log(WARNING, "ProjectileServer", "Too high projectilenumber");
+			//Log(WARNING, "ProjectileServer", "Too high projectilenumber");
 			continue; // ignore
 		}
 		if (value>(unsigned int) count) {

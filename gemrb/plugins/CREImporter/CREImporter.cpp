@@ -149,7 +149,7 @@ void SpellEntry::AddLevel(unsigned int level,unsigned int kit)
 	level--; // convert to 0-based for internal use
 	for(int i=0;i<count;i++) {
 		if(levels[i].kit==kit && levels[i].level==level) {
-			Log(WARNING, "CREImporter", "Skipping duplicate spell list table entry for: %s", spell);
+			//Log(WARNING, "CREImporter", "Skipping duplicate spell list table entry for: %s", spell);
 			return;
 		}
 	}
@@ -1357,15 +1357,15 @@ void CREImporter::ReadInventory(Actor *act, unsigned int Inventory_Size)
 				memorized_spells[k] = NULL;
 				continue;
 			}
-			Log(WARNING, "CREImporter", "Duplicate memorized spell(%d) in creature!", k);
+			//Log(WARNING, "CREImporter", "Duplicate memorized spell(%d) in creature!", k);
 		}
 	}
 
 	unsigned int i = KnownSpellsCount;
 	while(i--) {
 		if (known_spells[i]) {
-			Log(WARNING, "CREImporter", "Dangling spell in creature: %s!",
-				known_spells[i]->SpellResRef);
+			//Log(WARNING, "CREImporter", "Dangling spell in creature: %s!",
+//				known_spells[i]->SpellResRef);
 			delete known_spells[i];
 		}
 	}
@@ -1374,8 +1374,8 @@ void CREImporter::ReadInventory(Actor *act, unsigned int Inventory_Size)
 	i=MemorizedSpellsCount;
 	while(i--) {
 		if (memorized_spells[i]) {
-			Log(WARNING, "CREImporter", "Dangling spell in creature: %s!",
-				memorized_spells[i]->SpellResRef);
+			//Log(WARNING, "CREImporter", "Dangling spell in creature: %s!",
+//				memorized_spells[i]->SpellResRef);
 			delete memorized_spells[i];
 		}
 	}

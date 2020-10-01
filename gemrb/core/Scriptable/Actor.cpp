@@ -663,7 +663,7 @@ void Actor::SetAnimationID(unsigned int AnimID)
 	if (core->HasFeature(GF_ONE_BYTE_ANIMID) ) {
 		if ((AnimID&0xf000)==0xe000) {
 			if (BaseStats[IE_COLORCOUNT]) {
-				Log(WARNING, "Actor", "Animation ID %x is supposed to be real colored (no recoloring), patched creature", AnimID);
+				//Log(WARNING, "Actor", "Animation ID %x is supposed to be real colored (no recoloring), patched creature", AnimID);
 			}
 			BaseStats[IE_COLORCOUNT]=0;
 		}
@@ -703,7 +703,7 @@ void Actor::SetAnimationID(unsigned int AnimID)
 	if (anim && anim[0]) {
 		SetBase(IE_MOVEMENTRATE, anim[0]->GetFrameCount()) ;
 	} else {
-		Log(WARNING, "Actor", "Unable to determine movement rate for animation %04x!", AnimID);
+		//Log(WARNING, "Actor", "Unable to determine movement rate for animation %04x!", AnimID);
 	}
 
 }
@@ -2200,7 +2200,7 @@ static void InitActorTables()
 			//MAX_LEVEL: how many times it could be taken
 			stat = core->TranslateStat(tm->QueryField(i,0));
 			if (stat>=MAX_STATS) {
-				Log(WARNING, "Actor", "Invalid stat value in featreq.2da");
+				//Log(WARNING, "Actor", "Invalid stat value in featreq.2da");
 			}
 			max = atoi(tm->QueryField(i,1));
 			//boolean feats can only be taken once, the code requires featmax for them too
@@ -5211,7 +5211,7 @@ ieDword Actor::GetBaseCasterLevel(int spelltype, int flags) const
 	default:
 		// checking if anyone uses the psion, item and song types
 		if (spelltype != IE_SPL_INNATE) {
-			Log(WARNING, "Actor", "Unhandled SPL type %d, using average casting level!", spelltype);
+			//Log(WARNING, "Actor", "Unhandled SPL type %d, using average casting level!", spelltype);
 		}
 		break;
 	}
@@ -5593,9 +5593,9 @@ void Actor::Die(Scriptable *killer, bool grantXP)
 			if (AppearanceFlags&APP_DEATHTYPE) {
 				size_t len;
 				if (AppearanceFlags&APP_ADDKILL) {
-					len = snprintf(varname, 32, "KILL_%s", KillVar);
+//					len = snprintf(varname, 32, "KILL_%s", KillVar);
 				} else {
-					len = snprintf(varname, 32, "%s", KillVar);
+			//		len = snprintf(varname, 32, "%s", KillVar);
 				}
 				if (len > 32) {
 					//Log(ERROR, "Actor", "Scriptname %s (name: %s) is too long for generating death globals!", KillVar, LongName);
@@ -5882,7 +5882,7 @@ void Actor::GetItemSlotInfo(ItemExtHeader *item, int which, int header)
 	if (!slot) return; //quick item slot is empty
 	Item *itm = gamedata->GetItem(slot->ItemResRef, true);
 	if (!itm) {
-		Log(WARNING, "Actor", "Invalid quick slot item: %s!", slot->ItemResRef);
+		//Log(WARNING, "Actor", "Invalid quick slot item: %s!", slot->ItemResRef);
 		return; //quick item slot contains invalid item resref
 	}
 	ITMExtHeader *ext_header = itm->GetExtHeader(headerindex);
@@ -6247,7 +6247,7 @@ ITMExtHeader *Actor::GetRangedWeapon(WeaponInfo &wi) const
 	}
 	Item *item = gamedata->GetItem(wield->ItemResRef, true);
 	if (!item) {
-		Log(WARNING, "Actor", "Missing or invalid ranged weapon item: %s!", wield->ItemResRef);
+		//Log(WARNING, "Actor", "Missing or invalid ranged weapon item: %s!", wield->ItemResRef);
 		return NULL;
 	}
 	//The magic of the bow and the arrow do not add up
@@ -6274,7 +6274,7 @@ int Actor::IsDualWielding() const
 
 	Item *itm = gamedata->GetItem(wield->ItemResRef, true);
 	if (!itm) {
-		Log(WARNING, "Actor", "Missing or invalid wielded weapon item: %s!", wield->ItemResRef);
+		//Log(WARNING, "Actor", "Missing or invalid wielded weapon item: %s!", wield->ItemResRef);
 		return 0;
 	}
 
@@ -6298,7 +6298,7 @@ ITMExtHeader *Actor::GetWeapon(WeaponInfo &wi, bool leftorright) const
 	}
 	Item *item = gamedata->GetItem(wield->ItemResRef, true);
 	if (!item) {
-		Log(WARNING, "Actor", "Missing or invalid weapon item: %s!", wield->ItemResRef);
+		//Log(WARNING, "Actor", "Missing or invalid weapon item: %s!", wield->ItemResRef);
 		return 0;
 	}
 
@@ -7317,7 +7317,7 @@ void Actor::PerformAttack(ieDword gameTime)
 	//get target
 	Actor *target = area->GetActorByGlobalID(LastTarget);
 	if (!target) {
-		Log(WARNING, "Actor", "Attack without valid target!");
+		//Log(WARNING, "Actor", "Attack without valid target!");
 		return;
 	}
 
@@ -7862,7 +7862,7 @@ void Actor::UpdateActorState(ieDword gameTime) {
 		Modal.LastApplyTime = gameTime;
 
 		if (!Modal.Spell[0]) {
-			Log(WARNING, "Actor", "Modal Spell Effect was not set!");
+			//Log(WARNING, "Actor", "Modal Spell Effect was not set!");
 			Modal.Spell[0]='*';
 		} else if (Modal.Spell[0]!='*') {
 			if (ModalSpellSkillCheck()) {
@@ -8821,7 +8821,7 @@ bool Actor::GetSoundFrom2DA(ieResRef Sound, unsigned int index) const
 			index = 34; // Battle_Cry
 			break;
 		default:
-			Log(WARNING, "Actor", "TODO:Cannot determine 2DA rowcount for index: %d", index);
+			//Log(WARNING, "Actor", "TODO:Cannot determine 2DA rowcount for index: %d", index);
 			return false;
 	}
 	// Log(MESSAGE, "Actor", "Getting sound 2da %.8s entry: %s",
@@ -9344,7 +9344,7 @@ bool Actor::UseItemPoint(ieDword slot, ieDword header, const Point &target, ieDw
 
 	Item *itm = gamedata->GetItem(tmpresref, true);
 	if (!itm) {
-		Log(WARNING, "Actor", "Invalid quick slot item: %s!", tmpresref);
+		//Log(WARNING, "Actor", "Invalid quick slot item: %s!", tmpresref);
 		return false; //quick item slot contains invalid item resref
 	}
 	//item is depleted for today
@@ -9541,7 +9541,7 @@ bool Actor::UseItem(ieDword slot, ieDword header, Scriptable* target, ieDword fl
 
 	Item *itm = gamedata->GetItem(tmpresref);
 	if (!itm) {
-		Log(WARNING, "Actor", "Invalid quick slot item: %s!", tmpresref);
+		//Log(WARNING, "Actor", "Invalid quick slot item: %s!", tmpresref);
 		return false; //quick item slot contains invalid item resref
 	}
 	//item is depleted for today
@@ -9595,7 +9595,7 @@ void Actor::ChargeItem(ieDword slot, ieDword header, CREItem *item, Item *itm, b
 		itm = gamedata->GetItem(item->ItemResRef, true);
 	}
 	if (!itm) {
-		Log(WARNING, "Actor", "Invalid quick slot item: %s!", item->ItemResRef);
+		//Log(WARNING, "Actor", "Invalid quick slot item: %s!", item->ItemResRef);
 		return; //quick item slot contains invalid item resref
 	}
 

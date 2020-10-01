@@ -604,7 +604,7 @@ void Projectile::Payload()
 		if (target) {
 			Owner = area->GetScriptableByGlobalID(Caster);
 			if (!Owner) {
-				Log(WARNING, "Projectile", "Payload: Caster not found, using target!");
+				//Log(WARNING, "Projectile", "Payload: Caster not found, using target!");
 				Owner = target;
 			}
 			//apply this spell on target when the projectile fails

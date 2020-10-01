@@ -5248,7 +5248,7 @@ static PyObject* GemRB_Button_SetPLT(PyObject * /*self*/, PyObject* args)
 			gamedata->GetFactoryResource( ResRef,
 			IE_BAM_CLASS_ID, IE_NORMAL );
 		if (!af) {
-			Log(WARNING, "GUISCript", "PLT/BAM not found for ref: %s", ResRef);
+			//Log(WARNING, "GUISCript", "PLT/BAM not found for ref: %s", ResRef);
 			Py_RETURN_NONE;
 		}
 
@@ -9048,7 +9048,7 @@ static PyObject* GemRB_ChangeContainerItem(PyObject * /*self*/, PyObject* args)
 		//this will update the container
 		si = container->RemoveItem(Slot,0);
 		if (!si) {
-			Log(WARNING, "GUIScript", "Cannot move item, there is something weird!");
+			//Log(WARNING, "GUIScript", "Cannot move item, there is something weird!");
 			Py_RETURN_NONE;
 		}
 		Item *item = gamedata->GetItem(si->ItemResRef);
@@ -9078,7 +9078,7 @@ static PyObject* GemRB_ChangeContainerItem(PyObject * /*self*/, PyObject* args)
 
 		si = actor->inventory.RemoveItem(core->QuerySlot(Slot));
 		if (!si) {
-			Log(WARNING, "GUIScript", "Cannot move item, there is something weird!");
+			//Log(WARNING, "GUIScript", "Cannot move item, there is something weird!");
 			Py_RETURN_NONE;
 		}
 		Item *item = gamedata->GetItem(si->ItemResRef);
@@ -9727,14 +9727,14 @@ static PyObject* GemRB_GetStoreItem(PyObject * /*self*/, PyObject* args)
 		return RuntimeError("No current store!");
 	}
 	if (index>=(int) store->GetRealStockSize()) {
-		Log(WARNING, "GUIScript", "Item is not available???");
+		//Log(WARNING, "GUIScript", "Item is not available???");
 		Py_INCREF( Py_None );
 		return Py_None;
 	}
 	PyObject* dict = PyDict_New();
 	STOItem *si=store->GetItem( index, true );
 	if (!si) {
-		Log(WARNING, "GUIScript", "Item is not available???");
+		//Log(WARNING, "GUIScript", "Item is not available???");
 		Py_INCREF( Py_None );
 		return Py_None;
 	}
@@ -9753,7 +9753,7 @@ static PyObject* GemRB_GetStoreItem(PyObject * /*self*/, PyObject* args)
 
 	Item *item = gamedata->GetItem(si->ItemResRef, true);
 	if (!item) {
-		Log(WARNING, "GUIScript", "Item is not available???");
+		//Log(WARNING, "GUIScript", "Item is not available???");
 		Py_INCREF( Py_None );
 		return Py_None;
 	}
@@ -9995,7 +9995,7 @@ static PyObject* GemRB_ExecuteString(PyObject * /*self*/, PyObject* args)
 		if (pc) {
 			GameScript::ExecuteString( pc, String );
 		} else {
-			Log(WARNING, "GUIScript", "Player not found!");
+			//Log(WARNING, "GUIScript", "Player not found!");
 		}
 	} else {
 		GameScript::ExecuteString( game->GetCurrentArea( ), String );
@@ -14024,7 +14024,7 @@ static PyObject* GemRB_UseItem(PyObject * /*self*/, PyObject* args)
 
 	//is there any better check for a non existent item?
 	if (!itemdata.itemname[0]) {
-		Log(WARNING, "GUIScript", "Empty slot used?");
+		//Log(WARNING, "GUIScript", "Empty slot used?");
 		Py_INCREF( Py_None );
 		return Py_None;
 	}
@@ -14588,13 +14588,13 @@ static PyObject* GemRB_StealFailed(PyObject * /*self*/, PyObject* /*args*/)
 	Actor* owner = map->GetActorByGlobalID( store->GetOwnerID() );
 	if (!owner) owner = game->GetActorByGlobalID( store->GetOwnerID() );
 	if (!owner) {
-		Log(WARNING, "GUIScript", "No owner found!");
+		//Log(WARNING, "GUIScript", "No owner found!");
 		Py_INCREF( Py_None );
 		return Py_None;
 	}
 	Actor* attacker = game->FindPC((int) game->GetSelectedPCSingle() );
 	if (!attacker) {
-		Log(WARNING, "GUIScript", "No thief found!");
+		//Log(WARNING, "GUIScript", "No thief found!");
 		Py_INCREF( Py_None );
 		return Py_None;
 	}
@@ -14815,12 +14815,12 @@ static PyObject* GemRB_GetCombatDetails(PyObject * /*self*/, PyObject* args)
 		wield = actor->inventory.GetUsedWeapon(leftorright, wi.slot);
 	}
 	if (!wield) {
-		Log(WARNING, "Actor", "Invalid weapon wielded by %s!", actor->GetName(1));
+		//Log(WARNING, "Actor", "Invalid weapon wielded by %s!", actor->GetName(1));
 		return dict;
 	}
 	Item *item = gamedata->GetItem(wield->ItemResRef, true);
 	if (!item) {
-		Log(WARNING, "Actor", "Missing or invalid weapon item: %s!", wield->ItemResRef);
+		//Log(WARNING, "Actor", "Missing or invalid weapon item: %s!", wield->ItemResRef);
 		return dict;
 	}
 

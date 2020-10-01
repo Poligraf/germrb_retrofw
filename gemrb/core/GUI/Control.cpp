@@ -151,7 +151,7 @@ void Control::ResetEventHandler(ControlEventHandler &handler)
 int Control::RunEventHandler(ControlEventHandler handler)
 {
 	if (InHandler) {
-		Log(WARNING, "Control", "Nested event handlers are not supported!");
+		//Log(WARNING, "Control", "Nested event handlers are not supported!");
 		return -1;
 	}
 	if (handler) {
@@ -210,7 +210,7 @@ void Control::OnMouseWheelScroll( short x, short y)
 	Control *ctrl = Owner->GetScrollControl();
 	if (ctrl && (ctrl!=this)) {
 		ctrl->OnMouseWheelScroll( x, y );
-	}	
+	}
 }
 
 /** Special Key Press */
@@ -238,8 +238,8 @@ bool Control::isFocused()
 int Control::SetFlags(int arg_flags, int opcode)
 {
 	if ((arg_flags >>24) != ControlType) {
-		Log(WARNING, "Control", "Trying to modify invalid flag %x on control %d (opcode %d)",
-			arg_flags, ControlID, opcode);
+		//Log(WARNING, "Control", "Trying to modify invalid flag %x on control %d (opcode %d)",
+//			arg_flags, ControlID, opcode);
 		return -2;
 	}
 	ieDword newFlags = Flags;
@@ -280,7 +280,7 @@ void Control::SetAnimPicture(Sprite2D* newpic)
 int Control::SetScrollBar(Control* ptr)
 {
 	if (ptr && (ptr->ControlType!=IE_GUI_SCROLLBAR)) {
-		Log(WARNING, "Control", "Attached control is not a ScrollBar!");
+		//Log(WARNING, "Control", "Attached control is not a ScrollBar!");
 		return -1;
 	}
 	sb = ptr;

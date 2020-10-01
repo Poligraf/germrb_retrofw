@@ -410,7 +410,7 @@ bool DialogHandler::DialogChoose(unsigned int choose)
 			}
 
 			if (!tgt) {
-				Log(WARNING, "DialogHandler", "Can't redirect dialog");
+				//Log(WARNING, "DialogHandler", "Can't redirect dialog");
 				EndDialog();
 				return false;
 			}
@@ -433,7 +433,7 @@ bool DialogHandler::DialogChoose(unsigned int choose)
 
 	ds = dlg->GetState( si );
 	if (!ds) {
-		Log(WARNING, "DialogHandler", "Can't find next dialog");
+		//Log(WARNING, "DialogHandler", "Can't find next dialog");
 		EndDialog();
 		return false;
 	}
@@ -505,7 +505,7 @@ bool DialogHandler::DialogChoose(unsigned int choose)
 
 	// this happens if a trigger isn't implemented or the dialog is wrong
 	if (!idx) {
-		Log(WARNING, "DialogHandler", "There were no valid dialog options!");
+		//Log(WARNING, "DialogHandler", "There were no valid dialog options!");
 		gc->SetDialogueFlags(DF_OPENENDWINDOW, OP_OR);
 	}
 

@@ -225,7 +225,7 @@ void WEDImporter::GetDoorPolygonCount(ieWord count, ieDword offset)
 	ieDword basecount = offset-PolygonsOffset;
 	if (basecount%WED_POLYGON_SIZE) {
 		basecount+=WED_POLYGON_SIZE;
-		Log(WARNING, "WEDImporter", "Found broken door polygon header!");
+		//Log(WARNING, "WEDImporter", "Found broken door polygon header!");
 	}
 	ieDword polycount = basecount/WED_POLYGON_SIZE+count-WallPolygonsCount;
 	if (polycount>DoorPolygonsCount) {

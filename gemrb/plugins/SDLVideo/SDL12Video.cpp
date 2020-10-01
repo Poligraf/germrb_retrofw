@@ -70,7 +70,7 @@ int SDL12VideoDriver::CreateDisplay(int w, int h, int b, bool fs, const char* ti
 	// Log(MESSAGE, "SDL 1.2 Driver", "Checking for HardWare Acceleration...");
 	const SDL_VideoInfo* vi = SDL_GetVideoInfo();
 	if (!vi) {
-		Log(WARNING, "SDL 1.2 Driver", "No Hardware Acceleration available.");
+		//Log(WARNING, "SDL 1.2 Driver", "No Hardware Acceleration available.");
 	}
 
 	width = disp->w;
@@ -281,14 +281,14 @@ int SDL12VideoDriver::ProcessEvent(const SDL_Event & event)
 void SDL12VideoDriver::ShowSoftKeyboard()
 {
 	if(core->UseSoftKeyboard){
-		Log(WARNING, "SDL 1.2 Driver", "SDL 1.2 doesn't support a software keyboard");
+		//Log(WARNING, "SDL 1.2 Driver", "SDL 1.2 doesn't support a software keyboard");
 	}
 }
 
 void SDL12VideoDriver::HideSoftKeyboard()
 {
 	if(core->UseSoftKeyboard){
-		Log(WARNING, "SDL 1.2 Driver", "SDL 1.2 doesn't support a software keyboard");
+		//Log(WARNING, "SDL 1.2 Driver", "SDL 1.2 doesn't support a software keyboard");
 	}
 }
 

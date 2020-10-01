@@ -65,7 +65,7 @@ bool KeyMap::InitializeKeyMap(const char *inifile, const char *tablefile)
 	FileStream* config = FileStream::OpenFile( tINIkeymap );
 
 	if (config == NULL) {
-		Log(WARNING, "KeyMap", "There is no '%s' file...", inifile);
+		//Log(WARNING, "KeyMap", "There is no '%s' file...", inifile);
 		return false;
 	}
 	char name[KEYLENGTH+1], value[_MAX_PATH + 3];

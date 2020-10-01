@@ -450,7 +450,7 @@ void Scriptable::ExecuteScript(int scriptCount)
 void Scriptable::AddAction(Action* aC)
 {
 	if (!aC) {
-		Log(WARNING, "Scriptable", "AA: NULL action encountered for %s!", scriptName);
+		//Log(WARNING, "Scriptable", "AA: NULL action encountered for %s!", scriptName);
 		return;
 	}
 
@@ -484,7 +484,7 @@ void Scriptable::AddAction(Action* aC)
 void Scriptable::AddActionInFront(Action* aC)
 {
 	if (!aC) {
-		Log(WARNING, "Scriptable", "AAIF: NULL action encountered for %s!", scriptName);
+		//Log(WARNING, "Scriptable", "AAIF: NULL action encountered for %s!", scriptName);
 		return;
 	}
 	InternalFlags|=IF_ACTIVE;
@@ -691,7 +691,7 @@ void Scriptable::AddTrigger(TriggerEntry trigger)
 	assert(trigger.triggerID < MAX_TRIGGERS);
 	if (triggerflags[trigger.triggerID] & TF_SAVED) {
 		//TODO: if LastTrigger is still overwritten by script action blocks, store this in a separate field and copy it back when the block ends
-		//Log(WARNING, "Scriptable", "%s: Added LastTrigger: %d for trigger %d\n", scriptName, trigger.param1, trigger.triggerID);
+		////Log(WARNING, "Scriptable", "%s: Added LastTrigger: %d for trigger %d\n", scriptName, trigger.param1, trigger.triggerID);
 		LastTrigger = trigger.param1;
 	}
 }
@@ -1154,7 +1154,7 @@ int Scriptable::CanCast(const ieResRef SpellRef, bool verbose) {
 	// we (also) ignore tobex modded spells
 	if (actor->CheckSilenced()) {
 		if (!(core->GetSpecialSpell(spl->Name)&SP_SILENCE) && !(spl->Flags&SF_IGNORES_SILENCE)) {
-			Log(WARNING, "Scriptable", "Tried to cast while silenced!");
+			//Log(WARNING, "Scriptable", "Tried to cast while silenced!");
 			return 0;
 		}
 	}
@@ -2065,7 +2065,7 @@ void Movable::SetStance(unsigned int arg)
 	//don't modify stance from dead back to anything if the actor is dead
 	if ((StanceID==IE_ANI_TWITCH || StanceID==IE_ANI_DIE) && (arg!=IE_ANI_TWITCH) ) {
 		if (GetInternalFlag()&IF_REALLYDIED) {
-			Log(WARNING, "Movable", "Stance overridden by death");
+			//Log(WARNING, "Movable", "Stance overridden by death");
 			return;
 		}
 	}

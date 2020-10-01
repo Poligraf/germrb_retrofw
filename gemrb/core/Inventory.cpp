@@ -674,7 +674,7 @@ bool Inventory::ItemsAreCompatible(CREItem* target, CREItem* source) const
 {
 	if (!target) {
 		//this isn't always ok, please check!
-		Log(WARNING, "Inventory", "Null item encountered by ItemsAreCompatible()");
+		//Log(WARNING, "Inventory", "Null item encountered by ItemsAreCompatible()");
 		return true;
 	}
 
@@ -709,7 +709,7 @@ int Inventory::DepleteItem(ieDword flags)
 		if (!flags) {
 			Item *itm = gamedata->GetItem(item->ItemResRef, true);
 			if (!itm) {
-				Log(WARNING, "Inventory", "Invalid item to deplete: %s!", item->ItemResRef);
+				//Log(WARNING, "Inventory", "Invalid item to deplete: %s!", item->ItemResRef);
 				continue;
 			}
 			//if the item is usable in weapon slot, then it is weapon

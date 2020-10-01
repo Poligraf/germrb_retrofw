@@ -201,7 +201,7 @@ public:
 				free(mbstring);
 			} else {
 				strref = core->UpdateString(strref, "?");
-				Log(WARNING, "Map", "Failed to update string from map note, possibly an enconding issue.");
+				//Log(WARNING, "Map", "Failed to update string from map note, possibly an enconding issue.");
 			}
 		}
 	}

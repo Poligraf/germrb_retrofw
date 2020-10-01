@@ -848,7 +848,7 @@ void CreateVisualEffectCore(Scriptable *Sender, const Point &position, const cha
 		if (area) {
 			area->AddVVCell(new VEFObject(vvc));
 		} else {
-			Log(WARNING, "GSUtils", "Skipping visual effect positioning due to missing area!");
+			//Log(WARNING, "GSUtils", "Skipping visual effect positioning due to missing area!");
 			delete vvc;
 		}
 	}
@@ -1057,7 +1057,7 @@ void BeginDialog(Scriptable* Sender, Action* parameters, int Flags)
 
 	GameControl* gc = core->GetGameControl();
 	if (!gc) {
-		Log(WARNING, "GameScript", "Dialog cannot be initiated because there is no GameControl.");
+		//Log(WARNING, "GameScript", "Dialog cannot be initiated because there is no GameControl.");
 		Sender->ReleaseCurrentAction();
 		return;
 	}
@@ -1069,7 +1069,7 @@ void BeginDialog(Scriptable* Sender, Action* parameters, int Flags)
 		}
 		//check if we could manage to break it, not all dialogs are breakable!
 		if (gc->GetDialogueFlags()&DF_IN_DIALOG) {
-			Log(WARNING, "GameScript", "Dialog cannot be initiated because there is already one.");
+			//Log(WARNING, "GameScript", "Dialog cannot be initiated because there is already one.");
 			Sender->ReleaseCurrentAction();
 			return;
 		}
@@ -1382,14 +1382,14 @@ void AttackCore(Scriptable *Sender, Scriptable *target, int flags)
 			actor->StopAttack();
 			Sender->ReleaseCurrentAction();
 			actor->AddTrigger(TriggerEntry(trigger_targetunreachable, tar->GetGlobalID()));
-			Log(WARNING, "AttackCore", "Tried attacking invisible/dead actor: %s!", tar->GetName(1));
+			//Log(WARNING, "AttackCore", "Tried attacking invisible/dead actor: %s!", tar->GetName(1));
 			return;
 		}
 	}
 
 	if (actor == tar) {
 		Sender->ReleaseCurrentAction();
-		Log(WARNING, "AttackCore", "Tried attacking itself: %s!", tar->GetName(1));
+		//Log(WARNING, "AttackCore", "Tried attacking itself: %s!", tar->GetName(1));
 		return;
 	}
 
@@ -1402,7 +1402,7 @@ void AttackCore(Scriptable *Sender, Scriptable *target, int flags)
 		Sender->ReleaseCurrentAction();
 		assert(tar);
 		actor->AddTrigger(TriggerEntry(trigger_unusable, tar->GetGlobalID()));
-		Log(WARNING, "AttackCore", "Weapon unusable: %s!", actor->GetName(1));
+		//Log(WARNING, "AttackCore", "Weapon unusable: %s!", actor->GetName(1));
 		return;
 	}
 
@@ -1521,7 +1521,7 @@ static void ParseObject(const char *&str,const char *&src, Object *&object)
 	case ')':
 		// missing parameter
 		// (for example, StartDialogueNoSet() in aerie.d)
-		Log(WARNING, "GSUtils", "ParseObject expected an object when parsing dialog");
+		//Log(WARNING, "GSUtils", "ParseObject expected an object when parsing dialog");
 		// replace with Myself
 		object->objectFilters[0] = 1;
 		break;
@@ -1583,11 +1583,11 @@ Action* GenerateActionCore(const char *src, const char *str, unsigned short acti
 	//Here is the Action; Now we need to evaluate the parameters, if any
 	if (*str!=')') while (*str) {
 		if (*(str+1)!=':') {
-			Log(WARNING, "GSUtils", "parser was sidetracked: %s", str);
+			//Log(WARNING, "GSUtils", "parser was sidetracked: %s", str);
 		}
 		switch (*str) {
 			default:
-				Log(WARNING, "GSUtils", "Invalid type: %s", str);
+				//Log(WARNING, "GSUtils", "Invalid type: %s", str);
 				//str++;
 				delete newAction;
 				return NULL;
@@ -1794,7 +1794,7 @@ void MoveNearerTo(Scriptable *Sender, Scriptable *target, int distance, int dont
 		target = myarea->GetTileMap()->GetTravelTo(hisarea->GetScriptName());
 
 		if (!target) {
-			Log(WARNING, "GameScript", "MoveNearerTo failed to find an exit");
+			//Log(WARNING, "GameScript", "MoveNearerTo failed to find an exit");
 			Sender->ReleaseCurrentAction();
 			return;
 		}
@@ -1942,7 +1942,7 @@ Trigger *GenerateTriggerCore(const char *src, const char *str, int trIndex, int 
 	//Here is the Trigger; Now we need to evaluate the parameters
 	if (*str!=')') while (*str) {
 		if (*(str+1)!=':') {
-			Log(WARNING, "GSUtils", "parser was sidetracked: %s",str);
+			//Log(WARNING, "GSUtils", "parser was sidetracked: %s",str);
 		}
 		switch (*str) {
 			default:
@@ -2115,8 +2115,8 @@ void SetVariable(Scriptable* Sender, const char* VarName, const char* Context, i
 			map->locals->SetAt( VarName, value, NoCreate);
 		}
 		else if (InDebug&ID_VARIABLES) {
-			Log(WARNING, "GameScript", "Invalid variable %s %s in setvariable",
-				Context, VarName);
+			//Log(WARNING, "GameScript", "Invalid variable %s %s in setvariable",
+//				Context, VarName);
 		}
 	}
 	else {
@@ -2158,8 +2158,8 @@ void SetVariable(Scriptable* Sender, const char* VarName, ieDword value)
 			map->locals->SetAt( poi, value, NoCreate);
 		}
 		else if (InDebug&ID_VARIABLES) {
-			Log(WARNING, "GameScript", "Invalid variable %s in setvariable",
-				VarName);
+			//Log(WARNING, "GameScript", "Invalid variable %s in setvariable",
+//				VarName);
 		}
 	}
 	else {
@@ -2211,8 +2211,8 @@ ieDword CheckVariable(Scriptable* Sender, const char* VarName, bool *valid)
 				*valid=false;
 			}
 			if (InDebug&ID_VARIABLES) {
-				Log(WARNING, "GameScript", "Invalid variable %s in checkvariable",
-					VarName);
+				//Log(WARNING, "GameScript", "Invalid variable %s in checkvariable",
+//					VarName);
 			}
 		}
 	} else {
@@ -2265,8 +2265,8 @@ ieDword CheckVariable(Scriptable* Sender, const char* VarName, const char* Conte
 				*valid=false;
 			}
 			if (InDebug&ID_VARIABLES) {
-				Log(WARNING, "GameScript", "Invalid variable %s %s in checkvariable",
-					Context, VarName);
+				//Log(WARNING, "GameScript", "Invalid variable %s %s in checkvariable",
+//					Context, VarName);
 			}
 		}
 	} else {
@@ -2717,7 +2717,7 @@ void SpellCore(Scriptable *Sender, Action *parameters, int flags)
 	} else {
 		if (!Sender->SpellResRef[0] || stricmp(Sender->SpellResRef, spellres)) {
 			if (Sender->CurrentActionTicks) {
-				Log(WARNING, "GameScript", "SpellCore: Action (%d) lost spell somewhere!", parameters->actionID);
+				//Log(WARNING, "GameScript", "SpellCore: Action (%d) lost spell somewhere!", parameters->actionID);
 			}
 			Sender->SetSpellResRef(spellres);
 		}
@@ -2840,7 +2840,7 @@ void SpellPointCore(Scriptable *Sender, Action *parameters, int flags)
 	} else {
 		if (!Sender->SpellResRef[0] || stricmp(Sender->SpellResRef, spellres)) {
 			if (Sender->CurrentActionTicks) {
-				Log(WARNING, "GameScript", "SpellPointCore: Action (%d) lost spell somewhere!", parameters->actionID);
+				//Log(WARNING, "GameScript", "SpellPointCore: Action (%d) lost spell somewhere!", parameters->actionID);
 			}
 			Sender->SetSpellResRef(spellres);
 		}

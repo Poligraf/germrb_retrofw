@@ -642,16 +642,6 @@ StringMgr.h
 TlkOverride.h
 /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/gemrb/plugins/TLKImporter/TlkOverride.h
 
-/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/gemrb/plugins/TLKImporter/TlkOverride.cpp
-TlkOverride.h
-/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/gemrb/plugins/TLKImporter/TlkOverride.h
-algorithm
--
-cstdio
--
-cassert
--
-
 /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/gemrb/plugins/TLKImporter/TlkOverride.h
 globals.h
 /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/gemrb/plugins/TLKImporter/globals.h

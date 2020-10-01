@@ -190,7 +190,7 @@ bool CFGConfig::InitWithINIData(DataStream* const cfgStream)
 	}
 
 	if (isValid) {
-		Log(WARNING, "Config", "attempting to replace config values with contents of %s", cfgStream->filename);
+		//Log(WARNING, "Config", "attempting to replace config values with contents of %s", cfgStream->filename);
 	} else {
 		// Log(MESSAGE, "Config", "attempting to initialize config with %s", cfgStream->filename);
 	}
@@ -217,7 +217,7 @@ bool CFGConfig::InitWithINIData(DataStream* const cfgStream)
 
 		value = strchr( key, '=' );
 		if (!value || value == key) {
-			Log(WARNING, "Config", "Invalid line %d", lineno);
+			//Log(WARNING, "Config", "Invalid line %d", lineno);
 			continue;
 		}
 

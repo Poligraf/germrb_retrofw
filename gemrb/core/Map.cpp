@@ -554,8 +554,8 @@ void Map::MoveToNewArea(const char *area, const char *entrance, unsigned int dir
 			Y = map->TMap->YCellCount * 32;
 		} else {
 			// crashes in original engine
-			Log(WARNING, "Map", "WARNING!!! EntryPoint '%s' does not exist and direction %d is invalid",
-				entrance, direction);
+			//Log(WARNING, "Map", "WARNING!!! EntryPoint '%s' does not exist and direction %d is invalid",
+//				entrance, direction);
 			X = map->TMap->XCellCount * 64;
 			Y = map->TMap->YCellCount * 64;
 		}
@@ -1875,7 +1875,7 @@ Scriptable* Map::GetItemByDialog(ieResRef resref)
 	ieResRef itemref;
 	// choose the owner of the dialog via passed dialog ref
 	if (strnicmp(resref, "dmhead", 8)) {
-		Log(WARNING, "Map", "Encountered new candidate item for GetItemByDialog? %s", resref);
+		//Log(WARNING, "Map", "Encountered new candidate item for GetItemByDialog? %s", resref);
 		return NULL;
 	}
 	CopyResRef(itemref, "mertwyn");
@@ -2353,7 +2353,7 @@ void Map::RemoveActor(Actor* actor)
 			return;
 		}
 	}
-	Log(WARNING, "Map", "RemoveActor: actor not found?");
+	//Log(WARNING, "Map", "RemoveActor: actor not found?");
 }
 
 //returns true if none of the partymembers are on the map
@@ -4107,7 +4107,7 @@ bool Map::ChangeMap(bool day_or_night)
 	//using the ARE class for this because ChangeMap is similar to LoadMap
 	//it loads the lightmap and the minimap too, besides swapping the tileset
 	if (!mM->ChangeMap(this, day_or_night) && !day_or_night) {
-		Log(WARNING, "Map", "Invalid night lightmap, falling back to day lightmap.");
+		//Log(WARNING, "Map", "Invalid night lightmap, falling back to day lightmap.");
 		mM->ChangeMap(this, 1);
 		DayNight = day_or_night;
 	}

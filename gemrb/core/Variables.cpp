@@ -428,7 +428,7 @@ void Variables::SetAt(const char* key, ieDword value, bool nocreate)
 	assert( m_type == GEM_VARIABLES_INT );
 	if (( pAssoc = GetAssocAt( key, nHash ) ) == NULL) {
 		if (nocreate) {
-			Log(WARNING, "Variables", "Cannot create new variable: %s", key);
+			//Log(WARNING, "Variables", "Cannot create new variable: %s", key);
 			return;
 		}
 

@@ -261,20 +261,20 @@ static bool IsSaveGameSlot(const char* Path, const char* slotname)
 	PathJoinExt(ftmp, dtmp, core->GameNameResRef, "bmp");
 
 	if (access( ftmp, R_OK )) {
-		Log(WARNING, "SaveGameIterator", "Ignoring slot %s because of no appropriate preview!", dtmp);
+		//Log(WARNING, "SaveGameIterator", "Ignoring slot %s because of no appropriate preview!", dtmp);
 		return false;
 	}
 
 	PathJoinExt(ftmp, dtmp, core->WorldMapName[0], "wmp");
 	if (access( ftmp, R_OK )) {
-		Log(WARNING, "SaveGameIterator", "Ignoring slot %s because of no appropriate worldmap!", dtmp);
+		//Log(WARNING, "SaveGameIterator", "Ignoring slot %s because of no appropriate worldmap!", dtmp);
 		return false;
 	}
 
 	/* we might need something here as well
 	PathJoinExt(ftmp, dtmp, core->WorldMapName[1], "wmp");
 	if (access( ftmp, R_OK )) {
-		Log(WARNING, "SaveGameIterator", "Ignoring slot %s because of no appropriate worldmap!", dtmp);
+		//Log(WARNING, "SaveGameIterator", "Ignoring slot %s because of no appropriate worldmap!", dtmp);
 		return false;
 	}
 	*/
@@ -354,7 +354,7 @@ Holder<SaveGame> SaveGameIterator::BuildSaveGame(const char *slotname)
 	int cnt = sscanf( slotname, SAVEGAME_DIRECTORY_MATCHER, &savegameNumber, savegameName );
 	//maximum pathlength == 240, without 8+3 filenames
 	if ( (cnt != 2) || (strlen(Path)>240) ) {
-		Log(WARNING, "SaveGame", "Invalid savegame directory '%s' in %s.", slotname, Path );
+		//Log(WARNING, "SaveGame", "Invalid savegame directory '%s' in %s.", slotname, Path );
 		return NULL;
 	}
 

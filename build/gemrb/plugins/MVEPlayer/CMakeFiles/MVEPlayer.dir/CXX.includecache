@@ -130,30 +130,6 @@ TypeID.h
 cstddef
 -
 
-../gemrb/core/PluginMgr.h
-SClassID.h
-../gemrb/core/SClassID.h
-exports.h
-../gemrb/core/exports.h
-globals.h
-../gemrb/core/globals.h
-iless.h
-../gemrb/core/iless.h
-win32def.h
-../gemrb/core/win32def.h
-Holder.h
-../gemrb/core/Holder.h
-ResourceDesc.h
-../gemrb/core/ResourceDesc.h
-cstring
--
-list
--
-map
--
-vector
--
-
 ../gemrb/core/Polygon.h
 RGBAColor.h
 ../gemrb/core/RGBAColor.h
@@ -177,14 +153,6 @@ Plugin.h
 ../gemrb/core/Plugin.h
 System/String.h
 ../gemrb/core/System/String.h
-
-../gemrb/core/ResourceDesc.h
-SClassID.h
-../gemrb/core/SClassID.h
-exports.h
-../gemrb/core/exports.h
-ie_types.h
-../gemrb/core/ie_types.h
 
 ../gemrb/core/ResourceManager.h
 SClassID.h
@@ -294,18 +262,6 @@ operatorbool.h
 
 ../gemrb/core/TypeID.h
 
-../gemrb/core/Variables.h
-SClassID.h
-../gemrb/core/SClassID.h
-exports.h
-../gemrb/core/exports.h
-globals.h
-../gemrb/core/globals.h
-win32def.h
-../gemrb/core/win32def.h
-cassert
--
-
 ../gemrb/core/Video.h
 globals.h
 ../gemrb/core/globals.h
@@ -386,19 +342,7 @@ sys/time.h
 config.h
 -
 
-../gemrb/includes/iless.h
-win32def.h
-../gemrb/includes/win32def.h
-
 ../gemrb/includes/operatorbool.h
-
-../gemrb/includes/plugindef.h
-exports.h
-../gemrb/includes/exports.h
-PluginMgr.h
-../gemrb/includes/PluginMgr.h
-windows.h
--
 
 ../gemrb/includes/win32def.h
 exports.h
@@ -417,28 +361,6 @@ System/VFS.h
 ../gemrb/includes/System/VFS.h
 System/Logging.h
 ../gemrb/includes/System/Logging.h
-
-/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/gemrb/plugins/MVEPlayer/MVEPlayer.cpp
-MVEPlayer.h
-/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/gemrb/plugins/MVEPlayer/MVEPlayer.h
-mve_player.h
-/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/gemrb/plugins/MVEPlayer/mve_player.h
-ie_types.h
-/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/gemrb/plugins/MVEPlayer/ie_types.h
-Audio.h
-/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/gemrb/plugins/MVEPlayer/Audio.h
-Interface.h
-/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/gemrb/plugins/MVEPlayer/Interface.h
-Variables.h
-/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/gemrb/plugins/MVEPlayer/Variables.h
-Video.h
-/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/gemrb/plugins/MVEPlayer/Video.h
-cassert
--
-cstdio
--
-plugindef.h
-/run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/gemrb/plugins/MVEPlayer/plugindef.h
 
 /run/media/raboten/c03df044-bb85-4f9c-a53f-e537b8a024a0/gemrb-0.8.6/gemrb/plugins/MVEPlayer/MVEPlayer.h
 MoviePlayer.h

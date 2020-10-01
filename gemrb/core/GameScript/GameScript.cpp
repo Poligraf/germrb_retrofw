@@ -1209,8 +1209,8 @@ static const IDSLink* FindIdentifier(const char* idsname)
 		}
 	}
 
-	Log(WARNING, "GameScript", "Couldn't assign ids target: %.*s",
-		len, idsname );
+	//Log(WARNING, "GameScript", "Couldn't assign ids target: %.*s",
+//		len, idsname );
 	return NULL;
 }
 
@@ -1390,8 +1390,8 @@ static void LoadActionFlags(const char *tableName, int flag, bool critical)
 			continue;
 		}
 		if (!actions[i]) {
-			Log(WARNING, "GameScript", "%s action %d (%s) doesn't exist, ignoring",
-				tableName, i, table->GetStringIndex( j ) );
+			//Log(WARNING, "GameScript", "%s action %d (%s) doesn't exist, ignoring",
+//				tableName, i, table->GetStringIndex( j ) );
 			continue;
 		}
 		actionflags[i] |= flag;
@@ -1489,7 +1489,7 @@ void InitializeIEScript()
 				buffer.appendFormatted("%s is in collision with ",
 					triggersTable->GetStringIndex( j ) );
 				printFunction(buffer, triggersTable, triggersTable->FindValue(triggersTable->GetValueIndex(j)));
-				Log(WARNING, "GameScript", buffer);
+				//Log(WARNING, "GameScript", buffer);
 			} else {
 				if (InDebug&ID_TRIGGERS) {
 					StringBuffer buffer;
@@ -1540,7 +1540,7 @@ void InitializeIEScript()
 		StringBuffer buffer;
 		buffer.append("Couldn't assign function to trigger: ");
 		printFunction(buffer, triggersTable, j);
-		Log(WARNING, "GameScript", buffer);
+		//Log(WARNING, "GameScript", buffer);
 	}
 
 	max = actionsTable->GetSize();
@@ -1559,7 +1559,7 @@ void InitializeIEScript()
 				buffer.appendFormatted("%s is in collision with ",
 					actionsTable->GetStringIndex( j ) );
 				printFunction(buffer, actionsTable, actionsTable->FindValue(actionsTable->GetValueIndex(j)));
-				Log(WARNING, "GameScript", buffer);
+				//Log(WARNING, "GameScript", buffer);
 			} else {
 				if (InDebug&ID_ACTIONS) {
 					StringBuffer buffer;
@@ -1690,7 +1690,7 @@ void InitializeIEScript()
 		StringBuffer buffer;
 		buffer.append("Couldn't assign function to action: ");
 		printFunction(buffer, actionsTable, j);
-		Log(WARNING, "GameScript", buffer);
+		//Log(WARNING, "GameScript", buffer);
 	}
 
 	j = objectsTable->GetSize();
@@ -1708,7 +1708,7 @@ void InitializeIEScript()
 				buffer.appendFormatted("%s is in collision with ",
 					objectsTable->GetStringIndex( j ) );
 				printFunction(buffer, objectsTable, objectsTable->FindValue(objectsTable->GetValueIndex(j)));
-				Log(WARNING, "GameScript", buffer);
+				//Log(WARNING, "GameScript", buffer);
 			} else {
 				StringBuffer buffer;
 				buffer.appendFormatted("%s is a synonym of ",
@@ -1748,7 +1748,7 @@ void InitializeIEScript()
 		StringBuffer buffer;
 		buffer.append("Couldn't assign function to object: ");
 		printFunction(buffer, objectsTable, j);
-		Log(WARNING, "GameScript", buffer);
+		//Log(WARNING, "GameScript", buffer);
 	}
 
 	if (gamedata->Exists("dlginst", IE_IDS_CLASS_ID, true)) {
@@ -1763,7 +1763,7 @@ void InitializeIEScript()
 	int savedTriggersIndex = core->LoadSymbol("svtriobj");
 	if (savedTriggersIndex < 0) {
 		// leaving this as not strictly necessary, for now
-		Log(WARNING, "GameScript", "Couldn't find saved trigger symbols!");
+		//Log(WARNING, "GameScript", "Couldn't find saved trigger symbols!");
 	} else {
 		Holder<SymbolMgr> savedTriggersTable = core->GetSymbol(savedTriggersIndex);
 		if (!savedTriggersTable) {
@@ -1779,8 +1779,8 @@ void InitializeIEScript()
 				continue;
 			}
 			if (!triggers[i]) {
-				Log(WARNING, "GameScript", "saved trigger %d (%s) doesn't exist, ignoring",
-					i, savedTriggersTable->GetStringIndex( j ) );
+				//Log(WARNING, "GameScript", "saved trigger %d (%s) doesn't exist, ignoring",
+//					i, savedTriggersTable->GetStringIndex( j ) );
 				continue;
 			}
 			triggerflags[i] |= TF_SAVED;
@@ -1842,7 +1842,7 @@ Script* GameScript::CacheScript(ieResRef ResRef, bool AIScript)
 	}
 	stream->ReadLine( line, 10 );
 	if (strncmp( line, "SC", 2 ) != 0) {
-		Log(WARNING, "GameScript", "Not a Compiled Script file");
+		//Log(WARNING, "GameScript", "Not a Compiled Script file");
 		delete( stream );
 		return NULL;
 	}
@@ -1930,7 +1930,7 @@ static Object* DecodeObject(const char* line)
 		oB->objectFields[i + ObjectFieldsCount] = ParseInt( line );
 	}
 	if (*line != 'O' || *(line + 1) != 'B') {
-		Log(WARNING, "GameScript", "Got confused parsing object line: %s", origline);
+		//Log(WARNING, "GameScript", "Got confused parsing object line: %s", origline);
 	}
 	//let the object realize it has no future (in case of null objects)
 	if (oB->isNull()) {
@@ -2273,7 +2273,7 @@ bool Condition::Evaluate(Scriptable* Sender)
 		if (result > 1) {
 			//we started an Or() block
 			if (ORcount) {
-				Log(WARNING, "GameScript", "Unfinished OR block encountered!");
+				//Log(WARNING, "GameScript", "Unfinished OR block encountered!");
 				if (!subresult) {
 					return 0;
 				}
@@ -2294,7 +2294,7 @@ bool Condition::Evaluate(Scriptable* Sender)
 		}
 	}
 	if (ORcount) {
-		Log(WARNING, "GameScript", "Unfinished OR block encountered!");
+		//Log(WARNING, "GameScript", "Unfinished OR block encountered!");
 		return subresult;
 	}
 	return 1;
@@ -2314,13 +2314,13 @@ int Trigger::Evaluate(Scriptable* Sender)
 	}
 	if (!func) {
 		triggers[triggerID] = GameScript::False;
-		Log(WARNING, "GameScript", "Unhandled trigger code: 0x%04x %s",
-			triggerID, tmpstr );
+		//Log(WARNING, "GameScript", "Unhandled trigger code: 0x%04x %s",
+//			triggerID, tmpstr );
 		return 0;
 	}
 	if (InDebug&ID_TRIGGERS) {
-		Log(WARNING, "GameScript", "Executing trigger code: 0x%04x %s",
-				triggerID, tmpstr );
+		//Log(WARNING, "GameScript", "Executing trigger code: 0x%04x %s",
+//				triggerID, tmpstr );
 	}
 	int ret = func( Sender, this );
 	if (flags & TF_NEGATE) {
@@ -2419,8 +2419,8 @@ void GameScript::ExecuteAction(Scriptable* Sender, Action* aC)
 
 		if (scr) {
 			if (InDebug&ID_ACTIONS) {
-				Log(WARNING, "GameScript", "Sender %s ran ActionOverride on %s",
-					Sender->GetScriptName(), scr->GetScriptName() );
+				//Log(WARNING, "GameScript", "Sender %s ran ActionOverride on %s",
+//					Sender->GetScriptName(), scr->GetScriptName() );
 			}
 			scr->ReleaseCurrentAction();
 			scr->AddAction(ParamCopyNoOverride(aC));
@@ -2445,7 +2445,7 @@ void GameScript::ExecuteAction(Scriptable* Sender, Action* aC)
 		StringBuffer buffer;
 		PrintAction(buffer, actionID);
 		buffer.appendFormatted("Sender: %s\n", Sender->GetScriptName());
-		Log(WARNING, "GameScript", buffer);
+		//Log(WARNING, "GameScript", buffer);
 	}
 	ActionFunction func = actions[actionID];
 	if (func) {
@@ -2455,7 +2455,7 @@ void GameScript::ExecuteAction(Scriptable* Sender, Action* aC)
 			Sender->Activate();
 			if (actionflags[actionID]&AF_ALIVE) {
 				if (Sender->GetInternalFlag()&IF_STOPATTACK) {
-					Log(WARNING, "GameScript", "Aborted action due to death!");
+					//Log(WARNING, "GameScript", "Aborted action due to death!");
 					Sender->ReleaseCurrentAction();
 					return;
 				}
@@ -2467,7 +2467,7 @@ void GameScript::ExecuteAction(Scriptable* Sender, Action* aC)
 		StringBuffer buffer;
 		buffer.append("Unknown ");
 		PrintAction(buffer, actionID);
-		Log(WARNING, "GameScript", buffer);
+		//Log(WARNING, "GameScript", buffer);
 		Sender->ReleaseCurrentAction();
 		return;
 	}
@@ -2497,7 +2497,7 @@ Trigger* GenerateTrigger(char* String)
 {
 	strlwr( String );
 	if (InDebug&ID_TRIGGERS) {
-		Log(WARNING, "GameScript", "Compiling:%s", String);
+		//Log(WARNING, "GameScript", "Compiling:%s", String);
 	}
 	int negate = 0;
 	if (*String == '!') {
@@ -2527,7 +2527,7 @@ Action* GenerateAction(const char* String)
 	// the only thing we seem to need a copy for is the call to strlwr...
 	strlwr( actionString );
 	if (InDebug&ID_ACTIONS) {
-		Log(WARNING, "GameScript", "Compiling:%s", String);
+		//Log(WARNING, "GameScript", "Compiling:%s", String);
 	}
 	int len = strlench(String,'(')+1; //including (
 	char *src = actionString+len;

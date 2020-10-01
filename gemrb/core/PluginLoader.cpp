@@ -216,13 +216,13 @@ void LoadPlugins(char* pluginpath)
 		//printStatus( "OK", LIGHT_GREEN );
 		//printMessage( "PluginMgr", "Loading Exports for ", WHITE );
 		if (libs.find(desc.ID) != libs.end()) {
-			Log(WARNING, "PluginLoader", "Plug-in \"%s\" already loaded!", path);
+			//Log(WARNING, "PluginLoader", "Plug-in \"%s\" already loaded!", path);
 			FREE_PLUGIN( hMod );
 			continue;
 		}
 		if (desc.Register != NULL) {
 			if (!desc.Register(PluginMgr::Get())) {
-				Log(WARNING, "PluginLoader", "Plugin Registration Failed! Perhaps a duplicate?");
+				//Log(WARNING, "PluginLoader", "Plugin Registration Failed! Perhaps a duplicate?");
 				FREE_PLUGIN( hMod );
 			}
 		}

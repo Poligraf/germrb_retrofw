@@ -867,7 +867,7 @@ int Game::DelMap(unsigned int index, int forced)
 	}
 
 	if (!map) { //this shouldn't happen, i guess
-		Log(WARNING, "Game", "Erased NULL Map");
+		//Log(WARNING, "Game", "Erased NULL Map");
 		Maps.erase(Maps.begin() + index);
 		if (MapIndex > (int) index) {
 			MapIndex--;

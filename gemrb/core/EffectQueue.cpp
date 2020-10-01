@@ -239,7 +239,7 @@ static EffectDesc* FindEffect(const char* effectname)
 	}
 	void *tmp = bsearch(effectname, effectnames, effectnames_count, sizeof(EffectDesc), find_effect);
 	if( !tmp) {
-		Log(WARNING, "EffectQueue", "Couldn't assign effect: %s", effectname);
+		//Log(WARNING, "EffectQueue", "Couldn't assign effect: %s", effectname);
 	}
 	return (EffectDesc *) tmp;
 }
@@ -1445,7 +1445,7 @@ void EffectQueue::RemoveAllEffects(const ieResRef Removed) const
 	Spell *spell = gamedata->GetSpell(Removed, true);
 	if (!spell) return; // can be hit until all the iwd2 clabs are implemented
 	if (spell->ExtHeaderCount > 1) {
-		Log(WARNING, "EffectQueue", "Spell %s has more than one extended header, removing only first!", Removed);
+		//Log(WARNING, "EffectQueue", "Spell %s has more than one extended header, removing only first!", Removed);
 	}
 	SPLExtHeader *sph = spell->GetExtHeader(0);
 	for (int i=0; i < sph->FeatureCount; i++) {

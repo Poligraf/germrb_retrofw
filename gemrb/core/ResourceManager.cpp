@@ -42,7 +42,7 @@ bool ResourceManager::AddSource(const char *path, const char *description, Plugi
 {
 	PluginHolder<ResourceSource> source(type);
 	if (!source->Open(path, description)) {
-		Log(WARNING, "ResourceManager", "Invalid path given: %s (%s)", path, description);
+		//Log(WARNING, "ResourceManager", "Invalid path given: %s (%s)", path, description);
 		return false;
 	}
 
@@ -78,8 +78,8 @@ bool ResourceManager::Exists(const char *ResRef, SClass_ID type, bool silent) co
 		}
 	}
 	if (!silent) {
-		Log(WARNING, "ResourceManager", "'%s.%s' not found...",
-			ResRef, core->TypeExt(type));
+		//Log(WARNING, "ResourceManager", "'%s.%s' not found...",
+//			ResRef, core->TypeExt(type));
 	}
 	return false;
 }
@@ -102,7 +102,7 @@ bool ResourceManager::Exists(const char *ResRef, const TypeID *type, bool silent
 		buffer.appendFormatted("Couldn't find '%s'... ", ResRef);
 		buffer.append("Tried ");
 		PrintPossibleFiles(buffer, ResRef,type);
-		Log(WARNING, "ResourceManager", buffer);
+		//Log(WARNING, "ResourceManager", buffer);
 	}
 	return false;
 }
@@ -162,7 +162,7 @@ Resource* ResourceManager::GetResource(const char* ResRef, const TypeID *type, b
 		buffer.appendFormatted("Couldn't find '%s'... ", ResRef);
 		buffer.append("Tried ");
 		PrintPossibleFiles(buffer, ResRef,type);
-		Log(WARNING, "ResourceManager", buffer);
+		//Log(WARNING, "ResourceManager", buffer);
 	}
 	return NULL;
 }

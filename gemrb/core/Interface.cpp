@@ -1642,7 +1642,7 @@ int Interface::Init(InterfaceConfig* config)
 		// Log(MESSAGE,"Core", "Loading original game options from %s", ini_path);
 	}
 	if (!InitializeVarsWithINI(ini_path)) {
-		Log(WARNING, "Core", "Unable to set dictionary default values!");
+		//Log(WARNING, "Core", "Unable to set dictionary default values!");
 	}
 
 	// restore the game config name if we read it from our version
@@ -1795,7 +1795,7 @@ int Interface::Init(InterfaceConfig* config)
 		ret = ReadMusicTable("music", 0);
 	}
 	if (!ret) {
-		Log(WARNING, "Core", "Didn't find music list.");
+		//Log(WARNING, "Core", "Didn't find music list.");
 	}
 
 	int resdata = HasFeature( GF_RESDATA_INI );
@@ -1804,14 +1804,14 @@ int Interface::Init(InterfaceConfig* config)
 		INIresdata = PluginHolder<DataFileMgr>(IE_INI_CLASS_ID);
 		DataStream* ds = gamedata->GetResource(resdata? "resdata":"sounds", IE_INI_CLASS_ID);
 		if (!INIresdata->Open(ds)) {
-			Log(WARNING, "Core", "Failed to load resource data.");
+			//Log(WARNING, "Core", "Failed to load resource data.");
 		}
 	}
 
 	// Log(MESSAGE, "Core", "Setting up SFX channels...");
 	ret = ReadSoundChannelsTable();
 	if (!ret) {
-		Log(WARNING, "Core", "Failed to read channel table.");
+		//Log(WARNING, "Core", "Failed to read channel table.");
 	}
 
 	if (HasFeature( GF_HAS_PARTY_INI )) {
@@ -1821,7 +1821,7 @@ int Interface::Init(InterfaceConfig* config)
 		PathJoin( tINIparty, GamePath, "Party.ini", NULL );
 		FileStream* fs = FileStream::OpenFile( tINIparty );
 		if (!INIparty->Open(fs)) {
-			Log(WARNING, "Core", "Failed to load precreated teams.");
+			//Log(WARNING, "Core", "Failed to load precreated teams.");
 		}
 	}
 
@@ -1837,7 +1837,7 @@ int Interface::Init(InterfaceConfig* config)
 		// FIXME: crashes if file does not open
 		FileStream* fs = FileStream::OpenFile( tINIbeasts );
 		if (!INIbeasts->Open(fs)) {
-			Log(WARNING, "Core", "Failed to load beast definitions.");
+			//Log(WARNING, "Core", "Failed to load beast definitions.");
 		}
 
 		// Log(MESSAGE, "Core", "Loading quests definition File...");
@@ -1847,7 +1847,7 @@ int Interface::Init(InterfaceConfig* config)
 		// FIXME: crashes if file does not open
 		FileStream* fs2 = FileStream::OpenFile( tINIquests );
 		if (!INIquests->Open(fs2)) {
-			Log(WARNING, "Core", "Failed to load quest definitions.");
+			//Log(WARNING, "Core", "Failed to load quest definitions.");
 		}
 	}
 	game = NULL;
@@ -1885,7 +1885,7 @@ int Interface::Init(InterfaceConfig* config)
 	// Log(MESSAGE, "Core", "Initializing random treasure...");
 	ret = ReadRandomItems();
 	if (!ret) {
-		Log(WARNING, "Core", "Failed to initialize random treasure.");
+		//Log(WARNING, "Core", "Failed to initialize random treasure.");
 	}
 
 	// Log(MESSAGE, "Core", "Initializing ability tables...");
@@ -1898,14 +1898,14 @@ int Interface::Init(InterfaceConfig* config)
 	// Log(MESSAGE, "Core", "Reading reputation mod table...");
 	ret = ReadReputationModTable();
 	if (!ret) {
-		Log(WARNING, "Core", "Failed to read reputation mod table.");
+		//Log(WARNING, "Core", "Failed to read reputation mod table.");
 	}
 
 	if ( gamedata->Exists("WMAPLAY", IE_2DA_CLASS_ID) ) {
 		// Log(MESSAGE, "Core", "Initializing area aliases...");
 		ret = ReadAreaAliasTable( "WMAPLAY" );
 		if (!ret) {
-			Log(WARNING, "Core", "Failed to load area aliases...");
+			//Log(WARNING, "Core", "Failed to load area aliases...");
 		}
 	}
 
@@ -1919,13 +1919,13 @@ int Interface::Init(InterfaceConfig* config)
 	// Log(MESSAGE, "Core", "Reading special spells table...");
 	ret = ReadSpecialSpells();
 	if (!ret) {
-		Log(WARNING, "Core", "Failed to load special spells.");
+		//Log(WARNING, "Core", "Failed to load special spells.");
 	}
 
 	ret = ReadDamageTypeTable();
 	// Log(MESSAGE, "Core", "Reading damage type table...");
 	if (!ret) {
-		Log(WARNING, "Core", "Reading damage type table...");
+		//Log(WARNING, "Core", "Reading damage type table...");
 	}
 
 	// Log(MESSAGE, "Core", "Reading game script tables...");
@@ -1935,7 +1935,7 @@ int Interface::Init(InterfaceConfig* config)
 	keymap = new KeyMap();
 	ret = keymap->InitializeKeyMap("keymap.ini", "keymap");
 	if (!ret) {
-		Log(WARNING, "Core", "Failed to initialize keymaps.");
+		//Log(WARNING, "Core", "Failed to initialize keymaps.");
 	}
 
 	// Log(MESSAGE, "Core", "Setting up the Console...");
@@ -2446,7 +2446,7 @@ Color* Interface::GetPalette(unsigned index, int colors, Color *pal) const
 	int width = img->GetWidth();
 	for (int i = 0; i < colors; i++) {
 		if (i >= width) {
-			Log(WARNING, "Interface", "Trying to access invalid palette index (%d)! Using black instead", i);
+			//Log(WARNING, "Interface", "Trying to access invalid palette index (%d)! Using black instead", i);
 		}
 		pal[i] = img->GetPixel(i, index);
 	}
@@ -3634,7 +3634,7 @@ bool Interface::InitializeVarsWithINI(const char* iniFileName)
 	// if filename is not set we assume we are creating defaults without an INI
 	bool opened = ini->Open(iniStream);
 	if (iniFileName[0] && !opened) {
-		Log(WARNING, "Core", "Unable to read defaults from '%s'. Using GemRB default values.", iniFileName);
+		//Log(WARNING, "Core", "Unable to read defaults from '%s'. Using GemRB default values.", iniFileName);
 	} else {
 		overrides = ini.get();
 	}
@@ -3646,7 +3646,7 @@ bool Interface::InitializeVarsWithINI(const char* iniFileName)
 	DataStream* gemINIStream = gamedata->GetResource( "defaults", IE_INI_CLASS_ID );
 
 	if (!gemINIStream || !gemINI->Open(gemINIStream)) {
-		Log(WARNING, "Core", "Unable to load GemRB default values.");
+		//Log(WARNING, "Core", "Unable to load GemRB default values.");
 		defaults = ini.get();
 	} else {
 		defaults = gemINI.get();
@@ -4566,7 +4566,7 @@ void Interface::DragItem(CREItem *item, const ieResRef Picture)
 	//we shouldn't have a valid DraggedItem at this point.
 	//Anyway, if there is still a dragged item, it will be destroyed.
 	if (DraggedItem) {
-		Log(WARNING, "Core", "Forgot to call ReleaseDraggedItem when leaving inventory (item destroyed)!");
+		//Log(WARNING, "Core", "Forgot to call ReleaseDraggedItem when leaving inventory (item destroyed)!");
 		delete DraggedItem;
 	}
 	DraggedItem = item;
@@ -5142,13 +5142,13 @@ int Interface::SwapoutArea(Map *map)
 		str.Create( map->GetScriptName(), IE_ARE_CLASS_ID );
 		int ret = mm->PutArea (&str, map);
 		if (ret <0) {
-			Log(WARNING, "Core", "Area removed: %s",
-				map->GetScriptName());
+			//Log(WARNING, "Core", "Area removed: %s",
+//				map->GetScriptName());
 			RemoveFromCache(map->GetScriptName(), IE_ARE_CLASS_ID);
 		}
 	} else {
-		Log(WARNING, "Core", "Area removed: %s",
-			map->GetScriptName());
+		//Log(WARNING, "Core", "Area removed: %s",
+//			map->GetScriptName());
 		RemoveFromCache(map->GetScriptName(), IE_ARE_CLASS_ID);
 	}
 	//make sure the stream isn't connected to sm, or it will be double freed
@@ -5174,7 +5174,7 @@ int Interface::WriteCharacter(const char *name, Actor *actor)
 
 		if (!str.Create( Path, name, IE_CHR_CLASS_ID )
 			|| (gm->PutActor(&str, actor, true) < 0)) {
-			Log(WARNING, "Core", "Character cannot be saved: %s", name);
+			//Log(WARNING, "Core", "Character cannot be saved: %s", name);
 			return -1;
 		}
 	}
@@ -5208,11 +5208,11 @@ int Interface::WriteGame(const char *folder)
 		str.Create( folder, GameNameResRef, IE_GAM_CLASS_ID );
 		int ret = gm->PutGame (&str, game);
 		if (ret <0) {
-			Log(WARNING, "Core", "Game cannot be saved: %s", folder);
+			//Log(WARNING, "Core", "Game cannot be saved: %s", folder);
 			return -1;
 		}
 	} else {
-		Log(WARNING, "Core", "Internal error, game cannot be saved: %s", folder);
+		//Log(WARNING, "Core", "Internal error, game cannot be saved: %s", folder);
 		return -1;
 	}
 	return 0;
@@ -5253,7 +5253,7 @@ int Interface::WriteWorldMap(const char *folder)
 		ret = wmm->PutWorldMap (&str1, &str2, worldmap);
 	}
 	if (ret <0) {
-		Log(WARNING, "Core", "Internal error, worldmap cannot be saved: %s", folder);
+		//Log(WARNING, "Core", "Internal error, worldmap cannot be saved: %s", folder);
 		return -1;
 	}
 	return 0;
@@ -5560,7 +5560,7 @@ ieDword Interface::TranslateStat(const char *stat_name)
 	}
 	ieDword stat = (ieDword) sym->GetValue( stat_name );
 	if (stat==(ieDword) ~0) {
-		Log(WARNING, "Core", "Cannot translate symbol: %s", stat_name);
+		//Log(WARNING, "Core", "Cannot translate symbol: %s", stat_name);
 	}
 	return stat;
 }

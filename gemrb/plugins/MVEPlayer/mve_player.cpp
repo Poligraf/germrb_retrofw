@@ -170,11 +170,11 @@ bool MVEPlayer::process_chunk() {
 	while (chunk_offset < chunk_size) {
 		chunk_offset += 4;
 		if (!request_data(4)) return false;
-		
+
 		unsigned int segment_size = GST_READ_UINT16_LE(buffer);
 		unsigned char segment_type = buffer[2];
 		unsigned char segment_version = buffer[3];
-		
+
 		chunk_offset += segment_size;
 		if (!process_segment(segment_size, segment_type, segment_version)) return false;
 	}

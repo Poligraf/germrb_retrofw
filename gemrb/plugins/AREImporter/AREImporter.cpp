@@ -1071,7 +1071,7 @@ Map* AREImporter::GetMap(const char *ResRef, bool day_or_night)
 	//Log (DEBUG, "AREImporter", "Loading actors");
 	str->Seek( ActorOffset, GEM_STREAM_START );
 	if (!core->IsAvailable( IE_CRE_CLASS_ID )) {
-		Log(WARNING, "AREImporter", "No Actor Manager Available, skipping actors");
+		//Log(WARNING, "AREImporter", "No Actor Manager Available, skipping actors");
 	} else {
 		PluginHolder<ActorMgr> actmgr(IE_CRE_CLASS_ID);
 		for (i = 0; i < ActorCount; i++) {
@@ -1199,7 +1199,7 @@ Map* AREImporter::GetMap(const char *ResRef, bool day_or_night)
 	//Log (DEBUG, "AREImporter", "Loading animations");
 	str->Seek( AnimOffset, GEM_STREAM_START );
 	if (!core->IsAvailable( IE_BAM_CLASS_ID )) {
-		Log(WARNING, "AREImporter", "No Animation Manager Available, skipping animations");
+		//Log(WARNING, "AREImporter", "No Animation Manager Available, skipping animations");
 	} else {
 		for (i = 0; i < AnimCount; i++) {
 			AreaAnimation* anim = new AreaAnimation();
@@ -2303,7 +2303,7 @@ int AREImporter::PutMapnotes( DataStream *stream, Map *map)
 					stream->Write( mbstring, len);
 					free(mbstring);
 				} else {
-					Log(WARNING, "AREImporter", "MapNote converted to an invalid multibyte sequence; cannot write it to file.\nFailed Note: %ls", mn.text->c_str());
+					//Log(WARNING, "AREImporter", "MapNote converted to an invalid multibyte sequence; cannot write it to file.\nFailed Note: %ls", mn.text->c_str());
 				}
 			}
 

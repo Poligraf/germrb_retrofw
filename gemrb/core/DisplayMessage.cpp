@@ -209,7 +209,7 @@ void DisplayMessage::DisplayConstantStringValue(int stridx, unsigned int color, 
 	if (stridx<0) return;
 	String* text = core->GetString( DisplayMessage::SRefs[stridx], IE_STR_SOUND );
 	if (!text) {
-		Log(WARNING, "DisplayMessage", "Unable to display message for stridx %d", stridx);
+		//Log(WARNING, "DisplayMessage", "Unable to display message for stridx %d", stridx);
 		return;
 	}
 
@@ -232,7 +232,7 @@ void DisplayMessage::DisplayConstantStringNameString(int stridx, unsigned int co
 	unsigned int actor_color = GetSpeakerColor(name, actor);
 	String* text = core->GetString( DisplayMessage::SRefs[stridx], IE_STR_SOUND );
 	if (!text) {
-		Log(WARNING, "DisplayMessage", "Unable to display message for stridx %d", stridx);
+		//Log(WARNING, "DisplayMessage", "Unable to display message for stridx %d", stridx);
 		return;
 	}
 	String* text2 = core->GetString( DisplayMessage::SRefs[stridx2], IE_STR_SOUND );
@@ -298,7 +298,7 @@ void DisplayMessage::DisplayConstantStringAction(int stridx, unsigned int color,
 
 	String* text = core->GetString( DisplayMessage::SRefs[stridx], IE_STR_SOUND|IE_STR_SPEECH );
 	if (!text) {
-		Log(WARNING, "DisplayMessage", "Unable to display message for stridx %d", stridx);
+		//Log(WARNING, "DisplayMessage", "Unable to display message for stridx %d", stridx);
 		return;
 	}
 
