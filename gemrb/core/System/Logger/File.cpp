@@ -53,22 +53,21 @@ Logger* createFileLogger(DataStream* log_file)
 
 static void addLogger()
 {
-	char log_path[_MAX_PATH];
-	FileStream* log_file = new FileStream();
-	PathJoin(log_path, core->GamePath, "GemRB.log", NULL);
-	if (log_file->Create(log_path)) {
-		AddLogger(createFileLogger(log_file));
-	} else {
-		PathJoin(log_path, core->CachePath, "GemRB.log", NULL);
-		if (log_file->Create(log_path)) {
-			AddLogger(createFileLogger(log_file));
-		} else if (log_file->Create("/tmp/GemRB.log")) {
-			AddLogger(createFileLogger(log_file));
-		} else {
-			Log (WARNING, "Logger", "Could not create a log file, skipping!");
+	// char log_path[_MAX_PATH];
+	// FileStream* log_file = new FileStream();
+	// PathJoin(log_path, core->GamePath, "GemRB.log", NULL);
+	// if (log_file->Create(log_path)) {
+	// 	AddLogger(createFileLogger(log_file));
+	// } else {
+	// 	PathJoin(log_path, core->CachePath, "GemRB.log", NULL);
+	// 	if (log_file->Create(log_path)) {
+	// 		AddLogger(createFileLogger(log_file));
+	// 	} else if (log_file->Create("/tmp/GemRB.log")) {
+	// 		AddLogger(createFileLogger(log_file));
+	// 	} else {
+//	Log (WARNING, "Logger", "Could not create a log file, skipping!");
 		}
-	}
-}
+
 
 }
 
