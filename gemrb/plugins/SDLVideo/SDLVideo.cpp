@@ -280,6 +280,23 @@ int SDLVideoDriver::ProcessEvent(const SDL_Event & event)
 			if (av_mouse_cur_x > 640) av_mouse_cur_x = 640;
 			if (av_mouse_cur_y < 0) av_mouse_cur_y = 0;
 			if (av_mouse_cur_y > 480) av_mouse_cur_y = 480;
+
+
+			if (keystate[BUTTON_DOWN] || keystate[BUTTON_UP] ||
+				keystate[BUTTON_LEFT] || keystate[BUTTON_RIGHT] )
+				SDL_WarpMouse(av_mouse_cur_x, av_mouse_cur_y);
+
+			if (keystate[BUTTON_R])
+			EvntManager->MouseDown( av_mouse_cur_x, av_mouse_cur_y, 1 << ( 0 ), GetModState() );
+
+			if (keystate[BUTTON_R])
+			EvntManager->MouseDown( av_mouse_cur_x, av_mouse_cur_y, 1 << ( 2 ), GetModState() );
+
+			if (keystate[BUTTON_B])
+			EvntManager->KeyPress( SDLK_m, KMOD_NONE);
+
+
+
 #if SDL_VERSION_ATLEAST(1,3,0)
 			key = SDL_GetKeyFromScancode(event.key.keysym.scancode);
 #else
@@ -301,27 +318,28 @@ int SDLVideoDriver::ProcessEvent(const SDL_Event & event)
 				}
 			}
 			switch (sym) {
-				case BUTTON_R:
-				EvntManager->MouseDown( av_mouse_cur_x, av_mouse_cur_y, 1 << ( 0 ), GetModState() );
-				break;
+				// case BUTTON_R:
+				// EvntManager->MouseDown( av_mouse_cur_x, av_mouse_cur_y, 1 << ( 0 ), GetModState() );
+				// break;
+				//
+				// case BUTTON_L:
+				// EvntManager->MouseDown( av_mouse_cur_x, av_mouse_cur_y, 1 << ( 2 ), GetModState() );
+				// break;
 
-				case BUTTON_L:
-				EvntManager->MouseDown( av_mouse_cur_x, av_mouse_cur_y, 1 << ( 2 ), GetModState() );
-				break;
-
-				case BUTTON_A:
-					key = GEM_ALT;
-					break;
+				// case BUTTON_A:
+				// 	key = GEM_ALT;
+				// 	break;
 				case BUTTON_Y:
-					key = GEM_TAB;
+					EvntManager->OnSpecialKeyPress( GEM_TAB );
+					EvntManager->OnSpecialKeyPress( GEM_ALT );
 					break;
 				//X button is space
 				// case BUTTON_X:
 				// SDLK_SPACE;
 				// 	break;
-				case BUTTON_B:
-					EvntManager->KeyPress( SDLK_m, KMOD_NONE);
-					break;
+				// case BUTTON_B:
+				// 	EvntManager->KeyPress( SDLK_m, KMOD_NONE);
+				// 	break;
 
 				case BUTTON_MENU:
 					EvntManager->KeyPress( SDLK_o, KMOD_NONE);
