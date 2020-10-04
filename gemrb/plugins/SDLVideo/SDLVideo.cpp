@@ -281,15 +281,35 @@ int SDLVideoDriver::ProcessEvent(const SDL_Event & event)
 			if (av_mouse_cur_y < 0) av_mouse_cur_y = 0;
 			if (av_mouse_cur_y > 480) av_mouse_cur_y = 480;
 
+			if ( keystate[BUTTON_UP] && keystate[BUTTON_SELECT] )
+				EvntManager->KeyPress( SDLK_1, KMOD_NONE);
 
-			if (keystate[BUTTON_DOWN] || keystate[BUTTON_UP] ||
-				keystate[BUTTON_LEFT] || keystate[BUTTON_RIGHT] )
+			if ( keystate[BUTTON_RIGHT] && keystate[BUTTON_SELECT] )
+					EvntManager->KeyPress( SDLK_2, KMOD_NONE);
+
+			if ( keystate[BUTTON_DOWN] && keystate[BUTTON_SELECT] )
+					EvntManager->KeyPress( SDLK_3, KMOD_NONE);
+
+			if ( keystate[BUTTON_LEFT] && keystate[BUTTON_SELECT] )
+					EvntManager->KeyPress( SDLK_4, KMOD_NONE);
+
+			if ( keystate[BUTTON_L] && keystate[BUTTON_SELECT] )
+					EvntManager->KeyPress( SDLK_5, KMOD_NONE);
+
+			if ( keystate[BUTTON_R] && keystate[BUTTON_SELECT] )
+					EvntManager->KeyPress( SDLK_6, KMOD_NONE);
+
+
+			//these are the fallback keys
+			if ((keystate[BUTTON_DOWN] || keystate[BUTTON_UP] ||
+				keystate[BUTTON_LEFT] || keystate[BUTTON_RIGHT]) &&
+			keystate[BUTTON_SELECT]==false )
 				SDL_WarpMouse(av_mouse_cur_x, av_mouse_cur_y);
 
-			if (keystate[BUTTON_R])
+			if (keystate[BUTTON_R] && keystate[BUTTON_SELECT]==false)
 			EvntManager->MouseDown( av_mouse_cur_x, av_mouse_cur_y, 1 << ( 0 ), GetModState() );
 
-			if (keystate[BUTTON_L])
+			if (keystate[BUTTON_L] && keystate[BUTTON_SELECT]==false)
 			EvntManager->MouseDown( av_mouse_cur_x, av_mouse_cur_y, 1 << ( 2 ), GetModState() );
 
 			if (keystate[BUTTON_B])
@@ -301,7 +321,7 @@ int SDLVideoDriver::ProcessEvent(const SDL_Event & event)
 				EvntManager->OnSpecialKeyPress( GEM_TAB );
 				EvntManager->OnSpecialKeyPress( GEM_ALT );
 			}
-			
+
 			if (keystate[BUTTON_MENU])
 				EvntManager->KeyPress( SDLK_o, KMOD_NONE);
 
@@ -312,49 +332,49 @@ int SDLVideoDriver::ProcessEvent(const SDL_Event & event)
 			}
 
 
-			if (keystate[BUTTON_SELECT])
-			{	if (key_number ==1){
-					key_number=2;
-					EvntManager->KeyPress( SDLK_1, KMOD_NONE);
-
-				}
-
-				else if (key_number ==2){
-					key_number=3;
-					EvntManager->KeyPress( SDLK_2, KMOD_NONE);
-
-				}
-
-
-				else if (key_number ==3){
-					key_number=4;
-					EvntManager->KeyPress( SDLK_3, KMOD_NONE);
-
-				}
-
-				else if (key_number ==4){
-					key_number=5;
-					EvntManager->KeyPress( SDLK_4, KMOD_NONE);
-
-				}
-
-				else if (key_number ==5){
-					key_number=6;
-					EvntManager->KeyPress( SDLK_5, KMOD_NONE);
-
-				}
-
-				else if (key_number ==6){
-					key_number=1;
-					EvntManager->KeyPress( SDLK_6, KMOD_NONE);
-
-				}
-				else{
-					key_number=1;
-					EvntManager->KeyPress( SDLK_1, KMOD_NONE);
-
-				}
-			}
+			// if (keystate[BUTTON_SELECT])
+			// {	if (key_number ==1){
+			// 		key_number=2;
+			// 		EvntManager->KeyPress( SDLK_1, KMOD_NONE);
+			//
+			// 	}
+			//
+			// 	else if (key_number ==2){
+			// 		key_number=3;
+			// 		EvntManager->KeyPress( SDLK_2, KMOD_NONE);
+			//
+			// 	}
+			//
+			//
+			// 	else if (key_number ==3){
+			// 		key_number=4;
+			// 		EvntManager->KeyPress( SDLK_3, KMOD_NONE);
+			//
+			// 	}
+			//
+			// 	else if (key_number ==4){
+			// 		key_number=5;
+			// 		EvntManager->KeyPress( SDLK_4, KMOD_NONE);
+			//
+			// 	}
+			//
+			// 	else if (key_number ==5){
+			// 		key_number=6;
+			// 		EvntManager->KeyPress( SDLK_5, KMOD_NONE);
+			//
+			// 	}
+			//
+			// 	else if (key_number ==6){
+			// 		key_number=1;
+			// 		EvntManager->KeyPress( SDLK_6, KMOD_NONE);
+			//
+			// 	}
+			// 	else{
+			// 		key_number=1;
+			// 		EvntManager->KeyPress( SDLK_1, KMOD_NONE);
+			//
+			// 	}
+			// }
 
 #if SDL_VERSION_ATLEAST(1,3,0)
 			key = SDL_GetKeyFromScancode(event.key.keysym.scancode);
