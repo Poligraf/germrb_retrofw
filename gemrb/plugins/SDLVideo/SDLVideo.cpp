@@ -289,13 +289,72 @@ int SDLVideoDriver::ProcessEvent(const SDL_Event & event)
 			if (keystate[BUTTON_R])
 			EvntManager->MouseDown( av_mouse_cur_x, av_mouse_cur_y, 1 << ( 0 ), GetModState() );
 
-			if (keystate[BUTTON_R])
+			if (keystate[BUTTON_L])
 			EvntManager->MouseDown( av_mouse_cur_x, av_mouse_cur_y, 1 << ( 2 ), GetModState() );
 
 			if (keystate[BUTTON_B])
 			EvntManager->KeyPress( SDLK_m, KMOD_NONE);
 
 
+			if (keystate[BUTTON_A]){
+
+				EvntManager->OnSpecialKeyPress( GEM_TAB );
+				EvntManager->OnSpecialKeyPress( GEM_ALT );
+			}
+			
+			if (keystate[BUTTON_MENU])
+				EvntManager->KeyPress( SDLK_o, KMOD_NONE);
+
+			if (keystate[BUTTON_START]){
+				key_number = 1;
+				EvntManager->KeyPress( SDLK_EQUALS, KMOD_NONE);
+
+			}
+
+
+			if (keystate[BUTTON_SELECT])
+			{	if (key_number ==1){
+					key_number=2;
+					EvntManager->KeyPress( SDLK_1, KMOD_NONE);
+
+				}
+
+				else if (key_number ==2){
+					key_number=3;
+					EvntManager->KeyPress( SDLK_2, KMOD_NONE);
+
+				}
+
+
+				else if (key_number ==3){
+					key_number=4;
+					EvntManager->KeyPress( SDLK_3, KMOD_NONE);
+
+				}
+
+				else if (key_number ==4){
+					key_number=5;
+					EvntManager->KeyPress( SDLK_4, KMOD_NONE);
+
+				}
+
+				else if (key_number ==5){
+					key_number=6;
+					EvntManager->KeyPress( SDLK_5, KMOD_NONE);
+
+				}
+
+				else if (key_number ==6){
+					key_number=1;
+					EvntManager->KeyPress( SDLK_6, KMOD_NONE);
+
+				}
+				else{
+					key_number=1;
+					EvntManager->KeyPress( SDLK_1, KMOD_NONE);
+
+				}
+			}
 
 #if SDL_VERSION_ATLEAST(1,3,0)
 			key = SDL_GetKeyFromScancode(event.key.keysym.scancode);
@@ -318,116 +377,7 @@ int SDLVideoDriver::ProcessEvent(const SDL_Event & event)
 				}
 			}
 			switch (sym) {
-				// case BUTTON_R:
-				// EvntManager->MouseDown( av_mouse_cur_x, av_mouse_cur_y, 1 << ( 0 ), GetModState() );
-				// break;
-				//
-				// case BUTTON_L:
-				// EvntManager->MouseDown( av_mouse_cur_x, av_mouse_cur_y, 1 << ( 2 ), GetModState() );
-				// break;
 
-				// case BUTTON_A:
-				// 	key = GEM_ALT;
-				// 	break;
-				case BUTTON_Y:
-					EvntManager->OnSpecialKeyPress( GEM_TAB );
-					EvntManager->OnSpecialKeyPress( GEM_ALT );
-					break;
-				//X button is space
-				// case BUTTON_X:
-				// SDLK_SPACE;
-				// 	break;
-				// case BUTTON_B:
-				// 	EvntManager->KeyPress( SDLK_m, KMOD_NONE);
-				// 	break;
-
-				case BUTTON_MENU:
-					EvntManager->KeyPress( SDLK_o, KMOD_NONE);
-					break;
-
-				case BUTTON_START:
-				 	key_number = 1;
-					EvntManager->KeyPress( SDLK_EQUALS, KMOD_NONE);
-					break;
-
-
-//writing this obtusely to help with debug
-				case BUTTON_SELECT:
-				if (key_number ==1){
-					key_number=2;
-					EvntManager->KeyPress( SDLK_1, KMOD_NONE);
-					break;
-				}
-
-				if (key_number ==2){
-					key_number=3;
-					EvntManager->KeyPress( SDLK_2, KMOD_NONE);
-					break;
-				}
-
-
-				if (key_number ==3){
-					key_number=4;
-					EvntManager->KeyPress( SDLK_3, KMOD_NONE);
-					break;
-				}
-
-				if (key_number ==4){
-					key_number=5;
-					EvntManager->KeyPress( SDLK_4, KMOD_NONE);
-					break;
-				}
-
-				if (key_number ==5){
-					key_number=6;
-					EvntManager->KeyPress( SDLK_5, KMOD_NONE);
-					break;
-				}
-
-				if (key_number ==6){
-					key_number=1;
-					EvntManager->KeyPress( SDLK_6, KMOD_NONE);
-					break;
-				}
-				// case SDLK_ESCAPE:
-				// 	key = GEM_ESCAPE;
-				// 	break;
-				// case SDLK_END:
-				case SDLK_KP1:
-					key = GEM_END;
-					break;
-				case SDLK_HOME:
-				case SDLK_KP7:
-					key = GEM_HOME;
-					break;
-				case SDLK_UP:
-				SDL_WarpMouse(av_mouse_cur_x, av_mouse_cur_y);
-	// av_need_update_xy(av_mouse_cur_x - 10, av_mouse_cur_y - 10, av_mouse_cur_x + 10, av_mouse_cur_x + 10);
-				break;
-				case SDLK_KP8:
-					key = GEM_UP;
-					break;
-				case SDLK_DOWN:
-				SDL_WarpMouse(av_mouse_cur_x, av_mouse_cur_y);
-	// av_need_update_xy(av_mouse_cur_x - 10, av_mouse_cur_y - 10, av_mouse_cur_x + 10, av_mouse_cur_x + 10);
-				break;
-				case SDLK_KP2:
-					key = GEM_DOWN;
-					break;
-				case SDLK_LEFT:
-					SDL_WarpMouse(av_mouse_cur_x, av_mouse_cur_y);
-		// av_need_update_xy(av_mouse_cur_x - 10, av_mouse_cur_y - 10, av_mouse_cur_x + 10, av_mouse_cur_x + 10);
-					break;
-				case SDLK_KP4:
-					key = GEM_LEFT;
-					break;
-				case SDLK_RIGHT:
-				SDL_WarpMouse(av_mouse_cur_x, av_mouse_cur_y);
-	// av_need_update_xy(av_mouse_cur_x - 10, av_mouse_cur_y - 10, av_mouse_cur_x + 10, av_mouse_cur_x + 10);
-				break;
-				case SDLK_KP6:
-					key = GEM_RIGHT;
-					break;
 				case SDLK_DELETE:
 #if TARGET_OS_IPHONE < 1
 					//iOS currently doesnt have a backspace so we use delete.
