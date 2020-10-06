@@ -232,9 +232,9 @@ int SDLVideoDriver::ProcessEvent(const SDL_Event & event)
 						EvntManager->MouseUp( av_mouse_cur_x, av_mouse_cur_y, 1 << ( 2 ), GetModState() );
 						break;
 				//
-				// case BUTTON_A:
-				// 	key = GEM_ALT;
-				// 	break;
+				case BUTTON_A:
+					key = GEM_ALT;
+					break;
 						// case BUTTON_Y:
 						// 	key = GEM_TAB;
 						// 	break;
@@ -403,7 +403,7 @@ int SDLVideoDriver::ProcessEvent(const SDL_Event & event)
 			keystate[BUTTON_B]==false &&
 			keystate[BUTTON_A]==false){
 					EvntManager->KeyPress( SDLK_SPACE, KMOD_NONE);
-			}		
+			}
 
 
 			if (keystate[BUTTON_MENU])

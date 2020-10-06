@@ -79,7 +79,8 @@ bool SDLAudio::Init(void)
 	}
 
 	g_sdlaudio = this;
-	Mix_ReserveChannels(1); // for speech
+	//workaround for sdl audio just locking up the game in rare occasions for retrofw
+	// Mix_ReserveChannels(1); // for speech
 	Mix_ChannelFinished(channel_done_callback);
 	return true;
 }
