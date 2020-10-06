@@ -231,10 +231,10 @@ int SDLVideoDriver::ProcessEvent(const SDL_Event & event)
 
 						EvntManager->MouseUp( av_mouse_cur_x, av_mouse_cur_y, 1 << ( 2 ), GetModState() );
 						break;
-
-				case BUTTON_A:
-					key = GEM_ALT;
-					break;
+				//
+				// case BUTTON_A:
+				// 	key = GEM_ALT;
+				// 	break;
 						// case BUTTON_Y:
 						// 	key = GEM_TAB;
 						// 	break;
@@ -273,13 +273,6 @@ int SDLVideoDriver::ProcessEvent(const SDL_Event & event)
 		case SDL_KEYDOWN:
 
 
-			av_mouse_cur_x += 15 * (keystate[BUTTON_RIGHT] - keystate[BUTTON_LEFT]);
-			av_mouse_cur_y += 15 * (keystate[BUTTON_DOWN]  - keystate[BUTTON_UP]);
-
-			if (av_mouse_cur_x < 0) av_mouse_cur_x = 0;
-			if (av_mouse_cur_x > 640) av_mouse_cur_x = 640;
-			if (av_mouse_cur_y < 0) av_mouse_cur_y = 0;
-			if (av_mouse_cur_y > 480) av_mouse_cur_y = 480;
 
 			if ( keystate[BUTTON_UP] && keystate[BUTTON_SELECT] )
 				EvntManager->KeyPress( SDLK_1, KMOD_NONE);
@@ -300,27 +293,118 @@ int SDLVideoDriver::ProcessEvent(const SDL_Event & event)
 					EvntManager->KeyPress( SDLK_6, KMOD_NONE);
 
 
+
+
+			if ( keystate[BUTTON_UP] && keystate[BUTTON_Y] )
+					EvntManager->OnSpecialKeyPress( GEM_FUNCTION1);
+
+
+			if ( keystate[BUTTON_RIGHT] && keystate[BUTTON_Y] )
+					EvntManager->OnSpecialKeyPress( GEM_FUNCTION2 );
+
+
+			if ( keystate[BUTTON_DOWN] && keystate[BUTTON_Y] )
+					EvntManager->OnSpecialKeyPress( GEM_FUNCTION3 );
+
+			if ( keystate[BUTTON_LEFT] && keystate[BUTTON_Y] )
+					EvntManager->OnSpecialKeyPress( GEM_FUNCTION4 );
+
+			if ( keystate[BUTTON_L] && keystate[BUTTON_Y] )
+					EvntManager->OnSpecialKeyPress( GEM_FUNCTION5 );
+
+			if ( keystate[BUTTON_R] && keystate[BUTTON_Y] )
+					EvntManager->OnSpecialKeyPress( GEM_FUNCTION6 );
+
+
+			if ( keystate[BUTTON_UP] && keystate[BUTTON_B] )
+					EvntManager->OnSpecialKeyPress( GEM_FUNCTION7 );
+
+			if ( keystate[BUTTON_RIGHT] && keystate[BUTTON_B] )
+					EvntManager->OnSpecialKeyPress( GEM_FUNCTION8 );
+
+			if ( keystate[BUTTON_DOWN] && keystate[BUTTON_B] )
+					EvntManager->OnSpecialKeyPress( GEM_FUNCTION9 );
+
+			if ( keystate[BUTTON_LEFT] && keystate[BUTTON_B] )
+					EvntManager->OnSpecialKeyPress( GEM_FUNCTION10 );
+
+			if ( keystate[BUTTON_L] && keystate[BUTTON_B] )
+					EvntManager->OnSpecialKeyPress( GEM_FUNCTION11);
+
+			if ( keystate[BUTTON_R] && keystate[BUTTON_B] )
+					EvntManager->OnSpecialKeyPress( GEM_FUNCTION12);
+
+
+
+			if ( keystate[BUTTON_L] && keystate[BUTTON_A] )
+				EvntManager->KeyPress( SDLK_q, KMOD_NONE);
+
+			if ( keystate[BUTTON_UP] && keystate[BUTTON_A] )
+				EvntManager->KeyPress( SDLK_m, KMOD_NONE);
+
+			if ( keystate[BUTTON_DOWN] && keystate[BUTTON_A] )
+				EvntManager->KeyPress( SDLK_i, KMOD_NONE);
+
+			if ( keystate[BUTTON_LEFT] && keystate[BUTTON_A] )
+				EvntManager->KeyPress( SDLK_p, KMOD_NONE);
+
+			if ( keystate[BUTTON_RIGHT] && keystate[BUTTON_A] )
+				EvntManager->KeyPress( SDLK_w, KMOD_NONE);
+
+			if ( keystate[BUTTON_B] && keystate[BUTTON_A] )
+				EvntManager->KeyPress( SDLK_r, KMOD_NONE);
+
+			if ( keystate[BUTTON_Y] && keystate[BUTTON_A] )
+				EvntManager->KeyPress( SDLK_j, KMOD_NONE);
+
+			if ( keystate[BUTTON_SELECT] && keystate[BUTTON_A] )
+				EvntManager->KeyPress( SDLK_z, KMOD_NONE);
+
+			if ( keystate[BUTTON_X] && keystate[BUTTON_A] ){
+			EvntManager->OnSpecialKeyPress( GEM_TAB );
+			EvntManager->OnSpecialKeyPress( GEM_ALT );
+			}
+
 			//these are the fallback keys
 			if ((keystate[BUTTON_DOWN] || keystate[BUTTON_UP] ||
-				keystate[BUTTON_LEFT] || keystate[BUTTON_RIGHT]) &&
-			keystate[BUTTON_SELECT]==false )
+			keystate[BUTTON_LEFT] || keystate[BUTTON_RIGHT]) &&
+			keystate[BUTTON_SELECT]==false &&
+		 	keystate[BUTTON_Y]==false &&
+			keystate[BUTTON_B]==false &&
+			keystate[BUTTON_A]==false){
+				av_mouse_cur_x += 15 * (keystate[BUTTON_RIGHT] - keystate[BUTTON_LEFT]);
+				av_mouse_cur_y += 15 * (keystate[BUTTON_DOWN]  - keystate[BUTTON_UP]);
+
+				if (av_mouse_cur_x < 0) av_mouse_cur_x = 0;
+				if (av_mouse_cur_x > 640) av_mouse_cur_x = 640;
+				if (av_mouse_cur_y < 0) av_mouse_cur_y = 0;
+				if (av_mouse_cur_y > 480) av_mouse_cur_y = 480;
+
 				SDL_WarpMouse(av_mouse_cur_x, av_mouse_cur_y);
-
-			if (keystate[BUTTON_R] && keystate[BUTTON_SELECT]==false)
-			EvntManager->MouseDown( av_mouse_cur_x, av_mouse_cur_y, 1 << ( 0 ), GetModState() );
-
-			if (keystate[BUTTON_L] && keystate[BUTTON_SELECT]==false)
-			EvntManager->MouseDown( av_mouse_cur_x, av_mouse_cur_y, 1 << ( 2 ), GetModState() );
-
-			if (keystate[BUTTON_B])
-			EvntManager->KeyPress( SDLK_m, KMOD_NONE);
-
-
-			if (keystate[BUTTON_A]){
-
-				EvntManager->OnSpecialKeyPress( GEM_TAB );
-				EvntManager->OnSpecialKeyPress( GEM_ALT );
 			}
+
+			if (keystate[BUTTON_R] && keystate[BUTTON_SELECT]==false  &&
+		 	keystate[BUTTON_Y]==false &&
+			keystate[BUTTON_B]==false &&
+			keystate[BUTTON_A]==false){
+				EvntManager->MouseDown( av_mouse_cur_x, av_mouse_cur_y, 1 << ( 0 ), GetModState() );
+
+			}
+
+			if (keystate[BUTTON_L] && keystate[BUTTON_SELECT]==false  &&
+		 	keystate[BUTTON_Y]==false &&
+			keystate[BUTTON_B]==false &&
+			keystate[BUTTON_A]==false){
+				EvntManager->MouseDown( av_mouse_cur_x, av_mouse_cur_y, 1 << ( 2 ), GetModState() );
+			}
+
+			if (keystate[BUTTON_X] && keystate[BUTTON_SELECT]==false  &&
+		 	keystate[BUTTON_Y]==false &&
+			keystate[BUTTON_B]==false &&
+			keystate[BUTTON_A]==false){
+					EvntManager->KeyPress( SDLK_SPACE, KMOD_NONE);
+			}		
+
 
 			if (keystate[BUTTON_MENU])
 				EvntManager->KeyPress( SDLK_o, KMOD_NONE);
@@ -383,20 +467,10 @@ int SDLVideoDriver::ProcessEvent(const SDL_Event & event)
 #endif
 			// reenable special numpad keys unless numlock is off
 			if (SDL_GetModState() & KMOD_NUM) {
-				switch (sym) {
-					case SDLK_KP1: sym = SDLK_1; break;
-					case SDLK_KP2: sym = SDLK_2; break;
-					case SDLK_KP3: sym = SDLK_3; break;
-					case SDLK_KP4: sym = SDLK_4; break;
-					// 5 is not special
-					case SDLK_KP6: sym = SDLK_6; break;
-					case SDLK_KP7: sym = SDLK_7; break;
-					case SDLK_KP8: sym = SDLK_8; break;
-					case SDLK_KP9: sym = SDLK_9; break;
-					default: break;
-				}
+
 			}
 			switch (sym) {
+
 
 				case SDLK_DELETE:
 #if TARGET_OS_IPHONE < 1
@@ -405,6 +479,14 @@ int SDLVideoDriver::ProcessEvent(const SDL_Event & event)
 					key = GEM_DELETE;
 					break;
 #endif
+
+
+
+
+
+				// case SDLK_LEFTPAREN: key =SDLK_F8; break;
+				// case SDLK_LEFTPAREN: key =SDLK_F8; break;
+				// case SDLK_LEFTPAREN: key =SDLK_F8; break;
 				// case SDLK_BACKSPACE:
 				// 	key = GEM_BACKSP;
 				// 	break;
@@ -425,17 +507,7 @@ int SDLVideoDriver::ProcessEvent(const SDL_Event & event)
 				case SDLK_SCROLLOCK:
 					key = GEM_GRAB;
 					break;
-				case SDLK_F1:
-				case SDLK_F2:
-				case SDLK_F3:
-				case SDLK_F4:
-				case SDLK_F5:
-				case SDLK_F6:
-				case SDLK_F7:
-				case SDLK_F8:
-				case SDLK_F9:
-				case SDLK_F10:
-				case SDLK_F11:
+
 				case SDLK_F12:
 					//assuming they come sequentially,
 					//also, there is no need to ever produce more than 12

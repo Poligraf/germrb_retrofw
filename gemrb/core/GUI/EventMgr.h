@@ -53,6 +53,20 @@ class Window;
 #define GEM_PGDOWN		0x8e
 #define GEM_GRAB		0x8f
 #define GEM_FUNCTION1           0x90     //don't use anything between these two and keep a round number
+#define GEM_FUNCTION2           0x91
+#define GEM_FUNCTION3           0x92
+#define GEM_FUNCTION4           0x93
+#define GEM_FUNCTION5           0x94
+#define GEM_FUNCTION6           0x95
+#define GEM_FUNCTION7           0x96
+#define GEM_FUNCTION8           0x97
+#define GEM_FUNCTION9           0x98
+#define GEM_FUNCTION10          0x99
+#define GEM_FUNCTION11          0x9a
+#define GEM_FUNCTION12          0x9b
+#define GEM_FUNCTION13          0x9c
+#define GEM_FUNCTION14          0x9d
+#define GEM_FUNCTION15          0x9e  
 #define GEM_FUNCTION16          0x9f
 
 #define GEM_MOD_SHIFT           1
