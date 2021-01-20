@@ -87,7 +87,7 @@ int av_mouse_pressed_x;
 int av_mouse_pressed_y;
 int av_mouse_pressed_cur;
 int av_mouse_pressed_latched;
-
+	uint8_t *keystate = SDL_GetKeyState(NULL);
 int key_number = 1;
 
 SDLVideoDriver::SDLVideoDriver(void)
@@ -177,6 +177,24 @@ int SDLVideoDriver::PollEvents()
 	int ret = GEM_OK;
 	SDL_Event currentEvent;
 
+	//these are the fallback keys
+	if ((keystate[BUTTON_DOWN] || keystate[BUTTON_UP] ||
+	keystate[BUTTON_LEFT] || keystate[BUTTON_RIGHT]) &&
+	keystate[BUTTON_SELECT]==false &&
+	keystate[BUTTON_Y]==false &&
+	keystate[BUTTON_B]==false &&
+	keystate[BUTTON_A]==false){
+		av_mouse_cur_x += 15 * (keystate[BUTTON_RIGHT] - keystate[BUTTON_LEFT]);
+		av_mouse_cur_y += 15 * (keystate[BUTTON_DOWN]  - keystate[BUTTON_UP]);
+
+		if (av_mouse_cur_x < 0) av_mouse_cur_x = 0;
+		if (av_mouse_cur_x > 640) av_mouse_cur_x = 640;
+		if (av_mouse_cur_y < 0) av_mouse_cur_y = 0;
+		if (av_mouse_cur_y > 480) av_mouse_cur_y = 480;
+
+		SDL_WarpMouse(av_mouse_cur_x, av_mouse_cur_y);
+	}
+
 	while (ret != GEM_ERROR && SDL_PollEvent(&currentEvent)) {
 		ret = ProcessEvent(currentEvent);
 	}
@@ -206,13 +224,19 @@ int SDLVideoDriver::ProcessEvent(const SDL_Event & event)
 
 	if (!EvntManager)
 		return GEM_ERROR;
-	uint8_t *keystate = SDL_GetKeyState(NULL);
 	SDL_Keycode key = SDLK_UNKNOWN;
 	int modstate = GetModState(event.key.keysym.mod);
 	SDLKey sym = event.key.keysym.sym;
 
+
+
+
+
 	/* Loop until there are no events left on the queue */
 	switch (event.type) {
+
+
+
 			/* Process the appropriate event type */
 		case SDL_QUIT:
 			/* Quit event originated from outside GemRB so ask the user if we should exit */
@@ -365,23 +389,7 @@ int SDLVideoDriver::ProcessEvent(const SDL_Event & event)
 			EvntManager->OnSpecialKeyPress( GEM_ALT );
 			}
 
-			//these are the fallback keys
-			if ((keystate[BUTTON_DOWN] || keystate[BUTTON_UP] ||
-			keystate[BUTTON_LEFT] || keystate[BUTTON_RIGHT]) &&
-			keystate[BUTTON_SELECT]==false &&
-		 	keystate[BUTTON_Y]==false &&
-			keystate[BUTTON_B]==false &&
-			keystate[BUTTON_A]==false){
-				av_mouse_cur_x += 15 * (keystate[BUTTON_RIGHT] - keystate[BUTTON_LEFT]);
-				av_mouse_cur_y += 15 * (keystate[BUTTON_DOWN]  - keystate[BUTTON_UP]);
 
-				if (av_mouse_cur_x < 0) av_mouse_cur_x = 0;
-				if (av_mouse_cur_x > 640) av_mouse_cur_x = 640;
-				if (av_mouse_cur_y < 0) av_mouse_cur_y = 0;
-				if (av_mouse_cur_y > 480) av_mouse_cur_y = 480;
-
-				SDL_WarpMouse(av_mouse_cur_x, av_mouse_cur_y);
-			}
 
 			if (keystate[BUTTON_R] && keystate[BUTTON_SELECT]==false  &&
 		 	keystate[BUTTON_Y]==false &&
@@ -472,6 +480,7 @@ int SDLVideoDriver::ProcessEvent(const SDL_Event & event)
 			switch (sym) {
 
 
+
 				case SDLK_DELETE:
 #if TARGET_OS_IPHONE < 1
 					//iOS currently doesnt have a backspace so we use delete.
@@ -553,6 +562,8 @@ int SDLVideoDriver::ProcessEvent(const SDL_Event & event)
 				EvntManager->MouseUp( event.button.x, event.button.y, 1 << ( event.button.button - 1 ), GetModState() );
 			break;
 	}
+
+
 	return GEM_OK;
 }
 
